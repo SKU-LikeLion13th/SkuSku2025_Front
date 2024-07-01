@@ -1,6 +1,9 @@
 const PATH = process.env.PUBLIC_URL;
 
 export const images = {
+    // logo
+    likelion_logo : PATH + 'assets/images/logo.png',
+
     // track
     track_frontend_background : PATH + 'assets/images/track/frontend_background.png',
     track_backend_background : PATH + 'assets/images/track/backend_background.png',

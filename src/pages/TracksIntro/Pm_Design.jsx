@@ -3,6 +3,7 @@ import { images } from '../../utils/images';
 
 const Pm_Design = () => {
   return (
+    <>
     <div className='container flex items-center justify-center mx-auto'>
         <div className='w-1/2'>
           <div>
@@ -27,9 +28,10 @@ const Pm_Design = () => {
           </div>
         </div>
         <div className='w-1/2'></div>
-        <div className='absolute right-0 top-3'><img src={images.track_pm_background} alt="track_pm_background" /></div>
-
-    </div>);
+        <div className='absolute right-0 top-12 -z-10'><img src={images.track_pm_background} alt="track_pm_background" /></div>
+    </div>
+    </>  
+  );
 };
 
 export default Pm_Design;

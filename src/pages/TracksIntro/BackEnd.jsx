@@ -3,6 +3,7 @@ import { images } from '../../utils/images';
 
 const BackEnd = () => {
   return (
+    <>
     <div className='container flex items-center justify-center mx-auto'>
         <div className='w-1/2'>
           <div>
@@ -23,8 +24,10 @@ const BackEnd = () => {
           </div>
         </div>
         <div className='w-1/2'></div>
-        <div className='absolute right-0 top-35'><img src={images.track_backend_background} alt="track_backend_background" /></div>
-    </div>);
+        <div className='absolute right-0 top-35 -z-10'><img src={images.track_backend_background} alt="track_backend_background" /></div>
+    </div>
+    </>
+    );
 };
 
 export default BackEnd;
