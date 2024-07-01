@@ -1,6 +1,5 @@
 import React from 'react';
 import { images } from '../../utils/images';
-import Footer from '../../components/Footer';
 
 const FrontEnd = () => {
   return (
@@ -27,9 +26,10 @@ const FrontEnd = () => {
             사용자가 직접 보는 부분으로, 시각적인 디자인과 사용자 경험에 중점을 둡니다.<br/>
           </div>
         </div>
-        <div className='w-1/2 flex justify-center'><img src={images.track_frontend_background} alt="background" /></div>
+        <div className='w-1/2 flex justify-center'>
+          <img src={images.track_frontend_background} alt="background" />
+        </div>
     </div>
-    <Footer />
     </>
   );
 };
