@@ -1,10 +1,11 @@
 import React from 'react';
 import { images } from '../../utils/images';
+import Footer from '../../components/Footer';
 
 const FrontEnd = () => {
   return (
-    <div className='container text-white flex items-center justify-center mx-auto'>
-
+    <>
+    <div className='container flex items-center justify-center mx-auto'>
         <div className='w-1/2'>
           <div>
             <span className='text-[#FF7816] font-bold text-6xl'>FRONT-END</span><br/>
@@ -27,8 +28,10 @@ const FrontEnd = () => {
           </div>
         </div>
         <div className='w-1/2 flex justify-center'><img src={images.track_frontend_background} alt="background" /></div>
-
-    </div>);
+    </div>
+    <Footer />
+    </>
+  );
 };
 
 export default FrontEnd;
