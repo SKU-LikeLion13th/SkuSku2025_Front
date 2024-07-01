@@ -22,7 +22,7 @@ const TeamIntro = () => {
     <>
       <div className="mt-10 text-center">
         <div className="text-[#3A78FF] text-5xl fontEB">
-          SKU LIKELION
+          LIKELION SKU
           <br />
         </div>
         <div className="text-[#FFFFFF] text-5xl fontEB mt-4">운영진</div>

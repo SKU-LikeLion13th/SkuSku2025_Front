@@ -71,9 +71,9 @@ const ContactTabs = () => {
           </span>
         </button>
       </div>
-      <div className="relative flex-grow flex items-center justify-center h-full">
+      <div className="relative flex-grow flex items-center justify-center h-full -ml-10">
         {selectedTab === '기타 의뢰' && (
-          <div className="absolute top-0 bg-[#1C58DA] text-white p-4 rounded-lg w-64 h-44 overflow-auto flex fontLight text-xl items-center justify-center">
+          <div className="absolute top-0 bg-[#1C58DA] text-white p-4 rounded-lg w-72 h-44 flex fontLight text-xl">
             <div>
               <span className="fontSB text-xl">기타 의뢰</span>는 카카오톡 채널 <br />
               "멋쟁이사자처럼 at 성결대"
@@ -85,7 +85,7 @@ const ContactTabs = () => {
           </div>
         )}
         {selectedTab === '협업 문의' && (
-          <div className="absolute top-24 bg-[#34C242] text-white p-4 rounded-lg w-72 h-44 overflow-auto flex items-center justify-center fontLight text-xl">
+          <div className="absolute top-24 bg-[#34C242] text-white p-4 rounded-lg w-72 h-44 flex items-center justify-center fontLight text-xl">
             <div>
               <span className="fontSB text-xl">협업 문의</span>는 "sku@likelion.org" 위 메일 주소로 문의 바랍니다.
               <br />
@@ -95,7 +95,7 @@ const ContactTabs = () => {
           </div>
         )}
         {selectedTab === '문의 사항' && (
-          <div className="absolute top-48 bg-[#747474] text-white p-4 rounded-lg w-72 h-44 overflow-auto flex items-center justify-center text-xl fontLight">
+          <div className="absolute top-60 bg-[#747474] text-white p-4 rounded-lg w-72 h-44 flex items-center justify-center text-xl fontLight">
             <div>
               <span className="fontSB text-xl">문의 사항</span>은 인스타그램 @likelion_sku DM으로 문의 바랍니다.
               <br />
