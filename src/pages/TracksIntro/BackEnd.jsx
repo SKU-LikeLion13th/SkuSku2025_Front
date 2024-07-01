@@ -3,8 +3,7 @@ import { images } from '../../utils/images';
 
 const BackEnd = () => {
   return (
-    <div className='container text-white flex items-center justify-center mx-auto'>
-
+    <div className='container flex items-center justify-center mx-auto'>
         <div className='w-1/2'>
           <div>
             <span className='text-[#47EAEA] font-bold text-6xl'>BACK-END</span><br/>

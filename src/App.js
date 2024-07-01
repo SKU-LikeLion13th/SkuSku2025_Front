@@ -11,7 +11,7 @@ import Pm_Design from './pages/TracksIntro/Pm_Design';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App text-white">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/project" element={<Project />} />
