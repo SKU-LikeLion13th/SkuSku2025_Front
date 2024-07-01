@@ -16,11 +16,11 @@ const Person = ({ idList }) => {
               <img src={member.image} alt={member.name} className="w-30 h-24 mx-auto" />
               <div className="mt-4 flex items-center justify-center whitespace-nowrap">
                 <img src={member.logo} alt="logo" className="w-6 h-6 mr-2" />
-                <span className="text-base fontEB">{member.name}</span>
+                <span className="text-base fontEB text-black">{member.name}</span>
               </div>
               <div className="text-center whitespace-nowrap">
-                <p className="pt-3 text-sm fontBold">{member.major}</p>
-                <p className="text-sm fontBold">{member.role}</p>
+                <p className="pt-3 text-sm fontBold text-black">{member.major}</p>
+                <p className="text-sm fontBold text-black">{member.role}</p>
                 <div className="w-32 h-px bg-blue-500 mt-2 mx-auto" />
                 <p className="text-blue-500 mt-2 text-sm fontBold">{member.position}</p>
               </div>
