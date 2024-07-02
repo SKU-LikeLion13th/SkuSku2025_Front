@@ -41,7 +41,7 @@ const Nav = () => {
     } else if (isHovered === 3) {
       borderRadius = '30px 0px 30px 30px';
     } else if (isHovered) {
-      borderRadius = '30px 30px 30px 30px';
+      borderRadius = '30px 30px 0px 30px';
     }
 
     return {
@@ -97,12 +97,15 @@ const Nav = () => {
             </Link>
           ))}
         </div>
-        <div className='w-full h-8'
+        <div className='w-full h-10'
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(null)}></div>
 
         {isHovered || isHovered === 0 ? (
-          <div style={hoverStyle()} className='flex rounded-2xl'>
+          <div style={hoverStyle()} 
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(null)}
+            className='flex rounded-2xl'>
             {renderLinks([
               { to: '/frontend', label: 'FRONT-END' },
               { to: '/backend', label: 'BACK-END' },
@@ -114,13 +117,13 @@ const Nav = () => {
               { to: '/project', label: '11th' },
             ])}
             {renderLinks([
-              { to: '/teamIntro', label: '12th' },
-              { to: '/teamIntro', label: '11th' },
+              { to: '/teamIntro?tab12', label: '12th' },
+              { to: '/teamIntro?tab11', label: '11th' },
             ])}
             {renderLinks([
-              { to: '/contact', label: '기타 의뢰' },
-              { to: '/contact', label: '협업 문의' },
-              { to: '/contact', label: '문의 사항' },
+              { to: '/contact?etc', label: '기타 의뢰' },
+              { to: '/contact?Collaboration', label: '협업 문의' },
+              { to: '/contact?inquiry', label: '문의 사항' },
             ])}
           </div>
         ) : ''}
