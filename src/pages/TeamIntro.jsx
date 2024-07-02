@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Person from '../components/Person';
+import { useLocation } from 'react-router-dom';
 
 const TeamIntro = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('tab12');
 
   const handleTabClick = tab => {
@@ -17,6 +19,11 @@ const TeamIntro = () => {
         ? 'text-white after:absolute after:left-0 after:bottom-[-2px] after:w-full after:h-[2px] after:bg-white'
         : 'text-gray-500'
     }`;
+
+    useEffect(() => {
+      const tab = location.search.replace('?', '')
+      setActiveTab(tab);
+    }, [location])
 
   return (
     <>
