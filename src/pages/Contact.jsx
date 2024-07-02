@@ -94,7 +94,7 @@ const ContactTabs = () => {
         {selectedTab === 'Collaboration' && (
           <div className="absolute top-24 bg-[#34C242] text-white p-4 rounded-lg w-72 h-44 flex items-center justify-center fontLight text-xl">
             <div>
-              <span className="fontSB text-xl">협업 문의</span>는 "sku@likelion.org" 위 메일 주소로 문의 바랍니다.
+              <span className="fontSB text-xl">협업 문의</span>는 "sungkyul.univ@likelion.org" 위 메일 주소로 문의 바랍니다.
               <br />
               <br />
               감사합니다!

@@ -1,40 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { images } from '../utils/images';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const location = useLocation();
-  const [track, setTrack] = useState();
-
-  useEffect(() => {
-    setTrack(location.pathname);
-  }, [location]);
-
   return (
     <>
-      {/* 트랙 페이지일 때만 보임 */}
-      {(track === '/frontend' || track === '/backend' || track === '/pm_design') && (
-        <div className="flex justify-end container mx-auto">
-          <div>
-            {track !== '/frontend' && (
-              <Link to="/frontend">
-                <div className="text-[#FF7816]">FRONT-END ⮕</div>
-              </Link>
-            )}
-            {track !== '/backend' && (
-              <Link to="/backend">
-                <div className="text-[#47EAEA]">BACK-END ⮕</div>
-              </Link>
-            )}
-            {track !== '/pm_design' && (
-              <Link to="/pm_design">
-                <div className="text-[#FF669D]">PM/DESIGN ⮕</div>
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
-
       <div className="leading-7 container mx-auto border-t-[1px] border-[#626262] py-12 mt-16">
         <div className="flex flex-col mb-10">
           <span className="text-2xl fontBlack text-[#3B79FF]">LIKELION SKU</span>
