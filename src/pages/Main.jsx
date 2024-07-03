@@ -1,11 +1,28 @@
 import React from 'react';
-import MainSlider from '../components/MainSlider';
+import MainSlider from '../components/slider/MainSlider';
+import ProjectSlider from '../components/slider/ProjectSlider';
 import { images } from '../utils/images';
 
+const TrackItem = ({ title, subtitle }) => (
+  <button className='flex flex-col justify-between mx-auto w-4/5 text-white bg-[#666666] rounded-md'>
+    <div className='text-start pl-8 pb-5'>
+      <p className='text-3xl fontEB pt-16'>{title}</p>
+      <p className='text-3xl fontEB'>{subtitle}</p>
+    </div>
+    <div className='self-end text-xl pb-7 pr-4'>&gt;</div>
+  </button>
+);
+
 const Main = () => {
+  const trackData = [
+    { title: '프론트엔드', subtitle: 'FRONT-END' },
+    { title: '백엔드', subtitle: 'BACK-END' },
+    { title: '기획/디자인', subtitle: 'PM/DESIGN' },
+  ];
+
   return (
     <div className='main-container'>
-      <div className='main1 relative w-full mb-0 pb-0'>
+      <div className='main1 relative w-full mb-0 pb-0 h-full'>
         <MainSlider />
         <div className="absolute inset-0 flex flex-col justify-between text-white">
           <div className="flex items-center justify-center mt-10 h-full">
@@ -20,6 +37,7 @@ const Main = () => {
           </div>
         </div>
       </div>
+      
       <div className='main2 relative w-full mt-0 pt-0'>
         <img src={images.mainP2} alt='두번째 파트 메인' className='w-full h-full object-cover'/>
         <div className='absolute inset-0 flex flex-col justify-evenly items-center text-center fontThin text-2xl w-full'>
@@ -52,8 +70,54 @@ const Main = () => {
             <br/>한걸음 더 다가가고자 합니다.</p>
         </div>
       </div>
-      <div className='main3 relative w-full'>
 
+      <div className='main3 relative w-full'>
+        <div className='flex justify-center w-full'>
+          <img src={images.likelion} alt='likelion' className='py-40'/>
+        </div>
+        <div className='absolute inset-x-0 top-0 flex flex-col justify-center items-center text-center fontRegular text-2xl h-full'>
+          <div className='flex flex-col h-1/5 justify-around mb-20'>
+            <div>
+              <p className='text-[#3B79FF] fontSB pb-2'>Q.</p>
+              <p>성결대 멋쟁이사자처럼은 주로 <span className='text-[#3B79FF] fontMedium'>어떤 활동</span>을 하나요?</p>
+            </div>
+            <div>
+              <p className='text-[#3B79FF] fontSB pb-2'>A.</p>
+              <p>
+                성결대 멋쟁이사자처럼에서는 <span className='text-[#3B79FF] fontMedium'>정기세션</span>과 <span className='text-[#3B79FF] fontMedium'>스터디, 아이디어톤</span>
+                <br/>마지막으로 <span className='text-[#3B79FF] fontMedium'>해커톤</span>을 주로 진행합니다.
+              </p>
+            </div>
+          </div>
+          <img src={images.schedule} alt='멋사 스케줄'/>
+        </div>
+      </div>
+
+      <div className='main4 relative w-full my-20 mb-48'>
+        <div className='flex flex-col justify-center items-center mx-20'>
+          <p className='text-7xl fontBold text-[#3B79FF]'>TRACKS</p>
+          <p className='text-lg fontLight my-12'>멋쟁이사자처럼에서 각 트랙별로 세분화된 교육과 경험을 제공합니다.</p>
+          <div className='grid grid-cols-3 w-full mt-7'>
+            {trackData.map((track, index) => (
+              <TrackItem key={index} title={track.title} subtitle={track.subtitle} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className='main5 relative w-full'>
+        <div className='flex flex-col justify-center items-center mx-20'>
+          <p className='text-7xl fontBold text-[#3B79FF]'>PROJECTS</p>
+          <p className='text-lg fontLight my-12'>성결대학교 멋쟁이사자처럼과 함께한 프로젝트들을 소개합니다.</p>
+          <div className='grid grid-cols-3 w-full mt-7'>
+            {trackData.map((track, index) => (
+              <TrackItem key={index} title={track.title} subtitle={track.subtitle} />
+            ))}
+          </div>
+          <div>
+            <ProjectSlider/>
+          </div>
+        </div>
       </div>
     </div>
   );
