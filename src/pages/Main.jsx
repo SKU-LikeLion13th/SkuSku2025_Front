@@ -4,13 +4,15 @@ import ProjectSlider from '../components/slider/ProjectSlider';
 import { images } from '../utils/images';
 
 const TrackItem = ({ title, subtitle }) => (
-  <button className='flex flex-col justify-between mx-auto w-4/5 text-white bg-[#666666] rounded-md'>
-    <div className='text-start pl-8 pb-5'>
-      <p className='text-3xl fontEB pt-16'>{title}</p>
-      <p className='text-3xl fontEB'>{subtitle}</p>
-    </div>
-    <div className='self-end text-xl pb-7 pr-4'>&gt;</div>
-  </button>
+  <div className='p-4'>
+    <button className='flex flex-col justify-between mx-auto w-full h-42 text-white bg-[#666666] rounded-md'>
+      <div className='text-start pl-8 pb-5'>
+        <p className='text-3xl fontEB pt-16'>{title}</p>
+        <p className='text-3xl fontEB'>{subtitle}</p>
+      </div>
+      <div className='self-end text-xl pb-7 pr-4'>&gt;</div>
+    </button>
+  </div>
 );
 
 const Main = () => {
@@ -21,7 +23,7 @@ const Main = () => {
   ];
 
   return (
-    <div className='main-container'>
+    <div className='container mx-auto'>
       <div className='main1 relative w-full mb-0 pb-0 h-full'>
         <MainSlider />
         <div className="absolute inset-0 flex flex-col justify-between text-white">
@@ -97,7 +99,7 @@ const Main = () => {
         <div className='flex flex-col justify-center items-center mx-20'>
           <p className='text-7xl fontBold text-[#3B79FF]'>TRACKS</p>
           <p className='text-lg fontLight my-12'>멋쟁이사자처럼에서 각 트랙별로 세분화된 교육과 경험을 제공합니다.</p>
-          <div className='grid grid-cols-3 w-full mt-7'>
+          <div className='grid grid-cols-3 gap-8 w-full mt-7'>
             {trackData.map((track, index) => (
               <TrackItem key={index} title={track.title} subtitle={track.subtitle} />
             ))}
@@ -109,15 +111,12 @@ const Main = () => {
         <div className='flex flex-col justify-center items-center mx-20'>
           <p className='text-7xl fontBold text-[#3B79FF]'>PROJECTS</p>
           <p className='text-lg fontLight my-12'>성결대학교 멋쟁이사자처럼과 함께한 프로젝트들을 소개합니다.</p>
-          <div className='grid grid-cols-3 w-full mt-7'>
-            {trackData.map((track, index) => (
-              <TrackItem key={index} title={track.title} subtitle={track.subtitle} />
-            ))}
-          </div>
           <div>
-            <ProjectSlider/>
           </div>
         </div>
+      </div>
+      <div className='py-8 mb-52'>
+        <ProjectSlider/>
       </div>
     </div>
   );

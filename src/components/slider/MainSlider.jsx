@@ -8,6 +8,7 @@ const MainSlider = () => {
   const { mainImages } = images;
 
   const settings = {
+    arrows: false,
     dots: false,
     infinite: true,
     speed: 900,

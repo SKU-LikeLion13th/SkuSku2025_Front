@@ -2,22 +2,23 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { images } from '../../utils/images';
 
 const ProjectItem = ({ title, subtitle }) => (
-  <button className=' text-white bg-gray-400 rounded-md w-[350px] h-[214px]'>
+  <div className='flex justify-center items-center w-full'>
+  <button className='text-white bg-gray-400 rounded-md w-full h-[214px] mx-8'>
     <div className='text-start pl-8 pb-5'>
       <p className='text-3xl fontEB pt-16'>{title}</p>
       <p className='text-3xl fontEB'>{subtitle}</p>
     </div>
     <div className='self-end text-xl pb-7 pr-4'>&gt;</div>
   </button>
+  </div>
 );
 
 const ProjectSlider = () => {
-  const { mainImages } = images;
 
   const settings = {
+    arrows: false,
     rows: 1,
     slidesToShow: 3,
     dots: false,
@@ -40,14 +41,12 @@ const ProjectSlider = () => {
   ];
 
   return (
-    <div>
-        <div className='w-full'>
+    <div className='flex justify-center items-center'>
+        <div className='w-[90%] mx-auto'>
           <Slider {...settings}>
-          {mainImages.map((image) => (
-            <div key={image.id}>
-              <img src={image.src} alt={image.alt} className='w-1/4 h-10 object-cover' />
-            </div>
-          ))}
+          {trackData.map((track, index) => (
+              <ProjectItem key={index} title={track.title} subtitle={track.subtitle} />
+            ))}
           </Slider>
         </div>
     </div>
@@ -55,3 +54,4 @@ const ProjectSlider = () => {
 };
 
 export default ProjectSlider;
+
