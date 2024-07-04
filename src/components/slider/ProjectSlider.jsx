@@ -25,7 +25,7 @@ const ProjectSlider = () => {
     infinite: true,
     pauseOnHover: false,
     pauseOnFocus: false,
-    draggable: false,
+    draggable: true,
     autoplay: true,
     autoplaySpeed: 4000,
     fade: false,

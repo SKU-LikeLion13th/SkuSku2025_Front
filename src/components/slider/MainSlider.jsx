@@ -23,12 +23,12 @@ const MainSlider = () => {
 
   return (
     <div className='relative z-0'>
-    <Slider {...settings}>
-      {mainImages.map((image) => (
-        <div key={image.id}>
-          <img src={image.src} alt={image.alt} className='w-full h-full object-cover' />
-        </div>
-      ))}
+      <Slider {...settings}>
+        {mainImages.map((image) => (
+          <div key={image.id}>
+            <img src={image.src} alt={image.alt} className='w-full h-full object-cover' />
+          </div>
+        ))}
     </Slider>
     </div>
   );
