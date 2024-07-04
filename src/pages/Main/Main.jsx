@@ -1,15 +1,15 @@
 import React from 'react';
-import MainSlider from '../components/slider/MainSlider';
-import ProjectSlider from '../components/slider/ProjectSlider';
-import Trackbtn from '../components/Trackbtn';
-import { images } from '../utils/images';
+import MainSlider from './slider/MainSlider';
+import ProjectSlider from './slider/ProjectSlider';
+import Trackbtn from './Trackbtn';
+import { images } from '../../utils/images';
 
 
 
 const Main = () => {
 
   return (
-    <div className="container mx-auto" >
+    <div className="container mx-auto min-h-screen" >
       <div className="main1 relative w-full mb-0 pb-0 h-full">
         <MainSlider />
         <div className="absolute inset-0 flex flex-col justify-between text-white">

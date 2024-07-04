@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import ScrollToTop from './utils/ScrollToTop.jsx';
 import './css/style.css';
-import Main from './pages/Main';
+import Main from './pages/Main/Main.jsx';
 import Project from './pages/Project';
 import TeamIntro from './pages/TeamIntro';
 import Contact from './pages/Contact';
