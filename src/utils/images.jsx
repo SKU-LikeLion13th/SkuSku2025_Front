@@ -23,9 +23,9 @@ export const images = {
   track_frontend_background: PATH + 'assets/images/track/frontend_background.png',
   track_backend_background: PATH + 'assets/images/track/backend_background.png',
   track_pm_background: PATH + 'assets/images/track/pm_background.png',
-  track_frontend_curri: PATH + 'assets/images/track/frontend_curri.png',
-  track_backend_curri: PATH + 'assets/images/track/backend_curri.png',
-  track_pm_curri: PATH + 'assets/images/track/pm_curri.png',
+  track_frontend_curri: PATH + 'assets/images/track/frontLine.png',
+  track_backend_curri: PATH + 'assets/images/track/backLine.png',
+  track_pm_curri: PATH + 'assets/images/track/pmLine.png',
 
   // footer
   insta: PATH + 'assets/images/footer/insta.png',

@@ -11,8 +11,13 @@ const FrontEnd = () => {
             <span className='text-[#FFD7BA] font-bold text-6xl'>CURRICULUM</span>
           </div>
           
-          <div className='py-32'>
-            <img src={images.track_frontend_curri} alt="front_curriculum" className='w-2/3' />
+          <div className='py-28'>
+            <ul className='flex justify-between w-[426px] mb-2'>
+              <li className='w-[95.6px] text-center'>Javascript</li>
+              <li className='w-[95.6px] text-center'>React</li>
+              <li className='w-[95.6px] text-center'>Clone Coding</li>
+            </ul>
+            <img src={images.track_frontend_curri} alt="front_curriculum" className='w-[426px]' />
           </div>
 
           <div className='leading-7'>
