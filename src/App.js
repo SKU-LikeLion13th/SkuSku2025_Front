@@ -13,8 +13,9 @@ import Footer from './components/Footer.jsx';
 
 function App() {
   return (
-    <div className="App text-white">
-      <Nav />
+    <>
+    <Nav />
+    <div className="App text-white mt-[100px]">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/project" element={<Project />} />
@@ -29,6 +30,7 @@ function App() {
       <Footer />
       <ScrollToTop />
     </div>
+    </>
   );
 }
 

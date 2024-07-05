@@ -12,7 +12,13 @@ const Pm_Design = () => {
           </div>
           
           <div className='py-32'>
-            <img src={images.track_pm_curri} alt="track_pm_curri" className='w-4/5' />
+              <ul className='flex justify-between w-[512px] mb-2'>
+                <li className='w-[90px] text-center'>PM의 정의</li>
+                <li className='w-[90px] text-center'>프로젝트 협업</li>
+                <li className='w-[90px] text-center'>UI UX 디자인</li>
+                <li className='w-[90px] text-center'>피그마 교육</li>
+              </ul>
+            <img src={images.track_pm_curri} alt="track_pm_curri" className='w-[512px]' />
           </div>
 
           <div className='leading-7'>

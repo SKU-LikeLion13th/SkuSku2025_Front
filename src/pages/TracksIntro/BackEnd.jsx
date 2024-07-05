@@ -11,8 +11,22 @@ const BackEnd = () => {
             <span className='text-[#BDFFFF] font-bold text-6xl'>CURRICULUM</span>
           </div>
           
-          <div className='py-32'>
-            <img src={images.track_backend_curri} alt="track_backend_curri" className='w-2/3' />
+          <div className='py-28 flex flex-col'>
+            <div className='mb-10'>
+              <ul className='flex justify-between w-[320px] mb-2'>
+                <li className='w-[120px] text-center'>Java를 활용한<br />객체지향 개념</li>
+                <li className='w-[120px] text-center'>Spring setting<br />& Thymeleaf</li>
+              </ul>
+              <img src={images.track_backend_curri} alt="track_backend_curri" className='w-[320px]' />
+            </div>
+
+            <div className='ml-36'>
+              <ul className='flex justify-between w-[320px] mb-2'>
+                <li className='w-[120px] text-center'>Spring<br />API 통신</li>
+                <li className='w-[120px] text-center'>DB Connection<br />& JPA (MYSQL)</li>
+              </ul>
+              <img src={images.track_backend_curri} alt="track_backend_curri" className='w-[320px]' />
+            </div>
           </div>
 
           <div className='leading-7'>
