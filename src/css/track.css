@@ -1,0 +1,6 @@
+.frontend {
+  background-image: url('/public/assets/images/track/frontend_background.png');
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+}

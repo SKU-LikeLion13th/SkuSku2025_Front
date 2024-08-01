@@ -1,10 +1,13 @@
 import React from 'react';
 import { images } from '../../utils/images';
+import '../../css/track.css';
 
 const FrontEnd = () => {
+  const backgroundImage = `url(/assets/images/track/frontend_background.png)`;
+
   return (
     <>
-      <div className="container flex items-center justify-center mx-auto">
+      <div className="frontend container flex items-center justify-center mx-auto">
         <div className="w-1/2">
           <div>
             <span className="text-[#FF7816] fontEB text-6xl">FRONT-END</span>
@@ -38,11 +41,18 @@ const FrontEnd = () => {
             <br />
           </div>
         </div>
+
+
         <div className="w-1/2 flex justify-center">
-          <img src={images.track_frontend_background} alt="background" />
+          {/* <img src={images.track_frontend_background} alt="background" /> */}
         </div>
       </div>
-    </>
+
+      <div
+      className="bg-auto bg-no-repeat bg-center absolute z-10"
+      style={{ backgroundImage }}
+      ></div>
+     </>
   );
 };
 
