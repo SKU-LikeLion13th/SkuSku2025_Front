@@ -124,5 +124,23 @@
     "major": "컴퓨터공학과 19",
     "role": "운영진",
     "position": "백엔드"
+  },
+  {
+    "id": 15,
+    "image": "assets/img/person/노승희.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "노승희",
+    "major": "미디어소프트웨어학과 20",
+    "role": "운영진",
+    "position": "프론트엔드"
+  },
+  {
+    "id": 16,
+    "image": "assets/img/person/정택원.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "정택원",
+    "major": "컴퓨터공학과 19",
+    "role": "운영진",
+    "position": "백엔드"
   }
 ]

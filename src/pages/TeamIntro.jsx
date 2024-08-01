@@ -11,7 +11,7 @@ const TeamIntro = () => {
   };
 
   const id12gi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; // 12기
-  const id11gi = [12, 13, 14, 2, 11, 5, 6]; // 11기
+  const id11gi = [12, 13, 14, 15, 11, 5, 16]; // 11기
 
   const tabClass = tab =>
     `cursor-pointer text-xl fontBold relative ${
@@ -20,10 +20,10 @@ const TeamIntro = () => {
         : 'text-gray-500'
     }`;
 
-    useEffect(() => {
-      const tab = location.search.replace('?', '')
-      setActiveTab(tab);
-    }, [location])
+  useEffect(() => {
+    const tab = location.search.replace('?', '');
+    setActiveTab(tab);
+  }, [location]);
 
   return (
     <>
