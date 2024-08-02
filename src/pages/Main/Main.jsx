@@ -4,8 +4,6 @@ import ProjectSlider from './slider/ProjectSlider';
 import Trackbtn from './Trackbtn';
 import { images } from '../../utils/images';
 
-
-
 const Main = () => {
 
   return (

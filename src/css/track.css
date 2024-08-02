@@ -1,0 +1,41 @@
+.partFront {
+  background-image: url('/public/assets/images/track/frontend_background.png');
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.partBack {
+  background-image: url('/public/assets/images/track/backend_background.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.partPm {
+  background-image: url('/public/assets/images/track/pm_background.png');
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+/* 미디어 쿼리: 화면 크기가 768px 이하일 때 */
+@media (max-width: 768px) {
+  .part {
+    background-position: center;
+  }
+
+  .PartContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .rightBox {
+    display: none;
+  }
+  .curriUl, .curriImg {
+    margin: 0 auto;
+    margin-bottom: 2px;
+  }
+  .bottomcurri {
+    margin-left: 0;
+  }
+}

@@ -1,11 +1,14 @@
 import React from 'react';
 import { images } from '../../utils/images';
+import '../../css/track.css';
 
 const BackEnd = () => {
+  const backgroundImage = `url(/assets/images/track/backend_background.png)`;
+
   return (
     <>
-      <div className="container flex items-center justify-center mx-auto">
-        <div className="w-1/2">
+      <div className="part partBack container flex items-center justify-center mx-auto">
+        <div className="w-1/2 PartContent">
           <div>
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">BACK-END</span>
             <br />
@@ -14,7 +17,7 @@ const BackEnd = () => {
 
           <div className="py-28 flex flex-col">
             <div className="mb-10">
-              <ul className="flex justify-between w-[320px] mb-2">
+              <ul className="flex justify-between w-[320px] mb-2 curriUl">
                 <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">
                   Java를 활용한
                   <br />
@@ -25,11 +28,11 @@ const BackEnd = () => {
                   <br />& Thymeleaf
                 </li>
               </ul>
-              <img src={images.track_backend_curri} alt="track_backend_curri" className="w-[320px]" />
+              <img src={images.track_backend_curri} alt="track_backend_curri" className="w-[320px] curriImg" />
             </div>
 
-            <div className="ml-36">
-              <ul className="flex justify-between w-[320px] mb-2">
+            <div className="ml-36 bottomcurri">
+              <ul className="flex justify-between w-[320px] mb-2 curriUl">
                 <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">
                   Spring
                   <br />
@@ -40,7 +43,7 @@ const BackEnd = () => {
                   <br />& JPA (MYSQL)
                 </li>
               </ul>
-              <img src={images.track_backend_curri} alt="track_backend_curri" className="w-[320px]" />
+              <img src={images.track_backend_curri} alt="track_backend_curri" className="w-[320px] curriImg" />
             </div>
           </div>
 
@@ -56,10 +59,15 @@ const BackEnd = () => {
             <br />
           </div>
         </div>
-        <div className="w-1/2"></div>
-        <div className="absolute right-0 top-35 -z-10">
+        <div className="w-1/2 rightBox"></div>
+        {/* <div className="absolute right-0 top-35 -z-10">
           <img src={images.track_backend_background} alt="track_backend_background" />
-        </div>
+        </div> */}
+
+        <div
+        className="bg-auto bg-no-repeat bg-center absolute z-10 right-0"
+        style={{ backgroundImage }}
+      ></div>
       </div>
     </>
   );
