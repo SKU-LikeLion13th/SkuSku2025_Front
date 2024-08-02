@@ -9,13 +9,8 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID}
-<<<<<<< Updated upstream
           onScriptLoadError={() => console.log("failed")}
           onScriptLoadSuccess={() => console.log("success")}>
-=======
-              onScriptLoadError={() => console.log("실패")}
-              onScriptLoadSuccess={() => console.log("성공")}>
->>>>>>> Stashed changes
         <App />
       </GoogleOAuthProvider>
     </React.StrictMode>

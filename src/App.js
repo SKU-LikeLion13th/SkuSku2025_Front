@@ -10,11 +10,24 @@ import FrontEnd from './pages/TracksIntro/FrontEnd';
 import Pm_Design from './pages/TracksIntro/Pm_Design';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
+import { useEffect, useState } from 'react';
+import MobileNav from './components/MobileNav.jsx';
 
 function App() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobile]);
+
   return (
     <>
-    <Nav />
+    {!isMobile ? <MobileNav /> : <Nav />}
     <div className="App text-white mt-[100px]">
       <Routes>
         <Route path="/" element={<Main />} />
