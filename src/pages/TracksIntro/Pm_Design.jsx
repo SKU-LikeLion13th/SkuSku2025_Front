@@ -1,25 +1,28 @@
 import React from 'react';
 import { images } from '../../utils/images';
+import '../../css/track.css';
 
 const Pm_Design = () => {
+  const backgroundImage = `url(/assets/images/track/frontend_background.png)`;
+
   return (
     <>
-      <div className="container flex items-center justify-center mx-auto">
-        <div className="w-1/2">
+      <div className="@container part partPm container flex items-center justify-center mx-auto">
+        <div className="w-1/2 partContent">
           <div>
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
             <br />
             <span className="text-[#FFBFD6] fontSB text-6xl">CURRICULUM</span>
           </div>
 
-          <div className="py-32">
-            <ul className="flex justify-between w-[512px] mb-2">
-              <li className="w-[90px] text-center fontThin text-lg whitespace-nowrap">PM의 정의</li>
-              <li className="w-[90px] text-center fontThin text-lg whitespace-nowrap">프로젝트 협업</li>
-              <li className="w-[90px] text-center fontThin text-lg whitespace-nowrap">UI UX 디자인</li>
-              <li className="w-[90px] text-center fontThin text-lg whitespace-nowrap">피그마 교육</li>
+          <div className="py-10 @lg:py-32 @container">
+            <ul className="flex justify-between w-[400px] @lg:w-[512px] mb-2 curriUl">
+              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">PM의 정의</li>
+              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">프로젝트 협업</li>
+              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">UI UX 디자인</li>
+              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">피그마 교육</li>
             </ul>
-            <img src={images.track_pm_curri} alt="track_pm_curri" className="w-[512px]" />
+            <img src={images.track_pm_curri} alt="track_pm_curri" className="w-[512px] curriImg" />
           </div>
 
           <div className="leading-8 fontEL text-lg">
@@ -41,10 +44,16 @@ const Pm_Design = () => {
             주로 데이터베이스와 서버 사이의 통신을 담당하여 클라이언트에게 필요한 데이터를 제공합니다.
           </div>
         </div>
-        <div className="w-1/2"></div>
-        <div className="absolute right-0 top-12 -z-10">
+        <div className="w-1/2 rightBox"></div>
+
+        {/* <div className="absolute right-0 top-12 -z-10">
           <img src={images.track_pm_background} alt="track_pm_background" />
-        </div>
+        </div> */}
+
+        <div
+          className="bg-auto bg-no-repeat bg-center absolute z-10"
+          style={{ backgroundImage }}
+        ></div>
       </div>
     </>
   );
