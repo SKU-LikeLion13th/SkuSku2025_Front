@@ -18,6 +18,8 @@ export const images = {
   icon3: PATH + 'assets/images/main/icon3.png',
   likelion: PATH + 'assets/images/main/likelion.png',
   schedule: PATH + 'assets/images/main/schedule.png',
+  arrowM : PATH + 'assets/images/main/arrowM.png',
+  arrowB : PATH + 'assets/images/main/arrowB.png',
 
   // track
   track_frontend_background: PATH + 'assets/images/track/frontend_background.png',

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import ScrollToTop from './utils/ScrollToTop.jsx';
 import './css/style.css';
 import Main from './pages/Main/Main.jsx';
@@ -15,6 +15,8 @@ import MobileNav from './components/MobileNav.jsx';
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const location = useLocation();
+  const isMainPage = location.pathname === '/';
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,7 +30,7 @@ function App() {
   return (
     <>
       {!isMobile ? <MobileNav /> : <Nav />}
-      <div className="App text-white mt-[100px]">
+      <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/project" element={<Project />} />
