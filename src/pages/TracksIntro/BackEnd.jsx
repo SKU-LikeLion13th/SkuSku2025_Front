@@ -64,10 +64,7 @@ const BackEnd = () => {
           <img src={images.track_backend_background} alt="track_backend_background" />
         </div> */}
 
-        <div
-        className="bg-auto bg-no-repeat bg-center absolute z-10 right-0"
-        style={{ backgroundImage }}
-      ></div>
+        <div className="bg-auto bg-no-repeat bg-center absolute z-10 right-0" style={{ backgroundImage }}></div>
       </div>
     </>
   );
