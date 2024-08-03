@@ -50,10 +50,7 @@ const Pm_Design = () => {
           <img src={images.track_pm_background} alt="track_pm_background" />
         </div> */}
 
-        <div
-          className="bg-auto bg-no-repeat bg-center absolute z-10"
-          style={{ backgroundImage }}
-        ></div>
+        <div className="bg-auto bg-no-repeat bg-center absolute z-10" style={{ backgroundImage }}></div>
       </div>
     </>
   );

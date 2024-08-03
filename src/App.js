@@ -27,22 +27,22 @@ function App() {
 
   return (
     <>
-    {!isMobile ? <MobileNav /> : <Nav />}
-    <div className="App text-white mt-[100px]">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/project" element={<Project />} />
-        <Route path="/teamIntro" element={<TeamIntro />} />
-        <Route path="/contact" element={<Contact />} />
+      {!isMobile ? <MobileNav /> : <Nav />}
+      <div className="App text-white mt-[100px]">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/teamIntro" element={<TeamIntro />} />
+          <Route path="/contact" element={<Contact />} />
 
-        {/* track */}
-        <Route path="/backend" element={<BackEnd />} />
-        <Route path="/frontend" element={<FrontEnd />} />
-        <Route path="/pm_design" element={<Pm_Design />} />
-      </Routes>
-      <Footer />
-      <ScrollToTop />
-    </div>
+          {/* track */}
+          <Route path="/backend" element={<BackEnd />} />
+          <Route path="/frontend" element={<FrontEnd />} />
+          <Route path="/pm_design" element={<Pm_Design />} />
+        </Routes>
+        <Footer />
+        <ScrollToTop />
+      </div>
     </>
   );
 }

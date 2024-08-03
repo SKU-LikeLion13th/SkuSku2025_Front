@@ -42,16 +42,11 @@ const FrontEnd = () => {
           </div>
         </div>
 
-
-        <div className="w-1/2 flex justify-center rightBox">
-        </div>
+        <div className="w-1/2 flex justify-center rightBox"></div>
       </div>
 
-      <div
-        className="bg-auto bg-no-repeat bg-center absolute z-10"
-        style={{ backgroundImage }}
-      ></div>
-     </>
+      <div className="bg-auto bg-no-repeat bg-center absolute z-10" style={{ backgroundImage }}></div>
+    </>
   );
 };
 

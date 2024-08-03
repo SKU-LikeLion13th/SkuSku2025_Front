@@ -85,18 +85,21 @@ const Nav = () => {
     { name: 'CONTACT', paths: ['contact'], link: '/contact' },
   ];
 
-  const renderLinks = (links) => (
-    <ul className='w-1/4 text-center'>
-      {links.map(({ to, label, index}) => (
+  const renderLinks = links => (
+    <ul className="w-1/4 text-center">
+      {links.map(({ to, label, index }) => (
         <Link to={to} key={label} onClick={() => setActiveIndex(index)}>
-          <li className='hover:text-black hover:font-bold'>{label}</li>
+          <li className="hover:text-black hover:font-bold">{label}</li>
         </Link>
       ))}
     </ul>
   );
 
   return (
-    <div className={`fixed z-10 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
+    <div
+      className={`fixed z-10 w-full mx-auto text-white transition-all duration-300 ${
+        isScrolled ? 'backdrop-blur-md' : ''
+      }`}>
       <div className="container flex items-center justify-between mx-auto py-3">
         <Link to="/" onClick={() => setActiveIndex(null)}>
           <div className="flex items-center">
@@ -105,7 +108,7 @@ const Nav = () => {
           </div>
         </Link>
 
-        <div className='flex flex-col items-center relative'>
+        <div className="flex flex-col items-center relative">
           <div className="flex relative items-center">
             {navItems.map((item, index) => (
               <Link to={item.link} key={index}>
@@ -119,41 +122,44 @@ const Nav = () => {
               </Link>
             ))}
 
-            <div className='w-full h-3 absolute -bottom-5'
+            <div
+              className="w-full h-3 absolute -bottom-5"
               onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(null)}>
-            </div>
-            <div className='ml-2'>
+              onMouseLeave={() => setIsHovered(null)}></div>
+            <div className="ml-2">
               <GoogleLoginBtn />
             </div>
           </div>
 
           {isHovered !== null ? (
-            <div style={hoverStyle()} 
+            <div
+              style={hoverStyle()}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(null)}
-              className='flex rounded-2xl'>
+              className="flex rounded-2xl">
               {renderLinks([
-                { to: '/frontend', label: 'FRONT-END', index: 0},
-                { to: '/backend', label: 'BACK-END', index: 0},
-                { to: '/pm_design', label: 'PM/DESIGN', index: 0},
+                { to: '/frontend', label: 'FRONT-END', index: 0 },
+                { to: '/backend', label: 'BACK-END', index: 0 },
+                { to: '/pm_design', label: 'PM/DESIGN', index: 0 },
               ])}
               {renderLinks([
-                { to: '/project', label: 'ALL', index: 1},
-                { to: '/project', label: '12th', index: 1},
-                { to: '/project', label: '11th', index: 1},
+                { to: '/project', label: 'ALL', index: 1 },
+                { to: '/project', label: '12th', index: 1 },
+                { to: '/project', label: '11th', index: 1 },
               ])}
               {renderLinks([
-                { to: '/teamIntro?tab12', label: '12th', index: 2},
-                { to: '/teamIntro?tab11', label: '11th', index: 2},
+                { to: '/teamIntro?tab12', label: '12th', index: 2 },
+                { to: '/teamIntro?tab11', label: '11th', index: 2 },
               ])}
               {renderLinks([
-                { to: '/contact?etc', label: '기타 의뢰', index: 3},
-                { to: '/contact?Collaboration', label: '협업 문의', index: 3},
-                { to: '/contact?inquiry', label: '문의 사항', index: 3},
+                { to: '/contact?etc', label: '기타 의뢰', index: 3 },
+                { to: '/contact?Collaboration', label: '협업 문의', index: 3 },
+                { to: '/contact?inquiry', label: '문의 사항', index: 3 },
               ])}
             </div>
-          ) : ''}
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>
