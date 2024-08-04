@@ -12,24 +12,16 @@ import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import { useEffect, useState } from 'react';
 import MobileNav from './components/MobileNav.jsx';
+import { NavbarProvider } from './utils/navbar-context';
 
 function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const location = useLocation();
   const isMainPage = location.pathname === '/';
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isMobile]);
-
   return (
     <>
-      {!isMobile ? <MobileNav /> : <Nav />}
+    <NavbarProvider>
+      <MobileNav /><Nav />
       <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -45,6 +37,7 @@ function App() {
         <Footer />
         <ScrollToTop />
       </div>
+    </NavbarProvider>
     </>
   );
 }

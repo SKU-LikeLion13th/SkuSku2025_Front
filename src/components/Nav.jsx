@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { images } from '../utils/images';
 import { Link, useLocation } from 'react-router-dom';
 import GoogleLoginBtn from './GoogleLoginBtn';
+import '../css/nav.css';
 
 const Nav = () => {
   const location = useLocation();
@@ -96,10 +97,7 @@ const Nav = () => {
   );
 
   return (
-    <div
-      className={`fixed z-10 w-full mx-auto text-white transition-all duration-300 ${
-        isScrolled ? 'backdrop-blur-md' : ''
-      }`}>
+    <div className={`pcNav fontEB fixed z-10 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
       <div className="container flex items-center justify-between mx-auto py-3">
         <Link to="/" onClick={() => setActiveIndex(null)}>
           <div className="flex items-center">
@@ -125,10 +123,11 @@ const Nav = () => {
             <div
               className="w-full h-3 absolute -bottom-5"
               onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(null)}></div>
-            <div className="ml-2">
-              <GoogleLoginBtn />
+              onMouseLeave={() => setIsHovered(null)}>
             </div>
+            {/* <div className='ml-2'>
+              <GoogleLoginBtn />
+            </div> */}
           </div>
 
           {isHovered !== null ? (
