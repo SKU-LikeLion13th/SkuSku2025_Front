@@ -17,6 +17,8 @@
   background-position: right;
 }
 
+
+
 /* 미디어 쿼리: 화면 크기가 768px 이하일 때 */
 @media (max-width: 768px) {
   .part {
@@ -37,5 +39,12 @@
   }
   .bottomcurri {
     margin-left: 0;
+  }
+
+  .pcNav {
+    display: none;
+  }
+  .mobileNav {
+    display: block;
   }
 }
