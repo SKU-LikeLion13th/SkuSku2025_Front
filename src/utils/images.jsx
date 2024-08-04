@@ -1,4 +1,4 @@
-const PATH = process.env.PUBLIC_URL;
+export const PATH = process.env.PUBLIC_URL;
 
 export const images = {
   arrow: `${PATH}/assets/arrow.png`,
@@ -12,7 +12,7 @@ export const images = {
     { id: 3, src: `${PATH}/assets/images/main/main3.png`, alt: '메인 이미지 3' },
   ],
   mouse: PATH + 'assets/images/main/mouse.png',
-  mainP2 : PATH + 'assets/images/main/mainP2.png',
+  mainP2: PATH + 'assets/images/main/mainP2.png',
   icon1: PATH + 'assets/images/main/icon1.png',
   icon2: PATH + 'assets/images/main/icon2.png',
   icon3: PATH + 'assets/images/main/icon3.png',
@@ -31,4 +31,5 @@ export const images = {
   insta: PATH + 'assets/images/footer/insta.png',
   kakao: PATH + 'assets/images/footer/kakao.png',
   email: PATH + 'assets/images/footer/email.png',
+  Project1: PATH + '/assets/images/puzzle.png',
 };

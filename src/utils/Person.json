@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "assets/img/person/신민서.png",
+    "image": "assets/images/person/신민서.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "신민서",
     "major": "미디어소프트웨어학과 22",
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "image": "assets/img/person/노승희.png",
+    "image": "assets/images/person/노승희.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "노승희",
     "major": "미디어소프트웨어학과 20",
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "image": "assets/img/person/김영현.png",
+    "image": "assets/images/person/김영현.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "김영현",
     "major": "컴퓨터공학과 19",
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "image": "assets/img/person/고창준.png",
+    "image": "assets/images/person/고창준.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "고창준",
     "major": "컴퓨터공학과 19",
@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "image": "assets/img/person/남민지.png",
+    "image": "assets/images/person/남민지.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "남민지",
     "major": "컴퓨터공학과 21",
@@ -46,7 +46,7 @@
   },
   {
     "id": 6,
-    "image": "assets/img/person/정택원.png",
+    "image": "assets/images/person/정택원.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "정택원",
     "major": "컴퓨터공학과 19",
@@ -55,7 +55,7 @@
   },
   {
     "id": 7,
-    "image": "assets/img/person/문호주.png",
+    "image": "assets/images/person/문호주.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "문호주",
     "major": "컴퓨터공학과 19",
@@ -64,7 +64,7 @@
   },
   {
     "id": 8,
-    "image": "assets/img/person/한민규.png",
+    "image": "assets/images/person/한민규.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "한민규",
     "major": "컴퓨터공학과 21",
@@ -73,7 +73,7 @@
   },
   {
     "id": 9,
-    "image": "assets/img/person/서민주.png",
+    "image": "assets/images/person/서민주.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "서민주",
     "major": "관광개발학과 22",
@@ -82,7 +82,7 @@
   },
   {
     "id": 10,
-    "image": "assets/img/person/오한솔.png",
+    "image": "assets/images/person/오한솔.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "오한솔",
     "major": "관광개발학과 22",
@@ -91,7 +91,7 @@
   },
   {
     "id": 11,
-    "image": "assets/img/person/이원경.png",
+    "image": "assets/images/person/이원경.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "이원경",
     "major": "국어국문학과 22",
@@ -100,7 +100,7 @@
   },
   {
     "id": 12,
-    "image": "assets/img/person/김현준.png",
+    "image": "assets/images/person/김현준.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "김현준",
     "major": "산업경영공학과 17",
@@ -109,7 +109,7 @@
   },
   {
     "id": 13,
-    "image": "assets/img/person/주영민.png",
+    "image": "assets/images/person/주영민.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "주영민",
     "major": "미디어소프트웨어학과 17",
@@ -118,7 +118,7 @@
   },
   {
     "id": 14,
-    "image": "assets/img/person/천민우.png",
+    "image": "assets/images/person/천민우.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "천민우",
     "major": "컴퓨터공학과 19",
@@ -127,7 +127,7 @@
   },
   {
     "id": 15,
-    "image": "assets/img/person/노승희.png",
+    "image": "assets/images/person/노승희.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "노승희",
     "major": "미디어소프트웨어학과 20",
@@ -136,7 +136,7 @@
   },
   {
     "id": 16,
-    "image": "assets/img/person/정택원.png",
+    "image": "assets/images/person/정택원.png",
     "logo": "assets/logo/likeLionLogo.png",
     "name": "정택원",
     "major": "컴퓨터공학과 19",
