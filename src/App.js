@@ -20,24 +20,26 @@ function App() {
 
   return (
     <>
-    <NavbarProvider>
-      <MobileNav /><Nav />
-      <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/teamIntro" element={<TeamIntro />} />
-          <Route path="/contact" element={<Contact />} />
+      <div className={`${isMainPage ? 'relative w-full min-h-screen' : ''}`}>
+        <NavbarProvider>
+          <MobileNav /><Nav />
+          <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/project" element={<Project />} />
+              <Route path="/teamIntro" element={<TeamIntro />} />
+              <Route path="/contact" element={<Contact />} />
 
-          {/* track */}
-          <Route path="/backend" element={<BackEnd />} />
-          <Route path="/frontend" element={<FrontEnd />} />
-          <Route path="/pm_design" element={<Pm_Design />} />
-        </Routes>
-        <Footer />
-        <ScrollToTop />
+              {/* track */}
+              <Route path="/backend" element={<BackEnd />} />
+              <Route path="/frontend" element={<FrontEnd />} />
+              <Route path="/pm_design" element={<Pm_Design />} />
+            </Routes>
+            <Footer />
+            <ScrollToTop />
+          </div>
+        </NavbarProvider>
       </div>
-    </NavbarProvider>
     </>
   );
 }

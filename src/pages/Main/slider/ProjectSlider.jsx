@@ -49,11 +49,19 @@ const ProjectSlider = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     fade: false,
+    responsive: [
+      {
+        breakpoint: 768, // 768px 미만에서는 슬라이드 개수를 1로 설정
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   };
 
   return (
     <div className='flex justify-center items-center'>
-      <div className='w-[90%] mx-auto'>
+      <div className='w-[90%] mx-auto px-[120px] md:px-0'>
         <Slider {...settings}>
           {projects.map((project) => (
             <ProjectItem

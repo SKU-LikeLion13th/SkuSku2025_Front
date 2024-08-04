@@ -24,14 +24,16 @@ const MainSlider = () => {
   return (
     <div className='absolute top-0 left-0 w-full min-h-screen -z-10'>
       <Slider {...settings}>
-        {mainImages.map((images, index) => (
-          <div key={index} className="min-h-screen">
-            <div className='flex items-center justify-center min-h-screen' 
-            style={{ 
-              backgroundImage: `url(${images.src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
+        {mainImages.map((image, index) => (
+          <div key={index} className="w-full min-h-screen">
+            <div 
+              className='flex items-center justify-center w-full min-h-screen' 
+              style={{ 
+                backgroundImage: `url(${image.src})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}>
             </div>
           </div>
         ))}
