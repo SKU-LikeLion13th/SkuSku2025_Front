@@ -1,11 +1,14 @@
 import React from 'react';
 import { images } from '../../utils/images';
+import '../../css/track.css';
 
 const FrontEnd = () => {
+  const backgroundImage = `url(/assets/images/track/frontend_background.png)`;
+
   return (
     <>
-      <div className="container flex items-center justify-center mx-auto">
-        <div className="w-1/2">
+      <div className="part partFront container flex items-center justify-center mx-auto">
+        <div className="w-1/2 partContent">
           <div>
             <span className="text-[#FF7816] fontEB text-6xl">FRONT-END</span>
             <br />
@@ -13,12 +16,12 @@ const FrontEnd = () => {
           </div>
 
           <div className="py-28">
-            <ul className="flex justify-between w-[426px] mb-2">
+            <ul className="flex justify-between w-[426px] mb-2 curriUl">
               <li className="w-[95.6px] text-center fontThin text-xl whitespace-nowrap">Javascript</li>
               <li className="w-[95.6px] text-center fontThin text-xl whitespace-nowrap">React</li>
               <li className="w-[95.6px] text-center fontThin text-xl whitespace-nowrap">Clone Coding</li>
             </ul>
-            <img src={images.track_frontend_curri} alt="front_curriculum" className="w-[426px]" />
+            <img src={images.track_frontend_curri} alt="front_curriculum" className="w-[426px] curriImg" />
           </div>
 
           <div className="leading-8 fontEL text-lg">
@@ -38,10 +41,11 @@ const FrontEnd = () => {
             <br />
           </div>
         </div>
-        <div className="w-1/2 flex justify-center">
-          <img src={images.track_frontend_background} alt="background" />
-        </div>
+
+        <div className="w-1/2 flex justify-center rightBox"></div>
       </div>
+
+      <div className="bg-auto bg-no-repeat bg-center absolute z-10" style={{ backgroundImage }}></div>
     </>
   );
 };

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <>
-      <div className="leading-7 container mx-auto border-t-[1px] border-[#626262] py-12 mt-16">
+      <div className="leading-7 container mx-auto border-t-[1px] border-[#626262] py-12 mt-16 px-12">
         <div className="flex flex-col mb-10">
           <span className="text-2xl fontBlack text-[#3B79FF]">LIKELION SKU</span>
           <span className="fontLight">주소 : 경기도 안양시 만안구 성결대학로 53</span>

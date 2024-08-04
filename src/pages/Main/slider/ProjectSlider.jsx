@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import axios from 'axios';
 
-const ProjectItem = ({ title, subtitle }) => (
+const ProjectItem = ({ title, subtitle, image, url }) => (
   <div className='flex justify-center items-center w-full'>
-  <button className='text-white bg-gray-400 rounded-md w-full h-[214px] mx-8'>
-    <div className='text-start pl-8 pb-5'>
-      <p className='text-3xl fontEB pt-16'>{title}</p>
-      <p className='text-3xl fontEB'>{subtitle}</p>
+    <div className='relative w-full h-[14rem] mx-8'>
+      <div
+        className='absolute inset-0 bg-cover bg-center rounded-md'
+        style={{
+          backgroundImage: `url(data:image/png;base64,${image})`,
+        }}
+      >
+        <div className='absolute inset-0 bg-black opacity-50 rounded-md'></div>
+      </div>
+      <div className='relative z-10 text-start pl-6 h-full flex flex-col justify-end pb-6'>
+        <a href={url} className='text-3xl fontBold text-white' target="_blank" rel="noopener noreferrer">
+          {title}
+        </a>
+        <p className='text-xl fontRegular text-white pt-2'>{subtitle}</p>
+      </div>
     </div>
-    <div className='self-end text-xl pb-7 pr-4'>&gt;</div>
-  </button>
   </div>
 );
 
 const ProjectSlider = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://back.sku-sku.com/project/all')
+      .then(response => {
+        setProjects(response.data);
+        console.log(projects);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   const settings = {
     arrows: false,
@@ -29,29 +49,33 @@ const ProjectSlider = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     fade: false,
+    responsive: [
+      {
+        breakpoint: 768, // 768px 미만에서는 슬라이드 개수를 1로 설정
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   };
-
-  const trackData = [
-    { title: '프론트엔드', subtitle: 'FRONT-END' },
-    { title: '백엔드', subtitle: 'BACK-END' },
-    { title: '기획/디자인', subtitle: 'PM/DESIGN' },
-    { title: '기획/디자인', subtitle: 'PM/DESIGN' },
-    { title: '백엔드', subtitle: 'BACK-END' },
-    { title: '프론트엔드', subtitle: 'FRONT-END' },
-  ];
 
   return (
     <div className='flex justify-center items-center'>
-        <div className='w-[90%] mx-auto'>
-          <Slider {...settings}>
-          {trackData.map((track, index) => (
-              <ProjectItem key={index} title={track.title} subtitle={track.subtitle} />
-            ))}
-          </Slider>
-        </div>
+      <div className='w-[90%] mx-auto px-[120px] md:px-0'>
+        <Slider {...settings}>
+          {projects.map((project) => (
+            <ProjectItem
+              key={project.id}
+              title={project.title}
+              subtitle={project.subTitle}
+              image={project.image}
+              url={project.url}
+            />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
 
 export default ProjectSlider;
-

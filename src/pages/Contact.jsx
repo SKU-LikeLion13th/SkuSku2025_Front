@@ -4,14 +4,14 @@ import { useLocation } from 'react-router-dom';
 
 const Contact = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-black">
-      <div className="flex flex-row justify-between items-center w-full px-20">
-        <div className="w-[610px] mr-20">
-          <span className="text-blue-500 text-6xl fontEB leading-tight">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-black">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full px-5 md:px-20">
+        <div className="w-full md:w-[610px] mb-10 md:mb-0 md:mr-20 text-center md:text-left">
+          <span className="text-blue-500 text-4xl md:text-6xl fontEB leading-tight">
             반가워요!
             <br />
           </span>
-          <span className="text-white text-6xl fontEB leading-tight">
+          <span className="text-white text-4xl md:text-6xl fontEB leading-tight">
             어떤 것을
             <br />
             도와드릴까요?
@@ -28,61 +28,91 @@ const ContactTabs = () => {
   const [selectedTab, setSelectedTab] = useState('etc');
 
   useEffect(() => {
-    const tab = location.search.replace('?', '')
+    const tab = location.search.replace('?', '');
     setSelectedTab(tab);
-  }, [location])
+  }, [location]);
 
   return (
-    <div className="flex flex-row justify-center items-center space-x-10 w-full h-64 ml-40 mb-20 relative">
-      <div className="flex flex-col space-y-28 w-1/5 ml-10">
-        <button
-          className={`text-3xl fontMedium flex items-center relative ${
-            selectedTab === 'etc' ? 'text-white' : 'text-gray-500'
-          }`}
-          onClick={() => setSelectedTab('etc')}>
-          [기타 의뢰]
-          <span className="absolute bottom-0 left-0 w-full h-1 flex items-center mt-2">
-            <img
-              src={images.arrow}
-              alt="arrow"
-              className={`w-full mt-8 ${selectedTab === 'etc' ? 'opacity-100' : 'opacity-50'}`}
-            />
+    <div className="flex flex-col md:flex-row justify-center items-center w-full h-auto md:h-64 ml-0 md:ml-40 mb-20 relative">
+      <div className="flex flex-col space-y-4 md:space-y-28 w-full md:w-1/5 text-center md:text-left">
+        <div className="relative">
+          <button
+            className={`text-xl md:text-3xl fontMedium ${selectedTab === 'etc' ? 'text-white' : 'text-gray-500'}`}
+            onClick={() => setSelectedTab('etc')}>
+            [기타 의뢰]
+          </button>
+          {/* 데스크탑 보기에서 화살표 아이콘 */}
+          <span className="hidden md:block absolute bottom-0 left-0 w-full h-1 flex items-center mt-2">
+            <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
-        </button>
-        <button
-          className={`text-3xl fontMedium flex items-center relative ${
-            selectedTab === 'Collaboration' ? 'text-white' : 'text-gray-500'
-          }`}
-          onClick={() => setSelectedTab('Collaboration')}>
-          [협업 문의]
-          <span className="absolute bottom-0 left-0 w-full h-1 flex items-center mt-2">
-            <img
-              src={images.arrow}
-              alt="arrow"
-              className={`w-full mt-8 ${selectedTab === 'Collaboration' ? 'opacity-100' : 'opacity-50'}`}
-            />
+          {selectedTab === 'etc' && (
+            <div className="block md:hidden bg-[#1C58DA] text-white p-4 rounded-lg w-10/12 max-w-xs mx-auto mt-4 flex fontLight text-base justify-center h-auto">
+              {/* 모바일 보기에서 콘텐츠 박스 */}
+              <div className="p-4">
+                <span className="fontSB text-lg">기타 의뢰</span>는 카카오톡 채널 <br />
+                "멋쟁이사자처럼 at 성결대"
+                <br />로 문의 바랍니다.
+                <br />
+                <br />
+                감사합니다!
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="relative">
+          <button
+            className={`text-xl md:text-3xl fontMedium ${
+              selectedTab === 'Collaboration' ? 'text-white' : 'text-gray-500'
+            }`}
+            onClick={() => setSelectedTab('Collaboration')}>
+            [협업 문의]
+          </button>
+          {/* 데스크탑 보기에서 화살표 아이콘 */}
+          <span className="hidden md:block absolute bottom-0 left-0 w-full h-1 flex items-center mt-2">
+            <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
-        </button>
-        <button
-          className={`text-3xl fontMedium flex items-center relative ${
-            selectedTab === 'inquiry' ? 'text-white' : 'text-gray-500'
-          }`}
-          onClick={() => setSelectedTab('inquiry')}>
-          [문의 사항]
-          <span className="absolute bottom-0 left-0 w-full h-1 flex items-center mt-2">
-            <img
-              src={images.arrow}
-              alt="arrow"
-              className={`w-full mt-8 ${selectedTab === 'inquiry' ? 'opacity-100' : 'opacity-50'}`}
-            />
+          {selectedTab === 'Collaboration' && (
+            <div className="block md:hidden bg-[#34C242] text-white p-4 rounded-lg w-10/12 max-w-xs mx-auto mt-4 flex fontLight text-base justify-center h-auto">
+              {/* 모바일 보기에서 콘텐츠 박스 */}
+              <div className="p-4">
+                <span className="fontSB text-lg">협업 문의</span>는 "sungkyul.univ@likelion.org" 위 메일 주소로 문의
+                바랍니다.
+                <br />
+                <br />
+                감사합니다!
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="relative">
+          <button
+            className={`text-xl md:text-3xl fontMedium ${selectedTab === 'inquiry' ? 'text-white' : 'text-gray-500'}`}
+            onClick={() => setSelectedTab('inquiry')}>
+            [문의 사항]
+          </button>
+          {/* 데스크탑 보기에서 화살표 아이콘 */}
+          <span className="hidden md:block absolute bottom-0 left-0 w-full h-1 flex items-center mt-2">
+            <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
-        </button>
+          {selectedTab === 'inquiry' && (
+            <div className="block md:hidden bg-[#747474] text-white p-4 rounded-lg w-10/12 max-w-xs mx-auto mt-4 flex fontLight text-base justify-center h-auto">
+              {/* 모바일 보기에서 콘텐츠 박스 */}
+              <div className="p-4">
+                <span className="fontSB text-lg">문의 사항</span>은 인스타그램 @likelion_sku DM으로 문의 바랍니다.
+                <br />
+                <br />
+                감사합니다!
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="relative flex-grow flex items-center justify-center h-full -ml-10">
+      <div className="relative flex-grow flex items-center justify-center h-full md:h-auto">
+        {/* 데스크탑 보기에서 콘텐츠 박스 */}
         {selectedTab === 'etc' && (
-          <div className="absolute top-0 bg-[#1C58DA] text-white p-4 rounded-lg w-72 h-44 flex fontLight text-xl">
+          <div className="hidden md:block absolute top-0 md:top-auto bg-[#1C58DA] text-white p-4 rounded-lg w-60 md:w-72 h-36 md:h-44 flex fontLight text-base md:text-xl">
             <div>
-              <span className="fontSB text-xl">기타 의뢰</span>는 카카오톡 채널 <br />
+              <span className="fontSB text-lg md:text-xl">기타 의뢰</span>는 카카오톡 채널 <br />
               "멋쟁이사자처럼 at 성결대"
               <br />로 문의 바랍니다.
               <br />
@@ -92,9 +122,10 @@ const ContactTabs = () => {
           </div>
         )}
         {selectedTab === 'Collaboration' && (
-          <div className="absolute top-24 bg-[#34C242] text-white p-4 rounded-lg w-72 h-44 flex items-center justify-center fontLight text-xl">
+          <div className="hidden md:block absolute top-0 md:top-24 bg-[#34C242] text-white p-4 rounded-lg w-60 md:w-72 h-36 md:h-44 flex items-center justify-center fontLight text-base md:text-xl">
             <div>
-              <span className="fontSB text-xl">협업 문의</span>는 "sungkyul.univ@likelion.org" 위 메일 주소로 문의 바랍니다.
+              <span className="fontSB text-lg md:text-xl">협업 문의</span>는 "sungkyul.univ@likelion.org" 위 메일 주소로
+              문의 바랍니다.
               <br />
               <br />
               감사합니다!
@@ -102,9 +133,10 @@ const ContactTabs = () => {
           </div>
         )}
         {selectedTab === 'inquiry' && (
-          <div className="absolute top-60 bg-[#747474] text-white p-4 rounded-lg w-72 h-44 flex items-center justify-center text-xl fontLight">
+          <div className="hidden md:block absolute top-0 md:top-60 bg-[#747474] text-white p-4 rounded-lg w-60 md:w-72 h-36 md:h-44 flex items-center justify-center text-base md:text-xl fontLight">
             <div>
-              <span className="fontSB text-xl">문의 사항</span>은 인스타그램 @likelion_sku DM으로 문의 바랍니다.
+              <span className="fontSB text-lg md:text-xl">문의 사항</span>은 인스타그램 @likelion_sku DM으로 문의
+              바랍니다.
               <br />
               <br />
               감사합니다!

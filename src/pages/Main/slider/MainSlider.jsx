@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -22,14 +22,22 @@ const MainSlider = () => {
   };
 
   return (
-    <div className='relative z-0'>
+    <div className='absolute top-0 left-0 w-full min-h-screen -z-10'>
       <Slider {...settings}>
-        {mainImages.map((image) => (
-          <div key={image.id}>
-            <img src={image.src} alt={image.alt} className='w-full h-full object-cover' />
+        {mainImages.map((image, index) => (
+          <div key={index} className="w-full min-h-screen">
+            <div 
+              className='flex items-center justify-center w-full min-h-screen' 
+              style={{ 
+                backgroundImage: `url(${image.src})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}>
+            </div>
           </div>
         ))}
-    </Slider>
+      </Slider>
     </div>
   );
 };

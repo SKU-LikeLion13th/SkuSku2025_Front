@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { images } from '../utils/images';
 import { Link, useLocation } from 'react-router-dom';
+import GoogleLoginBtn from './GoogleLoginBtn';
+import '../css/nav.css';
 
 const Nav = () => {
   const location = useLocation();
@@ -40,14 +42,14 @@ const Nav = () => {
 
     return {
       position: 'relative',
-      padding: '0.4rem 1.2rem',
-      width: '130px',
+      padding: '0.2rem 1rem',
+      width: '110px',
       textAlign: 'center',
       transition: 'all 0.3s ease',
       // hover
       ...(isHovered === index ? hoveredStyle : {}),
       ...(activeIndex === index ? activeStyle : {}),
-      borderRight: index < navItems.length - 1 ? '1px solid #4b4b4b' : 'none',
+      // borderRight: index < navItems.length - 1 ? '1px solid #4b4b4b' : 'none',
       backgroundColor: isHovered === index ? '#D9D9D9' : 'transparent',
       color: isHovered === index ? 'black' : 'inherit',
     };
@@ -65,11 +67,12 @@ const Nav = () => {
 
     return {
       color: 'rgb(0,0,0,0.5)',
-      width: '520px',
+      width: '430px',
       backgroundColor: 'rgba(217, 217, 217, 0.5)',
       position: 'absolute',
-      top: '4rem',
-      padding: '0.8rem 0',
+      top: '3rem',
+      padding: '0.8rem',
+      left: '8px',
       borderRadius: borderRadius,
       WebkitBorderRadius: borderRadius,
       MozBorderRadius: borderRadius,
@@ -94,20 +97,17 @@ const Nav = () => {
   );
 
   return (
-    <div
-      className={`fixed z-10 w-full mx-auto text-white transition-all duration-300 ${
-        isScrolled ? 'backdrop-blur-md' : ''
-      }`}>
-      <div className="container flex items-center justify-between py-5 mx-auto">
+    <div className={`pcNav fontEB fixed z-10 top-0 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
+      <div className="container flex items-center justify-between mx-auto py-3">
         <Link to="/" onClick={() => setActiveIndex(null)}>
           <div className="flex items-center">
-            <img className="w-10" src={images.likelion_logo} alt="likelion_logo" />
-            <span className="text-[#3B79FF] fontBlack text-3xl ml-2">LIKELION SKU</span>
+            <img className="w-9" src={images.likelion_logo} alt="likelion_logo" />
+            <span className="text-[#3B79FF] fontBlack text-2xl ml-2">LIKELION SKU</span>
           </div>
         </Link>
 
-        <div className="flex flex-col">
-          <div className="relative flex">
+        <div className="flex flex-col items-center relative">
+          <div className="flex relative items-center">
             {navItems.map((item, index) => (
               <Link to={item.link} key={index}>
                 <div
@@ -120,9 +120,13 @@ const Nav = () => {
               </Link>
             ))}
             <div
-              className="absolute w-full h-3 -bottom-5"
+              className="w-full h-3 absolute -bottom-5"
               onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(null)}></div>
+              onMouseLeave={() => setIsHovered(null)}>
+            </div>
+            {/* <div className='ml-2'>
+              <GoogleLoginBtn />
+            </div> */}
           </div>
 
           {isHovered !== null ? (
