@@ -119,7 +119,6 @@ const Nav = () => {
                 </div>
               </Link>
             ))}
-
             <div
               className="w-full h-3 absolute -bottom-5"
               onMouseEnter={() => setIsHovered(true)}
