@@ -4,8 +4,8 @@ import { images } from '../../utils/images';
 
 const Main1 = () => {
   return (
-    <div id="main1" className="main1 w-full mb-0 pb-0 min-h-[220vh] md:min-h-screen snap-section">
-      <div className="flex flex-col justify-between text-white z-10 min-h-[220vh] md:min-h-screen">
+    <div id="main1" className="main1 w-full mb-0 pb-0 min-h-screen snap-section">
+      <div className="flex flex-col justify-between text-white z-10 min-h-screen">
         <div className="flex-grow flex items-center justify-center">
           <div className="title text-[6rem] md:text-[8rem] leading-none fontBold pb-5">
             <p className="mb-4 text-[#3B79FF]">SKU</p>

@@ -3,8 +3,8 @@ import { images } from '../../utils/images';
 
 const Main2 = () => {
   return (
-    <div id="main2" className="main2 relative w-full min-h-[220vh] md:min-h-screen mt-0 pt-0 bg-cover bg-center snap-section" style={{ backgroundImage: `url(${images.mainP2})` }}>
-      <div className="flex flex-col justify-evenly items-center text-center fontThin text-xl w-full min-h-[220vh] md:min-h-screen">
+    <div id="main2" className="main2 relative w-full min-h-screen mt-0 pt-0 bg-cover bg-center snap-section" style={{ backgroundImage: `url(${images.mainP2})` }}>
+      <div className="flex flex-col justify-evenly items-center text-center fontThin text-xl w-full min-h-screen">
         <p className='pt-5'>
           <span className="fontMedium">성결대학교 멋쟁이사자처럼</span>은
           <br />

@@ -31,7 +31,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div className=" w-full">
+    <div className="w-full">
       <Main1 />
       <Main2 />
       <Main3 />
