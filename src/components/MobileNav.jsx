@@ -30,7 +30,7 @@ const ShowNav = () => {
                     <ul className="flex items-center">
                       <li className="fontThin px-7 w-full text-center text-md"><Link to="/frontend" onClick={closeNav}>FRONTEND</Link></li>
                       <li className="fontThin px-7 w-full text-center text-md"><Link to="/backend" onClick={closeNav}>BACKEND</Link></li>
-                      <li className="fontThin px-7 w-full text-center text-md"><Link to="/pm_design" onClick={closeNav}>PM & DESIGN</Link></li>
+                      <li className="fontThin px-7 w-full text-center text-md whitespace-nowrap"><Link to="/pm_design" onClick={closeNav}>PM & DESIGN</Link></li>
                     </ul>
                     <li className="px-7 py-3 w-full text-center text-4xl"><Link to="/project" onClick={closeNav}>PROJECT</Link></li>
                     <li className="px-7 py-3 w-full text-center text-4xl"><Link to="/teamIntro" onClick={closeNav}>TEAM</Link></li>
