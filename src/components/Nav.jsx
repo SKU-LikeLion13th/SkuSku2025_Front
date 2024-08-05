@@ -98,7 +98,7 @@ const Nav = () => {
 
   return (
     <div className={`pcNav fontEB fixed z-10 top-0 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
-      <div className="container flex items-center justify-between mx-auto py-3">
+      <div className="px-5 container flex items-center justify-between mx-auto py-3">
         <Link to="/" onClick={() => setActiveIndex(null)}>
           <div className="flex items-center">
             <img className="w-9" src={images.likelion_logo} alt="likelion_logo" />

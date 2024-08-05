@@ -62,11 +62,11 @@ const MobileNav = () => {
 
     return (
         <>
-        <div className={`mobileNavbar fontEB fixed z-10 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
+        <div className={`top-0 mobileNavbar fontEB fixed z-10 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
           <div className={`Navbar flex justify-between p-5 ${scrolling && !isOpen ? 'nav-bg-scrolled' : ''}`}>
               <Link to='/' onClick={() => { onTop() }}>
                 <div className="flex items-center">
-                  <img className={`w-12 ${isOpen ? 'opacity-0' : 'opacity-100'}`} src={images.likelion_logo} alt="likelion_logo" />
+                  <img className={`w-20 ${isOpen ? 'opacity-0' : 'opacity-100'}`} src={images.likelion_logo} alt="likelion_logo" />
                 </div>
               </Link>
 
