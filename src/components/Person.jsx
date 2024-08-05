@@ -25,7 +25,7 @@ const Person = ({ idList }) => {
               <div className="text-center whitespace-nowrap">
                 <p className="pt-3 text-sm fontBold text-black">{member.major}</p>
                 <p className="text-sm fontBold text-black">{member.role}</p>
-                <div className="w-20 h-px bg-blue-500 mt-2 mx-auto sm:w-32" />
+                <div className="w-20 h-[1.5px] bg-blue-500 mt-2 mx-auto sm:w-32" />
                 <p className="text-blue-500 mt-2 text-sm fontBold">{member.position}</p>
               </div>
             </div>
