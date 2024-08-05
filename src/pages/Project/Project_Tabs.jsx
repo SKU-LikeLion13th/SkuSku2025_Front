@@ -17,11 +17,11 @@ const Project_Tabs = ({ onTabClick }) => {
 
   return (
     <div className="mt-6 text-white max-[500px]:mt-2">
-      <div className="flex justify-between w-1/6">
+      <div className="flex justify-between w-1/6 max-[500px]:w-1/4">
         {tabs.map(tab => (
           <button
             key={`${tab.value}th`}
-            className={`py-2 px-1 text-xl max-[500px]:text-sm ${
+            className={`py-2 px-1 text-xl max-[500px]:text-lg ${
               activeTab === tab.value ? 'border-b-[3px] border-white fontEB' : ''
             }`}
             onClick={() => handleTabClick(tab.value)}>
