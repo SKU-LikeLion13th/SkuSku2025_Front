@@ -1,109 +1,108 @@
 /* Navbar */
 
 .hamburger-menu {
-    height: 70px;
-    width: 60px;
-    position: relative;
-    padding: 1rem;
+  height: 70px;
+  width: 60px;
+  position: relative;
+  padding: 1rem;
 }
 
 .ham-bar {
-    width: 70%;
-    height: 2px;
-    border-radius: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform .6s, opacity .8s, top .6s;
+  width: 70%;
+  height: 2px;
+  border-radius: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.6s, opacity 0.8s, top 0.6s;
 }
 
 .bar-top {
-    top: 25%;
+  top: 25%;
 }
 
 .bar-bottom {
-    top: 75%
+  top: 75%;
 }
 
 .hamburger-menu.active .bar-top {
-    transform: translate(-50%, -50%) rotate(-315deg);
-    top: 50%
+  transform: translate(-50%, -50%) rotate(-315deg);
+  top: 50%;
 }
 
 .hamburger-menu.active .bar-mid {
-    opacity: 0;
+  opacity: 0;
 }
 
 .hamburger-menu.active .bar-bottom {
-    transform: translate(-50%, -50%) rotate(-225deg);
-    top: 50%;
+  transform: translate(-50%, -50%) rotate(-225deg);
+  top: 50%;
 }
 
 .off-screen-menu {
-    top: 0;
-    left: 0;
-    min-height: 100%;
-    width: 100%;
-    opacity: 0;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+  opacity: 0;
 }
 
 .off-screen-menu.open {
-    opacity: 1;
+  opacity: 1;
 }
 
 .slideInDown {
-    -webkit-animation-name: slideInDown;
-    animation-name: slideInDown;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .nav-bg-scrolled {
-    backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
-
 @-webkit-keyframes slideInDown {
-    0% {
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-        visibility: visible;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInDown {
-    0% {
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-        visibility: visible;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 
 .pcNav {
-    display: block;
-}   
-  
+  display: block;
+}
+
 .mobileNavbar {
-    display: none;
+  display: none;
 }
 
 /* 미디어 쿼리: 화면 크기가 768px 이하일 때 */
 @media (max-width: 768px) {
-    .mobileNavbar {
-      display: block;
-    }
-    .pcNav {
-        display: none;
-      }
+  .mobileNavbar {
+    display: block;
+  }
+  .pcNav {
+    display: none;
+  }
 }

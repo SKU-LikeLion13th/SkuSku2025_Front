@@ -23,7 +23,8 @@ function App() {
     <>
       <div className={`${isMainPage ? 'relative w-full min-h-screen' : ''}`}>
         <NavbarProvider>
-          <MobileNav /><Nav />
+          <MobileNav />
+          <Nav />
           <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
             <Routes>
               <Route path="/" element={<Main />} />
