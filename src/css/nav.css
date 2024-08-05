@@ -43,7 +43,7 @@
 .off-screen-menu {
   top: 0;
   left: 0;
-  min-height: -webkit-fill-available;
+  min-height: 100%;
   width: 100%;
   opacity: 0;
 }
