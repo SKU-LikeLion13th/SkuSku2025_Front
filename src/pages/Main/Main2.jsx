@@ -3,8 +3,8 @@ import { images } from '../../utils/images';
 
 const Main2 = () => {
   return (
-    <div id="main2" className="main2 relative w-full min-h-screen mt-0 pt-0 bg-cover bg-center snap-section" style={{ backgroundImage: `url(${images.mainP2})` }}>
-      <div className="flex flex-col justify-evenly items-center text-center fontThin text-xl w-full min-h-screen">
+    <div id="main2" className="main2 relative w-full min-h-[220vh] md:min-h-screen mt-0 pt-0 bg-cover bg-center snap-section" style={{ backgroundImage: `url(${images.mainP2})` }}>
+      <div className="flex flex-col justify-evenly items-center text-center fontThin text-xl w-full min-h-[220vh] md:min-h-screen">
         <p className='pt-5'>
           <span className="fontMedium">성결대학교 멋쟁이사자처럼</span>은
           <br />
@@ -18,7 +18,7 @@ const Main2 = () => {
             <br />
             <span className="fontMedium">3가지 방향성</span>
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-32 w-full pt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-32 w-full pt-16">
             <div className="flex flex-col items-center">
               <img src={images.icon1} alt="자기주도성" className="mb-4" />
               <p className="mb-4 fontMedium">자기주도성</p>

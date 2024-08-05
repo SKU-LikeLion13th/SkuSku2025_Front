@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 
 const ProjectItem = ({ title, subtitle, image, url }) => (
-  <div className='flex justify-center items-center w-full'>
+  <a href={url} className='flex justify-center items-center w-full' target="_blank" rel="noopener noreferrer">
     <div className='relative w-full h-[14rem] mx-8'>
       <div
         className='absolute inset-0 bg-cover bg-center rounded-md'
@@ -16,13 +16,13 @@ const ProjectItem = ({ title, subtitle, image, url }) => (
         <div className='absolute inset-0 bg-black opacity-50 rounded-md'></div>
       </div>
       <div className='relative z-10 text-start pl-6 h-full flex flex-col justify-end pb-6'>
-        <a href={url} className='text-3xl fontBold text-white' target="_blank" rel="noopener noreferrer">
+        <div className='text-3xl font-bold text-white'>
           {title}
-        </a>
+        </div>
         <p className='text-xl fontRegular text-white pt-2'>{subtitle}</p>
       </div>
     </div>
-  </div>
+  </a>
 );
 
 const ProjectSlider = () => {
@@ -32,7 +32,6 @@ const ProjectSlider = () => {
     axios.get('http://back.sku-sku.com/project/all')
       .then(response => {
         setProjects(response.data);
-        console.log(projects);
       })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
