@@ -6,7 +6,7 @@
 }
 .partBack {
   background-image: url('/public/assets/images/track/backend_background.png');
-  background-size: 60%;
+  background-size: 50%;
   background-repeat: no-repeat;
   background-position: right;
 }

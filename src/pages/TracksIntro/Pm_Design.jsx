@@ -9,7 +9,7 @@ const Pm_Design = () => {
     <>
       <div className="@container part partPm container flex items-center justify-center mx-auto">
         <div className="w-1/2 partContent">
-          <div>
+        <div className='pt-10'>
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
             <br />
             <span className="text-[#FFBFD6] fontSB text-6xl">CURRICULUM</span>

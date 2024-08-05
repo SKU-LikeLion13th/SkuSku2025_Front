@@ -9,7 +9,7 @@ const BackEnd = () => {
     <>
       <div className="part partBack container flex items-center justify-center mx-auto">
         <div className="w-1/2 PartContent">
-          <div>
+        <div className='pt-10'>
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">BACK-END</span>
             <br />
             <span className="text-[#BDFFFF] font-bold text-6xl fontSB">CURRICULUM</span>
