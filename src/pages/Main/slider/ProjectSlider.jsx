@@ -60,7 +60,7 @@ const ProjectSlider = () => {
 
   return (
     <div className='flex justify-center items-center'>
-      <div className='w-[90%] mx-auto px-[120px] md:px-0'>
+      <div className='w-[90%] mx-auto px-[120px] xl:px-0'>
         <Slider {...settings}>
           {projects.map((project) => (
             <ProjectItem

@@ -18,7 +18,7 @@ const Main2 = () => {
             <br />
             <span className="fontMedium">3가지 방향성</span>
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-32 w-full pt-16">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 xl:gap-32 w-full pt-16">
             <div className="flex flex-col items-center">
               <img src={images.icon1} alt="자기주도성" className="mb-4" />
               <p className="mb-4 fontMedium">자기주도성</p>

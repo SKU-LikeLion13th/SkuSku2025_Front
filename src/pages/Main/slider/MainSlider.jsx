@@ -25,7 +25,7 @@ const MainSlider = () => {
     <div className='absolute top-0 left-0 w-full min-h-screen -z-10'>
       <Slider {...settings}>
         {mainImages.map((image, index) => (
-          <div key={index} className="w-full  min-h-[220vh] md:min-h-screen">
+          <div key={index} className="w-full  min-h-[220vh] xl:min-h-screen">
             <div 
               className='flex items-center justify-center w-full min-h-screen' 
               style={{ 

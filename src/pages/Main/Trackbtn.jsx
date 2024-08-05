@@ -94,8 +94,8 @@ const Trackbtn = () => {
   ];
 
   return (
-    <div className='container mx-auto px-24 md:w-full md:px-0'>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-7">
+    <div className='container mx-auto px-16 xl:w-full xl:px-0'>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 w-full mt-7">
         {trackData.map((track, index) => (
           <TrackItem
             key={index}

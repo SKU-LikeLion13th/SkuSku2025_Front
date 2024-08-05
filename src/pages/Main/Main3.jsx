@@ -37,7 +37,7 @@ const Main3 = () => {
   return (
     <div className="main3 relative w-full snap-section">
       <div className="absolute flex justify-center items-start w-full">
-        <img src={images.likelion} alt="likelion" className="py-24 -z-10 w-1/4 md:w-1/6" />
+        <img src={images.likelion} alt="likelion" className="py-24 -z-10 w-1/4 xl:w-1/6" />
       </div>
       <div className="flex flex-col justify-center items-center text-center fontRegular text-xl h-full py-20">
         <div className="flex flex-col h-1/5 justify-around mb-32">
@@ -57,7 +57,7 @@ const Main3 = () => {
             </p>
           </div>
         </div>
-        <img ref={scheduleImageRef} src={images.schedule} alt="멋사 스케줄" className="opacity-0 w-4/5 md:w-3/5 transition-opacity duration-500" />
+        <img ref={scheduleImageRef} src={images.schedule} alt="멋사 스케줄" className="opacity-0 w-4/5 xl:w-3/5 transition-opacity duration-500" />
       </div>
     </div>
   );
