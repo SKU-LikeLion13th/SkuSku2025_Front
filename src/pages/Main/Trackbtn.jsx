@@ -9,7 +9,7 @@ const TrackItem = ({ title, subtitle, bgColor, hoverBgColor, hoverContent, navig
     <div className="p-4">
       <button
         onClick={() => navigate(navigateTo)}
-        className={`relative group flex flex-col justify-between mx-auto w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}
+        className={`relative group flex flex-col justify-between mx-auto w-3/5 xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}
       >
         <div className='flex justify-between w-full h-full'>
           <div className="text-start pl-8 pb-5">
