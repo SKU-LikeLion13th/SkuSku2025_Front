@@ -14,7 +14,7 @@ const Project = () => {
   /* 프로젝트 추가 코드 */
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('http://back.sku-sku.com/project/all', {
+      const response = await axios.get('https://back.sku-sku.com/project/all', {
         headers: {
           Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정 필요
         },
@@ -41,7 +41,7 @@ const Project = () => {
   /* 프로젝트 삭제 코드 */
   const handleDelete = async projectId => {
     try {
-      await axios.delete(`http://back.sku-sku.com/project/${projectId}`, {
+      await axios.delete(`https://back.sku-sku.com/project/${projectId}`, {
         headers: {
           Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정 필요
         },

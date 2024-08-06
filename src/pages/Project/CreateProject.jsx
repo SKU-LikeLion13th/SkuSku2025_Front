@@ -25,7 +25,7 @@ const CreateProject = () => {
     }
 
     try {
-      await axios.post('http://back.sku-sku.com/project/add', formData, {
+      await axios.post('https://back.sku-sku.com/project/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정해야함

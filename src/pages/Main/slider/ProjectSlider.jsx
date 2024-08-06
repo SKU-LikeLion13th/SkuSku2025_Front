@@ -5,21 +5,18 @@ import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 
 const ProjectItem = ({ title, subtitle, image, url }) => (
-  <a href={url} className='flex justify-center items-center w-full' target="_blank" rel="noopener noreferrer">
-    <div className='relative w-full h-[14rem] mx-8'>
+  <a href={url} className="flex items-center justify-center w-full" target="_blank" rel="noopener noreferrer">
+    <div className="relative w-full h-[14rem] mx-8">
       <div
-        className='absolute inset-0 bg-cover bg-center rounded-md'
+        className="absolute inset-0 bg-center bg-cover rounded-md"
         style={{
           backgroundImage: `url(data:image/png;base64,${image})`,
-        }}
-      >
-        <div className='absolute inset-0 bg-black opacity-50 rounded-md'></div>
+        }}>
+        <div className="absolute inset-0 bg-black rounded-md opacity-50"></div>
       </div>
-      <div className='relative z-10 text-start pl-6 h-full flex flex-col justify-end pb-6'>
-        <div className='text-3xl font-bold text-white'>
-          {title}
-        </div>
-        <p className='text-xl fontRegular text-white pt-2'>{subtitle}</p>
+      <div className="relative z-10 flex flex-col justify-end h-full pb-6 pl-6 text-start">
+        <div className="text-3xl font-bold text-white">{title}</div>
+        <p className="pt-2 text-xl text-white fontRegular">{subtitle}</p>
       </div>
     </div>
   </a>
@@ -29,7 +26,8 @@ const ProjectSlider = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get('http://back.sku-sku.com/project/all')
+    axios
+      .get('https://back.sku-sku.com/project/all')
       .then(response => {
         setProjects(response.data);
       })
@@ -53,16 +51,16 @@ const ProjectSlider = () => {
         breakpoint: 768, // 768px 미만에서는 슬라이드 개수를 1로 설정
         settings: {
           slidesToShow: 1,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   return (
-    <div className='flex justify-center items-center'>
-      <div className='w-[90%] mx-auto px-[120px] xl:px-0'>
+    <div className="flex items-center justify-center">
+      <div className="w-[90%] mx-auto px-[120px] xl:px-0">
         <Slider {...settings}>
-          {projects.map((project) => (
+          {projects.map(project => (
             <ProjectItem
               key={project.id}
               title={project.title}
