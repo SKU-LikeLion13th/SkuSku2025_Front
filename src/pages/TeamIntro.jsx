@@ -22,7 +22,10 @@ const TeamIntro = () => {
 
   useEffect(() => {
     const tab = location.search.replace('?', '');
-    setActiveTab(tab);
+    if (tab === '' || tab === '12') {
+      const t = '12';
+      setActiveTab(t);
+    }
   }, [location]);
 
   return (

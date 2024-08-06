@@ -11,7 +11,6 @@ import Pm_Design from './pages/TracksIntro/Pm_Design';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import CreateProject from './pages/Project/CreateProject.jsx';
-import { useEffect, useState } from 'react';
 import MobileNav from './components/MobileNav.jsx';
 import { NavbarProvider } from './utils/navbar-context';
 

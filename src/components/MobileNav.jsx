@@ -33,7 +33,7 @@ const ShowNav = () => {
                       <li className="fontThin px-7 w-full text-center text-md whitespace-nowrap"><Link to="/pm_design" onClick={closeNav}>PM & DESIGN</Link></li>
                     </ul>
                     <li className="px-7 py-3 w-full text-center text-4xl"><Link to="/project" onClick={closeNav}>PROJECT</Link></li>
-                    <li className="px-7 py-3 w-full text-center text-4xl"><Link to="/teamIntro" onClick={closeNav}>TEAM</Link></li>
+                    <li className="px-7 py-3 w-full text-center text-4xl"><Link to="/teamIntro?tab12" onClick={closeNav}>TEAM</Link></li>
                     <li className="px-7 py-3 w-full text-center text-4xl"><Link to="/contact" onClick={closeNav}>CONTACT</Link></li>
                     {/* {ACCESS_TOKEN ?
                         <>

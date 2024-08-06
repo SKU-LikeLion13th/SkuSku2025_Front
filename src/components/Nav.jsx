@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { images } from '../utils/images';
 import { Link, useLocation } from 'react-router-dom';
-import GoogleLoginBtn from './GoogleLoginBtn';
 import '../css/nav.css';
 
 const Nav = () => {
@@ -82,7 +81,7 @@ const Nav = () => {
   const navItems = [
     { name: 'TRACK', paths: ['frontend', 'backend', 'pm_design'], link: '/frontend' },
     { name: 'PROJECT', paths: ['project'], link: '/project' },
-    { name: 'TEAM', paths: ['teamIntro'], link: '/teamIntro' },
+    { name: 'TEAM', paths: ['teamIntro'], link: '/teamIntro?tab12' },
     { name: 'CONTACT', paths: ['contact'], link: '/contact' },
   ];
 
@@ -97,7 +96,7 @@ const Nav = () => {
   );
 
   return (
-    <div className={`pcNav fontEB fixed z-20 top-0 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
+    <div className={`pcNav fixed z-10 top-0 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
       <div className="px-5 container flex items-center justify-between mx-auto py-3">
         <Link to="/" onClick={() => setActiveIndex(null)}>
           <div className="flex items-center">
