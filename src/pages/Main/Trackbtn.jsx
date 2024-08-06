@@ -9,7 +9,7 @@ const TrackItem = ({ title, subtitle, bgColor, hoverBgColor, hoverContent, navig
     <div className="p-4">
       <button
         onClick={() => navigate(navigateTo)}
-        className={`relative group flex flex-col justify-between mx-auto w-3/5 xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}
+        className={`relative group flex flex-col justify-between mx-auto w-4/5 xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}
       >
         <div className='flex justify-between w-full h-full'>
           <div className="text-start pl-8 pb-5">
@@ -94,7 +94,7 @@ const Trackbtn = () => {
   ];
 
   return (
-    <div className='container mx-auto px-16 xl:w-full xl:px-0'>
+    <div className='container mx-auto xl:w-full xl:px-0'>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 w-full mt-7">
         {trackData.map((track, index) => (
           <TrackItem

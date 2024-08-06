@@ -97,7 +97,7 @@ const Nav = () => {
   );
 
   return (
-    <div className={`pcNav fontEB fixed z-10 top-0 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
+    <div className={`pcNav fontEB fixed z-20 top-0 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
       <div className="px-5 container flex items-center justify-between mx-auto py-3">
         <Link to="/" onClick={() => setActiveIndex(null)}>
           <div className="flex items-center">
