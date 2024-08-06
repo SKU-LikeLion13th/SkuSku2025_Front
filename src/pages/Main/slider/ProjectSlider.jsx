@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const ProjectItem = ({ title, subtitle, image, url }) => (
   <a href={url} className='flex justify-center items-center w-full' target="_blank" rel="noopener noreferrer">
-    <div className='relative w-full h-[14rem] mx-8'>
+    <div className='relative w-1/2 xl:w-full h-[14rem] mx-8'>
       <div
         className='absolute inset-0 bg-cover bg-center rounded-md'
         style={{
@@ -50,7 +50,7 @@ const ProjectSlider = () => {
     fade: false,
     responsive: [
       {
-        breakpoint: 768, // 768px 미만에서는 슬라이드 개수를 1로 설정
+        breakpoint: 1240, // 1240px 미만에서는 슬라이드 개수를 1로 설정
         settings: {
           slidesToShow: 1,
         }
@@ -60,7 +60,7 @@ const ProjectSlider = () => {
 
   return (
     <div className='flex justify-center items-center'>
-      <div className='w-[90%] mx-auto px-[120px] xl:px-0'>
+      <div className='w-[90%] mx-auto px-[85px] xl:px-0'>
         <Slider {...settings}>
           {projects.map((project) => (
             <ProjectItem
