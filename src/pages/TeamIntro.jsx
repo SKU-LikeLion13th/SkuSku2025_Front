@@ -27,15 +27,15 @@ const TeamIntro = () => {
 
   return (
     <>
-      <div className="mt-10 text-center">
-        <div className="text-[#3A78FF] text-5xl fontEB">
+      <div className="text-center mt-28">
+        <div className="text-[#3A78FF] text-6xl fontEB">
           LIKELION SKU
           <br />
         </div>
-        <div className="text-[#FFFFFF] text-5xl fontEB mt-4">운영진</div>
+        <div className="text-[#FFFFFF] text-6xl fontEB mt-4">운영진</div>
       </div>
 
-      <div className="flex justify-center mt-10 p-10 space-x-20">
+      <div className="flex justify-center p-10 mt-10 space-x-20">
         <div className={tabClass('tab12')} onClick={() => handleTabClick('tab12')}>
           12기
         </div>

@@ -16,20 +16,20 @@ const Project_Tabs = ({ onTabClick }) => {
   };
 
   return (
-    <div className="mt-6 text-white max-[500px]:mt-2">
-      <div className="flex justify-between w-1/6 max-[500px]:w-1/4">
+    <>
+      <div className="mt-6 text-center text-white md:text-start">
         {tabs.map(tab => (
           <button
             key={`${tab.value}th`}
-            className={`py-2 px-1 text-xl max-[500px]:text-lg ${
-              activeTab === tab.value ? 'border-b-[3px] border-white fontEB' : ''
+            className={`py-2 px-2 mr-3 text-xl ${
+              activeTab === tab.value ? 'border-b-[3px] border-white fontEB' : 'border-b-[3px] border-b-black'
             }`}
             onClick={() => handleTabClick(tab.value)}>
             {tab.name}
           </button>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
