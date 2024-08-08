@@ -7,8 +7,13 @@ import MobileNav from './components/MobileNav.jsx';
 import { NavbarProvider } from './utils/navbar-context';
 import User from './routes/User.jsx';
 import Admin from './routes/Admin.jsx';
+import { getToken, Logout } from './utils/Authenticate.js';
 
 function App() {
+  // 토큰이 있다면 토큰이 리턴되어 True, 없다면 null이 리턴되어 False 
+  const ACCESS_TOKEN = getToken()
+  console.log(ACCESS_TOKEN)
+
   const location = useLocation();
   const isMainPage = location.pathname === '/';
 
@@ -16,8 +21,11 @@ function App() {
     <>
       <div className={`${isMainPage ? 'relative w-full min-h-screen' : ''}`}>
         <NavbarProvider>
-          <MobileNav />
-          <Nav />
+          {/* Navbar */}
+          <MobileNav ACCESS_TOKEN={ACCESS_TOKEN}/>
+          <Nav ACCESS_TOKEN={ACCESS_TOKEN} />
+
+          {/* Route */}
           <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
             <Routes>
               <Route path="/*" element={<User />} />

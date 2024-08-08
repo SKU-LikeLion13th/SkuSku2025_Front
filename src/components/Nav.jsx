@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { images } from '../utils/images';
 import { Link, useLocation } from 'react-router-dom';
 import '../css/nav.css';
+import GoogleLoginBtn from './GoogleLoginBtn';
+import { Logout } from '../utils/Authenticate';
 
-const Nav = () => {
+const Nav = ({ACCESS_TOKEN}) => {
   const location = useLocation();
   const [pathname, setPathname] = useState('');
   const [isHovered, setIsHovered] = useState(null);
@@ -42,7 +44,7 @@ const Nav = () => {
     return {
       position: 'relative',
       padding: '0.2rem 1rem',
-      width: '110px',
+      // width: '110px',
       textAlign: 'center',
       transition: 'all 0.3s ease',
       // hover
@@ -83,6 +85,7 @@ const Nav = () => {
     { name: 'PROJECT', paths: ['project'], link: '/project' },
     { name: 'TEAM', paths: ['teamIntro'], link: '/teamIntro?tab12' },
     { name: 'CONTACT', paths: ['contact'], link: '/contact' },
+    { name: 'CYBERCAMPUS', paths: ['cyberCampusMain'], link: '/cyberCampusMain' },
   ];
 
   const renderLinks = links => (
@@ -111,8 +114,8 @@ const Nav = () => {
               <Link to={item.link} key={index}>
                 <div
                   style={getNavItemStyle(index, navItems, pathname, item)}
-                  onMouseEnter={() => setIsHovered(index)}
-                  onMouseLeave={() => setIsHovered(null)}
+                  // onMouseEnter={() => setIsHovered(index)}
+                  // onMouseLeave={() => setIsHovered(null)}
                   onClick={() => setActiveIndex(index)}>
                   {item.name}
                 </div>
@@ -120,12 +123,16 @@ const Nav = () => {
             ))}
             <div
               className="w-full h-3 absolute -bottom-5"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(null)}>
+              // onMouseEnter={() => setIsHovered(true)}
+              // onMouseLeave={() => setIsHovered(null)}
+              >
             </div>
-            {/* <div className='ml-2'>
+            <div className='ml-2'>
+            {ACCESS_TOKEN ?
+              <button className="text-white" onClick={Logout}>로그아웃</button> :
               <GoogleLoginBtn />
-            </div> */}
+            }
+            </div>
           </div>
 
           {isHovered !== null ? (
