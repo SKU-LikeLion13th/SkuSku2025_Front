@@ -1,16 +1,17 @@
-import React from 'react'
-
 export const getToken = () => {
-	//로컬스토리지 값을 가져와서 JSON을 Object로 변환해준다.
-	const myToken = JSON.parse(localStorage.getItem('token'));
+	// 로컬스토리지 값을 가져와서 JSON을 Object로 변환해준다.
+	const token = JSON.parse(localStorage.getItem('token'));
+	const expire = JSON.parse(localStorage.getItem('expire'));
+
 	// 토큰이 없거나 만료되었다면 삭제하고 null을 리턴한다
-	if (!myToken)
+	if (!token)
 		return null;
-	if (myToken.expire <= Date.now()){
+	if (expire <= Date.now()){
 		localStorage.removeItem('token')
+		localStorage.removeItem('expire')
 		return null;
 	}
-	return myToken.token
+	return token
 }
 
 export const Logout = () => {

@@ -8,7 +8,6 @@ export const GoogleLoginBtn = () => {
     // JWT 디코딩 예시 (필요한 경우)
     const decodeToken = jwtDecode(response.credential);
     console.log(decodeToken, '디코딩 된 토큰');
-    console.log(response.credential, 'credential 토큰');
 
     const data = {
       "token" : response.credential
@@ -22,12 +21,14 @@ export const GoogleLoginBtn = () => {
     .then(response => {
       // 성공적인 요청 시 response 값을 콘솔에 출력
       const myToken = {
-				token: response.data,
+				token: response.data.token,
 				expire: Date.now() + 60 * 60 * 1000
 			};
-			localStorage.setItem('token', JSON.stringify(myToken));
-      console.log(myToken)
 
+			localStorage.setItem('token', JSON.stringify(myToken.token));
+			localStorage.setItem('expire', JSON.stringify(myToken.expire));
+      console.log(myToken)
+      
       // 로그인에 성공하면 새로고침 처리해준다.
 			window.location.reload()
     })

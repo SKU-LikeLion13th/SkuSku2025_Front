@@ -7,12 +7,11 @@ import MobileNav from './components/MobileNav.jsx';
 import { NavbarProvider } from './utils/navbar-context';
 import User from './routes/User.jsx';
 import Admin from './routes/Admin.jsx';
-import { getToken, Logout } from './utils/Authenticate.js';
+import { getToken } from './utils/Authenticate.js';
 
 function App() {
   // 토큰이 있다면 토큰이 리턴되어 True, 없다면 null이 리턴되어 False 
   const ACCESS_TOKEN = getToken()
-  console.log(ACCESS_TOKEN)
 
   const location = useLocation();
   const isMainPage = location.pathname === '/';
