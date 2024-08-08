@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { images } from '../../utils/images';
+import { images } from '../../../utils/images';
 
 const Main3 = () => {
   const scheduleImageRef = useRef(null);
@@ -12,14 +12,14 @@ const Main3 = () => {
       const windowHeight = window.innerHeight;
 
       const bottomOfWindow = windowHeight;
-      
+
       if (fullyVisibleRef.current) {
         return;
       }
 
       if (rect.top < windowHeight && rect.bottom > 0) {
         const visibleRatio = Math.min((windowHeight - rect.top) / (windowHeight + rect.height), 1);
-        const newOpacity = Math.min(visibleRatio * 2, 1);  // Multiplied by 2 to increase sensitivity
+        const newOpacity = Math.min(visibleRatio * 2, 1); // Multiplied by 2 to increase sensitivity
 
         image.style.opacity = newOpacity;
 
@@ -35,13 +35,13 @@ const Main3 = () => {
   }, []);
 
   return (
-    <div className="main3 relative w-full snap-section">
-      <div className="absolute flex justify-center items-start w-full">
-        <img src={images.likelion} alt="likelion" className="py-24 -z-10 w-1/4 xl:w-1/6" />
+    <div className="relative w-full main3 snap-section">
+      <div className="absolute flex items-start justify-center w-full">
+        <img src={images.likelion} alt="likelion" className="w-1/4 py-24 -z-10 xl:w-1/6" />
       </div>
-      <div className="flex flex-col justify-center items-center text-center fontRegular text-xl h-full py-20">
-        <div className="flex flex-col h-1/5 justify-around mb-32">
-          <div className='pb-28'>
+      <div className="flex flex-col items-center justify-center h-full py-20 text-xl text-center fontRegular">
+        <div className="flex flex-col justify-around mb-32 h-1/5">
+          <div className="pb-28">
             <p className="text-[#3B79FF] fontSB pb-2">Q.</p>
             <p>
               성결대 멋쟁이사자처럼은 주로 <span className="text-[#3B79FF] fontMedium">어떤 활동</span>을 하나요?
@@ -57,7 +57,12 @@ const Main3 = () => {
             </p>
           </div>
         </div>
-        <img ref={scheduleImageRef} src={images.schedule} alt="멋사 스케줄" className="opacity-0 w-4/5 xl:w-3/5 transition-opacity duration-500" />
+        <img
+          ref={scheduleImageRef}
+          src={images.schedule}
+          alt="멋사 스케줄"
+          className="w-4/5 transition-opacity duration-500 opacity-0 xl:w-3/5"
+        />
       </div>
     </div>
   );

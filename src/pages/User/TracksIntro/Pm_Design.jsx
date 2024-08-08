@@ -1,6 +1,6 @@
 import React from 'react';
-import { images } from '../../utils/images';
-import '../../css/track.css';
+import { images } from '../../../utils/images';
+import '../../../css/track.css';
 
 const Pm_Design = () => {
   const backgroundImage = `url(/assets/images/track/frontend_background.png)`;
@@ -9,7 +9,7 @@ const Pm_Design = () => {
     <>
       <div className="@container part partPm container flex items-center justify-center mx-auto">
         <div className="w-1/2 partContent">
-        <div className='pt-10'>
+          <div className="pt-10">
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
             <br />
             <span className="text-[#FFBFD6] fontSB text-6xl">CURRICULUM</span>
@@ -25,8 +25,8 @@ const Pm_Design = () => {
             <img src={images.track_pm_curri} alt="track_pm_curri" className="w-[512px] curriImg" />
           </div>
 
-          <div className="leading-8 fontEL text-lg">
-            <span className="fontBold text-2xl">UX/UI 디자이너</span>는<br />
+          <div className="text-lg leading-8 fontEL">
+            <span className="text-2xl fontBold">UX/UI 디자이너</span>는<br />
             제품 또는 서비스의 사용자 경험을 개선하기 위해
             <br />
             사용자 연구, 프로토타입 제작, 디자인 시스템 구축 등을 수행하며,
@@ -36,7 +36,7 @@ const Pm_Design = () => {
             <br />
             <br />
             <br />
-            <span className="fontBold text-2xl">서비스 기획자</span>는<br />
+            <span className="text-2xl fontBold">서비스 기획자</span>는<br />
             서비스 기획자는 사용자 요구사항을 분석하고 제품 또는 서비스의 기획과 전략을 개발하여
             <br />
             사용자들의 만족도를 높이고 비즈니스 목표를 달성합니다.
@@ -50,7 +50,7 @@ const Pm_Design = () => {
           <img src={images.track_pm_background} alt="track_pm_background" />
         </div> */}
 
-        <div className="bg-auto bg-no-repeat bg-center absolute z-10" style={{ backgroundImage }}></div>
+        <div className="absolute z-10 bg-center bg-no-repeat bg-auto" style={{ backgroundImage }}></div>
       </div>
     </>
   );

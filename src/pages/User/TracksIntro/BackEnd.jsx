@@ -1,21 +1,21 @@
 import React from 'react';
-import { images } from '../../utils/images';
-import '../../css/track.css';
+import { images } from '../../../utils/images';
+import '../../../css/track.css';
 
 const BackEnd = () => {
   const backgroundImage = `url(/assets/images/track/backend_background.png)`;
 
   return (
     <>
-      <div className="part partBack container flex items-center justify-center mx-auto">
+      <div className="container flex items-center justify-center mx-auto part partBack">
         <div className="w-1/2 PartContent">
-        <div className='pt-10'>
+          <div className="pt-10">
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">BACK-END</span>
             <br />
             <span className="text-[#BDFFFF] font-bold text-6xl fontSB">CURRICULUM</span>
           </div>
 
-          <div className="py-28 flex flex-col">
+          <div className="flex flex-col py-28">
             <div className="mb-10">
               <ul className="flex justify-between w-[320px] mb-2 curriUl">
                 <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">
@@ -47,8 +47,8 @@ const BackEnd = () => {
             </div>
           </div>
 
-          <div className="leading-8 fontEL text-lg">
-            <span className="fontBold text-2xl">백엔드</span>는<br />
+          <div className="text-lg leading-8 fontEL">
+            <span className="text-2xl fontBold">백엔드</span>는<br />
             백엔드(Backend)는 웹 또는 모바일 애플리케이션의 서버 측 부분으로,
             <br />
             사용자 요청을 처리하고 데이터를 관리하는 역할을 합니다.
@@ -64,7 +64,7 @@ const BackEnd = () => {
           <img src={images.track_backend_background} alt="track_backend_background" />
         </div> */}
 
-        <div className="bg-auto bg-no-repeat bg-center absolute z-10 right-0" style={{ backgroundImage }}></div>
+        <div className="absolute right-0 z-10 bg-center bg-no-repeat bg-auto" style={{ backgroundImage }}></div>
       </div>
     </>
   );

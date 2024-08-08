@@ -1,11 +1,14 @@
 import React from 'react';
-import { images } from '../../utils/images';
+import { images } from '../../../utils/images';
 
 const Main2 = () => {
   return (
-    <div id="main2" className="main2 relative w-full min-h-screen mt-0 pt-0 bg-cover bg-center snap-section" style={{ backgroundImage: `url(${images.mainP2})` }}>
-      <div className="flex flex-col justify-evenly items-center text-center fontThin text-xl w-full min-h-screen">
-        <p className='pt-5'>
+    <div
+      id="main2"
+      className="relative w-full min-h-screen pt-0 mt-0 bg-center bg-cover main2 snap-section"
+      style={{ backgroundImage: `url(${images.mainP2})` }}>
+      <div className="flex flex-col items-center w-full min-h-screen text-xl text-center justify-evenly fontThin">
+        <p className="pt-5">
           <span className="fontMedium">성결대학교 멋쟁이사자처럼</span>은
           <br />
           자신이 원하는 IT 서비스를 구현하고 싶은
@@ -18,7 +21,7 @@ const Main2 = () => {
             <br />
             <span className="fontMedium">3가지 방향성</span>
           </p>
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 xl:gap-32 w-full pt-16">
+          <div className="grid w-full grid-cols-1 gap-8 pt-16 xl:grid-cols-3 xl:gap-32">
             <div className="flex flex-col items-center">
               <img src={images.icon1} alt="자기주도성" className="mb-4" />
               <p className="mb-4 fontMedium">자기주도성</p>

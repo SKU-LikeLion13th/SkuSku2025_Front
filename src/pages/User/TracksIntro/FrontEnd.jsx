@@ -1,15 +1,15 @@
 import React from 'react';
-import { images } from '../../utils/images';
-import '../../css/track.css';
+import { images } from '../../../utils/images';
+import '../../../css/track.css';
 
 const FrontEnd = () => {
   const backgroundImage = `url(/assets/images/track/frontend_background.png)`;
 
   return (
     <>
-      <div className="part partFront container flex items-center justify-center mx-auto">
+      <div className="container flex items-center justify-center mx-auto part partFront">
         <div className="w-1/2 partContent">
-          <div className='pt-10'>
+          <div className="pt-10">
             <span className="text-[#FF7816] fontEB text-6xl">FRONT-END</span>
             <br />
             <span className="text-[#FFD7BA] fontSB text-6xl">CURRICULUM</span>
@@ -24,8 +24,8 @@ const FrontEnd = () => {
             <img src={images.track_frontend_curri} alt="front_curriculum" className="w-[426px] curriImg" />
           </div>
 
-          <div className="leading-8 fontEL text-lg">
-            <span className="fontBold text-2xl">프론트엔드</span>는<br />
+          <div className="text-lg leading-8 fontEL">
+            <span className="text-2xl fontBold">프론트엔드</span>는<br />
             웹 애플리케이션 또는 모바일 앱의 사용자 인터페이스를 담당하는 부분입니다.
             <br />
             사용자가 상호작용하는 화면을 구성하고 사용자 경험을 개선합니다.
@@ -42,10 +42,10 @@ const FrontEnd = () => {
           </div>
         </div>
 
-        <div className="w-1/2 flex justify-center rightBox"></div>
+        <div className="flex justify-center w-1/2 rightBox"></div>
       </div>
 
-      <div className="bg-auto bg-no-repeat bg-center absolute z-10" style={{ backgroundImage }}></div>
+      <div className="absolute z-10 bg-center bg-no-repeat bg-auto" style={{ backgroundImage }}></div>
     </>
   );
 };

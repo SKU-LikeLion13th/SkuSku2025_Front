@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Person from '../components/Person';
+import Person from './Person';
 import { useLocation } from 'react-router-dom';
 
 const TeamIntro = () => {
@@ -22,10 +22,7 @@ const TeamIntro = () => {
 
   useEffect(() => {
     const tab = location.search.replace('?', '');
-    if (tab === '' || tab === '12') {
-      const t = '12';
-      setActiveTab(t);
-    }
+    setActiveTab(tab);
   }, [location]);
 
   return (

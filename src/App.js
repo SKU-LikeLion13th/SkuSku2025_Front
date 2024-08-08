@@ -1,18 +1,12 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import ScrollToTop from './utils/ScrollToTop.jsx';
 import './css/style.css';
-import Main from './pages/Main/Main.jsx';
-import Project from './pages/Project/Project.jsx';
-import TeamIntro from './pages/TeamIntro';
-import Contact from './pages/Contact';
-import BackEnd from './pages/TracksIntro/BackEnd';
-import FrontEnd from './pages/TracksIntro/FrontEnd';
-import Pm_Design from './pages/TracksIntro/Pm_Design';
+import ScrollToTop from './utils/ScrollToTop.jsx';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
-import CreateProject from './pages/Project/CreateProject.jsx';
 import MobileNav from './components/MobileNav.jsx';
 import { NavbarProvider } from './utils/navbar-context';
+import User from './routes/User.jsx';
+import Admin from './routes/Admin.jsx';
 
 function App() {
   const location = useLocation();
@@ -26,17 +20,8 @@ function App() {
           <Nav />
           <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
             <Routes>
-              <Route path="/" element={<Main />} />
-              {/* project(createProject는 추후 경로 이동) */}
-              <Route path="/project" element={<Project />} />
-              <Route path="/createProject" element={<CreateProject />} />
-              <Route path="/teamIntro" element={<TeamIntro />} />
-              <Route path="/contact" element={<Contact />} />
-
-              {/* track */}
-              <Route path="/backend" element={<BackEnd />} />
-              <Route path="/frontend" element={<FrontEnd />} />
-              <Route path="/pm_design" element={<Pm_Design />} />
+              <Route path="/*" element={<User />} />
+              <Route path="/admin/*" element={<Admin />} />
             </Routes>
             <Footer />
             <ScrollToTop />
