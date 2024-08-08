@@ -1,9 +1,12 @@
 import { GoogleLogin } from '@react-oauth/google'
 import React from 'react'
-import { jwtDecode } from 'jwt-decode'; // 수정된 import 문
+import { jwtDecode } from 'jwt-decode';
 import axios from 'axios'
+import { useLogin } from '../utils/LoginContext';
 
 export const GoogleLoginBtn = () => {
+  const { setIsLoggedIn } = useLogin();
+
   const loginHandle = (response) => {
     // JWT 디코딩 예시 (필요한 경우)
     const decodeToken = jwtDecode(response.credential);
@@ -25,11 +28,14 @@ export const GoogleLoginBtn = () => {
 				expire: Date.now() + 60 * 60 * 1000
 			};
 
+      // 로컬스토리지에 정보 저장
 			localStorage.setItem('token', JSON.stringify(myToken.token));
 			localStorage.setItem('expire', JSON.stringify(myToken.expire));
-      console.log(myToken)
+
+      // 로그인 상태 ON
+      setIsLoggedIn(true);
       
-      // 로그인에 성공하면 새로고침 처리해준다.
+      // 로그인 성공시 새로고침
 			window.location.reload()
     })
     .catch(error => {

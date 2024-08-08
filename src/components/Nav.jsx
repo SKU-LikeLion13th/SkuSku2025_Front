@@ -3,9 +3,11 @@ import { images } from '../utils/images';
 import { Link, useLocation } from 'react-router-dom';
 import '../css/nav.css';
 import GoogleLoginBtn from './GoogleLoginBtn';
-import { Logout } from '../utils/Authenticate';
+import { useLogin } from '../utils/LoginContext';
 
-const Nav = ({ACCESS_TOKEN}) => {
+const Nav = () => {
+  const { handleLogout, isLoggedIn } = useLogin();
+  
   const location = useLocation();
   const [pathname, setPathname] = useState('');
   const [isHovered, setIsHovered] = useState(null);
@@ -128,8 +130,8 @@ const Nav = ({ACCESS_TOKEN}) => {
               >
             </div>
             <div className='ml-2'>
-            {ACCESS_TOKEN ?
-              <button className="text-white" onClick={Logout}>로그아웃</button> :
+            {isLoggedIn ?
+              <button className="text-white" onClick={handleLogout}>로그아웃</button> :
               <GoogleLoginBtn />
             }
             </div>

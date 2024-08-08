@@ -7,22 +7,19 @@ import MobileNav from './components/MobileNav.jsx';
 import { NavbarProvider } from './utils/navbar-context';
 import User from './routes/User.jsx';
 import Admin from './routes/Admin.jsx';
-import { getToken } from './utils/Authenticate.js';
+import { LoginProvider } from './utils/LoginContext.jsx';
 
 function App() {
-  // 토큰이 있다면 토큰이 리턴되어 True, 없다면 null이 리턴되어 False 
-  const ACCESS_TOKEN = getToken()
-
   const location = useLocation();
   const isMainPage = location.pathname === '/';
 
   return (
-    <>
-      <div className={`${isMainPage ? 'relative w-full min-h-screen' : ''}`}>
-        <NavbarProvider>
+    <LoginProvider>
+      <NavbarProvider>
+        <div className={`${isMainPage ? 'relative w-full min-h-screen' : ''}`}>
           {/* Navbar */}
-          <MobileNav ACCESS_TOKEN={ACCESS_TOKEN}/>
-          <Nav ACCESS_TOKEN={ACCESS_TOKEN} />
+          <MobileNav />
+          <Nav />
 
           {/* Route */}
           <div className={`App text-white ${isMainPage ? '' : 'mt-[100px]'}`}>
@@ -33,9 +30,9 @@ function App() {
             <Footer />
             <ScrollToTop />
           </div>
-        </NavbarProvider>
       </div>
-    </>
+    </NavbarProvider>
+  </LoginProvider>
   );
 }
 
