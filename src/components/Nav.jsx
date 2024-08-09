@@ -87,7 +87,7 @@ const Nav = () => {
     { name: 'PROJECT', paths: ['project'], link: '/project' },
     { name: 'TEAM', paths: ['teamIntro'], link: '/teamIntro?tab12' },
     { name: 'CONTACT', paths: ['contact'], link: '/contact' },
-    { name: 'CYBERCAMPUS', paths: ['cyberCampusMain'], link: '/cyberCampusMain' },
+    { name: 'CYBERCAMPUS', paths: ['cyberCampusIntro'], link: '/cyberCampusIntro' },
   ];
 
   const renderLinks = links => (
