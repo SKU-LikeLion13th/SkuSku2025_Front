@@ -2,6 +2,7 @@ export const PATH = process.env.PUBLIC_URL;
 
 export const images = {
   arrow: `${PATH}/assets/arrow.png`,
+  
   // logo
   likelion_logo: PATH + 'assets/images/logo.png',
 

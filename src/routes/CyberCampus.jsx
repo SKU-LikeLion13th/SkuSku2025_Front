@@ -8,9 +8,9 @@ export default function CyberCampus() {
   return (
     <>
       <Routes>
-        <Route path="/lecture" element={<CyberCampusLecture />} />
-        <Route path="/assignment" element={<CyberCampusAssignment />} />
-        <Route path="/intro" element={<CyberCampusIntro />} />
+        <Route path="lecture" element={<CyberCampusLecture />} />
+        <Route path="assignment" element={<CyberCampusAssignment />} />
+        <Route path="Intro" element={<CyberCampusIntro />} />
       </Routes>
     </>
   );

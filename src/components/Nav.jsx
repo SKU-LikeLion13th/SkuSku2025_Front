@@ -6,9 +6,9 @@ import GoogleLoginBtn from './GoogleLoginBtn';
 import { useLogin } from '../utils/LoginContext';
 
 const Nav = () => {
+  const location = useLocation();
   const { handleLogout, isLoggedIn } = useLogin();
   
-  const location = useLocation();
   const [pathname, setPathname] = useState('');
   const [isHovered, setIsHovered] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -87,7 +87,7 @@ const Nav = () => {
     { name: 'PROJECT', paths: ['project'], link: '/project' },
     { name: 'TEAM', paths: ['teamIntro'], link: '/teamIntro?tab12' },
     { name: 'CONTACT', paths: ['contact'], link: '/contact' },
-    { name: 'CYBERCAMPUS', paths: ['cyberCampusIntro'], link: '/cyberCampusIntro' },
+    { name: 'CYBERCAMPUS', paths: ['/cyberCampus/Intro'], link: '/cyberCampus/Intro' },
   ];
 
   const renderLinks = links => (
@@ -101,7 +101,7 @@ const Nav = () => {
   );
 
   return (
-    <div className={`pcNav fixed z-10 top-0 w-full mx-auto text-white transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
+    <div className={`pcNav fixed z-10 top-0 w-full mx-auto transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
       <div className="px-5 container flex items-center justify-between mx-auto py-3">
         <Link to="/" onClick={() => setActiveIndex(null)}>
           <div className="flex items-center">
@@ -131,7 +131,7 @@ const Nav = () => {
             </div>
             <div className='ml-2'>
             {isLoggedIn ?
-              <button className="text-white" onClick={handleLogout}>로그아웃</button> :
+              <button onClick={handleLogout}>로그아웃</button> :
               <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
             }
             </div>
