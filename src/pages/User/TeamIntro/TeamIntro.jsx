@@ -27,7 +27,7 @@ const TeamIntro = () => {
 
   return (
     <>
-      <div className="text-center mt-28">
+      <div className="text-center pt-28">
         <div className="text-[#3A78FF] text-6xl fontEB">
           LIKELION SKU
           <br />
