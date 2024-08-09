@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios'
 import { useLogin } from '../utils/LoginContext';
 
-export const GoogleLoginBtn = () => {
+export const GoogleLoginBtn = ({type, width, shape}) => {
   const { setIsLoggedIn } = useLogin();
 
   const loginHandle = (response) => {
@@ -52,12 +52,14 @@ export const GoogleLoginBtn = () => {
 					console.log("Login Failed");
             //로그인 실패 시 Login Failed가 console로 출력
 				}}
-        type="x-smartling-placeholder"
+        type={type}
         theme= "filled_black"
-        width='200px' //버튼 크기 지정
+        width={width} //버튼 크기 지정
+        size='large'
 				text="continue_with" //로그인 버튼 텍스트 지정 (구글에서 제공하는 문구만 사용)
-				shape='circle' //버튼 shape 지정
+				shape={shape} //버튼 shape 지정
         useOneTap='true'//팝업 창을 띄우지 않고 현재 탭에서 로그인  
+        
 				/>
 		</>
 	)

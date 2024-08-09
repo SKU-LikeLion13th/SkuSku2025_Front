@@ -132,7 +132,7 @@ const Nav = () => {
             <div className='ml-2'>
             {isLoggedIn ?
               <button className="text-white" onClick={handleLogout}>로그아웃</button> :
-              <GoogleLoginBtn />
+              <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
             }
             </div>
           </div>
