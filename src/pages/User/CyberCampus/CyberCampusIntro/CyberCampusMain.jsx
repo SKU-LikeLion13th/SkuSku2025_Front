@@ -87,7 +87,7 @@ const TrackItem = ({ title, subtitle, bgColor, navigateTo, handleTrackClick}) =>
             </div>
           </div>
           <div className="flex items-end justify-end h-full">
-            <img src={images.arrowB} alt="화살표" className="h-[14%] mb-6 mr-5 z-10" />
+            <img src={images.arrowB} alt="arrow" className="h-[14%] mb-6 mr-5 z-10" />
           </div>
         </div>
       </button>
@@ -103,7 +103,7 @@ const TrackItemIn = ({ navigateTo, title, handleTrackClick }) => {
     <button onClick={handleTrackClick}>
       <IoIosArrowBack size={40}/>
     </button>
-    
+
     <div className="container mx-auto xl:w-full xl:px-0">
       <div className="grid w-full grid-cols-1 gap-8 xl:grid-cols-2">
         {/* 강의자료 */}
@@ -119,7 +119,7 @@ const TrackItemIn = ({ navigateTo, title, handleTrackClick }) => {
               </div>
             </div>
             <div className="flex items-end justify-end h-full">
-              <img src={images.arrowM} alt="화살표" className="h-[14%] mb-6 mr-5 z-10" />
+              <img src={images.doubleArrow} alt="arrow" className="h-[14%] mb-6 mr-5 z-10" />
             </div>
           </div>
         </button>
@@ -138,7 +138,7 @@ const TrackItemIn = ({ navigateTo, title, handleTrackClick }) => {
               </div>
             </div>
             <div className="flex items-end justify-end h-full">
-              <img src={images.arrowM} alt="화살표" className="h-[14%] mb-6 mr-5 z-10" />
+              <img src={images.doubleArrow} alt="arrow" className="h-[14%] mb-6 mr-5 z-10" />
             </div>
           </div>
         </button>

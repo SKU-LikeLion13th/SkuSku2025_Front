@@ -4,7 +4,7 @@ export const images = {
   arrow: `${PATH}/assets/arrow.png`,
   
   // logo
-  likelion_logo: PATH + 'assets/images/logo.png',
+  likelion_logo: PATH + '/assets/images/logo.png',
 
   //main
   mainImages: [
@@ -19,20 +19,21 @@ export const images = {
   icon3: PATH + 'assets/images/main/icon3.png',
   likelion: PATH + 'assets/images/main/likelion.png',
   schedule: PATH + 'assets/images/main/schedule.png',
-  arrowM : PATH + 'assets/images/main/arrowM.png',
-  arrowB : PATH + 'assets/images/main/arrowB.png',
+  arrowM : PATH + '/assets/images/main/arrowM.png',
+  arrowB : PATH + '/assets/images/main/arrowB.png',
+  doubleArrow : PATH + '/assets/images/doubleArrow.png',
 
   // track
-  track_frontend_background: PATH + 'assets/images/track/frontend_background.png',
-  track_backend_background: PATH + 'assets/images/track/backend_background.png',
-  track_pm_background: PATH + 'assets/images/track/pm_background.png',
-  track_frontend_curri: PATH + 'assets/images/track/frontLine.png',
-  track_backend_curri: PATH + 'assets/images/track/backLine.png',
-  track_pm_curri: PATH + 'assets/images/track/pmLine.png',
+  track_frontend_background: PATH + '/assets/images/track/frontend_background.png',
+  track_backend_background: PATH + '/assets/images/track/backend_background.png',
+  track_pm_background: PATH + '/assets/images/track/pm_background.png',
+  track_frontend_curri: PATH + '/assets/images/track/frontLine.png',
+  track_backend_curri: PATH + '/assets/images/track/backLine.png',
+  track_pm_curri: PATH + '/assets/images/track/pmLine.png',
 
   // footer
-  insta: PATH + 'assets/images/footer/insta.png',
-  kakao: PATH + 'assets/images/footer/kakao.png',
-  email: PATH + 'assets/images/footer/email.png',
+  insta: PATH + '/assets/images/footer/insta.png',
+  kakao: PATH + '/assets/images/footer/kakao.png',
+  email: PATH + '/assets/images/footer/email.png',
   Project1: PATH + '/assets/images/puzzle.png',
 };
