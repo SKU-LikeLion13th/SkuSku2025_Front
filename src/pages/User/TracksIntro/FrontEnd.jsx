@@ -7,7 +7,7 @@ const FrontEnd = () => {
 
   return (
     <>
-      <div className="container flex items-center justify-center mx-auto part partFront">
+      <div className="container flex items-center justify-center w-10/12 mx-auto part partFront pt-28">
         <div className="w-1/2 partContent">
           <div className="pt-10">
             <span className="text-[#FF7816] fontEB text-6xl">FRONT-END</span>

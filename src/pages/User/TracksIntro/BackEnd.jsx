@@ -7,7 +7,7 @@ const BackEnd = () => {
 
   return (
     <>
-      <div className="container flex items-center justify-center mx-auto part partBack">
+      <div className="container flex items-center justify-center w-10/12 mx-auto part partBack pt-28">
         <div className="w-1/2 PartContent">
           <div className="pt-10">
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">BACK-END</span>

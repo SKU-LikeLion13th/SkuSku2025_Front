@@ -1,5 +1,6 @@
 // Project_Tabs.js
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const tabs = [
   { name: '전체', value: 'all' },
@@ -9,6 +10,8 @@ const tabs = [
 
 const Project_Tabs = ({ onTabClick }) => {
   const [activeTab, setActiveTab] = useState('all');
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/admin');
 
   const handleTabClick = tabValue => {
     setActiveTab(tabValue);
@@ -17,17 +20,22 @@ const Project_Tabs = ({ onTabClick }) => {
 
   return (
     <>
-      <div className="mt-6 text-center text-white md:text-start">
-        {tabs.map(tab => (
-          <button
-            key={`${tab.value}th`}
-            className={`py-2 px-2 mr-3 text-xl ${
-              activeTab === tab.value ? 'border-b-[3px] border-white fontEB' : 'border-b-[3px] border-b-black'
-            }`}
-            onClick={() => handleTabClick(tab.value)}>
-            {tab.name}
-          </button>
-        ))}
+      <div className={`mt-6 text-center md:text-start ${isAdminPage ? 'text-black' : 'text-white'}`}>
+        {tabs.map(tab => {
+          // Define styles based on `isAdminPage` and `activeTab`
+          const baseStyle = 'py-2 px-2 mr-3 text-xl border-b-[3px]';
+          const activeStyle = isAdminPage ? 'fontBold border-b-black' : 'fontBold border-b-white';
+          const inactiveStyle = isAdminPage ? 'border-b-white' : 'border-b-black';
+
+          return (
+            <button
+              key={`${tab.value}th`}
+              className={`${baseStyle} ${activeTab === tab.value ? activeStyle : inactiveStyle}`}
+              onClick={() => handleTabClick(tab.value)}>
+              {tab.name}
+            </button>
+          );
+        })}
       </div>
     </>
   );

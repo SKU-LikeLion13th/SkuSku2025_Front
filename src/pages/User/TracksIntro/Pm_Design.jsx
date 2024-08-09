@@ -7,7 +7,7 @@ const Pm_Design = () => {
 
   return (
     <>
-      <div className="@container part partPm container flex items-center justify-center mx-auto">
+      <div className="@container part partPm container flex items-center justify-center mx-auto pt-28 w-10/12">
         <div className="w-1/2 partContent">
           <div className="pt-10">
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>

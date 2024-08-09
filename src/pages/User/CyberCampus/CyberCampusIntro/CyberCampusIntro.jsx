@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLogin } from '../../../../utils/LoginContext';
-import NeedLogin from './NeedLogin';
-import CyberCampusMain from './CyberCampusMain';
+import NeedLogin from '../CyberCampusMain/NeedLogin';
+import CyberCampusMain from './CyberCampusIntro';
 
 const CyberCampusIntro = () => {
   const { isLoggedIn } = useLogin();
