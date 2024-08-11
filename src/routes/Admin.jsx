@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AssignmentManagement from './../pages/Admin/AssignmentManagement/AssignmentManagement';
+import AssignmentManagement from './../pages/Admin/AssignmentManagement/AssignmentRegistration.jsx';
 import ProjectManagement from './../pages/Admin/ProjectManagement/ProjectManagement';
 import LectureManagement from './../pages/Admin/LectureManagement/LectureManagement';
 import CreateProject from '../pages/Admin/ProjectManagement/CreateProject.jsx';

@@ -2,7 +2,7 @@ export const PATH = process.env.PUBLIC_URL;
 
 export const images = {
   arrow: `${PATH}/assets/arrow.png`,
-  
+
   // logo
   likelion_logo: PATH + '/assets/images/logo.png',
 
@@ -19,9 +19,9 @@ export const images = {
   icon3: PATH + 'assets/images/main/icon3.png',
   likelion: PATH + 'assets/images/main/likelion.png',
   schedule: PATH + 'assets/images/main/schedule.png',
-  arrowM : PATH + '/assets/images/main/arrowM.png',
-  arrowB : PATH + '/assets/images/main/arrowB.png',
-  doubleArrow : PATH + '/assets/images/doubleArrow.png',
+  arrowM: PATH + '/assets/images/main/arrowM.png',
+  arrowB: PATH + '/assets/images/main/arrowB.png',
+  doubleArrow: PATH + '/assets/images/doubleArrow.png',
 
   // track
   track_frontend_background: PATH + '/assets/images/track/frontend_background.png',
@@ -36,4 +36,7 @@ export const images = {
   kakao: PATH + '/assets/images/footer/kakao.png',
   email: PATH + '/assets/images/footer/email.png',
   Project1: PATH + '/assets/images/puzzle.png',
+
+  // AssignmentManagement
+  breadArrow: PATH + '/assets/images/admin/AssignmentManagement/BreadArrow.png',
 };
