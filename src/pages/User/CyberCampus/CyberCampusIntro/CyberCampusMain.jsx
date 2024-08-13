@@ -110,7 +110,7 @@ const TrackItemIn = ({ navigateTo, title, handleTrackClick }) => {
         <div className="p-4">
         <button
           id={title}
-          onClick={() => navigate(`/cyberCampus/lecture/${title}`)}
+          onClick={() => navigate(`/cyberCampus/intro/${title}/lecture`)}
           className={`mx-auto relative group flex flex-col justify-between w-4/5 xl:w- h-[14rem] text-black rounded-md transition-colors duration-300 bg-[#3B79FF]`}>
           <div className="flex justify-between w-full h-full">
             <div className="pb-5 pl-8 text-start text-white">
@@ -129,7 +129,7 @@ const TrackItemIn = ({ navigateTo, title, handleTrackClick }) => {
       <div className="p-4">
         <button
           id={title}
-          onClick={() => navigate(`/cyberCampus/assignment/${title}`)}
+          onClick={() => navigate(`/cyberCampus/intro/${title}/assignment`)}
           className={`mx-auto relative group flex flex-col justify-between w-4/5 xl:w-4/5 h-[14rem] text-black rounded-md transition-colors duration-300 bg-[#FF7816]`}>
           <div className="flex justify-between w-full h-full">
             <div className="pb-5 pl-8 text-start text-white">
