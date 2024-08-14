@@ -9,8 +9,20 @@ const DeleteAssignments = ({
   onDeleteSelected,
   onCancel,
 }) => {
+  // 모든 과제를 선택된 상태로 설정하는 함수
+  const onSelectAllAssignments = () => {
+    assignments.forEach(assignment => {
+      if (!selectedAssignments.includes(assignment.id)) {
+        onSelectAssignment(assignment.id);
+      }
+    });
+  };
+
   const handleDeleteAll = async () => {
     if (window.confirm('전체 삭제하시겠습니까?')) {
+      // 모든 과제를 선택된 상태로 설정
+      onSelectAllAssignments();
+
       try {
         let token = localStorage.getItem('token');
 
@@ -18,11 +30,18 @@ const DeleteAssignments = ({
           token = token.slice(1, -1);
         }
 
+        // 삭제할 모든 과제의 ID를 배열로 생성
+        const idsToDelete = assignments.map(assignment => assignment.id);
+
         // 서버로 전체 삭제 요청을 보냄
-        await axios.delete('https://back.sku-sku.com/admin/assignment/deleteAll', {
+        await axios.request({
+          method: 'delete',
+          url: 'https://back.sku-sku.com/admin/assignment/delete-all',
           headers: {
             Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
           },
+          data: { id: idsToDelete }, // 삭제할 ID 배열을 요청 본문에 포함
         });
 
         onDeleteAll(); // 서버 삭제 후 로컬 상태 업데이트
@@ -47,7 +66,7 @@ const DeleteAssignments = ({
         token = token.slice(1, -1);
       }
 
-      // 선택된 과제들에 대해 서버로 삭제 요청을 보냄 (쿼리 파라미터로 ID 포함)
+      // 선택된 과제들에 대해 서버로 삭제 요청을 보냄
       await Promise.all(
         selectedAssignments.map(id =>
           axios.delete('https://back.sku-sku.com/admin/assignment', {
