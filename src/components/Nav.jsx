@@ -7,7 +7,7 @@ import { useLogin } from '../utils/LoginContext';
 
 const Nav = () => {
   const location = useLocation();
-  const { handleLogout, isLoggedIn } = useLogin();
+  const { handleLogout, isLoggedIn, name, track, trackColor } = useLogin();
   
   const [pathname, setPathname] = useState('');
   const [isHovered, setIsHovered] = useState(null);
@@ -129,9 +129,19 @@ const Nav = () => {
               // onMouseLeave={() => setIsHovered(null)}
               >
             </div>
-            <div className='ml-2'>
+
+            <div>
             {isLoggedIn ?
-              <button onClick={handleLogout}>로그아웃</button> :
+            <div className='flex items-center'>
+              <div className='flex items-center'>
+                <div className={`flex items-center justify-center w-[30px] h-[30px] rounded-[50%] bg-[${trackColor}]`}>🦁</div>
+                <span className='text-xs px-2'>{track}</span>
+                <span className='font-bold'>{name}님</span>
+              </div>
+              
+              <button onClick={handleLogout} className='ml-3 text-xs'>LOGOUT</button> 
+            </div>  
+            :
               <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
             }
             </div>

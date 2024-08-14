@@ -72,8 +72,6 @@ const CyberCampusMain = () => {
 export default CyberCampusMain;
 
 const TrackItem = ({ title, subtitle, bgColor, navigateTo, handleTrackClick}) => {
-  const navigate = useNavigate();
-
   return (
     <div className="p-4">
       <button

@@ -5,7 +5,7 @@ import { useLogin } from '../utils/LoginContext';
 import * as base64js from 'base64-js';
 
 export const GoogleLoginBtn = ({size, type, width, shape}) => {
-  const { setIsLoggedIn } = useLogin();
+  const { setIsLoggedIn, setName, setTrack } = useLogin();
 
   // Base64 디코딩 함수 사용하여 UTF-8 문자열로 변환(한글깨짐방지)
   function Base64Decode(str, encoding = 'utf-8') {
@@ -39,7 +39,7 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
       setIsLoggedIn(true);
       
       // 로그인 성공시 새로고침
-			// window.location.reload()
+			window.location.reload()
 
       // JWT 토큰에서 payload 부분을 추출하고 디코딩
       const token = myToken.token; // 인코딩된 JWT
@@ -47,9 +47,10 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
       let decodedPayload = Base64Decode(payload); // Base64 디코딩
       let dec = JSON.parse(decodedPayload); // 파싱하여 JS 객체로 변환
 
-      console.log('dec', dec);
-      console.log('name', dec.name); // 한국어가 올바르게 출력됨
-      console.log('track', dec.track); // 영어도 문제없이 출력됨
+      localStorage.setItem('name', dec.name);
+      localStorage.setItem('track', dec.track);
+      setName(dec.name);
+      setTrack(dec.track);
     })
     .catch(error => {
       // 실패 시 에러 메시지 출력
