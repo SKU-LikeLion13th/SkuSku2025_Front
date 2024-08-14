@@ -17,7 +17,7 @@ const Nav = () => {
   useEffect(() => {
     const path = location.pathname.replace('/', '');
     setPathname(path);
-  }, []);
+  }, [location.pathname, name]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +31,10 @@ const Nav = () => {
   }, []);
 
   const getNavItemStyle = (index, navItems, pathname, item) => {
+    const isActive = location.pathname === `/${pathname}`;
+    console.log('isActive', isActive)
+    console.log(location.pathname, `/${pathname}`);
+
     const hoveredStyle = {
       color: 'black',
       backgroundColor: '#D9D9D9',
@@ -51,6 +55,7 @@ const Nav = () => {
       transition: 'all 0.3s ease',
       // hover
       ...(isHovered === index ? hoveredStyle : {}),
+      ...(isActive === index ? activeStyle : {}),
       ...(activeIndex === index ? activeStyle : {}),
       // borderRight: index < navItems.length - 1 ? '1px solid #4b4b4b' : 'none',
       backgroundColor: isHovered === index ? '#D9D9D9' : 'transparent',

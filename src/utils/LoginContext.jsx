@@ -1,8 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState('');
   const [track, setTrack] = useState('');
@@ -16,9 +18,11 @@ export const LoginProvider = ({ children }) => {
     const storedName = localStorage.getItem('name');
     const storedTrack = localStorage.getItem('track');
 
+    console.log(storedTrack, '트랙 ;')
+
     if (storedTrack === 'PM/DESIGN') {
       setTrackColor('#FF669D')
-    } else if (storedTrack === 'FRONTEND') {
+    } else if (storedTrack === 'FRONTEND' || 'FRONT-END') {
       setName(storedName)
       setTrack('FRONT-END')
       setTrackColor('#FF7816')
@@ -41,8 +45,8 @@ export const LoginProvider = ({ children }) => {
   // 로그아웃
   const handleLogout = () => {
     localStorage.clear();
-    window.location.reload();
     setIsLoggedIn(false);
+    navigate('/')
   }
 
   useEffect(() => {
