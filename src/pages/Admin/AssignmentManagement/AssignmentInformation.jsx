@@ -5,10 +5,12 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
     <div className="mt-20 w-full px-8">
       <div className="text-2xl fontBold mb-8">오늘의 과제 관리</div>
       <div className="grid grid-cols-2 gap-12 max-h-[10rem] overflow-y-auto">
-        {/* 예시 데이터를 렌더링 */}
+        {/* 서버에서 받은 데이터를 렌더링 */}
         {assignments.map(assignment => (
           <div key={assignment.id} className="p-6 bg-blue-500 text-white rounded-lg shadow-lg h-32">
-            <div className="fontEB text-lg mb-2">{assignment.title}</div>
+            <div className="fontEB text-lg mb-2">
+              {assignment.title} {assignment.subTitle}
+            </div>
             <p className="text-sm">{assignment.description}</p>
           </div>
         ))}

@@ -1,42 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import Breadcrumb from '../../../components/Breadcrumb';
 import AssignmentInformation from './AssignmentInformation';
 import AssignmentForm from './AssignmentForm';
 import DeleteAssignments from './DeleteAssignment';
-import IndividualManagement from './IndividualManagement'; // 임포트
+import IndividualManagement from './IndividualManagement';
 
 const AssignmentRegistration = () => {
-  const [view, setView] = useState('main'); // 'main', 'assignments', 'individualManagement' 등으로 구분
-
+  const [view, setView] = useState('main');
   const [assignments, setAssignments] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
   const [selectedAssignments, setSelectedAssignments] = useState([]);
 
-  const handleClick = () => {
-    setView('assignments'); // 과제 관리 페이지로 이동
-  };
+  const handleClick = () => setView('assignments');
+  const handleShowAssignmentList = () => setView('individualManagement');
+  const handleAddClick = () => setShowForm(true);
+  const handleDeleteClick = () => setDeleteMode(true);
 
-  const handleShowAssignmentList = () => {
-    setView('individualManagement'); // 개인 관리 페이지로 이동
-  };
-
-  const handleAddClick = () => {
-    setShowForm(true);
-  };
-
-  const handleDeleteClick = () => {
-    setDeleteMode(true);
-  };
-
-  const handleFormSubmit = () => {
+  const handleFormSubmit = newAssignment => {
+    setAssignments([...assignments, newAssignment]); // 새로 추가된 과제를 assignments에 추가
     setShowForm(false);
   };
 
-  const handleFormCancel = () => {
-    setShowForm(false);
-  };
+  const handleFormCancel = () => setShowForm(false);
 
   const handleSelectAssignment = assignmentId => {
     setSelectedAssignments(prev =>
@@ -57,20 +45,28 @@ const AssignmentRegistration = () => {
   };
 
   useEffect(() => {
-    const fetchAssignments = () => {
-      const exampleData = [
-        {
-          id: 1,
-          title: '8월 첫째주 과제 안내 [발표1]',
-          description: '안녕하세요! 8월 첫째주 과제 안내드립니다.',
-        },
-        {
-          id: 2,
-          title: '8월 둘째주 과제 안내 [발표2]',
-          description: '안녕하세요! 8월 둘째주 과제 안내드립니다.',
-        },
-      ];
-      setAssignments(exampleData);
+    const fetchAssignments = async () => {
+      try {
+        let token = localStorage.getItem('token');
+        if (token.startsWith('"') && token.endsWith('"')) {
+          token = token.slice(1, -1);
+        }
+
+        const response = await axios.get('https://back.sku-sku.com/assignment', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            track: 'FRONTEND',
+            status: 'TODAY',
+          },
+        });
+
+        const { assignments } = response.data;
+        setAssignments(assignments);
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
     };
 
     fetchAssignments();
@@ -107,16 +103,14 @@ const AssignmentRegistration = () => {
       {view === 'assignments' && (
         <div className="flex flex-col items-center justify-center min-h-screen py-2 w-full max-w-4xl mx-auto">
           <div className="w-full">
-            <div className="flex flex-col items-center mb-24">
+            <div className="flex flex-col items-center mb-24 mt-20">
               <AssignmentTitle variant="title">FRONT-END</AssignmentTitle>
               <AssignmentTitle variant="subtitle">과제 제출</AssignmentTitle>
               <Breadcrumb />
             </div>
             {!showForm ? (
               <div>
-                {assignments.length === 0 ? (
-                  <div className="text-center text-gray-600 text-xl">등록된 과제가 없습니다!</div>
-                ) : deleteMode ? (
+                {deleteMode ? (
                   <DeleteAssignments
                     assignments={assignments}
                     selectedAssignments={selectedAssignments}
