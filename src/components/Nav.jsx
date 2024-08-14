@@ -17,7 +17,7 @@ const Nav = () => {
   useEffect(() => {
     const path = location.pathname.replace('/', '');
     setPathname(path);
-  }, [location]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,6 +161,9 @@ const Nav = () => {
                 { to: '/contact?etc', label: '기타 의뢰', index: 3 },
                 { to: '/contact?Collaboration', label: '협업 문의', index: 3 },
                 { to: '/contact?inquiry', label: '문의 사항', index: 3 },
+              ])}
+              {renderLinks([
+                { to: '/cyberCampus/Intro', label: 'CYBERCAMPUS', index: 4 }
               ])}
             </div>
           ) : (
