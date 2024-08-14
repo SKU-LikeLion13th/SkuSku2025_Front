@@ -64,22 +64,22 @@ const NewNav = () => {
               style={getNavItemStyle(0)}
               className="hover:font-bold">TRACK</li>
           </Link>
-          <Link to='/project' key='TRACK' onClick={() => setActiveIndex(1)}>
+          <Link to='/project' key='PROJECT' onClick={() => setActiveIndex(1)}>
             <li 
               style={getNavItemStyle(1)}
               className="hover:font-bold">PROJECT</li>
           </Link>
-          <Link to='/teamIntro?tab12' key='TRACK' onClick={() => setActiveIndex(2)}>
+          <Link to='/teamIntro?tab12' key='TEAM' onClick={() => setActiveIndex(2)}>
             <li 
               style={getNavItemStyle(2)}
               className="hover:font-bold">TEAM</li>
           </Link>
-          <Link to='/contact' key='TRACK' onClick={() => setActiveIndex(3)}>
+          <Link to='/contact' key='CONTACT' onClick={() => setActiveIndex(3)}>
             <li 
               style={getNavItemStyle(3)}
               className="hover:font-bold">CONTACT</li>
           </Link>
-          <Link to='/cyberCampus/Intro' key='TRACK' onClick={() => setActiveIndex(4)}>
+          <Link to='/cyberCampus/Intro' key='CYBERCAMPUS' onClick={() => setActiveIndex(4)}>
             <li  
               style={getNavItemStyle(4)}
               className="hover:font-bold">CYBERCAMPUS</li>

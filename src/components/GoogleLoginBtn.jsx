@@ -71,17 +71,14 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
 	return (
 		<>
 			<GoogleLogin
-				onSuccess={loginHandle}
-				onError={() => {
-					console.log("Login Failed");
-            //로그인 실패 시 Login Failed가 console로 출력
-				}}
+        onSuccess={loginHandle}
+        onError={() => console.log('Login Failed')}
         type={type}
         width={width} //버튼 크기 지정
         size='large'
 				text="continue_with" //로그인 버튼 텍스트 지정 (구글에서 제공하는 문구만 사용)
 				shape={shape} //버튼 shape 지정
-        useOneTap='true'//팝업 창을 띄우지 않고 현재 탭에서 로그인
+        useOneTap='true' //팝업 창을 띄우지 않고 현재 탭에서 로그인
 				/>
 		</>
 	)

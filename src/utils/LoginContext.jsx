@@ -59,7 +59,7 @@ export const LoginProvider = ({ children }) => {
     <LoginContext.Provider value={{ 
       handleLogout,
       isLoggedIn, setIsLoggedIn,
-      name, setName, track, setTrack, trackColor
+      name, setName, track, setTrack, trackColor, setTrackColor
       }}>
       {children}
     </LoginContext.Provider>
