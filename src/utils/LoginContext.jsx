@@ -18,8 +18,6 @@ export const LoginProvider = ({ children }) => {
     const storedName = localStorage.getItem('name');
     const storedTrack = localStorage.getItem('track');
 
-    console.log(storedTrack, '트랙 ;')
-
     if (storedTrack === 'PM/DESIGN') {
       setTrackColor('#FF669D')
     } else if (storedTrack === 'FRONTEND' || 'FRONT-END') {
