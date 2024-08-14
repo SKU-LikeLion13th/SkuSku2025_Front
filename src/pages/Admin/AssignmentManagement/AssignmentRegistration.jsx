@@ -4,16 +4,22 @@ import Breadcrumb from '../../../components/Breadcrumb';
 import AssignmentInformation from './AssignmentInformation';
 import AssignmentForm from './AssignmentForm';
 import DeleteAssignments from './DeleteAssignment';
+import IndividualManagement from './IndividualManagement'; // 임포트
 
 const AssignmentRegistration = () => {
-  const [showDetail, setShowDetail] = useState(false);
+  const [view, setView] = useState('main'); // 'main', 'assignments', 'individualManagement' 등으로 구분
+
   const [assignments, setAssignments] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
   const [selectedAssignments, setSelectedAssignments] = useState([]);
 
   const handleClick = () => {
-    setShowDetail(true);
+    setView('assignments'); // 과제 관리 페이지로 이동
+  };
+
+  const handleShowAssignmentList = () => {
+    setView('individualManagement'); // 개인 관리 페이지로 이동
   };
 
   const handleAddClick = () => {
@@ -72,7 +78,7 @@ const AssignmentRegistration = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 mt-[-10vh]">
-      {!showDetail ? (
+      {view === 'main' && (
         <>
           <div className="flex flex-col items-center mb-32">
             <AssignmentTitle variant="title" className="mb-8">
@@ -87,7 +93,9 @@ const AssignmentRegistration = () => {
               <div className="text-2xl fontBold mb-4 text-[#323232]">오늘의 과제 관리</div>
               <p className="text-base text-[#323232] fontLight">신규과제를 등록해주세요</p>
             </div>
-            <div className="p-7 bg-[#fcbd8f] rounded-lg shadow-lg w-72 h-36">
+            <div
+              className="p-7 bg-[#fcbd8f] rounded-lg shadow-lg w-72 h-36 cursor-pointer"
+              onClick={handleShowAssignmentList}>
               <div className="text-2xl fontBold mb-4 text-[#323232] ">진행중인 과제 관리</div>
               <p className="text-base text-[#323232] fontLight">
                 아기사자들의 과제를 확인해주세요 미통과 처리 시 피드백을 남겨주세요!
@@ -95,7 +103,8 @@ const AssignmentRegistration = () => {
             </div>
           </div>
         </>
-      ) : (
+      )}
+      {view === 'assignments' && (
         <div className="flex flex-col items-center justify-center min-h-screen py-2 w-full max-w-4xl mx-auto">
           <div className="w-full">
             <div className="flex flex-col items-center mb-24">
@@ -132,6 +141,7 @@ const AssignmentRegistration = () => {
           </div>
         </div>
       )}
+      {view === 'individualManagement' && <IndividualManagement />}
     </div>
   );
 };
