@@ -10,6 +10,7 @@ import User from './routes/User.jsx';
 import Admin from './routes/Admin.jsx';
 import { LoginProvider } from './utils/LoginContext.jsx';
 import CyberCampus from './routes/CyberCampus.jsx';
+import NewNav from './components/NewNav.jsx';
 
 function App() {
   const location = useLocation();
@@ -25,7 +26,8 @@ function App() {
             isMainPage ? 'relative w-full min-h-screen' : ''
           }`}>
           <MobileNav />
-          <Nav />
+          {/* <Nav /> */}
+          <NewNav />
 
           {/* Route */}
           <div className="App">

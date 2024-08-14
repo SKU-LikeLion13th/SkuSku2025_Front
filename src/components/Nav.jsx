@@ -7,7 +7,7 @@ import { useLogin } from '../utils/LoginContext';
 
 const Nav = () => {
   const location = useLocation();
-  const { handleLogout, isLoggedIn } = useLogin();
+  const { handleLogout, isLoggedIn, name, track, trackColor } = useLogin();
   
   const [pathname, setPathname] = useState('');
   const [isHovered, setIsHovered] = useState(null);
@@ -17,7 +17,7 @@ const Nav = () => {
   useEffect(() => {
     const path = location.pathname.replace('/', '');
     setPathname(path);
-  }, [location]);
+  }, [location.pathname, name]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +31,10 @@ const Nav = () => {
   }, []);
 
   const getNavItemStyle = (index, navItems, pathname, item) => {
+    const isActive = location.pathname === `/${pathname}`;
+    console.log('isActive', isActive)
+    console.log(location.pathname, `/${pathname}`);
+
     const hoveredStyle = {
       color: 'black',
       backgroundColor: '#D9D9D9',
@@ -51,6 +55,7 @@ const Nav = () => {
       transition: 'all 0.3s ease',
       // hover
       ...(isHovered === index ? hoveredStyle : {}),
+      ...(isActive === index ? activeStyle : {}),
       ...(activeIndex === index ? activeStyle : {}),
       // borderRight: index < navItems.length - 1 ? '1px solid #4b4b4b' : 'none',
       backgroundColor: isHovered === index ? '#D9D9D9' : 'transparent',
@@ -129,9 +134,19 @@ const Nav = () => {
               // onMouseLeave={() => setIsHovered(null)}
               >
             </div>
-            <div className='ml-2'>
+
+            <div>
             {isLoggedIn ?
-              <button onClick={handleLogout}>로그아웃</button> :
+            <div className='flex items-center'>
+              <div className='flex items-center'>
+                <div className={`flex items-center justify-center w-[30px] h-[30px] rounded-[50%] bg-[${trackColor}]`}>🦁</div>
+                <span className='text-xs px-2'>{track}</span>
+                <span className='font-bold'>{name}님</span>
+              </div>
+              
+              <button onClick={handleLogout} className='ml-3 text-xs'>LOGOUT</button> 
+            </div>  
+            :
               <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
             }
             </div>
@@ -161,6 +176,9 @@ const Nav = () => {
                 { to: '/contact?etc', label: '기타 의뢰', index: 3 },
                 { to: '/contact?Collaboration', label: '협업 문의', index: 3 },
                 { to: '/contact?inquiry', label: '문의 사항', index: 3 },
+              ])}
+              {renderLinks([
+                { to: '/cyberCampus/Intro', label: 'CYBERCAMPUS', index: 4 }
               ])}
             </div>
           ) : (
