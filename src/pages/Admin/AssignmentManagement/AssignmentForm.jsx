@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const AssignmentForm = ({ onSubmit, onCancel }) => {
   const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState(''); // 추가된 subtitle 입력 필드
+  const [subTitle, setSubtitle] = useState(''); // 추가된 subtitle 입력 필드
   const [description, setDescription] = useState('');
 
   const handleSubmit = async () => {
@@ -33,7 +33,7 @@ const AssignmentForm = ({ onSubmit, onCancel }) => {
         {
           trackType: 'FRONTEND', // 고정된 trackType
           title,
-          subtitle,
+          subTitle,
           description,
         },
         {
@@ -73,7 +73,7 @@ const AssignmentForm = ({ onSubmit, onCancel }) => {
           <label className="block text-sm fontSB w-16">부제</label>
           <input
             type="text"
-            value={subtitle}
+            value={subTitle}
             onChange={e => setSubtitle(e.target.value)}
             className="mt-1 h-8 block flex-1 border border-gray-400 rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           />
