@@ -4,7 +4,6 @@ import { images } from '../utils/images';
 import '../css/nav.css';
 import { useLogin } from '../utils/LoginContext';
 import GoogleLoginBtn from './GoogleLoginBtn';
-import NavTrack from './NavTrack';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -62,7 +61,6 @@ const NewNav = () => {
           </div>
         </Link>
         
-        {/* <NavTrack /> */}
         {/* Menu */}
         <ul className="flex relative items-center">
           <Dropdown>
@@ -127,8 +125,8 @@ const NewNav = () => {
             <button onClick={handleLogout} className='text-xs'>LOGOUT</button> 
           </div>  
           :
-            // <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
-            <GoogleLoginBtn size={'large'} width={'50'} type={'standard'} shape={'rectangular'} />
+          // <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
+          <GoogleLoginBtn size={'large'} width={'50'} type={'standard'} shape={'rectangular'} />
           }
         </div>
       </div>
