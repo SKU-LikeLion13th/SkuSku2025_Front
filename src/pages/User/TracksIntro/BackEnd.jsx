@@ -3,8 +3,6 @@ import { images } from '../../../utils/images';
 import '../../../css/track.css';
 
 const BackEnd = () => {
-  const backgroundImage = `url(/assets/images/track/backend_background.png)`;
-
   return (
     <>
       <div className="container flex items-center justify-center w-10/12 mx-auto part partBack pt-28">
@@ -60,11 +58,6 @@ const BackEnd = () => {
           </div>
         </div>
         <div className="w-1/2 rightBox"></div>
-        {/* <div className="absolute right-0 top-35 -z-10">
-          <img src={images.track_backend_background} alt="track_backend_background" />
-        </div> */}
-
-        <div className="absolute right-0 z-10 bg-center bg-no-repeat bg-auto" style={{ backgroundImage }}></div>
       </div>
     </>
   );

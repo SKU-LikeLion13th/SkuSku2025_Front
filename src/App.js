@@ -26,7 +26,6 @@ function App() {
             isMainPage ? 'relative w-full min-h-screen' : ''
           }`}>
           <MobileNav />
-          {/* <Nav /> */}
           <NewNav />
 
           {/* Route */}

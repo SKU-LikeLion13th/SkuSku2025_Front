@@ -46,7 +46,7 @@ const NewNav = () => {
 
   return (
     <div className={`pcNav fixed z-10 top-0 w-full mx-auto transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
-      <div className="px-5 container grid grid-cols-3 items-center justify-between mx-auto py-3">
+      <div className="px-5 container flex items-center justify-between mx-auto py-3">
         {/* likelion logo */}
         <Link to="/" onClick={() => {
             setActiveIndex(null);

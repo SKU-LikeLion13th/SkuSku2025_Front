@@ -3,8 +3,6 @@ import { images } from '../../../utils/images';
 import '../../../css/track.css';
 
 const Pm_Design = () => {
-  const backgroundImage = `url(/assets/images/track/frontend_background.png)`;
-
   return (
     <>
       <div className="@container part partPm container flex items-center justify-center mx-auto pt-28 w-10/12">
@@ -45,12 +43,6 @@ const Pm_Design = () => {
           </div>
         </div>
         <div className="w-1/2 rightBox"></div>
-
-        {/* <div className="absolute right-0 top-12 -z-10">
-          <img src={images.track_pm_background} alt="track_pm_background" />
-        </div> */}
-
-        <div className="absolute z-10 bg-center bg-no-repeat bg-auto" style={{ backgroundImage }}></div>
       </div>
     </>
   );
