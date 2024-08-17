@@ -4,6 +4,10 @@ import { images } from '../utils/images';
 import '../css/nav.css';
 import { useLogin } from '../utils/LoginContext';
 import GoogleLoginBtn from './GoogleLoginBtn';
+import Dropdown from '@mui/joy/Dropdown';
+import Menu from '@mui/joy/Menu';
+import MenuButton from '@mui/joy/MenuButton';
+import MenuItem from '@mui/joy/MenuItem';
 
 const NewNav = () => {
   const location = useLocation();
@@ -42,7 +46,7 @@ const NewNav = () => {
 
   return (
     <div className={`pcNav fixed z-10 top-0 w-full mx-auto transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
-      <div className="px-5 container grid grid-cols-3 items-center justify-between mx-auto py-3">
+      <div className="px-5 container flex items-center justify-between mx-auto py-3">
         {/* likelion logo */}
         <Link to="/" onClick={() => {
             setActiveIndex(null);
@@ -56,33 +60,53 @@ const NewNav = () => {
             <span className="text-[#3B79FF] fontBlack text-2xl ml-2">LIKELION SKU</span>
           </div>
         </Link>
-
+        
         {/* Menu */}
         <ul className="flex relative items-center">
-          <Link to='/frontend' key='TRACK' onClick={() => setActiveIndex(0)}>
+          <Dropdown>
+            <MenuButton variant="nautral" className='ignoreBtn'  onClick={() => setActiveIndex(0)}>
+              <Link to='/frontend' key='TRACK'>
+                <li style={getNavItemStyle(0)} className="menuStyle">TRACK</li>
+              </Link>
+            </MenuButton>
+
+            <Menu className='menu'>
+              <MenuItem className='menuItem'>
+                <Link to='/frontend'>FRONT-END</Link>
+              </MenuItem>
+              <MenuItem className='menuItem'>
+                <Link to='/backend'>BACK-END</Link>
+              </MenuItem>
+              <MenuItem className='menuItem'>
+                <Link to='/pm_design'>PM/DESIGN</Link>
+              </MenuItem>
+            </Menu>
+          </Dropdown>
+
+          {/* <Link to='/frontend' key='TRACK' onClick={() => setActiveIndex(0)}>
             <li 
               style={getNavItemStyle(0)}
-              className="hover:font-bold">TRACK</li>
-          </Link>
+              className="menuStyle">TRACK</li>
+          </Link> */}
           <Link to='/project' key='PROJECT' onClick={() => setActiveIndex(1)}>
             <li 
               style={getNavItemStyle(1)}
-              className="hover:font-bold">PROJECT</li>
+              className="menuStyle">PROJECT</li>
           </Link>
           <Link to='/teamIntro?tab12' key='TEAM' onClick={() => setActiveIndex(2)}>
             <li 
               style={getNavItemStyle(2)}
-              className="hover:font-bold">TEAM</li>
+              className="menuStyle">TEAM</li>
           </Link>
           <Link to='/contact' key='CONTACT' onClick={() => setActiveIndex(3)}>
             <li 
               style={getNavItemStyle(3)}
-              className="hover:font-bold">CONTACT</li>
+              className="menuStyle">CONTACT</li>
           </Link>
           <Link to='/cyberCampus/Intro' key='CYBERCAMPUS' onClick={() => setActiveIndex(4)}>
             <li  
               style={getNavItemStyle(4)}
-              className="hover:font-bold">CYBERCAMPUS</li>
+              className="menuStyle">CYBERCAMPUS</li>
           </Link>
         </ul>
 
@@ -101,8 +125,8 @@ const NewNav = () => {
             <button onClick={handleLogout} className='text-xs'>LOGOUT</button> 
           </div>  
           :
-            // <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
-            <GoogleLoginBtn size={'large'} width={'50'} type={'standard'} shape={'rectangular'} />
+          // <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
+          <GoogleLoginBtn size={'large'} width={'50'} type={'standard'} shape={'rectangular'} />
           }
         </div>
       </div>
