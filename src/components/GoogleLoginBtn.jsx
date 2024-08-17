@@ -1,11 +1,14 @@
 import { GoogleLogin } from '@react-oauth/google'
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useLogin } from '../utils/LoginContext';
 import * as base64js from 'base64-js';
+import ShowSnackbar from './ShowSnackbar';
+
 
 export const GoogleLoginBtn = ({size, type, width, shape}) => {
-  const { setIsLoggedIn, setName, setTrack, setTrackColor } = useLogin();
+  const { setIsLoggedIn, setName, setTrack, setTrackColor, name } = useLogin();
+  const [showSnack, setShowSnack] = useState(false);
 
   // Base64 디코딩 함수 사용하여 UTF-8 문자열로 변환(한글깨짐방지)
   function Base64Decode(str, encoding = 'utf-8') {
@@ -63,10 +66,16 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
       }
     })
     .catch(error => {
-      // 실패 시 에러 메시지 출력
-      console.log(error);
-    });
-  };
+      // sungkyul 메일로 로그인 안했을 때 에러 처리
+      if (error.response && error.response.status === 401) {
+        console.log(error.response.data);
+        setShowSnack(true);
+      } else {
+        // 그 외의 에러 메시지 출력
+        console.log(error);
+      }
+        });
+      };
 
 	return (
 		<>
@@ -80,6 +89,8 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
 				shape={shape} //버튼 shape 지정
         useOneTap='true' //팝업 창을 띄우지 않고 현재 탭에서 로그인
 				/>
+
+      <ShowSnackbar name={name} showSnack={showSnack} setShowSnack={setShowSnack} />
 		</>
 	)
 }
