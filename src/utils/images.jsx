@@ -39,4 +39,8 @@ export const images = {
 
   // AssignmentManagement
   breadArrow: PATH + '/assets/images/admin/AssignmentManagement/BreadArrow.png',
+
+  //cybercampus lecture
+  download : PATH + '/assets/images/download.png',
+  attach : PATH + '/assets/images/attach.png'
 };
