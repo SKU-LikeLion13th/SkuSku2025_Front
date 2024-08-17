@@ -2,14 +2,16 @@ import * as React from 'react';
 import Box from '@mui/joy/Box';
 import Snackbar from '@mui/joy/Snackbar';
 
-export default function PositionedSnackbar({ name, showSnack, setShowSnack }) {
-  const handleClose = React.useCallback(() => {
-    setShowSnack(false); // Snackbar를 수동으로 닫을 때도 부모 컴포넌트의 상태 업데이트
-  }, [setShowSnack]);
+const ShowSnackbar = ({ name, showSnack, setShowSnack }) => {
+  const handleClose = () => {
+    setShowSnack(false);
+  }
 
   return (
     <Box>
       <Snackbar
+        size="md"
+        color="danger" variant="outlined"
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={showSnack} // Snackbar의 열림/닫힘 상태를 showSnack으로 제어
         onClose={handleClose}
@@ -21,3 +23,5 @@ export default function PositionedSnackbar({ name, showSnack, setShowSnack }) {
     </Box>
   );
 }
+
+export default ShowSnackbar

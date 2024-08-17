@@ -98,6 +98,24 @@
   display: none;
 }
 
+.menuStyle {
+  font-weight: 200; /* Normal text weight */
+  font-size: 16px;
+  transition: font-weight 0.1s ease;
+}
+
+.menuStyle:hover {
+  font-weight: 700 !important; /* Bold text on hover */
+}
+
+.tracksMenu {
+  background-color: inherit;
+}
+
+.ignoreBtn {
+  padding: 0 !important;
+}
+
 /* 미디어 쿼리: 화면 크기가 768px 이하일 때 */
 @media (max-width: 1280px) {
   .mobileNavbar {

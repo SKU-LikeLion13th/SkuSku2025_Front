@@ -1,5 +1,5 @@
 import { GoogleLogin } from '@react-oauth/google'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useLogin } from '../utils/LoginContext';
 import * as base64js from 'base64-js';
@@ -38,12 +38,6 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
 			localStorage.setItem('token', JSON.stringify(myToken.token));
 			localStorage.setItem('expire', JSON.stringify(myToken.expire));
 
-      // 로그인 상태 ON
-      setIsLoggedIn(true);
-      
-      // 로그인 성공시 새로고침
-			// window.location.reload()
-
       // JWT 토큰에서 payload 부분을 추출하고 디코딩
       const token = myToken.token; // 인코딩된 JWT
       let payload = token.substring(token.indexOf('.') + 1, token.lastIndexOf('.')); // payload 추출
@@ -64,12 +58,14 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
         setTrack('BACK-END')
         setTrackColor('#47EAEA')
       }
+
+      setIsLoggedIn(true);
     })
     .catch(error => {
       // sungkyul 메일로 로그인 안했을 때 에러 처리
       if (error.response && error.response.status === 401) {
         console.log(error.response.data);
-        setShowSnack(true);
+        setShowSnack(true)
       } else {
         // 그 외의 에러 메시지 출력
         console.log(error);
