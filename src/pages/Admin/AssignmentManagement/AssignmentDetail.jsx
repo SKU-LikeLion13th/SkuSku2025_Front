@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import TodayTaskManagement from './TodayTaskManagement';
 import OngoingTaskManagement from './OngoingTaskManagement';
@@ -6,12 +7,89 @@ import OngoingTaskManagement from './OngoingTaskManagement';
 const AssignmentDetail = ({ assignment }) => {
   const [selectedTask, setSelectedTask] = useState(null);
   const [isOngoingTask, setIsOngoingTask] = useState(false);
+  const [tasks, setTasks] = useState([]);
+  const [ongoingTasks, setOngoingTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchAssignmentDetails = async () => {
+      try {
+        let token = localStorage.getItem('token');
+        if (token.startsWith('"') && token.endsWith('"')) {
+          token = token.slice(1, -1);
+        }
+
+        const response = await axios.get('https://back.sku-sku.com/admin/submit/details', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            track: 'FRONTEND',
+            writer: assignment.name,
+          },
+        });
+
+        const { assignments } = response.data;
+
+        const todayTasks =
+          assignments?.today?.map(task => ({
+            id: task.id,
+            title: task.title,
+            subTitle: task.subTitle,
+            submitted: task.submitAssignmentAllDTO?.submitStatus === 'SUBMITTED',
+            fileAttached: task.submitAssignmentAllDTO?.files.length > 0,
+            files: task.submitAssignmentAllDTO?.files || [], // 파일 배열 설정
+            passNonePass: task.submitAssignmentAllDTO?.passNonePass || '', // 통과 여부
+          })) || [];
+
+        const ongoingTasks =
+          assignments?.ing?.map(task => ({
+            id: task.id,
+            title: task.title,
+            subTitle: task.subTitle,
+            submitted: task.submitAssignmentAllDTO?.submitStatus === 'SUBMITTED',
+            fileAttached: task.submitAssignmentAllDTO?.files.length > 0,
+            files: task.submitAssignmentAllDTO?.files || [], // 파일 배열 설정
+            passNonePass: task.submitAssignmentAllDTO?.passNonePass || '', // 통과 여부
+          })) || [];
+
+        setTasks(todayTasks);
+        setOngoingTasks(ongoingTasks);
+      } catch (error) {
+        console.error('Error fetching assignment details:', error);
+      }
+    };
+
+    fetchAssignmentDetails();
+  }, [assignment.name]);
+
+  const downloadBase64File = (base64Data, fileName, fileType) => {
+    const byteCharacters = atob(base64Data);
+    const byteNumbers = new Array(byteCharacters.length).fill().map((_, i) => byteCharacters.charCodeAt(i));
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: fileType });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', fileName); // 다운로드할 파일 이름 설정
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // 다운로드 후 링크 제거
+  };
 
   return selectedTask ? (
     isOngoingTask ? (
-      <OngoingTaskManagement task={selectedTask} />
+      <OngoingTaskManagement
+        assignmentId={selectedTask.id} // assignmentId 전달
+        writer={assignment.name} // writer 전달
+        task={selectedTask} // 선택된 task 정보 전달
+      />
     ) : (
-      <TodayTaskManagement task={selectedTask} />
+      <TodayTaskManagement
+        assignmentId={selectedTask.id} // assignmentId 전달
+        writer={assignment.name} // writer 전달
+        task={selectedTask} // 선택된 task 정보 전달
+      />
     )
   ) : (
     <>
@@ -61,26 +139,47 @@ const AssignmentDetail = ({ assignment }) => {
             <tr className="border-b border-gray-300">
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">과제 제목</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">제출 여부</th>
+              <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">통과 여부</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">첨부파일</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">관리</th>
             </tr>
           </thead>
           <tbody>
-            {assignment.tasks.map(task => (
+            {tasks.map(task => (
               <tr key={task.id} className="text-center border-b border-gray-300">
                 <td className="px-4 py-2 text-sm">{task.title}</td>
                 <td className={`px-4 py-2 text-sm ${task.submitted ? 'text-blue-600' : 'text-red-600'}`}>
                   {task.submitted ? '제출' : '미제출'}
                 </td>
-                <td className="px-4 py-2 text-sm">{task.fileAttached ? '다운로드' : '없음'}</td>
+                <td className="px-4 py-2 text-sm">
+                  {task.submitted && (
+                    <span className={` ${task.passNonePass === 'PASS' ? 'text-green-600' : 'text-red-600'}`}>
+                      {task.passNonePass === 'PASS' ? '통과' : '통과되지 않음'}
+                    </span>
+                  )}
+                </td>
+                <td className="px-4 py-2 text-sm">
+                  {task.fileAttached
+                    ? task.files.map(file => (
+                        <button
+                          key={file.id}
+                          onClick={() => downloadBase64File(file.file, file.fileName, file.fileType)}
+                          className="text-blue-500 underline">
+                          다운로드
+                        </button>
+                      ))
+                    : '없음'}
+                </td>
                 <td className="px-4 py-2 text-sm fontBold">
-                  <button
-                    onClick={() => {
-                      setSelectedTask(task);
-                      setIsOngoingTask(false); // 오늘의 과제 관리로 이동
-                    }}>
-                    관리
-                  </button>
+                  {task.submitted && (
+                    <button
+                      onClick={() => {
+                        setSelectedTask(task);
+                        setIsOngoingTask(false); // 오늘의 과제 관리로 이동
+                      }}>
+                      관리
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -93,26 +192,47 @@ const AssignmentDetail = ({ assignment }) => {
             <tr className="border-b border-gray-300">
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">과제 제목</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">제출 여부</th>
+              <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">통과 여부</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">첨부파일</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">관리</th>
             </tr>
           </thead>
           <tbody>
-            {assignment.ongoingTasks.map(task => (
+            {ongoingTasks.map(task => (
               <tr key={task.id} className="text-center border-b border-gray-300">
                 <td className="px-4 py-2 text-sm">{task.title}</td>
-                <td className={`px-4 py-2 text-sm ${task.submitted ? 'text-blue-600' : 'text-red-600'}`}>
+                <td className={`px-4 py-2 text-sm  ${task.submitted ? 'text-blue-600' : 'text-red-600'}`}>
                   {task.submitted ? '제출' : '미제출'}
                 </td>
-                <td className="px-4 py-2 text-sm">{task.fileAttached ? '다운로드' : '없음'}</td>
+                <td className="px-4 py-2 text-sm">
+                  {task.submitted && (
+                    <span className={`${task.passNonePass === 'PASS' ? 'text-green-600' : 'text-red-600'}`}>
+                      {task.passNonePass === 'PASS' ? '통과' : '통과되지 않음'}
+                    </span>
+                  )}
+                </td>
+                <td className="px-4 py-2 text-sm">
+                  {task.fileAttached
+                    ? task.files?.map(file => (
+                        <button
+                          key={file.id}
+                          onClick={() => downloadBase64File(file.file, file.fileName, file.fileType)}
+                          className="text-blue-500 underline">
+                          다운로드
+                        </button>
+                      ))
+                    : '없음'}
+                </td>
                 <td className="px-4 py-2 text-sm fontBold">
-                  <button
-                    onClick={() => {
-                      setSelectedTask(task);
-                      setIsOngoingTask(true); // 진행 중인 과제 관리로 이동
-                    }}>
-                    관리
-                  </button>
+                  {task.submitted && (
+                    <button
+                      onClick={() => {
+                        setSelectedTask(task);
+                        setIsOngoingTask(true); // 진행 중인 과제 관리로 이동
+                      }}>
+                      관리
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
