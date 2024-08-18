@@ -1,52 +1,51 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import AssignmentDetail from './AssignmentDetail';
 
 const IndividualManagement = () => {
   const [assignments, setAssignments] = useState([]);
   const [selectedAssignment, setSelectedAssignment] = useState(null);
-  const [totalTasks, setTotalTasks] = useState(28);
+  const [totalTasks, setTotalTasks] = useState(0);
 
   useEffect(() => {
-    const exampleData = [
-      {
-        id: 1,
-        name: '김찬주',
-        todayTask: '1/2',
-        ongoingTask: '3/5',
-        completedTask: 21,
-        tasks: [
-          { id: 1, title: '8월 첫째주 과제 안내 [발표1]', submitted: true, fileAttached: true },
-          { id: 2, title: '8월 첫째주 과제 안내 [발표2]', submitted: false, fileAttached: false },
-        ],
-        ongoingTasks: [
-          { id: 1, title: '8월 첫째주 과제 안내 [발표1]', submitted: true, fileAttached: true },
-          { id: 2, title: '8월 첫째주 과제 안내 [발표2]', submitted: true, fileAttached: true },
-          { id: 3, title: '8월 첫째주 과제 안내 [발표2]', submitted: false, fileAttached: false },
-          { id: 4, title: '8월 첫째주 과제 안내 [발표2]', submitted: false, fileAttached: false },
-        ],
-      },
-      {
-        id: 2,
-        name: '김흥수',
-        todayTask: '1/2',
-        ongoingTask: '3/5',
-        completedTask: 21,
-        tasks: [
-          { id: 1, title: '8월 첫째주 과제 안내 [발표1]', submitted: true, fileAttached: true },
-          { id: 2, title: '8월 첫째주 과제 안내 [발표2]', submitted: false, fileAttached: false },
-        ],
-        ongoingTasks: [
-          { id: 1, title: '8월 첫째주 과제 안내 [발표1]', submitted: true, fileAttached: true },
-          { id: 2, title: '8월 첫째주 과제 안내 [발표2]', submitted: true, fileAttached: true },
-          { id: 3, title: '8월 첫째주 과제 안내 [발표2]', submitted: false, fileAttached: false },
-          { id: 4, title: '8월 첫째주 과제 안내 [발표2]', submitted: false, fileAttached: false },
-        ],
-      },
-      // 다른 아기사자 데이터들 추가
-    ];
+    const fetchAssignments = async () => {
+      try {
+        let token = localStorage.getItem('token');
+        if (token.startsWith('"') && token.endsWith('"')) {
+          token = token.slice(1, -1);
+        }
 
-    setAssignments(exampleData);
+        const response = await axios.get('https://back.sku-sku.com/admin/submit/trackcnt', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            track: 'FRONTEND',
+          },
+        });
+
+        // 서버에서 받은 데이터를 파싱하여 필요한 정보로 변환
+        const { totalAssignmentsByTrack, assignmentCounts } = response.data;
+
+        const fetchedData = assignmentCounts.map((item, index) => ({
+          id: index + 1, // 임의의 ID 부여
+          name: item.writer,
+          todayTask: `${item.submittedTodayCount}/${item.todayCount}`, // 제출된 오늘의 과제 수 / 총 오늘의 과제 수
+          ongoingTask: `${item.submittedIngCount}/${item.ingCount}`, // 제출된 진행중인 과제 수 / 총 진행중인 과제 수
+          completedTask: item.doneCount, // 통과된 과제 수
+          tasks: [], // 실제 과제 데이터는 없는 상태
+          ongoingTasks: [], // 실제 진행 중인 과제 데이터는 없는 상태
+        }));
+
+        setAssignments(fetchedData);
+        setTotalTasks(totalAssignmentsByTrack); // 총 과제 수 설정
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
+    };
+
+    fetchAssignments();
   }, []);
 
   const handleNameClick = assignment => {
@@ -90,7 +89,7 @@ const IndividualManagement = () => {
                   key={assignment.id}
                   className="text-center border-b border-gray-300 cursor-pointer hover:bg-gray-100"
                   onClick={() => handleNameClick(assignment)}>
-                  <td className="px-4 py-2 text-sm">{index + 1}</td>
+                  <td className="px-4 py-2 text-sm fontBold">{index + 1}</td>
                   <td className="px-4 py-2 text-sm">{assignment.name}</td>
                   <td className="px-20 py-2 text-sm"></td> {/* 공백을 위한 빈 <td> */}
                   <td
