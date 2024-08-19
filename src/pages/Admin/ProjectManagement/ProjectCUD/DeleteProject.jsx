@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Project_Tabs from '../../User/Project/Project_Tabs';
-import { AiOutlineDelete } from 'react-icons/ai';
+import Project_Tabs from '../../../User/Project/Project_Tabs';
 
 export default function DeleteProject() {
   const [projects, setProjects] = useState([]);
@@ -11,12 +10,13 @@ export default function DeleteProject() {
 
   useEffect(() => {
     const fetchProjects = async () => {
+      const token = JSON.parse(localStorage.getItem('token')); // 로컬 스토리지에서 토큰 가져오기
+      if (!token) {
+        console.error('토큰이 없습니다. 로그인 후 다시 시도해주세요.');
+        return;
+      }
       try {
-        const response = await axios.get('https://back.sku-sku.com/project/all', {
-          headers: {
-            Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정 필요
-          },
-        });
+        const response = await axios.get('https://back.sku-sku.com/project/all');
         setProjects(response.data);
         setFilteredProjects(response.data);
       } catch (error) {
@@ -28,18 +28,28 @@ export default function DeleteProject() {
   }, []);
 
   const handleDelete = async projectId => {
+    const token = JSON.parse(localStorage.getItem('token')); // 로컬 스토리지에서 토큰 가져오기
+    if (!token) {
+      console.error('토큰이 없습니다. 로그인 후 다시 시도해주세요.');
+      return;
+    }
     try {
-      await axios.delete(`https://back.sku-sku.com/project/${projectId}`, {
+      await axios.delete('https://back.sku-sku.com/admin/project', {
+        params: {
+          id: projectId, // 쿼리 파라미터로 ID 전달
+        },
         headers: {
-          Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정 필요
+          Authorization: `Bearer ${token}`, // 토큰을 Authorization 헤더에 포함
         },
       });
       // 상태에서 삭제된 프로젝트 제거
       setProjects(projects.filter(project => project.id !== projectId));
       setFilteredProjects(filteredProjects.filter(project => project.id !== projectId));
       setShowConfirmPopup(false);
+      alert('삭제되었습니다!');
     } catch (error) {
       console.error('프로젝트 삭제 중 오류 발생:', error);
+      alert('삭제에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
@@ -59,7 +69,6 @@ export default function DeleteProject() {
   const handleConfirmDelete = () => {
     if (projectToDelete) {
       handleDelete(projectToDelete);
-      alert('삭제되었습니다!');
     }
   };
 
@@ -83,7 +92,7 @@ export default function DeleteProject() {
           {filteredProjects.map((project, index) => (
             <div
               key={index}
-              className="relative w-10/12 mx-auto cursor-pointer md:w-full group hover:textShadow duration-500 hover:translate-y-[-5px] ">
+              className="relative w-10/12 mx-auto cursor-pointer md:w-full group hover:textShadow duration-500 hover:translate-y-[-5px]">
               <div className="relative">
                 <img
                   src={`data:image/png;base64,${project.image}`}

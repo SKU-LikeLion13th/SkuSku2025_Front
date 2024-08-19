@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const CreateProject = () => {
+const UpdateDetail = () => {
+  const { id } = useParams();
   const [classTh, setClassTh] = useState('');
   const [title, setTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
@@ -9,11 +11,34 @@ const CreateProject = () => {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
 
+  useEffect(() => {
+    const fetchProjectDetails = async () => {
+      const token = localStorage.getItem('authToken'); // 토큰 불러오기
+      try {
+        const response = await axios.get(`https://back.sku-sku.com/admin/project/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // 토큰 포함
+          },
+        });
+        const project = response.data;
+        setClassTh(project.classTh);
+        setTitle(project.title);
+        setSubTitle(project.subTitle);
+        setUrl(project.url);
+        if (project.image) {
+          setImagePreview(`data:image/jpeg;base64,${project.image}`);
+        }
+      } catch (error) {
+        console.error('Error fetching project details:', error);
+      }
+    };
+
+    fetchProjectDetails();
+  }, [id]);
+
   const handleFileUpload = event => {
     const file = event.target.files[0];
     setImage(file);
-
-    // 이미지 미리보기를 위해 URL.createObjectURL을 사용
     if (file) {
       setImagePreview(URL.createObjectURL(file));
     }
@@ -21,8 +46,8 @@ const CreateProject = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-
     const formData = new FormData();
+    formData.append('id', id);
     formData.append('classTh', classTh);
     formData.append('title', title);
     formData.append('subTitle', subTitle);
@@ -31,18 +56,20 @@ const CreateProject = () => {
       formData.append('image', image);
     }
 
+    const token = localStorage.getItem('authToken'); // 토큰 불러오기
+
     try {
-      await axios.post('https://back.sku-sku.com/project/add', formData, {
+      const response = await axios.put('https://back.sku-sku.com/project/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정해야함
+          Authorization: `Bearer ${token}`, // 토큰 포함
         },
       });
-      alert('프로젝트가 추가되었습니다!');
-      window.location.href = '/admin/projectManagement';
+      alert('프로젝트 수정에 성공하였습니다!');
+      window.location.href = '/admin/projectManagement/updateProject';
     } catch (error) {
-      console.error('프로젝트 추가 중 오류 발생:', error);
-      alert('프로젝트 추가에 실패했습니다.');
+      console.error('Error updating project:', error.response ? error.response.data : error.message);
+      alert('프로젝트 수정에 실패하였습니다!');
     }
   };
 
@@ -51,11 +78,11 @@ const CreateProject = () => {
       <div className="w-10/12 mx-auto mt-28">
         <div className="pb-12 pr-20 text-6xl border-b-2 fontEB w-fit">
           <div className="text-[#3B79FF]">SKU LIKELION</div>
-          <div>PROJECT</div>
+          <div className="text-black">PROJECT</div>
         </div>
         <form onSubmit={handleSubmit} className="px-24 mt-12 fontBold">
           <div className="mb-4 text-3xl fontBold">
-            프로젝트 <span className="text-[#3b79ff]">추가</span>
+            프로젝트 <span className="text-[#3b79ff]">수정</span>
           </div>
           <div className="flex items-center py-4">
             <label className="text-xl w-[60px] mr-8" htmlFor="classTh">
@@ -122,7 +149,7 @@ const CreateProject = () => {
               />
             </div>
           </div>
-          <div className="flex items-center py-4">
+          <div className="flex items-center ">
             <div className="w-[60px] mr-8"></div>
             {(imagePreview || image) && (
               <div className="flex items-center py-4">
@@ -135,15 +162,13 @@ const CreateProject = () => {
             )}
           </div>
           <div className="flex justify-end py-4">
-            <button
-              type="submit"
-              className="text-white py-[6px] mx-2 text-sm rounded-lg px-7 fontRegular bg-[#3B79FF] ">
-              등록
+            <button type="submit" className="py-[6px] mx-2 text-sm text-white rounded-lg px-7 fontRegular bg-[#3B79FF]">
+              수정
             </button>
             <button
               type="button"
               onClick={() => window.history.back()}
-              className="py-[6px] mx-2 text-sm rounded-lg px-7 fontRegular border-[1px] ">
+              className="py-[6px] mx-2 text-sm rounded-lg px-7 fontRegular border-[1px]">
               취소
             </button>
           </div>
@@ -153,4 +178,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default UpdateDetail;

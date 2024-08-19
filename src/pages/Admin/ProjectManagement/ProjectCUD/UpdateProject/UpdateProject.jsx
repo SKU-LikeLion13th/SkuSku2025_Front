@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Project_Tabs from '../../User/Project/Project_Tabs';
-import { FaPen } from 'react-icons/fa';
+import Project_Tabs from '../../../../User/Project/Project_Tabs';
 
 export default function UpdateProject() {
   const [projects, setProjects] = useState([]);
@@ -11,10 +10,16 @@ export default function UpdateProject() {
 
   useEffect(() => {
     const fetchProjects = async () => {
+      const token = JSON.parse(localStorage.getItem('token')); // 로컬 스토리지에서 토큰 가져오기
+      if (!token) {
+        console.error('토큰이 없습니다. 로그인 후 다시 시도해주세요.');
+        return;
+      }
+
       try {
         const response = await axios.get('https://back.sku-sku.com/project/all', {
           headers: {
-            Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정 필요
+            Authorization: `Bearer ${token}`, // 토큰을 Authorization 헤더에 포함
           },
         });
         setProjects(response.data);
@@ -36,7 +41,7 @@ export default function UpdateProject() {
   };
 
   const handleEditClick = projectId => {
-    navigate(`/admin/updateDetail/${projectId}`);
+    navigate(`/admin/projectManagement/updateProject/${projectId}`);
   };
 
   return (

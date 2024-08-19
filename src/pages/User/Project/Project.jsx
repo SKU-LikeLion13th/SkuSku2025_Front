@@ -13,11 +13,7 @@ const Project = () => {
   /* 프로젝트 불러오기 코드 */
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('https://back.sku-sku.com/project/all', {
-        headers: {
-          Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정 필요
-        },
-      });
+      const response = await axios.get('https://back.sku-sku.com/project/all');
       setProjects(response.data);
       setFilteredProjects(response.data);
     } catch (error) {

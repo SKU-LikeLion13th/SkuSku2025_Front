@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Project_Tabs from '../../User/Project/Project_Tabs';
+import { Outlet } from 'react-router-dom';
 
 export default function ProjectManagement() {
   const navigate = useNavigate();
@@ -12,14 +13,16 @@ export default function ProjectManagement() {
     fetchProjects();
   }, []);
 
-  /* 프로젝트 불러오기 코드 */
+  // 프로젝트 불러오기 코드
   const fetchProjects = async () => {
+    const token = JSON.parse(localStorage.getItem('token')); // 로컬 스토리지에서 토큰 가져오기
+    if (!token) {
+      console.error('토큰이 없습니다. 로그인 후 다시 시도해주세요.');
+      return;
+    }
+
     try {
-      const response = await axios.get('https://back.sku-sku.com/project/all', {
-        headers: {
-          Authorization: `Bearer YOUR_TOKEN_HERE`, // 토큰 수정 필요
-        },
-      });
+      const response = await axios.get('https://back.sku-sku.com/project/all');
       setProjects(response.data);
       setFilteredProjects(response.data);
     } catch (error) {
@@ -40,9 +43,9 @@ export default function ProjectManagement() {
   };
 
   const buttons = [
-    { text: '프로젝트 추가', color: '#BACFFF', route: '/admin/createProject' },
-    { text: '프로젝트 수정', color: '#FCBD8F', route: '/admin/updateProject' },
-    { text: '프로젝트 삭제', color: '#85E1AA', route: '/admin/deleteProject' },
+    { text: '프로젝트 추가', color: '#BACFFF', route: '/admin/projectManagement/createProject' },
+    { text: '프로젝트 수정', color: '#FCBD8F', route: '/admin/projectManagement/updateProject' },
+    { text: '프로젝트 삭제', color: '#85E1AA', route: '/admin/projectManagement/deleteProject' },
   ];
 
   return (
@@ -90,6 +93,7 @@ export default function ProjectManagement() {
           ))}
         </div>
       </div>
+      <Outlet />
     </div>
   );
 }
