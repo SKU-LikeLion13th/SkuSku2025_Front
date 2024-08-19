@@ -1,13 +1,17 @@
+import axios from 'axios';
 import React from 'react';
 import { images } from '../utils/images';
 
-const LectureContent = ({ lecture, onBack }) => {
+const LectureContent = ({ lecture, onBack, onEdit, isAdmin, refreshLectures }) => {
   const handleBackClick = () => {
     onBack();
-    window.location.reload();
   };
 
-  // 파일 다운로드를 처리하는 함수
+  const handleEditClick = () => {
+    onEdit(lecture);
+    console.log('버튼 눌림', lecture);
+  };
+
   const handleDownload = (file) => {
     const link = document.createElement('a');
     const blob = new Blob([new Uint8Array(atob(file.file).split('').map((char) => char.charCodeAt(0)))], {
@@ -17,15 +21,51 @@ const LectureContent = ({ lecture, onBack }) => {
     link.href = url;
     link.download = file.fileName;
     link.click();
-    URL.revokeObjectURL(url); // 메모리 누수를 방지하기 위해 URL 해제
+    URL.revokeObjectURL(url);
   };
 
-  // 첫 번째 첨부파일을 가져옴 (여러 파일이 있을 경우 확장 가능)
+  // 강의 삭제
+  const handleDeleteSelected = async () => {
+    console.log(lecture.id); 
+    let token = localStorage.getItem('token');
+    if (token.startsWith('"') && token.endsWith('"')) {
+      token = token.slice(1, -1); 
+    }
+    const confirmDelete = window.confirm("해당 강의를 삭제하시겠습니까?");
+    if (!confirmDelete) return;
+    try {
+      const url = `https://back.sku-sku.com/admin/lecture/delete?lectureId=${lecture.id}`;
+      
+      const response = await axios.delete(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      console.log('Lecture deleted:', response.data);
+      
+      refreshLectures(); 
+      onBack();  
+    } catch (error) {
+      console.error('Failed to delete lecture:', error.response ? error.response.data : error.message);
+      alert('강의 자료 삭제에 실패했습니다. 다시 시도해주세요.');
+    }
+  };
+  
+
   const firstFile = lecture.joinLectureFiles && lecture.joinLectureFiles[0];
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center fontLight">
       <div className="w-3/4 mt-10 text-center">
+        {isAdmin && (
+          <div className="mb-3 w-full flex justify-end">
+            <button className="text-[#868686] border-2 mr-2 py-1 px-3 rounded-md" onClick={handleEditClick}>
+              수정
+            </button>
+            <button className="text-[#868686] border-2 mr-2 py-1 px-3 rounded-md" onClick={handleDeleteSelected}>삭제</button>
+          </div>
+        )}
         <div className="h-[1.5px] w-full bg-black" />
         <div className="flex flex-col justify-evenly items-center text-center w-1/2 min-h-80 mx-auto bg-[#F7F7F7] rounded-lg mt-24 py-5">
           <div className="text-4xl fontBold">{lecture.title}</div>
