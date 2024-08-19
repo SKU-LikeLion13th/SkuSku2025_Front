@@ -22,7 +22,7 @@ const MainSlider = () => {
   };
 
   return (
-    <div className="absolute top-0 left-0 w-full min-h-screen -z-10">
+    <div className="absolute top-0 left-0 w-full min-h-screen z-0">
       <Slider {...settings}>
         {mainImages.map((image, index) => (
           <div key={index} className="w-full  min-h-[220vh] xl:min-h-screen">
