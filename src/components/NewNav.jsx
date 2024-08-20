@@ -32,7 +32,7 @@ const NewNav = () => {
 
   const getNavItemStyle = (index) => {
     const activeStyle = {
-      fontWeight: 'bold',
+      fontFamily: 'Pretendard-ExtraBold'
     };
 
     return {
@@ -65,7 +65,7 @@ const NewNav = () => {
         <ul className="flex relative items-center">
           <Dropdown>
             <MenuButton variant="nautral" className='ignoreBtn'  onClick={() => setActiveIndex(0)}>
-              <Link to='/frontend' key='TRACK'>
+              <Link to='#' key='TRACK'>
                 <li style={getNavItemStyle(0)} className="menuStyle">TRACK</li>
               </Link>
             </MenuButton>

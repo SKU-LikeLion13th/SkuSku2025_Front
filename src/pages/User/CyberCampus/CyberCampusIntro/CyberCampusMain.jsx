@@ -36,12 +36,9 @@ const CyberCampusMain = () => {
   return (
     <div className='flex flex-col mx-auto container text-center'>
       {/* title */}
-      <div className="text-center mt-24">
-        <div className="text-[#3A78FF] text-6xl fontEB">
-          LIKELION SKU
-          <br />
-        </div>
-        <div className="text-6xl fontEB mt-4">사이버캠퍼스</div>
+      <div className="flex flex-col items-center justify-center pt-40 fontEB">
+        <div className="text-[#3B79FF] my-2 ml-1 text-7xl">LIKELION SKU</div>
+        <div className="mr-1 text-6xl">사이버캠퍼스</div>
       </div>
 
       {/* subTitle */}
@@ -50,7 +47,7 @@ const CyberCampusMain = () => {
       {/* Track Box */}
       {!trackItemIn && 
       <div className="container mx-auto xl:w-full xl:px-0">
-        <div className="grid w-full grid-cols-1 gap-8 xl:grid-cols-3 ">
+        <div className="grid w-full grid-cols-1 gap-8 xl:grid-cols-3">
           {trackData.map((track, index) => (
           <TrackItem
               key={index}
