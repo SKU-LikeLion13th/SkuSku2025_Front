@@ -7,12 +7,15 @@ import CreateProject from '../pages/Admin/ProjectManagement/ProjectCUD/CreatePro
 import UpdateProject from '../pages/Admin/ProjectManagement/ProjectCUD/UpdateProject/UpdateProject.jsx';
 import DeleteProject from '../pages/Admin/ProjectManagement/ProjectCUD/DeleteProject.jsx';
 import UpdateDetail from '../pages/Admin/ProjectManagement/ProjectCUD/UpdateProject/UpdateDetail.jsx';
+import AdminMain from '../pages/Admin/AdminMain.jsx';
 
 const Admin = () => {
   return (
     <Routes>
-      {/* <Route path="/main" element={<Outlet />}> */}
-      {/* <Route index element={<AdminMain/> */}
+      <Route path="/main" element={<Outlet />}>
+        <Route index element={<AdminMain/>} />
+      </Route>
+      
       <Route path="/assignmentManagement" element={<AssignmentManagement />} />
       <Route path="/lectureManagement" element={<LectureManagement />} />
       <Route path="/projectManagement" element={<Outlet />}>
@@ -24,7 +27,6 @@ const Admin = () => {
           <Route path=":id" element={<UpdateDetail />} />
         </Route>
       </Route>
-      {/* </Route> */}
     </Routes>
   );
 };
