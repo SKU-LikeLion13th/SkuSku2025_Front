@@ -44,8 +44,8 @@ const TeamIntro = () => {
         </div>
       </div>
 
-      {activeTab === 'tab12' && <Person idList={id12gi} />}
-      {activeTab === 'tab11' && <Person idList={id11gi} />}
+      {activeTab === 'tab12' && <Person idList={id12gi} gapX="gap-x-8 sm:gap-x-12" />}
+      {activeTab === 'tab11' && <Person idList={id11gi} gapX="gap-x-8 sm:gap-x-12" />}
     </>
   );
 };

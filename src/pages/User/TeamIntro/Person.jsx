@@ -1,10 +1,10 @@
 import React from 'react';
 import Person0 from '../../../utils/Person.json';
 
-const Person = ({ idList }) => {
+const Person = ({ idList, gapX = 'gap-x-8' }) => {
   return (
     <div className="flex justify-center px-4 mt-5 sm:px-0">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-x-24 gap-x-8 gap-y-12">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${gapX} gap-y-12`}>
         {idList.map(id => {
           const member = Person0.find(member => member.id === id);
           if (!member) return null;
@@ -16,7 +16,7 @@ const Person = ({ idList }) => {
               <img
                 src={member.image}
                 alt={member.name}
-                className="object-cover w-24 h-24 mx-auto rounded-full sm:w-30 sm:h-24"
+                className="object-contain rounded w-24 h-24 mx-auto sm:w-30 sm:h-24"
               />
               <div className="flex items-center justify-center mt-4 whitespace-nowrap">
                 <img src={member.logo} alt="logo" className="w-6 h-6 mr-2" />
