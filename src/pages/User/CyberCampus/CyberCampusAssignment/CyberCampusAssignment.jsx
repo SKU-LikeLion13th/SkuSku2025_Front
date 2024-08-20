@@ -29,9 +29,9 @@ export default function CyberCampusAssignment() {
 
   return (
     <div className="relative min-h-screen text-black">
-      <div className="flex flex-col items-center justify-center pt-40 text-6xl fontEB">
-        <div className="text-[#3B79FF] my-2 mx-2 text-7xl">{track}</div>
-        <div>과제제출</div>
+      <div className="flex flex-col items-center justify-center pt-40 fontEB">
+        <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
+        <div className="mr-1 text-6xl">과제제출</div>
       </div>
       <div className="flex justify-center w-10/12 mx-auto text-[28px] mt-28 fontBold">
         {buttons.map((button, index) => (
