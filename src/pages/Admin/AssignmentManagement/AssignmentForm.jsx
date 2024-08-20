@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AssignmentForm = ({ onSubmit, onCancel }) => {
+const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
   const [title, setTitle] = useState('');
   const [subTitle, setSubtitle] = useState(''); // 추가된 subtitle 입력 필드
   const [description, setDescription] = useState('');
@@ -16,37 +16,32 @@ const AssignmentForm = ({ onSubmit, onCancel }) => {
     try {
       let token = localStorage.getItem('token'); // 토큰 가져오기
 
-      // 토큰을 콘솔에 출력
-      console.log('Retrieved Token:', token);
-
-      // 만약 토큰이 ""로 감싸져 있다면 제거
       if (token.startsWith('"') && token.endsWith('"')) {
         token = token.slice(1, -1);
       }
-
-      // 수정된 토큰을 콘솔에 출력
-      console.log('Processed Token:', token);
 
       // 서버로 데이터를 보내는 POST 요청
       const response = await axios.post(
         'https://back.sku-sku.com/admin/assignment/add',
         {
-          trackType: 'FRONTEND', // 고정된 trackType
+          trackType: trackType.toUpperCase(),
           title,
           subTitle,
           description,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Bearer 토큰 설정
-            'Content-Type': 'application/json', // 요청이 JSON 형식임을 명시
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
           },
         },
       );
 
       if (response.status === 201) {
+        console.log('추가된 데이터:', response.data); // 추가된 데이터의 ID 확인
         alert('등록되었습니다.');
         onSubmit(response.data); // 등록 성공 시 추가된 과제를 전달
+        resetForm(); // 입력값 초기화
       } else {
         alert('등록에 실패하였습니다.');
       }
@@ -54,6 +49,12 @@ const AssignmentForm = ({ onSubmit, onCancel }) => {
       alert('등록에 실패하였습니다.');
       console.error('Error submitting assignment:', error);
     }
+  };
+
+  const resetForm = () => {
+    setTitle('');
+    setSubtitle('');
+    setDescription('');
   };
 
   return (
@@ -94,7 +95,10 @@ const AssignmentForm = ({ onSubmit, onCancel }) => {
           </button>
           <button
             className="px-4 py-2 border border-gray-400 text-xs rounded-md hover:bg-gray-300 fontRegular"
-            onClick={onCancel}>
+            onClick={() => {
+              resetForm(); // 취소 시 입력값 초기화
+              onCancel();
+            }}>
             취소
           </button>
         </div>

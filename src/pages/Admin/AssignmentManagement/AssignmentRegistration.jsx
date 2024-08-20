@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import Breadcrumb from '../../../components/Breadcrumb';
@@ -8,6 +9,10 @@ import DeleteAssignments from './DeleteAssignment';
 import IndividualManagement from './IndividualManagement';
 
 const AssignmentRegistration = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const trackType = queryParams.get('track'); // 쿼리 파라미터에서 track 값을 가져옴
+
   const [view, setView] = useState('main');
   const [assignments, setAssignments] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -20,7 +25,7 @@ const AssignmentRegistration = () => {
   const handleDeleteClick = () => setDeleteMode(true);
 
   const handleFormSubmit = newAssignment => {
-    setAssignments([...assignments, newAssignment]); // 새로 추가된 과제를 assignments에 추가
+    setAssignments([...assignments, newAssignment]);
     setShowForm(false);
   };
 
@@ -57,7 +62,7 @@ const AssignmentRegistration = () => {
             Authorization: `Bearer ${token}`,
           },
           params: {
-            track: 'FRONTEND',
+            track: trackType.toUpperCase(), // trackType을 동적으로 설정
             status: 'TODAY',
           },
         });
@@ -70,7 +75,7 @@ const AssignmentRegistration = () => {
     };
 
     fetchAssignments();
-  }, []);
+  }, [trackType]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 mt-[-10vh]">
@@ -78,7 +83,7 @@ const AssignmentRegistration = () => {
         <>
           <div className="flex flex-col items-center mb-32">
             <AssignmentTitle variant="title" className="mb-8">
-              FRONT-END
+              {trackType?.replace('_', ' ')}
             </AssignmentTitle>
             <AssignmentTitle variant="subtitle" className="mb-12">
               과제 제출 관리
@@ -104,7 +109,7 @@ const AssignmentRegistration = () => {
         <div className="flex flex-col items-center justify-center min-h-screen py-2 w-full max-w-4xl mx-auto">
           <div className="w-full">
             <div className="flex flex-col items-center mb-24 mt-20">
-              <AssignmentTitle variant="title">FRONT-END</AssignmentTitle>
+              <AssignmentTitle variant="title">{trackType?.replace('_', ' ')}</AssignmentTitle>
               <AssignmentTitle variant="subtitle">과제 제출</AssignmentTitle>
               <Breadcrumb />
             </div>
@@ -129,7 +134,7 @@ const AssignmentRegistration = () => {
               </div>
             ) : (
               <div className="w-full mx-auto">
-                <AssignmentForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+                <AssignmentForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} trackType={trackType} />
               </div>
             )}
           </div>
