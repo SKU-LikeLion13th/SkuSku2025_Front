@@ -24,7 +24,9 @@ const Footer = () => {
               <img src={images.kakao} alt="kakao" className="mx-1" />
             </Link>
           </div>
-          <div className="fontSB">@2024_LIKELIONSKU 12th</div>
+          <div className="fontSB">@2024_LIKEL
+            <Link to='/admin/main' className='cursor-auto'>IO</Link>
+            NSKU 12th</div>
         </div>
       </div>
     </>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useLogin } from '../../../../utils/LoginContext';
 import NeedLogin from './NeedLogin';
-import CyberCampusMain from './CyberCampusMain';
+import CyberCampusMainNew from './CyberCampusMainNew';
 
 const CyberCampusIntro = () => {
   const { isLoggedIn } = useLogin();
 
-  return <div>{isLoggedIn ? <CyberCampusMain /> : <NeedLogin />}</div>;
+  return <div>{isLoggedIn ? <CyberCampusMainNew /> : <NeedLogin />}</div>;
 };
 
 export default CyberCampusIntro;

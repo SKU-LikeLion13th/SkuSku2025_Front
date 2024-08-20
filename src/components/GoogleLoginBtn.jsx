@@ -1,5 +1,5 @@
 import { GoogleLogin } from '@react-oauth/google'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useLogin } from '../utils/LoginContext';
 import * as base64js from 'base64-js';
@@ -47,16 +47,21 @@ export const GoogleLoginBtn = ({size, type, width, shape}) => {
       localStorage.setItem('name', dec.name);
       localStorage.setItem('track', dec.track);
 
-      if (dec.track === 'PM/DESIGN') {
-        setTrackColor('#FF669D')
-      } else if (dec.track === 'FRONTEND' || 'FRONT-END') {
-        setName(dec.name)
-        setTrack('FRONT-END')
-        setTrackColor('#FF7816')
-      } else {
-        setName(dec.name)
-        setTrack('BACK-END')
-        setTrackColor('#47EAEA')
+      const name = dec.name;
+      const track = dec.track;
+
+      if (name) {
+        setName(name)
+        if (track === "FRONTEND") {
+          setTrack('FRONT-END')
+          setTrackColor('#FF7816')
+        } else if (track === "BACKEND") {
+          setTrack('BACK-END')
+          setTrackColor('#47EAEA')
+        } else {
+          setTrack('PM/DESIGN')
+          setTrackColor('#FF669D')
+        }
       }
 
       setIsLoggedIn(true);
