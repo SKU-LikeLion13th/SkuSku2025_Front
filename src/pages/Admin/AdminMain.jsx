@@ -9,24 +9,24 @@ const AdminMain = () => {
       title: '강의자료',
       subtitle: '세션 강의자료 관리',
       bgColor: 'bg-gradient-to-r from-[#FFE3CF] to-[#FF8C3A]',
-      navigateTo: `/admin/lectureManagement`,
+      navigateTo: `/admin/main/lectureManagement`,
     },
     {
       title: '과제제출',
       subtitle: '아기사자 과제 관리',
       bgColor: 'bg-gradient-to-r from-[#BDFFFF] to-[#47EAEA]',
-      navigateTo: `/admin/assignmentIntro`,
+      navigateTo: `/admin/main/assignmentManagement`,
     },
     {
       title: '프로젝트',
       subtitle: '기수별 프로젝트 관리',
       bgColor: 'bg-gradient-to-r from-[#FFD1E2] to-[#FF87B1]',
-      navigateTo: `/admin/projectManagement`,
+      navigateTo: `/admin/main/projectManagement`,
     },
   ];
 
   return (
-    <div className="flex flex-col mx-auto container text-center">
+    <div className="container flex flex-col mx-auto text-center">
       {/* title */}
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">LIKELION SKU</div>

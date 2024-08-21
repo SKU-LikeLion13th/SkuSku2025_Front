@@ -19,17 +19,17 @@ export default function ProgressingAssignment() {
       }
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/assignment', {
+        const response = await axios.get('https://back.sku-sku.com/submit/status', {
           params: {
-            track: track.replace('-', ''), // track 값을 수정 (예: FRONT-END -> FRONTEND)
-            status: 'ING', // 진행 중인 과제
+            writer: localStorage.getItem('name') || 'Unknown',
+            track: track.replace('-', ''),
           },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        setAssignments(response.data.assignments);
+        setAssignments(response.data.ing || []);
       } catch (error) {
         console.error('과제를 불러오는데 실패했습니다.', error);
       }
@@ -38,11 +38,9 @@ export default function ProgressingAssignment() {
     fetchAssignments();
   }, [track]);
 
-  // 현재 페이지에 보여줄 과제 계산
   const indexOfLastAssignment = currentPage * assignmentsPerPage;
   const indexOfFirstAssignment = indexOfLastAssignment - assignmentsPerPage;
   const currentAssignments = assignments.slice(indexOfFirstAssignment, indexOfLastAssignment);
-
   const totalPages = Math.ceil(assignments.length / assignmentsPerPage);
 
   const goDetail = assignmentId => {
@@ -70,16 +68,15 @@ export default function ProgressingAssignment() {
         <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-12 mx-auto mt-16">
           {currentAssignments.map(assignment => (
             <button
-              key={assignment.id}
+              key={assignment.assignmentId}
               className="w-full px-10 py-8 text-white bg-[#FF7816] rounded-xl text-start"
-              onClick={() => goDetail(assignment.id)}>
+              onClick={() => goDetail(assignment.assignmentId)}>
               <div className="text-lg fontBold">{assignment.title}</div>
               <div className="text-lg fontBold">[{assignment.subTitle}]</div>
               <div className="mt-4 text-sm">{assignment.description}</div>
             </button>
           ))}
         </div>
-        {/* 페이지네이션 버튼 */}
         <div className="flex justify-center mt-16">
           {Array.from({ length: totalPages }, (_, index) => (
             <button

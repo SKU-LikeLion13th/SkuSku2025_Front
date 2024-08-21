@@ -19,17 +19,18 @@ export default function CompletedAssignment() {
       }
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/assignment', {
+        const response = await axios.get('https://back.sku-sku.com/submit/status', {
           params: {
             track: track.replace('-', ''), // track 값을 적절히 변환
-            status: 'DONE', // 완료된 과제 가져오기
+            writer: '한민규', // 필수 파라미터 추가
           },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        setAssignments(response.data.assignments);
+        // Extracting completed assignments from the response
+        setAssignments(response.data.done);
       } catch (error) {
         console.error('과제를 불러오는데 실패했습니다.', error);
       }
@@ -70,9 +71,9 @@ export default function CompletedAssignment() {
         <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-12 mx-auto mt-16">
           {currentAssignments.map(assignment => (
             <button
-              key={assignment.id}
+              key={assignment.assignmentId}
               className="w-full px-10 py-8 text-white bg-[#00B94A] rounded-xl text-start"
-              onClick={() => goDetail(assignment.id)}>
+              onClick={() => goDetail(assignment.assignmentId)}>
               <div className="text-lg fontBold">{assignment.title}</div>
               <div className="text-lg fontBold">[{assignment.subTitle}]</div>
               <div className="mt-4 text-sm">{assignment.description}</div>

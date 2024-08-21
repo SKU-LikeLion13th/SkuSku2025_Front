@@ -13,20 +13,18 @@ import AssignmentIntro from '../pages/Admin/AssignmentManagement/AssignmentIntro
 const Admin = () => {
   return (
     <Routes>
-      <Route path="/main" element={<Outlet />}>
+      <Route path="main" element={<Outlet />}>
         <Route index element={<AdminMain />} />
-      </Route>
-
-      <Route path="/assignmentIntro" element={<AssignmentIntro />} />
-      <Route path="/assignmentManagement" element={<AssignmentManagement />} />
-      <Route path="/lectureManagement" element={<LectureManagement />} />
-      <Route path="/projectManagement" element={<Outlet />}>
-        <Route index element={<ProjectManagement />} />
-        <Route path="createProject" element={<CreateProject />} />
-        <Route path="deleteProject" element={<DeleteProject />} />
-        <Route path="updateProject" element={<Outlet />}>
-          <Route index element={<UpdateProject />} />
-          <Route path=":id" element={<UpdateDetail />} />
+        <Route path="assignmentManagement" element={<AssignmentManagement />} />
+        <Route path="lectureManagement" element={<LectureManagement />} />
+        <Route path="projectManagement" element={<Outlet />}>
+          <Route index element={<ProjectManagement />} />
+          <Route path="createProject" element={<CreateProject />} />
+          <Route path="deleteProject" element={<DeleteProject />} />
+          <Route path="updateProject" element={<Outlet />}>
+            <Route index element={<UpdateProject />} />
+            <Route path=":id" element={<UpdateDetail />} />
+          </Route>
         </Route>
       </Route>
     </Routes>
