@@ -15,7 +15,7 @@ const AdminMain = () => {
       title: '과제제출',
       subtitle: '아기사자 과제 관리',
       bgColor: 'bg-gradient-to-r from-[#BDFFFF] to-[#47EAEA]',
-      navigateTo: `/admin/main/assignmentManagement`,
+      navigateTo: `/admin/main/assignmentIntro`,
     },
     {
       title: '프로젝트',

@@ -9,19 +9,19 @@ const AssignmentIntro = () => {
       title: '프론트엔드',
       subtitle: 'FRONT-END',
       bgColor: 'bg-gradient-to-r from-[#FFE3CF] to-[#FF8C3A]',
-      navigateTo: `/admin/AssignmentManagement?track=FRONTEND`,
+      navigateTo: `/admin/main/AssignmentManagement?track=FRONTEND`,
     },
     {
       title: '백엔드',
       subtitle: 'BACK-END',
       bgColor: 'bg-gradient-to-r from-[#BDFFFF] to-[#47EAEA]',
-      navigateTo: `/admin/AssignmentManagement?track=BACKEND`,
+      navigateTo: `/admin/main/AssignmentManagement?track=BACKEND`,
     },
     {
       title: '기획/디자인',
       subtitle: 'PM&DESIGN',
       bgColor: 'bg-gradient-to-r from-[#FFD1E2] to-[#FF87B1]',
-      navigateTo: `/admin/AssignmentManagement?track=PM_DESIGN`,
+      navigateTo: `/admin/main/AssignmentManagement?track=PM_DESIGN`,
     },
   ];
 

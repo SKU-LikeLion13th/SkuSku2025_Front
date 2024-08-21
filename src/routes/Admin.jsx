@@ -15,6 +15,7 @@ const Admin = () => {
     <Routes>
       <Route path="main" element={<Outlet />}>
         <Route index element={<AdminMain />} />
+        <Route path="assignmentIntro" element={<AssignmentIntro />} />
         <Route path="assignmentManagement" element={<AssignmentManagement />} />
         <Route path="lectureManagement" element={<LectureManagement />} />
         <Route path="projectManagement" element={<Outlet />}>
