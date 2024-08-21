@@ -39,17 +39,17 @@ const ContactTabs = () => {
   }, [location]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full h-auto mb-20 ml-0 xl:flex-row xl:h-64 xl:ml-48">
+    <div className="relative flex flex-col items-center justify-center w-full h-auto mb-20 ml-0 xl:flex-row xl:h-64 xl:ml-32">
       <div className="flex flex-col w-full space-y-4 text-center xl:space-y-28 xl:w-1/5 xl:text-left">
         <div className="relative">
           <button
-            className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl ${
+            className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'etc' ? 'text-white' : 'text-gray-500'
             }`}
             onClick={() => setSelectedTab('etc')}>
             [기타 의뢰]
           </button>
-          <span className="absolute bottom-0 left-0 flex items-center hidden w-full h-1 mt-2 xl:block">
+          <span className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block">
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
           {selectedTab === 'etc' && (
@@ -67,13 +67,13 @@ const ContactTabs = () => {
         </div>
         <div className="relative">
           <button
-            className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl ${
+            className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'Collaboration' ? 'text-white' : 'text-gray-500'
             }`}
             onClick={() => setSelectedTab('Collaboration')}>
             [협업 문의]
           </button>
-          <span className="absolute bottom-0 left-0 flex items-center hidden w-full h-1 mt-2 xl:block">
+          <span className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block">
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
           {selectedTab === 'Collaboration' && (
@@ -90,13 +90,13 @@ const ContactTabs = () => {
         </div>
         <div className="relative">
           <button
-            className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl ${
+            className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'inquiry' ? 'text-white' : 'text-gray-500'
             }`}
             onClick={() => setSelectedTab('inquiry')}>
             [문의 사항]
           </button>
-          <span className="absolute bottom-0 left-0 flex items-center hidden w-full h-1 mt-2 xl:block">
+          <span className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block">
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
           {selectedTab === 'inquiry' && (
