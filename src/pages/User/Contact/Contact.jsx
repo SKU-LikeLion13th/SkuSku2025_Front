@@ -126,7 +126,7 @@ const ContactTabs = () => {
           </div>
         )}
         {selectedTab === 'Collaboration' && (
-          <div className="hidden xl:block absolute top-0 bg-[#34C242] text-white p-4 rounded-lg w-60 xl:w-72 h-36 xl:h-44 flex items-center justify-center fontLight text-base xl:text-xl">
+          <div className="hidden xl:block absolute top-0 transform -translate-y-3 bg-[#34C242] text-white p-4 rounded-lg w-60 xl:w-72 h-36 xl:h-44 flex items-center justify-center fontLight text-base xl:text-xl">
             <div>
               <span className="text-lg fontSB xl:text-xl">협업 문의</span>는 "sungkyul.univ@likelion.org" 위 메일 주소로
               문의 바랍니다.
