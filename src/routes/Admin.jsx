@@ -8,14 +8,16 @@ import UpdateProject from '../pages/Admin/ProjectManagement/ProjectCUD/UpdatePro
 import DeleteProject from '../pages/Admin/ProjectManagement/ProjectCUD/DeleteProject.jsx';
 import UpdateDetail from '../pages/Admin/ProjectManagement/ProjectCUD/UpdateProject/UpdateDetail.jsx';
 import AdminMain from '../pages/Admin/AdminMain.jsx';
+import AssignmentIntro from '../pages/Admin/AssignmentManagement/AssignmentIntro.jsx';
 
 const Admin = () => {
   return (
     <Routes>
       <Route path="/main" element={<Outlet />}>
-        <Route index element={<AdminMain/>} />
+        <Route index element={<AdminMain />} />
       </Route>
-      
+
+      <Route path="/assignmentIntro" element={<AssignmentIntro />} />
       <Route path="/assignmentManagement" element={<AssignmentManagement />} />
       <Route path="/lectureManagement" element={<LectureManagement />} />
       <Route path="/projectManagement" element={<Outlet />}>
