@@ -21,17 +21,17 @@ export default function TodaysAssignment() {
       const normalizedTrack = track.replace('-', '');
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/assignment', {
+        const response = await axios.get('https://back.sku-sku.com/submit/status', {
           params: {
+            writer: localStorage.getItem('name') || 'Unknown', // 로컬 스토리지에서 이름을 가져옴
             track: normalizedTrack,
-            status: 'TODAY',
           },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        setAssignments(response.data.assignments);
+        setAssignments(response.data.today || []);
       } catch (error) {
         console.error('과제를 불러오는데 실패했습니다.', error);
       }
@@ -47,7 +47,7 @@ export default function TodaysAssignment() {
   const totalPages = Math.ceil(assignments.length / assignmentsPerPage);
 
   const goDetail = assignment => {
-    navigate(`/cyberCampus/intro/${track}/assignment/todaysAssignment/todaysDetail/${assignment.id}`, {
+    navigate(`/cyberCampus/intro/${track}/assignment/todaysAssignment/todaysDetail/${assignment.assignmentId}`, {
       state: {
         title: assignment.title,
         subTitle: assignment.subTitle,
@@ -77,7 +77,7 @@ export default function TodaysAssignment() {
         <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-12 mx-auto mt-16">
           {currentAssignments.map(assignment => (
             <button
-              key={assignment.id}
+              key={assignment.assignmentId}
               className="w-full max-w-md px-10 py-8 text-white bg-blue-500 rounded-xl text-start"
               onClick={() => goDetail(assignment)}>
               <div className="text-lg fontBold">{assignment.title}</div>

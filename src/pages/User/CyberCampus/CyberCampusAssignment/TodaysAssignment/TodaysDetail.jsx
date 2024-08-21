@@ -4,12 +4,12 @@ import CyberCampusLocation from '../../../../../components/CyberCampusLocation';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 export default function TodaysDetail() {
-  const { track, assignmentId } = useParams(); // URL에서 track과 assignmentId를 추출
-  const { state } = useLocation(); // useLocation을 사용해 state로 전달된 데이터를 받음
-  const { title, subTitle, description } = state || {}; // state에서 필요한 데이터를 추출
+  const { track, assignmentId } = useParams();
+  const { state } = useLocation();
+  const { title, subTitle, description } = state || {};
   const [file, setFile] = useState(null);
   const [submitStatus, setSubmitStatus] = useState('');
-  const navigate = useNavigate(); // navigate hook 사용
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAssignmentDetail = async () => {
@@ -20,19 +20,27 @@ export default function TodaysDetail() {
       }
 
       try {
-        const response = await axios.get(`https://back.sku-sku.com/assignment/${assignmentId}`, {
+        const response = await axios.get('https://back.sku-sku.com/submit/status', {
+          params: {
+            writer: localStorage.getItem('name') || 'Unknown', // 로컬 스토리지에서 이름을 가져옴
+            track: track,
+          },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response.data);
+
+        const assignment = response.data.ing.find(a => a.assignmentId === parseInt(assignmentId));
+        if (assignment) {
+          setSubmitStatus(assignment.submitAssignmentWithoutDTO?.submitStatus || '제출 안 함');
+        }
       } catch (error) {
         console.error('과제 세부 정보를 가져오는 중 오류 발생:', error);
       }
     };
 
     fetchAssignmentDetail();
-  }, [assignmentId]);
+  }, [assignmentId, track]);
 
   const handleFileChange = event => {
     setFile(event.target.files[0]);
@@ -48,7 +56,7 @@ export default function TodaysDetail() {
     }
 
     const formData = new FormData();
-    formData.append('assignmentId', assignmentId); // assignmentId를 폼 데이터에 추가
+    formData.append('assignmentId', assignmentId);
     formData.append('files', file);
 
     try {
@@ -63,8 +71,7 @@ export default function TodaysDetail() {
       console.log('서버 응답:', response.data);
       alert('제출이 완료되었습니다!');
 
-      // 제출 성공 시 TodaysAssignment 페이지로 이동
-      navigate(`/cyberCampus/intro/${track}/assignment/todaysAssignment`);
+      navigate(`/cyberCampus/intro/${track}/assignment/progressingAssignment`);
     } catch (error) {
       setSubmitStatus('제출 안 함');
       console.error('과제 제출 중 오류 발생:', error);
