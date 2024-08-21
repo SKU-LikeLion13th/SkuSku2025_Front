@@ -5,11 +5,12 @@ const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
   const [title, setTitle] = useState('');
   const [subTitle, setSubtitle] = useState(''); // 추가된 subtitle 입력 필드
   const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState(''); // 마감일을 위한 state 추가
 
   const handleSubmit = async () => {
-    // 제목이나 설명이 비어 있는 경우 경고 메시지 표시 및 요청 막기
-    if (!title.trim() || !description.trim()) {
-      alert('제목과 설명을 입력하세요');
+    // 제목, 설명, 마감일이 비어 있는 경우 경고 메시지 표시 및 요청 막기
+    if (!title.trim() || !description.trim() || !dueDate.trim()) {
+      alert('제목, 설명, 마감일을 입력하세요');
       return;
     }
 
@@ -28,6 +29,7 @@ const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
           title,
           subTitle,
           description,
+          dueDate, // 날짜 정보 추가
         },
         {
           headers: {
@@ -55,6 +57,7 @@ const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
     setTitle('');
     setSubtitle('');
     setDescription('');
+    setDueDate(''); // 마감일 초기화
   };
 
   return (
@@ -76,6 +79,15 @@ const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
             type="text"
             value={subTitle}
             onChange={e => setSubtitle(e.target.value)}
+            className="mt-1 h-8 block flex-1 border border-gray-400 rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
+        <div className="flex items-center">
+          <label className="block text-sm fontSB w-16">마감일</label>
+          <input
+            type="date"
+            value={dueDate}
+            onChange={e => setDueDate(e.target.value)}
             className="mt-1 h-8 block flex-1 border border-gray-400 rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           />
         </div>
