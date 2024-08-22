@@ -28,36 +28,28 @@ const AssignmentDetail = ({ assignment, trackType }) => {
           },
         });
 
-        // 현재 이 부분이 문제일 가능성이 높습니다.
-        // assignments가 실제로 존재하는지 확인
-        console.log('Response Data:', response.data);
-
-        // 데이터가 잘 들어오는지 확인
         const todayTasks = response.data.today.map(task => ({
           id: task.assignmentId,
           title: task.title,
           subTitle: task.subTitle,
+          dueDate: task.dueDate || '미정', // 마감일이 없으면 "미정"으로 표시
           submitted: task.submitAssignmentWithoutDTO?.submitStatus === 'SUBMITTED',
           fileAttached: task.submitAssignmentWithoutDTO?.files?.length > 0,
           files: task.submitAssignmentWithoutDTO?.files || [],
           passNonePass: task.submitAssignmentWithoutDTO?.passNonePass || '',
         }));
 
-        console.log('Today Tasks:', todayTasks);
-
         const ongoingTasks = response.data.ing.map(task => ({
           id: task.assignmentId,
           title: task.title,
           subTitle: task.subTitle,
-          dueDate: task.dueDate,
+          dueDate: task.dueDate || '미정', // 마감일이 없으면 "미정"으로 표시
           submitted: task.submitAssignmentWithoutDTO?.submitStatus === 'SUBMITTED',
           fileAttached: task.submitAssignmentWithoutDTO?.files?.length > 0,
           files: task.submitAssignmentWithoutDTO?.files || [],
           passNonePass: task.submitAssignmentWithoutDTO?.passNonePass || '',
           feedback: task.submitAssignmentWithoutDTO?.responseFeedback?.content || '',
         }));
-
-        console.log('Ongoing Tasks:', ongoingTasks);
 
         setTasks(todayTasks);
         setOngoingTasks(ongoingTasks);
@@ -133,7 +125,7 @@ const AssignmentDetail = ({ assignment, trackType }) => {
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">과제 제목</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">제출 여부</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">첨부파일</th>
-              <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">관리</th>
+              <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">마감일</th>
             </tr>
           </thead>
           <tbody>
@@ -155,17 +147,7 @@ const AssignmentDetail = ({ assignment, trackType }) => {
                       ))
                     : '없음'}
                 </td>
-                <td className="px-4 py-2 text-sm fontBold">
-                  {task.submitted && (
-                    <button
-                      onClick={() => {
-                        setSelectedTask(task);
-                        setIsOngoingTask(false); // 오늘의 과제 관리로 이동
-                      }}>
-                      관리
-                    </button>
-                  )}
-                </td>
+                <td className="px-4 py-2 text-sm fontBold">{task.dueDate}</td> {/* 마감일 렌더링 */}
               </tr>
             ))}
           </tbody>
