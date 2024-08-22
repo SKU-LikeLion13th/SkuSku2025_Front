@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import Breadcrumb from '../../../components/Breadcrumb';
 
@@ -9,7 +8,6 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
   const [feedbackContent, setFeedbackContent] = useState('');
   const [passStatus, setPassStatus] = useState(''); // 통과 여부 상태 추가
   const [feedBackId, setFeedBackId] = useState(null); // feedBackId 상태 추가
-  const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
     const fetchTaskDetails = async () => {
@@ -50,7 +48,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
     return <div>Loading...</div>;
   }
 
-  const { title, assignSubmitFeed } = taskDetails;
+  const { title, assignSubmitFeed, dueDate } = taskDetails; // dueDate 추가
   const { submitStatus, files = [] } = assignSubmitFeed || {};
 
   const downloadBase64File = (base64Data, fileName, fileType) => {
@@ -88,7 +86,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
       });
 
       alert('피드백이 성공적으로 등록되었습니다.');
-      navigate(-1); // 이전 페이지로 이동
+      // 여기서 navigate를 사용하지 않으므로 페이지가 유지됩니다.
     } catch (error) {
       console.error('Error submitting feedback:', error);
       alert('피드백 등록 중 오류가 발생했습니다.');
@@ -105,6 +103,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
       const payload = {
         feedBackId, // 피드백 ID
         content: feedbackContent, // 수정된 피드백 내용
+        passNonePass: passStatus, // 통과 여부 값 추가
       };
 
       await axios.put('https://back.sku-sku.com/admin/feedback/update', payload, {
@@ -114,7 +113,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
       });
 
       alert('피드백이 성공적으로 수정되었습니다.');
-      navigate(-1); // 이전 페이지로 이동
+      // 여기서도 navigate를 사용하지 않으므로 페이지가 유지됩니다.
     } catch (error) {
       console.error('Error updating feedback:', error);
       alert('피드백 수정 중 오류가 발생했습니다.');
@@ -132,7 +131,10 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
         </AssignmentTitle>
         <Breadcrumb />
       </div>
-      <div className="text-left mb-4 text-2xl fontBold">{title}</div>
+      <div className="flex justify-between items-center mb-4 text-2xl fontBold">
+        <div>{title}</div>
+        <div className="text-lg fontBold">마감일 : {dueDate || '미정'}</div> {/* 마감일 렌더링 */}
+      </div>
 
       <div className="border-t border-[black] mb-8"></div>
 

@@ -9,10 +9,11 @@ const Breadcrumb = () => {
   // 경로명과 실제 표시될 이름을 매핑
   const pathNamesMap = {
     admin: '과제 제출 관리',
-    AssignmentManagement: '오늘의 과제',
+    AssignmentManagement: '과제 관리',
   };
 
-  const pathnames = location.pathname.split('/').filter(x => x);
+  // 필요하지 않은 경로 (main) 필터링
+  const pathnames = location.pathname.split('/').filter(x => x && x !== 'main');
 
   // 동일한 스타일을 위한 공통 클래스
   const commonClassNames = 'text-gray-500 hover:underline fontSB text-sm mx-2';
@@ -41,7 +42,7 @@ const Breadcrumb = () => {
               {isLast ? (
                 <span className="text-gray-900 fontBold pl-1">{displayName}</span>
               ) : (
-                <Link to={value === 'admin' ? '/admin/assignmentIntro' : to} className={`${commonClassNames}`}>
+                <Link to={value === 'admin' ? '/admin/main/assignmentIntro' : to} className={`${commonClassNames}`}>
                   {displayName}
                 </Link>
               )}
