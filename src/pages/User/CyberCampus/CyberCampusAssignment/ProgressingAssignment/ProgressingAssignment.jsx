@@ -47,6 +47,10 @@ export default function ProgressingAssignment() {
     navigate(`/cyberCampus/intro/${track}/assignment/progressingAssignment/progressingDetail/${assignmentId}`);
   };
 
+  const goComplete = () => {
+    navigate(`/cyberCampus/intro/${track}assignment/completedAssignment`);
+  };
+
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
@@ -63,7 +67,11 @@ export default function ProgressingAssignment() {
           진행중인 과제 <span className="text-[#FF7816]">총 {assignments.length}건</span>이 있습니다.
         </div>
         <div className="text-sm">
-          지난 과제는 <span className="text-[#FF7816] fontBold">과제 제출 &gt; 진행중인 과제</span>에서 확인 가능합니다.
+          통과된 과제는{' '}
+          <span className="text-[#FF7816] fontBold cursor-pointer" onClick={goComplete}>
+            과제 제출 &gt; 완성된 과제
+          </span>
+          에서 확인 가능합니다.
         </div>
         <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-12 mx-auto mt-16">
           {currentAssignments.map(assignment => (
