@@ -3,7 +3,7 @@ import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import AssignmentDetail from './AssignmentDetail';
 
-const IndividualManagement = () => {
+const IndividualManagement = ({ trackType }) => {
   const [assignments, setAssignments] = useState([]);
   const [selectedAssignment, setSelectedAssignment] = useState(null);
   const [totalTasks, setTotalTasks] = useState(0);
@@ -21,21 +21,19 @@ const IndividualManagement = () => {
             Authorization: `Bearer ${token}`,
           },
           params: {
-            track: 'FRONTEND',
+            track: trackType.toUpperCase(), // trackType을 동적으로 설정
           },
         });
 
-        // 서버에서 받은 데이터를 파싱하여 필요한 정보로 변환
         const { totalAssignmentsByTrack, assignmentCounts } = response.data;
 
+        // 새로운 데이터 구조에 맞게 변환
         const fetchedData = assignmentCounts.map((item, index) => ({
           id: index + 1, // 임의의 ID 부여
           name: item.writer,
-          todayTask: `${item.submittedTodayCount}/${item.todayCount}`, // 제출된 오늘의 과제 수 / 총 오늘의 과제 수
-          ongoingTask: `${item.submittedIngCount}/${item.ingCount}`, // 제출된 진행중인 과제 수 / 총 진행중인 과제 수
-          completedTask: item.doneCount, // 통과된 과제 수
-          tasks: [], // 실제 과제 데이터는 없는 상태
-          ongoingTasks: [], // 실제 진행 중인 과제 데이터는 없는 상태
+          unsubmittedCount: item.unsubmittedCount, // 제출되지 않은 과제 수
+          submittedCount: item.submittedCount, // 제출된 과제 수
+          passCount: item.passCount, // 통과된 과제 수
         }));
 
         setAssignments(fetchedData);
@@ -46,21 +44,23 @@ const IndividualManagement = () => {
     };
 
     fetchAssignments();
-  }, []);
+  }, [trackType]); // trackType이 변경될 때마다 데이터 갱신
 
   const handleNameClick = assignment => {
     setSelectedAssignment(assignment);
+    console.log('Assignment clicked:', assignment);
   };
 
   return (
     <div className="w-full max-w-4xl mx-auto py-12">
       {selectedAssignment ? (
-        <AssignmentDetail assignment={selectedAssignment} />
+        // AssignmentDetail로 trackType을 함께 전달
+        <AssignmentDetail assignment={selectedAssignment} trackType={trackType} />
       ) : (
         <>
           <div className="flex flex-col items-center mb-16">
             <AssignmentTitle variant="title" className="mb-8">
-              FRONT-END
+              {trackType.replace('_', ' ')} {/* trackType을 동적으로 반영 */}
             </AssignmentTitle>
             <AssignmentTitle variant="subtitle" className="mb-8">
               진행 중인 과제 목록
@@ -78,8 +78,8 @@ const IndividualManagement = () => {
                 <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">번호</th>
                 <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">아기사자</th>
                 <th className="px-20 py-2 bg-[#f7f7f7]"></th> {/* 공백을 위한 빈 <td> */}
-                <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">오늘의 과제</th>
-                <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">진행중인 과제</th>
+                <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">미제출 과제</th>
+                <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">제출된 과제</th>
                 <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">통과된 과제</th>
               </tr>
             </thead>
@@ -94,17 +94,15 @@ const IndividualManagement = () => {
                   <td className="px-20 py-2 text-sm"></td> {/* 공백을 위한 빈 <td> */}
                   <td
                     className={`px-4 py-2 text-sm ${
-                      assignment.todayTask.startsWith('0') ? 'text-red-600' : 'text-blue-600'
+                      assignment.unsubmittedCount > 0 ? 'text-red-600' : 'text-blue-600'
                     }`}>
-                    {assignment.todayTask}
+                    {assignment.unsubmittedCount}
                   </td>
                   <td
-                    className={`px-4 py-2 text-sm ${
-                      assignment.ongoingTask.startsWith('0') ? 'text-red-600' : 'text-blue-600'
-                    }`}>
-                    {assignment.ongoingTask}
+                    className={`px-4 py-2 text-sm ${assignment.submittedCount > 0 ? 'text-blue-600' : 'text-red-600'}`}>
+                    {assignment.submittedCount}
                   </td>
-                  <td className="px-4 py-2 text-sm">{assignment.completedTask}</td>
+                  <td className="px-4 py-2 text-sm">{assignment.passCount}</td>
                 </tr>
               ))}
             </tbody>

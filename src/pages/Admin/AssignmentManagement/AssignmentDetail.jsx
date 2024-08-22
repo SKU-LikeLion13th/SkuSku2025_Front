@@ -4,11 +4,11 @@ import AssignmentTitle from '../../../components/AssignmentTitle';
 import TodayTaskManagement from './TodayTaskManagement';
 import OngoingTaskManagement from './OngoingTaskManagement';
 
-const AssignmentDetail = ({ assignment }) => {
+const AssignmentDetail = ({ assignment, trackType }) => {
   const [selectedTask, setSelectedTask] = useState(null);
   const [isOngoingTask, setIsOngoingTask] = useState(false);
-  const [tasks, setTasks] = useState([]);
-  const [ongoingTasks, setOngoingTasks] = useState([]);
+  const [tasks, setTasks] = useState([]); // 오늘의 과제 리스트
+  const [ongoingTasks, setOngoingTasks] = useState([]); // 진행 중인 과제 리스트
 
   useEffect(() => {
     const fetchAssignmentDetails = async () => {
@@ -18,39 +18,46 @@ const AssignmentDetail = ({ assignment }) => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('https://back.sku-sku.com/admin/submit/details', {
+        const response = await axios.get('https://back.sku-sku.com/admin/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
           params: {
-            track: 'FRONTEND',
+            track: trackType.toUpperCase(),
             writer: assignment.name,
           },
         });
 
-        const { assignments } = response.data;
+        // 현재 이 부분이 문제일 가능성이 높습니다.
+        // assignments가 실제로 존재하는지 확인
+        console.log('Response Data:', response.data);
 
-        const todayTasks =
-          assignments?.today?.map(task => ({
-            id: task.id,
-            title: task.title,
-            subTitle: task.subTitle,
-            submitted: task.submitAssignmentAllDTO?.submitStatus === 'SUBMITTED',
-            fileAttached: task.submitAssignmentAllDTO?.files.length > 0,
-            files: task.submitAssignmentAllDTO?.files || [], // 파일 배열 설정
-            passNonePass: task.submitAssignmentAllDTO?.passNonePass || '', // 통과 여부
-          })) || [];
+        // 데이터가 잘 들어오는지 확인
+        const todayTasks = response.data.today.map(task => ({
+          id: task.assignmentId,
+          title: task.title,
+          subTitle: task.subTitle,
+          submitted: task.submitAssignmentWithoutDTO?.submitStatus === 'SUBMITTED',
+          fileAttached: task.submitAssignmentWithoutDTO?.files?.length > 0,
+          files: task.submitAssignmentWithoutDTO?.files || [],
+          passNonePass: task.submitAssignmentWithoutDTO?.passNonePass || '',
+        }));
 
-        const ongoingTasks =
-          assignments?.ing?.map(task => ({
-            id: task.id,
-            title: task.title,
-            subTitle: task.subTitle,
-            submitted: task.submitAssignmentAllDTO?.submitStatus === 'SUBMITTED',
-            fileAttached: task.submitAssignmentAllDTO?.files.length > 0,
-            files: task.submitAssignmentAllDTO?.files || [], // 파일 배열 설정
-            passNonePass: task.submitAssignmentAllDTO?.passNonePass || '', // 통과 여부
-          })) || [];
+        console.log('Today Tasks:', todayTasks);
+
+        const ongoingTasks = response.data.ing.map(task => ({
+          id: task.assignmentId,
+          title: task.title,
+          subTitle: task.subTitle,
+          dueDate: task.dueDate,
+          submitted: task.submitAssignmentWithoutDTO?.submitStatus === 'SUBMITTED',
+          fileAttached: task.submitAssignmentWithoutDTO?.files?.length > 0,
+          files: task.submitAssignmentWithoutDTO?.files || [],
+          passNonePass: task.submitAssignmentWithoutDTO?.passNonePass || '',
+          feedback: task.submitAssignmentWithoutDTO?.responseFeedback?.content || '',
+        }));
+
+        console.log('Ongoing Tasks:', ongoingTasks);
 
         setTasks(todayTasks);
         setOngoingTasks(ongoingTasks);
@@ -60,7 +67,7 @@ const AssignmentDetail = ({ assignment }) => {
     };
 
     fetchAssignmentDetails();
-  }, [assignment.name]);
+  }, [assignment.name, trackType]);
 
   const downloadBase64File = (base64Data, fileName, fileType) => {
     const byteCharacters = atob(base64Data);
@@ -71,31 +78,23 @@ const AssignmentDetail = ({ assignment }) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', fileName); // 다운로드할 파일 이름 설정
+    link.setAttribute('download', fileName);
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link); // 다운로드 후 링크 제거
+    document.body.removeChild(link);
   };
 
   return selectedTask ? (
     isOngoingTask ? (
-      <OngoingTaskManagement
-        assignmentId={selectedTask.id} // assignmentId 전달
-        writer={assignment.name} // writer 전달
-        task={selectedTask} // 선택된 task 정보 전달
-      />
+      <OngoingTaskManagement assignmentId={selectedTask.id} writer={assignment.name} task={selectedTask} />
     ) : (
-      <TodayTaskManagement
-        assignmentId={selectedTask.id} // assignmentId 전달
-        writer={assignment.name} // writer 전달
-        task={selectedTask} // 선택된 task 정보 전달
-      />
+      <TodayTaskManagement assignmentId={selectedTask.id} writer={assignment.name} task={selectedTask} />
     )
   ) : (
     <>
       <div className="flex flex-col items-center mb-10 mt-12">
         <AssignmentTitle variant="title" className="mb-8">
-          FRONT-END
+          {trackType.replace('_', ' ')}
         </AssignmentTitle>
         <AssignmentTitle variant="subtitle" className="mb-12">
           과제 제출 관리
@@ -116,30 +115,23 @@ const AssignmentDetail = ({ assignment }) => {
           <tbody>
             <tr className="text-center border-b border-gray-300">
               <td className="px-4 py-2 text-sm">{assignment.name}</td>
-              <td
-                className={`px-4 py-2 text-sm ${
-                  assignment.todayTask.startsWith('0') ? 'text-red-600' : 'text-blue-600'
-                }`}>
-                {assignment.todayTask}
+              <td className={`px-4 py-2 text-sm ${tasks.length === 0 ? 'text-red-600' : 'text-blue-600'}`}>
+                {tasks.length}
               </td>
-              <td
-                className={`px-4 py-2 text-sm ${
-                  assignment.ongoingTask.startsWith('0') ? 'text-red-600' : 'text-blue-600'
-                }`}>
-                {assignment.ongoingTask}
+              <td className={`px-4 py-2 text-sm ${ongoingTasks.length === 0 ? 'text-red-600' : 'text-blue-600'}`}>
+                {ongoingTasks.length}
               </td>
-              <td className="px-4 py-2 text-sm">{assignment.completedTask}</td>
+              <td className="px-4 py-2 text-sm">{assignment.passCount}</td>
             </tr>
           </tbody>
         </table>
 
-        <div className="text-xl fontBold mb-4">오늘의 과제 관리 ({assignment.todayTask})</div>
+        <div className="text-xl fontBold mb-4">오늘의 과제 관리 ({tasks.length})</div>
         <table className="min-w-full bg-white border-t border-[black] mb-20">
           <thead>
             <tr className="border-b border-gray-300">
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">과제 제목</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">제출 여부</th>
-              <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">통과 여부</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">첨부파일</th>
               <th className="px-4 py-2 fontBold text-sm bg-[#f7f7f7]">관리</th>
             </tr>
@@ -150,13 +142,6 @@ const AssignmentDetail = ({ assignment }) => {
                 <td className="px-4 py-2 text-sm">{task.title}</td>
                 <td className={`px-4 py-2 text-sm ${task.submitted ? 'text-blue-600' : 'text-red-600'}`}>
                   {task.submitted ? '제출' : '미제출'}
-                </td>
-                <td className="px-4 py-2 text-sm">
-                  {task.submitted && (
-                    <span className={` ${task.passNonePass === 'PASS' ? 'text-green-600' : 'text-red-600'}`}>
-                      {task.passNonePass === 'PASS' ? '통과' : '통과되지 않음'}
-                    </span>
-                  )}
                 </td>
                 <td className="px-4 py-2 text-sm">
                   {task.fileAttached
@@ -186,7 +171,7 @@ const AssignmentDetail = ({ assignment }) => {
           </tbody>
         </table>
 
-        <div className="text-xl fontBold mb-4">진행중인 과제 관리 ({assignment.ongoingTask})</div>
+        <div className="text-xl fontBold mb-4">진행중인 과제 관리 ({ongoingTasks.length})</div>
         <table className="min-w-full bg-white border-t border-[black]">
           <thead>
             <tr className="border-b border-gray-300">
@@ -201,7 +186,7 @@ const AssignmentDetail = ({ assignment }) => {
             {ongoingTasks.map(task => (
               <tr key={task.id} className="text-center border-b border-gray-300">
                 <td className="px-4 py-2 text-sm">{task.title}</td>
-                <td className={`px-4 py-2 text-sm  ${task.submitted ? 'text-blue-600' : 'text-red-600'}`}>
+                <td className={`px-4 py-2 text-sm ${task.submitted ? 'text-blue-600' : 'text-red-600'}`}>
                   {task.submitted ? '제출' : '미제출'}
                 </td>
                 <td className="px-4 py-2 text-sm">

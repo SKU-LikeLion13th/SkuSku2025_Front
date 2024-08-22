@@ -140,7 +140,7 @@ const AssignmentRegistration = () => {
           </div>
         </div>
       )}
-      {view === 'individualManagement' && <IndividualManagement />}
+      {view === 'individualManagement' && <IndividualManagement trackType={trackType} />}
     </div>
   );
 };

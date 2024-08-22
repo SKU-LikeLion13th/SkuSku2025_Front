@@ -105,6 +105,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
       const payload = {
         feedBackId, // 피드백 ID
         content: feedbackContent, // 수정된 피드백 내용
+        passNonePass: passStatus, // 통과 여부 값 추가
       };
 
       await axios.put('https://back.sku-sku.com/admin/feedback/update', payload, {
