@@ -22,15 +22,17 @@ export default function CompletedAssignment() {
         const response = await axios.get('https://back.sku-sku.com/submit/status', {
           params: {
             track: track.replace('-', ''), // track 값을 적절히 변환
-            writer: '한민규', // 필수 파라미터 추가
+            writer: localStorage.getItem('name') || 'Unknown',
           },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        // Extracting completed assignments from the response
-        setAssignments(response.data.done);
+        console.log('서버 응답:', response.data); // 디버깅: 서버 응답 데이터 확인
+
+        // 서버 응답에서 적절한 데이터 추출
+        setAssignments(response.data.done || []);
       } catch (error) {
         console.error('과제를 불러오는데 실패했습니다.', error);
       }
@@ -63,11 +65,9 @@ export default function CompletedAssignment() {
       <CyberCampusLocation />
       <div className="text-center mt-16 pt-16 pb-20 bg-[#F6F6F6]">
         <div className="mb-4 text-xl fontBold">
-          완료된 과제 <span className="text-[#00B94A]">총 {assignments.length}건</span>이 있습니다.
+          완성된 과제 <span className="text-[#00B94A]">총 {assignments.length}건</span>이 있습니다.
         </div>
-        <div className="text-sm">
-          지난 과제는 <span className="text-[#00B94A] fontBold">과제 제출 &gt; 완료된 과제</span>에서 확인 가능합니다.
-        </div>
+        <div className="text-sm">성장을 위해 노력하는 아기사자를 운영진 모두가 응원합니다.</div>
         <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-12 mx-auto mt-16">
           {currentAssignments.map(assignment => (
             <button
@@ -80,16 +80,16 @@ export default function CompletedAssignment() {
             </button>
           ))}
         </div>
-        {/* 페이지네이션 버튼 */}
         <div className="flex justify-center mt-16">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              className={`mx-1 px-4 py-2 ${currentPage === index + 1 ? 'text-[#00B94A] fontBold' : ''} rounded-lg`}
-              onClick={() => handlePageChange(index + 1)}>
-              {index + 1}
-            </button>
-          ))}
+          {totalPages > 1 &&
+            Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                className={`mx-1 px-4 py-2 ${currentPage === index + 1 ? 'text-[#00B94A] fontBold' : ''} rounded-lg`}
+                onClick={() => handlePageChange(index + 1)}>
+                {index + 1}
+              </button>
+            ))}
         </div>
       </div>
     </div>

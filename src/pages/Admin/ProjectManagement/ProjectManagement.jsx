@@ -43,9 +43,9 @@ export default function ProjectManagement() {
   };
 
   const buttons = [
-    { text: '프로젝트 추가', color: '#BACFFF', route: '/admin//main/projectManagement/createProject' },
-    { text: '프로젝트 수정', color: '#FCBD8F', route: '/admin//main/projectManagement/updateProject' },
-    { text: '프로젝트 삭제', color: '#85E1AA', route: '/admin//main/projectManagement/deleteProject' },
+    { text: '프로젝트 추가', color: '#BACFFF', route: '/admin/main/projectManagement/createProject' },
+    { text: '프로젝트 수정', color: '#FCBD8F', route: '/admin/main/projectManagement/updateProject' },
+    { text: '프로젝트 삭제', color: '#85E1AA', route: '/admin/main/projectManagement/deleteProject' },
   ];
 
   return (

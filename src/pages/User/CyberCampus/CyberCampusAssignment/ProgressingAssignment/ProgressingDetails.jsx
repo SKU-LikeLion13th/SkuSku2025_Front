@@ -75,7 +75,7 @@ export default function ProgressingDetails() {
     formData.append('files', file);
 
     try {
-      const response = await axios.post('https://back.sku-sku.com/submit/add', formData, {
+      await axios.post('https://back.sku-sku.com/submit/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -83,9 +83,6 @@ export default function ProgressingDetails() {
       });
 
       // 제출 성공 후 상태 업데이트
-      setSubmitStatus('제출 완료');
-
-      // 서버에서 과제 상태를 재조회하여 업데이트
       const updatedResponse = await axios.get('https://back.sku-sku.com/submit/status', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -120,6 +117,16 @@ export default function ProgressingDetails() {
     }
   };
 
+  const formatDueDate = dateString => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const year = date.getFullYear().toString().slice(-2);
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}.${month}.${day}`;
+  };
+
+  // 통과 여부에 따라 멘트와 색상 조절
   const submitStatusStyle = submitStatus === '제출 완료' ? { color: 'green' } : { color: 'red' };
   const passStatusStyle = passStatus === '통과' ? { color: 'green' } : { color: 'red' };
 
@@ -131,8 +138,13 @@ export default function ProgressingDetails() {
       </div>
       <CyberCampusLocation />
       <div className="w-3/5 mx-auto">
-        <div className="pb-6 mt-12 mb-6 text-2xl border-b-2 border-black fontBold">
-          {assignmentDetails.title}[{assignmentDetails.subTitle}]
+        <div className="flex justify-between pb-6 mt-12 mb-6 border-b-2 border-black fontBold">
+          <div className="text-2xl">
+            {assignmentDetails.title}[{assignmentDetails.subTitle}]
+          </div>
+          <div className="flex items-center">
+            <div>{formatDueDate(assignmentDetails.dueDate)} 마감</div>
+          </div>
         </div>
         <div className="mb-6 text-sm">{assignmentDetails.description}</div>
         <div className="flex items-center justify-between">
@@ -148,6 +160,7 @@ export default function ProgressingDetails() {
               {passStatus}
             </div>
           </div>
+
           <div className="flex items-center w-1/2">
             <label className="mr-3 text-xl fontBold w-[120px]" htmlFor="file">
               과제 업로드
