@@ -1,10 +1,11 @@
 import React from 'react';
+import '../../../css/scrollbar.css'; // Custom CSS 파일을 임포트
 
 const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
   return (
     <div className="mt-20 w-full px-8">
       <div className="text-2xl fontBold mb-8">오늘의 과제 관리</div>
-      <div className="grid grid-cols-2 gap-12 max-h-[10rem] overflow-y-auto">
+      <div className="grid grid-cols-2 gap-12 max-h-[10rem] overflow-y-auto custom-scrollbar">
         {/* 서버에서 받은 데이터를 렌더링 */}
         {assignments.map(assignment => (
           <div key={assignment.id} className="p-6 bg-blue-500 text-white rounded-lg shadow-lg h-32">
