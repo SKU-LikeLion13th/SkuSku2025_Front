@@ -3,27 +3,35 @@ import axios from 'axios';
 import LectureBoard from '../../../components/LectureBoard';
 import LectureContent from '../../../components/LectureContent';
 import AddLecture from './AddLecture';
-import EditLecture from './EditLecture'; // Import the EditLecture component
-
+import EditLecture from './EditLecture';
+import CyberCampusLocation from '../../../components/CyberCampusLocation';
 const LectureManagement = () => {
   const [selectedLecture, setSelectedLecture] = useState(null);
   const [lectures, setLectures] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [addingLecture, setAddingLecture] = useState(false);
-  const [editingLecture, setEditingLecture] = useState(null); 
+  const [editingLecture, setEditingLecture] = useState(null);
   const isAdmin = true;
 
   const fetchLectures = async () => {
     try {
+      let token = localStorage.getItem('token');
+      if (token.startsWith('"') && token.endsWith('"')) {
+        token = token.slice(1, -1);
+      }
       setLoading(true);
       const response = await axios.get('https://back.sku-sku.com/lecture/all', {
         params: { track: 'FRONTEND' },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
       });
       setLectures(response.data);
     } catch (err) {
       if (err.response && err.response.status === 404) {
-        setLectures([]); 
+        setLectures([]);
       } else {
         setError(err.message);
       }
@@ -38,10 +46,20 @@ const LectureManagement = () => {
 
   const handleLectureSelect = async (lecture) => {
     try {
+      let token = localStorage.getItem('token');
+      if (token.startsWith('"') && token.endsWith('"')) {
+        token = token.slice(1, -1);
+      }
       setLoading(true);
-      const response = await axios.get(`https://back.sku-sku.com/lecture`, {
-        params: { id: lecture.id },
-      });
+      const response = await axios.get(`https://back.sku-sku.com/lecture`,
+        {
+          params: { id: lecture.id },
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
       setSelectedLecture(response.data);
     } catch (err) {
       setError(err.message);
@@ -53,19 +71,19 @@ const LectureManagement = () => {
   const handleBackToBoard = () => {
     setSelectedLecture(null);
     setAddingLecture(false);
-    setEditingLecture(null); 
+    setEditingLecture(null);
   };
 
   const handleAddLecture = () => {
     setAddingLecture(true);
-    setSelectedLecture(null);  
-    setEditingLecture(null);   
+    setSelectedLecture(null);
+    setEditingLecture(null);
   };
 
   const handleEditLecture = (lecture) => {
     setEditingLecture(lecture);
-    setSelectedLecture(null);  
-    setAddingLecture(false);   
+    setSelectedLecture(null);
+    setAddingLecture(false);
   };
 
   const handleBackToLectureContent = (lecture) => {
@@ -85,11 +103,11 @@ const LectureManagement = () => {
   return (
     <div className="container mx-auto w-full">
       <div className='w-full h-full flex flex-col items-center'>
-        <div className="title text-6xl fontEB text-center mt-32">
-          <p className="text-[#3B79FF]">FRONT-END</p>
-          <p>강의자료</p>
+        <div className="flex flex-col items-center justify-center pt-40 fontEB">
+          <div className="text-[#3B79FF] my-2 ml-1 text-7xl">FRONT-END</div>
+          <div className="mr-1 text-6xl">과제제출</div>
         </div>
-        <div>경로</div>
+        <CyberCampusLocation />
         {editingLecture ? (
           <EditLecture lecture={editingLecture} onBack={() => handleBackToLectureContent(editingLecture)} />
         ) : addingLecture ? (
@@ -98,7 +116,7 @@ const LectureManagement = () => {
           <LectureContent
             lecture={selectedLecture}
             onBack={handleBackToBoard}
-            onEdit={handleEditLecture} 
+            onEdit={handleEditLecture}
             isAdmin={isAdmin}
             refreshLectures={fetchLectures}  // Pass the fetchLectures function as a prop
           />

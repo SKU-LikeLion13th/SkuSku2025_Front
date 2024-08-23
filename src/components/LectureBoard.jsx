@@ -154,7 +154,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
 
   return (
     <div className="flex flex-col justify-center items-center w-full min-h-screen">
-      <div className="w-3/4 my-5 fontSB flex justify-between items-center">
+      <div className="w-2/3 my-5 fontSB flex justify-between items-center">
         <select
           className="rounded-md py-2 px-1"
           value={sortOrder}
@@ -182,7 +182,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
         )}
       </div>
 
-      <div className="w-3/4 min-h-screen">
+      <div className="w-2/3 min-h-screen">
         <div className="grid grid-cols-11 fontBold justify-center items-center text-center bg-[#F7F7F7] w-full h-12 border-t-[2.5px] border-b-[0.1px] border-black">
           <p>번호</p>
           <p className="col-span-7">제목</p>
