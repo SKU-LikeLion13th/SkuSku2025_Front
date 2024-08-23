@@ -13,9 +13,9 @@ const CyberCampusLecture = () => {
   const [error, setError] = useState(null);
   const isAdmin = false;
 
+  // Format track name based on specific cases
   const formatTrackName = (track) => {
-    console.log(track)
-    if (track === 'PM/DESIGN') {
+    if (track === 'PM&DESIGN') {
       return 'PM_DESIGN';
     }
     return track.toUpperCase().replace('-', '');
@@ -23,14 +23,22 @@ const CyberCampusLecture = () => {
 
   const formattedTrack = formatTrackName(track);
 
+  // Function to handle selecting a lecture
   const handleLectureSelect = async (lecture) => {
     try {
+      let token = localStorage.getItem('token');
+      if (token.startsWith('"') && token.endsWith('"')) {
+        token = token.slice(1, -1);
+      }
       setLoading(true);
       const response = await axios.get(`https://back.sku-sku.com/lecture`, {
-        params: { id: lecture.id }
+        params: { id: lecture.id },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
       });
       setSelectedLecture(response.data);
-      console.log(response.data);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -40,39 +48,38 @@ const CyberCampusLecture = () => {
 
   const handleBackToBoard = () => {
     setSelectedLecture(null);
+    fetchLectures();
+  };
+
+  const fetchLectures = async () => {
+    try {
+      let token = localStorage.getItem('token');
+      if (token.startsWith('"') && token.endsWith('"')) {
+        token = token.slice(1, -1);
+      }
+      setLoading(true);
+      const response = await axios.get('https://back.sku-sku.com/lecture/all', {
+        params: { track: formattedTrack },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      setLectures(response.data);
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        setLectures([]);
+      } else {
+        setError(err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    const fetchLectures = async () => {
-      try {
-        let token = localStorage.getItem('token');
-        if (token.startsWith('"') && token.endsWith('"')) {
-          token = token.slice(1, -1);
-        }
-        setLoading(true);
-        const response = await axios.get('https://back.sku-sku.com/lecture/all',
-          {
-            params: { track: formattedTrack },
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'multipart/form-data',
-            },
-          });
-        setLectures(response.data);
-        console.log(response.data);
-      } catch (err) {
-        if (err.response && err.response.status === 404) {
-          setLectures([]);
-        } else {
-          setError(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchLectures();
-  }, [formattedTrack]);
+  }, []); // 빈 배열로 두어 컴포넌트 마운트 시 한 번만 실행되도록 설정
 
   if (loading) {
     return <div className="text-center mt-32">Loading...</div>;
@@ -91,9 +98,13 @@ const CyberCampusLecture = () => {
         </div>
         <CyberCampusLocation />
         {selectedLecture ? (
-          <LectureContent lecture={selectedLecture} onBack={handleBackToBoard} />
+          <LectureContent lecture={selectedLecture} onBack={handleBackToBoard} refreshLectures={fetchLectures} />
         ) : (
-          <LectureBoard lectures={lectures} onSelectLecture={handleLectureSelect} isAdmin={isAdmin} />
+          <LectureBoard
+            lectures={lectures}
+            onSelectLecture={handleLectureSelect}
+            isAdmin={isAdmin}
+          />
         )}
       </div>
     </div>

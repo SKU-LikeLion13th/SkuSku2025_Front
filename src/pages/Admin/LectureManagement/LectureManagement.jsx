@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import LectureBoard from '../../../components/LectureBoard';
 import LectureContent from '../../../components/LectureContent';
 import AddLecture from './AddLecture';
 import EditLecture from './EditLecture';
-import CyberCampusLocation from '../../../components/CyberCampusLocation';
+import LectureLocation from './LectureLocation';
+
 const LectureManagement = () => {
+  const { track } = useParams();
   const [selectedLecture, setSelectedLecture] = useState(null);
   const [lectures, setLectures] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,6 +16,16 @@ const LectureManagement = () => {
   const [addingLecture, setAddingLecture] = useState(false);
   const [editingLecture, setEditingLecture] = useState(null);
   const isAdmin = true;
+
+  const formatTrackName = (track) => {
+    console.log(track)
+    if (track === 'PM&DESIGN') {
+      return 'PM_DESIGN';
+    }
+    return track.toUpperCase().replace('-', '');
+  };
+
+  const formattedTrack = formatTrackName(track);
 
   const fetchLectures = async () => {
     try {
@@ -22,7 +35,7 @@ const LectureManagement = () => {
       }
       setLoading(true);
       const response = await axios.get('https://back.sku-sku.com/lecture/all', {
-        params: { track: 'FRONTEND' },
+        params: { track: formattedTrack }, 
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -42,8 +55,8 @@ const LectureManagement = () => {
 
   useEffect(() => {
     fetchLectures();
-  }, []);
-
+  }, [formattedTrack]); 
+  
   const handleLectureSelect = async (lecture) => {
     try {
       let token = localStorage.getItem('token');
@@ -51,15 +64,13 @@ const LectureManagement = () => {
         token = token.slice(1, -1);
       }
       setLoading(true);
-      const response = await axios.get(`https://back.sku-sku.com/lecture`,
-        {
-          params: { id: lecture.id },
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
+      const response = await axios.get(`https://back.sku-sku.com/lecture`, {
+        params: { id: lecture.id },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       setSelectedLecture(response.data);
     } catch (err) {
       setError(err.message);
@@ -104,10 +115,10 @@ const LectureManagement = () => {
     <div className="container mx-auto w-full">
       <div className='w-full h-full flex flex-col items-center'>
         <div className="flex flex-col items-center justify-center pt-40 fontEB">
-          <div className="text-[#3B79FF] my-2 ml-1 text-7xl">FRONT-END</div>
+          <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
           <div className="mr-1 text-6xl">과제제출</div>
         </div>
-        <CyberCampusLocation />
+        <LectureLocation />
         {editingLecture ? (
           <EditLecture lecture={editingLecture} onBack={() => handleBackToLectureContent(editingLecture)} />
         ) : addingLecture ? (
@@ -118,7 +129,7 @@ const LectureManagement = () => {
             onBack={handleBackToBoard}
             onEdit={handleEditLecture}
             isAdmin={isAdmin}
-            refreshLectures={fetchLectures}  // Pass the fetchLectures function as a prop
+            refreshLectures={fetchLectures} 
           />
         ) : (
           <LectureBoard
@@ -134,4 +145,3 @@ const LectureManagement = () => {
 };
 
 export default LectureManagement;
-

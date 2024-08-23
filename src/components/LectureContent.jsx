@@ -5,6 +5,7 @@ import { images } from '../utils/images';
 const LectureContent = ({ lecture, onBack, onEdit, isAdmin, refreshLectures }) => {
   const handleBackClick = () => {
     onBack();
+    refreshLectures();
   };
 
   const handleEditClick = () => {

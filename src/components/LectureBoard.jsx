@@ -54,17 +54,17 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
   };
 
   const handleSortChange = (sortType) => {
-    const sortedData = [...filteredData].sort((a, b) => {
+    const sortedData = [...lectures].sort((a, b) => {
       if (sortType === "title") {
-        return new Date(b.date) - new Date(a.date); // 최신순
+        return new Date(b.createDate) - new Date(a.createDate); // 최신순
       } else if (sortType === "author") {
-        return new Date(a.date) - new Date(b.date); // 오래된 순
+        return new Date(a.createDate) - new Date(b.createDate); // 오래된 순
       }
       return 0;
     });
     setFilteredData(sortedData);
+    setCurrentPage(1);  
   };
-
   const handleSelectChange = (e) => {
     setSortOrder(e.target.value);
   };
@@ -194,7 +194,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
           currentData.map((item, index) => (
             <div className='fontLight' key={index}>
               <div className="grid grid-cols-11 items-center text-center w-full h-12 cursor-pointer">
-                <p>{item.id}</p>
+                <p>{(currentPage - 1) * itemsPerPage + index + 1}</p>
                 <p className="flex items-center col-span-7 text-start" onClick={() => onSelectLecture(item)}>
                   {item.title}
                   {item.joinLectureFiles ? <img src={images.download} className='pl-4 h-4' alt="download icon"></img> : <div> </div>}
@@ -221,7 +221,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
         )}
       </div>
 
-      <div className='grid grid-cols-3 w-3/4 mx-auto justify-between mt-20 items-center'>
+      <div className='grid grid-cols-3 w-2/3 mx-auto justify-between mt-20 items-center'>
         <div className="fontLight">
           전체 게시물수: <span className="text-[#3b79ff] ml-1 mr-3">{filteredData.length}</span>
           전체 페이지: <span className="ml-1 text-[#ff7816]">{totalPages}</span>
