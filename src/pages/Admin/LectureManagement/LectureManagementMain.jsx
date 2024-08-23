@@ -1,39 +1,42 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AdminMain = () => {
+const LectureManagementMain = () => {
   const navigate = useNavigate();
 
   const trackData = [
     {
-      title: '강의자료',
-      subtitle: '세션 강의자료 관리',
+      title: '프론트엔드',
+      subtitle: 'FRONT-END',
       bgColor: 'bg-gradient-to-r from-[#FFE3CF] to-[#FF8C3A]',
-      navigateTo: `/admin/main/lectureManagementMain`,
+      navigateTo: `/admin/main/lectureManagementMain/FRONT-END`
     },
     {
-      title: '과제제출',
-      subtitle: '아기사자 과제 관리',
+      title: '백엔드',
+      subtitle: 'BACK-END',
       bgColor: 'bg-gradient-to-r from-[#BDFFFF] to-[#47EAEA]',
-      navigateTo: `/admin/main/assignmentIntro`,
+      navigateTo: '/admin/main/lectureManagementMain/BACK-END',
     },
     {
-      title: '프로젝트',
-      subtitle: '기수별 프로젝트 관리',
+      title: '기획/디자인',
+      subtitle: 'PM&DESIGN',
       bgColor: 'bg-gradient-to-r from-[#FFD1E2] to-[#FF87B1]',
-      navigateTo: `/admin/main/projectManagement`,
+      navigateTo: '/admin/main/lectureManagementMain/PM&DESIGN',
     },
   ];
 
   return (
-    <div className="container flex flex-col mx-auto text-center">
+    <div className='flex flex-col mx-auto container text-center'>
       {/* title */}
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">LIKELION SKU</div>
-        <div className="mr-1 text-6xl">관리자페이지</div>
+        <div className="mr-1 text-6xl">사이버캠퍼스</div>
       </div>
 
-      <div className="flex justify-center mx-auto text-[28px] fontBold flex-wrap mt-28 mb-10">
+      {/* subTitle */}
+      <div className='my-16'>강의자료 등록 및 수정하는 페이지입니다.</div>
+
+      <div className="flex justify-center mx-auto text-[28px] fontBold flex-wrap">
         {trackData.map((track, index) => (
           <button
             key={index}
@@ -48,4 +51,4 @@ const AdminMain = () => {
   );
 };
 
-export default AdminMain;
+export default LectureManagementMain;

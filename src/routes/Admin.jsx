@@ -9,6 +9,7 @@ import DeleteProject from '../pages/Admin/ProjectManagement/ProjectCUD/DeletePro
 import UpdateDetail from '../pages/Admin/ProjectManagement/ProjectCUD/UpdateProject/UpdateDetail.jsx';
 import AdminMain from '../pages/Admin/AdminMain.jsx';
 import AssignmentIntro from '../pages/Admin/AssignmentManagement/AssignmentIntro.jsx';
+import LectureManagementMain from '../pages/Admin/LectureManagement/LectureManagementMain.jsx';
 
 const Admin = () => {
   return (
@@ -17,7 +18,10 @@ const Admin = () => {
         <Route index element={<AdminMain />} />
         <Route path="assignmentIntro" element={<AssignmentIntro />} />
         <Route path="assignmentManagement" element={<AssignmentManagement />} />
-        <Route path="lectureManagement" element={<LectureManagement />} />
+        <Route path="lectureManagementMain" element={<Outlet />}>
+          <Route index element={<LectureManagementMain />} />
+          <Route path=":track" element={<LectureManagement />} />
+        </Route>
         <Route path="projectManagement" element={<Outlet />}>
           <Route index element={<ProjectManagement />} />
           <Route path="createProject" element={<CreateProject />} />
@@ -33,3 +37,4 @@ const Admin = () => {
 };
 
 export default Admin;
+
