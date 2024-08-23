@@ -1,0 +1,15 @@
+/* Custom Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px; /* 둥근 모서리 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: gray; /* 파란색 핸들 */
+  border-radius: 10px; /* 둥근 모서리 */
+  border: 2px solid transparent; /* 약간의 여백 추가 */
+  background-clip: content-box; /* 여백을 위한 클립 */
+}
