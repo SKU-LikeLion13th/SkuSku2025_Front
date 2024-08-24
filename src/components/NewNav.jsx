@@ -11,15 +11,13 @@ import MenuItem from '@mui/joy/MenuItem';
 
 const NewNav = () => {
   const location = useLocation();
-  const { handleLogout, isLoggedIn, name, track, trackColor } = useLogin();
-  
+  const { handleLogout, isLoggedIn, userInfo} = useLogin();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
-  const [bgColor, setBgColor] = useState();
+
+  const { name, track, color } = userInfo;
 
   useEffect(() => {
-    setBgColor(trackColor);
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
@@ -28,7 +26,7 @@ const NewNav = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [location.pathname, name, trackColor]);
+  }, [location.pathname, name]);
 
   const getNavItemStyle = (index) => {
     const activeStyle = {
@@ -116,7 +114,7 @@ const NewNav = () => {
           <div className='flex items-center justify-center'>
             <div className='flex items-center'>
               <div 
-                style={{ backgroundColor: bgColor }}
+                style={{ backgroundColor: color }}
                 className={`flex items-center justify-center w-[30px] h-[30px] rounded-[50%]`}>🦁</div>
               <span className='text-xs px-2'>{track}</span>
               <span className='font-bold'>{name}님</span>

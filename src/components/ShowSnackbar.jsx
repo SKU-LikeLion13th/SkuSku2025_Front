@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/joy/Box';
 import Snackbar from '@mui/joy/Snackbar';
 
-const ShowSnackbar = ({ name, showSnack, setShowSnack }) => {
+const ShowSnackbar = ({ showSnack, setShowSnack }) => {
   const handleClose = () => {
     setShowSnack(false);
   }
