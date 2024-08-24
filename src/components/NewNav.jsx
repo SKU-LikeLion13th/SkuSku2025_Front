@@ -11,11 +11,22 @@ import MenuItem from '@mui/joy/MenuItem';
 
 const NewNav = () => {
   const location = useLocation();
-  const { handleLogout, isLoggedIn, userInfo} = useLogin();
+  const { handleLogout, isLoggedIn} = useLogin();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [ info, setInfo ] = useState({
+    name : '',
+    track : '',
+    color : '',
+  })
 
-  const { name, track, color } = userInfo;
+  useEffect(()=>{
+    const userInfo = localStorage.getItem('userInfo');
+
+    if (userInfo) {
+      setInfo(JSON.parse(userInfo));
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +37,7 @@ const NewNav = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [location.pathname, name]);
+  }, [location.pathname]);
 
   const getNavItemStyle = (index) => {
     const activeStyle = {
@@ -114,10 +125,10 @@ const NewNav = () => {
           <div className='flex items-center justify-center'>
             <div className='flex items-center'>
               <div 
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: info.color }}
                 className={`flex items-center justify-center w-[30px] h-[30px] rounded-[50%]`}>🦁</div>
-              <span className='text-xs px-2'>{track}</span>
-              <span className='font-bold'>{name}님</span>
+              <span className='text-xs px-2'>{info.track}</span>
+              <span className='font-bold'>{info.name}님</span>
             </div>
             <div className='px-2 text-[gray]'>|</div>
             <button onClick={handleLogout} className='text-xs'>LOGOUT</button> 
