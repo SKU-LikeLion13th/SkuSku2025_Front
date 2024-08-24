@@ -6,7 +6,7 @@ const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [ userInfo, setUserInfo ] = useState({
+  const [ contextUserInfo, setContextUserInfo ] = useState({
     name : '',
     track : '',
     color : '',
@@ -41,7 +41,7 @@ export const LoginProvider = ({ children }) => {
 
   return (
     <LoginContext.Provider value={{ 
-      handleLogout, isLoggedIn, setIsLoggedIn, userInfo, setUserInfo
+      handleLogout, isLoggedIn, setIsLoggedIn, contextUserInfo, setContextUserInfo
       }}>
       {children}
     </LoginContext.Provider>

@@ -11,13 +11,13 @@ import MenuItem from '@mui/joy/MenuItem';
 
 const NewNav = () => {
   const location = useLocation();
-  const { handleLogout, isLoggedIn} = useLogin();
+  const { handleLogout, isLoggedIn, contextUserInfo} = useLogin();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [ info, setInfo ] = useState({
-    name : '',
-    track : '',
-    color : '',
+    name : contextUserInfo.name,
+    track : contextUserInfo.track,
+    color : contextUserInfo.color
   })
 
   useEffect(()=>{

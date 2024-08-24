@@ -6,7 +6,7 @@ import * as base64js from 'base64-js';
 import ShowSnackbar from './ShowSnackbar';
 
 export const GoogleLoginBtn = ({ size, type, width, shape }) => {
-  const { setIsLoggedIn, setUserInfo } = useLogin();
+  const { setIsLoggedIn, setContextUserInfo } = useLogin();
   const [showSnack, setShowSnack] = useState(false);
 
   // Base64 디코딩 함수 사용하여 UTF-8 문자열로 변환(한글깨짐방지)
@@ -39,13 +39,13 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
 
         if (dec.track === "FRONTEND") {
           localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'FRONT-END', color: '#FF7816' }));
-          setUserInfo({ name: dec.name, track: 'FRONT-END', color: '#FF7816' });
+          setContextUserInfo({ name: dec.name, track: 'FRONT-END', color: '#FF7816' });
         } else if (dec.track === "BACKEND") {
           localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'BACK-END', color: '#47EAEA' }));
-          setUserInfo({ name: dec.name, track: 'BACK-END', color: '#47EAEA' })
+          setContextUserInfo({ name: dec.name, track: 'BACK-END', color: '#47EAEA' })
         } else {
           localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'PM/DESIGN', color: '#FF669D' }));
-          setUserInfo({ name: dec.name, track: 'PM/DESIGN', color: '#FF669D' })
+          setContextUserInfo({ name: dec.name, track: 'PM/DESIGN', color: '#FF669D' })
         }
       
         setIsLoggedIn(true);
