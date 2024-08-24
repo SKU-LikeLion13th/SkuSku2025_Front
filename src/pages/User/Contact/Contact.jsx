@@ -8,11 +8,11 @@ const Contact = () => {
       <div className="container mx-auto pt-24 px-5 xl:px-20">
         <div className="flex flex-col items-center justify-between w-full xl:flex-row">
           <div className="w-full xl:w-[610px] mb-10 xl:mb-0 xl:mr-20 text-center xl:text-left">
-            <span className="text-4xl leading-tight text-blue-500 xl:text-6xl fontEB sm:text-5xl md:text-6xl">
+            <span className="text-4xl leading-tight text-blue-500 xl:text-6xl fontEB sm:text-5xl md:text-6xl md:leading-tight">
               반가워요!
               <br />
             </span>
-            <span className="text-4xl leading-tight text-white xl:text-6xl fontEB whitespace-nowrap sm:text-5xl md:text-6xl">
+            <span className="text-4xl leading-tight text-white xl:text-6xl fontEB whitespace-nowrap sm:text-5xl md:text-6xl md:leading-tight">
               어떤 것을
               <br />
               도와드릴까요?
@@ -45,11 +45,13 @@ const ContactTabs = () => {
           <button
             className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'etc' ? 'text-white' : 'text-gray-500'
-            }`}
+            } md:mb-6 lg:mb-0`} // md에서는 간격 적용, lg 이상에서는 간격 제거
             onClick={() => setSelectedTab('etc')}>
             [기타 의뢰]
           </button>
-          <span className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block">
+          <span
+            className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block cursor-pointer"
+            onClick={() => setSelectedTab('etc')}>
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
           {selectedTab === 'etc' && (
@@ -69,11 +71,13 @@ const ContactTabs = () => {
           <button
             className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'Collaboration' ? 'text-white' : 'text-gray-500'
-            }`}
+            } md:mb-6 lg:mb-0`} // md에서는 간격 적용, lg 이상에서는 간격 제거
             onClick={() => setSelectedTab('Collaboration')}>
             [협업 문의]
           </button>
-          <span className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block">
+          <span
+            className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block cursor-pointer"
+            onClick={() => setSelectedTab('Collaboration')}>
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
           {selectedTab === 'Collaboration' && (
@@ -96,7 +100,9 @@ const ContactTabs = () => {
             onClick={() => setSelectedTab('inquiry')}>
             [문의 사항]
           </button>
-          <span className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block">
+          <span
+            className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block cursor-pointer"
+            onClick={() => setSelectedTab('inquiry')}>
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
           {selectedTab === 'inquiry' && (
