@@ -1,9 +1,9 @@
 import { GoogleLogin } from '@react-oauth/google';
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useLogin } from '../utils/LoginContext';
 import * as base64js from 'base64-js';
 import ShowSnackbar from './ShowSnackbar';
+import API from '../utils/axios';
 
 export const GoogleLoginBtn = ({ size, type, width, shape }) => {
   const { setIsLoggedIn, setContextUserInfo } = useLogin();
@@ -25,7 +25,7 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
       token: response.credential,
     };
 
-    axios
+    API
       .post('/api/auth/google', data)
       .then(response => {
         localStorage.setItem('token', JSON.stringify(response.data.token));

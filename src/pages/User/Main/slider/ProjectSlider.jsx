@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import axios from 'axios';
+import API from '../../../../utils/axios';
 
 const ProjectItem = ({ title, subtitle, image, url }) => (
   <a href={url} className="flex justify-center items-center w-full" target="_blank" rel="noopener noreferrer">
@@ -26,7 +26,7 @@ const ProjectSlider = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios
+    API
       .get('/project/all')
       .then(response => {
         setProjects(response.data);

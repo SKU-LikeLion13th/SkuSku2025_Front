@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import CyberCampusLocation from '../../../../../components/CyberCampusLocation';
 import { useNavigate, useParams } from 'react-router-dom';
+import API from '../../../../../utils/axios';
 
 export default function TodaysAssignment() {
   const { track } = useParams();
@@ -21,7 +21,7 @@ export default function TodaysAssignment() {
       const normalizedTrack = track.replace('-', '');
 
       try {
-        const response = await axios.get('/submit/status', {
+        const response = await API.get('/submit/status', {
           params: {
             writer: localStorage.getItem('name') || 'Unknown', // 로컬 스토리지에서 이름을 가져옴
             track: normalizedTrack,

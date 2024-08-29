@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Project_Tabs from '../../../User/Project/Project_Tabs';
+import API from '../../../../utils/axios';
 
 export default function DeleteProject() {
   const [projects, setProjects] = useState([]);
@@ -16,7 +16,7 @@ export default function DeleteProject() {
         return;
       }
       try {
-        const response = await axios.get('/project/all');
+        const response = await API.get('/project/all');
         setProjects(response.data);
         setFilteredProjects(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ export default function DeleteProject() {
       return;
     }
     try {
-      await axios.delete('/admin/project', {
+      await API.delete('/admin/project', {
         params: {
           id: projectId, // 쿼리 파라미터로 ID 전달
         },

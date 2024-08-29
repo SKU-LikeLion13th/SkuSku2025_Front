@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React from 'react';
 import { images } from '../utils/images';
+import API from '../utils/axios';
 
 const LectureContent = ({ lecture, onBack, onEdit, isAdmin, refreshLectures }) => {
   const handleBackClick = () => {
@@ -37,7 +37,7 @@ const LectureContent = ({ lecture, onBack, onEdit, isAdmin, refreshLectures }) =
     try {
       const url = `/admin/lecture/delete?lectureId=${lecture.id}`;
       
-      const response = await axios.delete(url, {
+      const response = await API.delete(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

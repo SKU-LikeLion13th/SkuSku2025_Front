@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import Breadcrumb from '../../../components/Breadcrumb';
+import API from '../../../utils/axios';
 
 const TodayTaskManagement = ({ assignmentId, writer, task }) => {
   const [taskDetails, setTaskDetails] = useState(null);
@@ -19,7 +19,7 @@ const TodayTaskManagement = ({ assignmentId, writer, task }) => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('/admin/submit/assignment', {
+        const response = await API.get('/admin/submit/assignment', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -81,7 +81,7 @@ const TodayTaskManagement = ({ assignmentId, writer, task }) => {
         passNonePass: passStatus, // 선택된 통과 여부
       };
 
-      await axios.post('/admin/feedback/add', payload, {
+      await API.post('/admin/feedback/add', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -108,7 +108,7 @@ const TodayTaskManagement = ({ assignmentId, writer, task }) => {
         content: feedbackContent, // 수정된 피드백 내용
       };
 
-      await axios.put('/admin/feedback/update', payload, {
+      await API.put('/admin/feedback/update', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

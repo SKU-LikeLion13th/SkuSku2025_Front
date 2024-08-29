@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import API from '../../../../../utils/axios';
 
 const UpdateDetail = () => {
   const { id } = useParams();
@@ -15,7 +15,7 @@ const UpdateDetail = () => {
     const fetchProjectDetails = async () => {
       const token = localStorage.getItem('authToken'); // 토큰 불러오기
       try {
-        const response = await axios.get(`/admin/project/${id}`, {
+        const response = await API.get(`/admin/project/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`, // 토큰 포함
           },
@@ -59,7 +59,7 @@ const UpdateDetail = () => {
     const token = localStorage.getItem('authToken'); // 토큰 불러오기
 
     try {
-      const response = await axios.put('/project/update', formData, {
+      const response = await API.put('/project/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`, // 토큰 포함

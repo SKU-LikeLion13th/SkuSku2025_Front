@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import LectureBoard from '../../../../components/LectureBoard';
 import LectureContent from '../../../../components/LectureContent';
 import CyberCampusLocation from './../../../../components/CyberCampusLocation';
+import API from '../../../../utils/axios';
 
 const CyberCampusLecture = () => {
   const { track } = useParams();
@@ -31,7 +31,7 @@ const CyberCampusLecture = () => {
         token = token.slice(1, -1);
       }
       setLoading(true);
-      const response = await axios.get(`/lecture`, {
+      const response = await API.get(`/lecture`, {
         params: { id: lecture.id },
         headers: {
           Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ const CyberCampusLecture = () => {
         token = token.slice(1, -1);
       }
       setLoading(true);
-      const response = await axios.get('/lecture/all', {
+      const response = await API.get('/lecture/all', {
         params: { track: formattedTrack },
         headers: {
           Authorization: `Bearer ${token}`,

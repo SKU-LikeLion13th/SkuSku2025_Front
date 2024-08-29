@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import CyberCampusLocation from '../../../../../components/CyberCampusLocation';
 import { useParams, useNavigate } from 'react-router-dom';
+import API from '../../../../../utils/axios';
 
 export default function ProgressingDetails() {
   const { track, assignmentId } = useParams();
@@ -23,7 +23,7 @@ export default function ProgressingDetails() {
       const normalizedTrack = track.replace('-', '');
 
       try {
-        const response = await axios.get('/submit/status', {
+        const response = await API.get('/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -75,7 +75,7 @@ export default function ProgressingDetails() {
     formData.append('files', file);
 
     try {
-      await axios.post('/submit/add', formData, {
+      await API.post('/submit/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ export default function ProgressingDetails() {
       });
 
       // 제출 성공 후 상태 업데이트
-      const updatedResponse = await axios.get('/submit/status', {
+      const updatedResponse = await API.get('/submit/status', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../../../utils/axios';
 
 const EditLecture = ({ lecture, onBack }) => {
   const [title, setTitle] = useState(lecture?.title || '');
@@ -34,7 +34,7 @@ const EditLecture = ({ lecture, onBack }) => {
     }
 
     try {
-      await axios.put(`https://back.sku-sku.com/admin/lecture/update`, formData, {
+      await API.put(`https://back.sku-sku.com/admin/lecture/update`, formData, {
         params: { id: lecture.id },
         headers: {
           Authorization: `Bearer ${token}`,

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import Breadcrumb from '../../../components/Breadcrumb';
 import AssignmentInformation from './AssignmentInformation';
 import AssignmentForm from './AssignmentForm';
 import DeleteAssignments from './DeleteAssignment';
 import IndividualManagement from './IndividualManagement';
+import API from '../../../utils/axios';
 
 const AssignmentRegistration = () => {
   const location = useLocation();
@@ -57,7 +57,7 @@ const AssignmentRegistration = () => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('/assignment', {
+        const response = await API.get('/assignment', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
