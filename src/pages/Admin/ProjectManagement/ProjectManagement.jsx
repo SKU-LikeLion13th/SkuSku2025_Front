@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Project_Tabs from '../../User/Project/Project_Tabs';
 import { Outlet } from 'react-router-dom';
+import API from '../../../utils/axios';
 
 export default function ProjectManagement() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function ProjectManagement() {
     }
 
     try {
-      const response = await axios.get('/project/all');
+      const response = await API.get('/project/all');
       setProjects(response.data);
       setFilteredProjects(response.data);
     } catch (error) {

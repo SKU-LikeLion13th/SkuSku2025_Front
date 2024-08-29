@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import API from '../../../utils/axios';
 
 const DeleteAssignments = ({
   assignments,
@@ -34,7 +34,7 @@ const DeleteAssignments = ({
         const idsToDelete = assignments.map(assignment => assignment.id);
 
         // 서버로 전체 삭제 요청을 보냄
-        await axios.request({
+        await API.request({
           method: 'delete',
           url: '/admin/assignment/delete-all',
           headers: {
@@ -69,7 +69,7 @@ const DeleteAssignments = ({
       // 선택된 과제들에 대해 서버로 삭제 요청을 보냄
       await Promise.all(
         selectedAssignments.map(id =>
-          axios.delete('/admin/assignment', {
+          API.delete('/admin/assignment', {
             headers: {
               Authorization: `Bearer ${token}`,
             },

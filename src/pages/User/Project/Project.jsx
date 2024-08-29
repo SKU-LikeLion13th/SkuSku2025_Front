@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Project_Tabs from './Project_Tabs';
-import axios from 'axios';
+import API from '../../../utils/axios';
 
 const Project = () => {
   const [projects, setProjects] = useState([]);
@@ -13,7 +13,7 @@ const Project = () => {
   /* 프로젝트 불러오기 코드 */
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('/project/all');
+      const response = await API.get('/project/all');
       setProjects(response.data);
       setFilteredProjects(response.data);
     } catch (error) {

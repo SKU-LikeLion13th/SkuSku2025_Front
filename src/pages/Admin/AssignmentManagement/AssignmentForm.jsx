@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../../../utils/axios';
 
 const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
   const [title, setTitle] = useState('');
@@ -22,7 +22,7 @@ const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
       }
 
       // 서버로 데이터를 보내는 POST 요청
-      const response = await axios.post(
+      const response = await API.post(
         '/admin/assignment/add',
         {
           trackType: trackType.toUpperCase(),

@@ -12,7 +12,6 @@ export const LoginProvider = ({ children }) => {
     color : '',
   })
 
-
   // 토큰 얻기
   const getInfo = () => {
     const token = JSON.parse(localStorage.getItem('token'));

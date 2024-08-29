@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import AssignmentDetail from './AssignmentDetail';
+import API from '../../../utils/axios';
 
 const IndividualManagement = ({ trackType }) => {
   const [assignments, setAssignments] = useState([]);
@@ -16,7 +16,7 @@ const IndividualManagement = ({ trackType }) => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('/admin/submit/trackcnt', {
+        const response = await API.get('/admin/submit/trackcnt', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

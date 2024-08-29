@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import LectureBoard from '../../../components/LectureBoard';
 import LectureContent from '../../../components/LectureContent';
 import AddLecture from './AddLecture';
 import EditLecture from './EditLecture';
 import LectureLocation from './LectureLocation';
+import API from '../../../utils/axios';
 
 const LectureManagement = () => {
   const { track } = useParams();
@@ -34,7 +34,7 @@ const LectureManagement = () => {
         token = token.slice(1, -1);
       }
       setLoading(true);
-      const response = await axios.get('/lecture/all', {
+      const response = await API.get('/lecture/all', {
         params: { track: formattedTrack }, 
         headers: {
           Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ const LectureManagement = () => {
         token = token.slice(1, -1);
       }
       setLoading(true);
-      const response = await axios.get(`/lecture`, {
+      const response = await API.get(`/lecture`, {
         params: { id: lecture.id },
         headers: {
           Authorization: `Bearer ${token}`,

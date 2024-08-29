@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import CyberCampusLocation from '../../../../../components/CyberCampusLocation';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import API from '../../../../../utils/axios';
 
 export default function TodaysDetail() {
   const { track, assignmentId } = useParams();
@@ -20,7 +20,7 @@ export default function TodaysDetail() {
       }
 
       try {
-        const response = await axios.get('/submit/status', {
+        const response = await API.get('/submit/status', {
           params: {
             writer: localStorage.getItem('name') || 'Unknown', // 로컬 스토리지에서 이름을 가져옴
             track: track,
@@ -60,7 +60,7 @@ export default function TodaysDetail() {
     formData.append('files', file);
 
     try {
-      const response = await axios.post('/submit/add', formData, {
+      const response = await API.post('/submit/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

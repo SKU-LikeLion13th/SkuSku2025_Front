@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { images } from '../utils/images';
+import API from '../utils/axios';
 
 const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -99,7 +99,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
       for (const id of selectedIds) {
         const url = `/admin/lecture/delete?lectureId=${id}`;
 
-        const response = await axios.delete(url, {
+        const response = await API.delete(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -133,7 +133,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
       for (const lecture of lectures) {
         const url = `/admin/lecture/delete?lectureId=${lecture.id}`;
   
-        const response = await axios.delete(url, {
+        const response = await API.delete(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API from '../../../utils/axios';
 
 const AddLecture = ({ onBack }) => {
   const [title, setTitle] = useState('');
@@ -32,7 +33,7 @@ const AddLecture = ({ onBack }) => {
       formData.append('title', title);
       formData.append('files', file);
   
-      const response = await axios.post('/admin/lecture/add',
+      const response = await API.post('/admin/lecture/add',
         formData,
         {
           headers: {
@@ -54,10 +55,6 @@ const AddLecture = ({ onBack }) => {
       }
     }
   }
-  
-  
-  
-
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center fontLight">

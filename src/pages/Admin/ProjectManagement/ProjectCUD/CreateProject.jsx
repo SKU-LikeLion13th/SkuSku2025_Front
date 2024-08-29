@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../../../../utils/axios';
 
 const CreateProject = () => {
   const [classTh, setClassTh] = useState('');
@@ -37,7 +37,7 @@ const CreateProject = () => {
     }
 
     try {
-      await axios.post('/admin/project/add', formData, {
+      await API.post('/admin/project/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`, // 토큰을 Authorization 헤더에 포함

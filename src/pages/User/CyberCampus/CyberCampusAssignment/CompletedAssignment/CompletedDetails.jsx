@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import CyberCampusLocation from '../../../../../components/CyberCampusLocation';
 import { useParams } from 'react-router-dom';
+import API from '../../../../../utils/axios';
 
 export default function CompletedDetails() {
   const { track, assignmentId } = useParams(); // assignmentId를 URL에서 추출
@@ -17,7 +17,7 @@ export default function CompletedDetails() {
       const normalizedTrack = track.replace('-', '');
 
       try {
-        const response = await axios.get('/submit/status', {
+        const response = await API.get('/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

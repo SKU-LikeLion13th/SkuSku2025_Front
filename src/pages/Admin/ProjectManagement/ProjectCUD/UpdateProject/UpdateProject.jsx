@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Project_Tabs from '../../../../User/Project/Project_Tabs';
+import API from '../../../../../utils/axios';
 
 export default function UpdateProject() {
   const [projects, setProjects] = useState([]);
@@ -17,7 +17,7 @@ export default function UpdateProject() {
       }
 
       try {
-        const response = await axios.get('/project/all', {
+        const response = await API.get('/project/all', {
           headers: {
             Authorization: `Bearer ${token}`, // 토큰을 Authorization 헤더에 포함
           },

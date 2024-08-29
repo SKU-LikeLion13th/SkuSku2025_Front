@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import AssignmentTitle from '../../../components/AssignmentTitle';
 import TodayTaskManagement from './TodayTaskManagement';
 import OngoingTaskManagement from './OngoingTaskManagement';
+import API from '../../../utils/axios';
 
 const AssignmentDetail = ({ assignment, trackType }) => {
   const [selectedTask, setSelectedTask] = useState(null);
@@ -18,7 +18,8 @@ const AssignmentDetail = ({ assignment, trackType }) => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('/admin/submit/status', {
+        const response = await 
+        API.get('/admin/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
