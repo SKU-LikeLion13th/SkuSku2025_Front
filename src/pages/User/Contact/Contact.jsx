@@ -45,7 +45,7 @@ const ContactTabs = () => {
           <button
             className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'etc' ? 'text-white' : 'text-gray-500'
-            } md:mb-6 lg:mb-0`} // md에서는 간격 적용, lg 이상에서는 간격 제거
+            } md:mb-4 lg:mb-0`} // md에서는 간격 적용, lg 이상에서는 간격 제거
             onClick={() => setSelectedTab('etc')}>
             [기타 의뢰]
           </button>
@@ -71,7 +71,7 @@ const ContactTabs = () => {
           <button
             className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'Collaboration' ? 'text-white' : 'text-gray-500'
-            } md:mb-6 lg:mb-0`} // md에서는 간격 적용, lg 이상에서는 간격 제거
+            } md:mb-6 md:mt-4 lg:mb-0 lg:mt-0`} // md에서는 간격 적용, lg 이상에서는 간격 제거
             onClick={() => setSelectedTab('Collaboration')}>
             [협업 문의]
           </button>
@@ -96,7 +96,7 @@ const ContactTabs = () => {
           <button
             className={`text-xl xl:text-3xl fontMedium sm:text-2xl md:text-3xl whitespace-nowrap ${
               selectedTab === 'inquiry' ? 'text-white' : 'text-gray-500'
-            }`}
+            } md:mb-6 md:mt-4 lg:mb-0 lg:mt-0`}
             onClick={() => setSelectedTab('inquiry')}>
             [문의 사항]
           </button>
