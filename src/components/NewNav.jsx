@@ -21,6 +21,21 @@ const NewNav = () => {
   })
 
   useEffect(()=>{
+    if (location.pathname.startsWith('/frontend') || location.pathname.startsWith('/backend') || location.pathname.startsWith('/pm_design')) {
+      setActiveIndex(0);
+    } else if (location.pathname.startsWith('/project')) {
+      setActiveIndex(1);
+    } else if(location.pathname.startsWith('/teamIntro')) {
+      setActiveIndex(2);
+    } else if (location.pathname.startsWith('/contact')) {
+      setActiveIndex(3);
+    } else {
+      setActiveIndex(4);
+    }
+  }, [location])
+
+
+  useEffect(()=>{
     const userInfo = localStorage.getItem('userInfo');
 
     if (userInfo) {

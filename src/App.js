@@ -19,7 +19,7 @@ function App() {
 
   return (
     <LoginProvider>
-      <NavbarProvider>
+      <NavbarProvider> 
         <div
           className={`min-h-screen ${isAdminOrCyberCampusPage ? 'bg-white text-black' : 'bg-black text-white'} ${
             isMainPage ? 'relative w-full min-h-screen' : ''
