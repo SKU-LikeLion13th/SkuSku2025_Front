@@ -6,7 +6,7 @@ const FrontEnd = () => {
   return (
     <>
       <div className="container flex items-center justify-center w-10/12 mx-auto part partFront pt-28">
-        <div className="w-1/2 partContent">
+        <div className="partContent">
           <div className="pt-10">
             <span className="text-[#FF7816] fontEB text-6xl">FRONT-END</span>
             <br />
@@ -22,7 +22,7 @@ const FrontEnd = () => {
             <img src={images.track_frontend_curri} alt="front_curriculum" className="w-[426px] curriImg" />
           </div>
 
-          <div className="text-lg leading-8 fontEL">
+          <div className="text-lg leading-8 fontEL whitespace-nowrap">
             <span className="text-2xl fontBold">프론트엔드</span>는<br />
             웹 애플리케이션 또는 모바일 앱의 사용자 인터페이스를 담당하는 부분입니다.
             <br />

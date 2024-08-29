@@ -15,16 +15,16 @@ function App() {
   const location = useLocation();
   const isMainPage = location.pathname === '/';
   const isAdminOrCyberCampusPage =
-    location.pathname.startsWith('/admin') || location.pathname.startsWith('/cyberCampus');
+    location.pathname.startsWith('/admin') || location.pathname.startsWith('/cyberCampus') || location.pathname.startsWith('/cybercampus');
 
   return (
     <LoginProvider>
       <NavbarProvider>
         <div
-          className={`${isAdminOrCyberCampusPage ? 'bg-white text-black' : 'bg-black text-white'} ${
+          className={`min-h-screen ${isAdminOrCyberCampusPage ? 'bg-white text-black' : 'bg-black text-white'} ${
             isMainPage ? 'relative w-full min-h-screen' : ''
           }`}>
-          <MobileNav />
+          <MobileNav isAdminOrCyberCampusPage={isAdminOrCyberCampusPage} />
           <NewNav />
 
           {/* Route */}
