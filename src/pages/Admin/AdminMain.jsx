@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLogin } from '../../utils/LoginContext';
 
 const AdminMain = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useLogin();
+  const [role, setRole] = useState(false);
+
+  useEffect(()=>{
+    const userInfo = localStorage.getItem('userInfo');
+    const parsedInfo = userInfo ? JSON.parse(userInfo) : null;
+
+    if (parsedInfo && parsedInfo.role === "ADMIN_LION") {
+      setRole(true)
+    } else {
+      setRole(false)
+    }
+  }, [isLoggedIn]);
 
   const trackData = [
     {
@@ -33,6 +47,7 @@ const AdminMain = () => {
         <div className="mr-1 text-6xl">관리자페이지</div>
       </div>
 
+      { role ? 
       <div className="flex justify-center mx-auto text-[28px] fontBold flex-wrap mt-28 mb-10">
         {trackData.map((track, index) => (
           <button
@@ -43,7 +58,8 @@ const AdminMain = () => {
             <div className="text-xs whitespace-pre-line fontRegular">{track.subtitle}</div>
           </button>
         ))}
-      </div>
+      </div> : 
+      <div className="text-3xl py-52">접근 권한이 없습니다.</div>}
     </div>
   );
 };

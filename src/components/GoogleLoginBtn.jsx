@@ -38,13 +38,13 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
         let dec = JSON.parse(decodedPayload); // 파싱하여 JS 객체로 변환
 
         if (dec.track === "FRONTEND") {
-          localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'FRONT-END', color: '#FF7816' }));
+          localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'FRONT-END', color: '#FF7816', role: dec.role }));
           setContextUserInfo({ name: dec.name, track: 'FRONT-END', color: '#FF7816' });
         } else if (dec.track === "BACKEND") {
-          localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'BACK-END', color: '#47EAEA' }));
+          localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'BACK-END', color: '#47EAEA', role: dec.role }));
           setContextUserInfo({ name: dec.name, track: 'BACK-END', color: '#47EAEA' })
         } else {
-          localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'PM/DESIGN', color: '#FF669D' }));
+          localStorage.setItem('userInfo', JSON.stringify({ name: dec.name, track: 'PM/DESIGN', color: '#FF669D', role: dec.role }));
           setContextUserInfo({ name: dec.name, track: 'PM/DESIGN', color: '#FF669D' })
         }
       
