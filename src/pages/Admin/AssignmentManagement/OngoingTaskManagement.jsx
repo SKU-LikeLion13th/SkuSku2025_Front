@@ -17,7 +17,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('https://back.sku-sku.com/admin/submit/assignment', {
+        const response = await axios.get('/admin/submit/assignment', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -79,7 +79,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
         passNonePass: passStatus, // 선택된 통과 여부
       };
 
-      await axios.post('https://back.sku-sku.com/admin/feedback/add', payload, {
+      await axios.post('/admin/feedback/add', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -106,7 +106,7 @@ const OngoingTaskManagement = ({ assignmentId, writer, task }) => {
         passNonePass: passStatus, // 통과 여부 값 추가
       };
 
-      await axios.put('https://back.sku-sku.com/admin/feedback/update', payload, {
+      await axios.put('/admin/feedback/update', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

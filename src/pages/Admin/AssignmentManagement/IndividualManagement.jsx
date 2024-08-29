@@ -16,7 +16,7 @@ const IndividualManagement = ({ trackType }) => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('https://back.sku-sku.com/admin/submit/trackcnt', {
+        const response = await axios.get('/admin/submit/trackcnt', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

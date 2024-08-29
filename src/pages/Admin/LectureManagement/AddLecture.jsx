@@ -32,7 +32,7 @@ const AddLecture = ({ onBack }) => {
       formData.append('title', title);
       formData.append('files', file);
   
-      const response = await axios.post('https://back.sku-sku.com/admin/lecture/add',
+      const response = await axios.post('/admin/lecture/add',
         formData,
         {
           headers: {

@@ -23,7 +23,7 @@ const AssignmentForm = ({ onSubmit, onCancel, trackType }) => {
 
       // 서버로 데이터를 보내는 POST 요청
       const response = await axios.post(
-        'https://back.sku-sku.com/admin/assignment/add',
+        '/admin/assignment/add',
         {
           trackType: trackType.toUpperCase(),
           title,

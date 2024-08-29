@@ -37,7 +37,7 @@ const CreateProject = () => {
     }
 
     try {
-      await axios.post('https://back.sku-sku.com/admin/project/add', formData, {
+      await axios.post('/admin/project/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`, // 토큰을 Authorization 헤더에 포함

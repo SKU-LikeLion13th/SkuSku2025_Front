@@ -21,7 +21,7 @@ export default function TodaysAssignment() {
       const normalizedTrack = track.replace('-', '');
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/submit/status', {
+        const response = await axios.get('/submit/status', {
           params: {
             writer: localStorage.getItem('name') || 'Unknown', // 로컬 스토리지에서 이름을 가져옴
             track: normalizedTrack,

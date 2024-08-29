@@ -26,7 +26,7 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
     };
 
     axios
-      .post('https://back.sku-sku.com/api/auth/google', data)
+      .post('/api/auth/google', data)
       .then(response => {
         localStorage.setItem('token', JSON.stringify(response.data.token));
         localStorage.setItem('expire', JSON.stringify(Date.now() + 60 * 60 * 1000));

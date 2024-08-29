@@ -29,8 +29,10 @@ const NewNav = () => {
       setActiveIndex(2);
     } else if (location.pathname.startsWith('/contact')) {
       setActiveIndex(3);
-    } else {
+    } else if (location.pathname.startsWith('/cyberCampus')) {
       setActiveIndex(4);
+    } else {
+      setActiveIndex(null);
     }
   }, [location])
 

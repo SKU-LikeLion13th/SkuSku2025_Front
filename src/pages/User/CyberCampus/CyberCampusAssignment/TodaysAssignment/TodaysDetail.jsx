@@ -20,7 +20,7 @@ export default function TodaysDetail() {
       }
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/submit/status', {
+        const response = await axios.get('/submit/status', {
           params: {
             writer: localStorage.getItem('name') || 'Unknown', // 로컬 스토리지에서 이름을 가져옴
             track: track,
@@ -60,7 +60,7 @@ export default function TodaysDetail() {
     formData.append('files', file);
 
     try {
-      const response = await axios.post('https://back.sku-sku.com/submit/add', formData, {
+      const response = await axios.post('/submit/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

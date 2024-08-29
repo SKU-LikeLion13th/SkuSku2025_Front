@@ -17,7 +17,7 @@ export default function CompletedDetails() {
       const normalizedTrack = track.replace('-', '');
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/submit/status', {
+        const response = await axios.get('/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

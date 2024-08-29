@@ -22,7 +22,7 @@ export default function ProjectManagement() {
     }
 
     try {
-      const response = await axios.get('https://back.sku-sku.com/project/all');
+      const response = await axios.get('/project/all');
       setProjects(response.data);
       setFilteredProjects(response.data);
     } catch (error) {

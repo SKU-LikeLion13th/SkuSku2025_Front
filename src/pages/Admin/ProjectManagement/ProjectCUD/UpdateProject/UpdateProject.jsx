@@ -17,7 +17,7 @@ export default function UpdateProject() {
       }
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/project/all', {
+        const response = await axios.get('/project/all', {
           headers: {
             Authorization: `Bearer ${token}`, // 토큰을 Authorization 헤더에 포함
           },

@@ -97,7 +97,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
 
     try {
       for (const id of selectedIds) {
-        const url = `https://back.sku-sku.com/admin/lecture/delete?lectureId=${id}`;
+        const url = `/admin/lecture/delete?lectureId=${id}`;
 
         const response = await axios.delete(url, {
           headers: {
@@ -131,7 +131,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
   
     try {
       for (const lecture of lectures) {
-        const url = `https://back.sku-sku.com/admin/lecture/delete?lectureId=${lecture.id}`;
+        const url = `/admin/lecture/delete?lectureId=${lecture.id}`;
   
         const response = await axios.delete(url, {
           headers: {

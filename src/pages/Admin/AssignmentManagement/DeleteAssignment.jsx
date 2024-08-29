@@ -36,7 +36,7 @@ const DeleteAssignments = ({
         // 서버로 전체 삭제 요청을 보냄
         await axios.request({
           method: 'delete',
-          url: 'https://back.sku-sku.com/admin/assignment/delete-all',
+          url: '/admin/assignment/delete-all',
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const DeleteAssignments = ({
       // 선택된 과제들에 대해 서버로 삭제 요청을 보냄
       await Promise.all(
         selectedAssignments.map(id =>
-          axios.delete('https://back.sku-sku.com/admin/assignment', {
+          axios.delete('/admin/assignment', {
             headers: {
               Authorization: `Bearer ${token}`,
             },

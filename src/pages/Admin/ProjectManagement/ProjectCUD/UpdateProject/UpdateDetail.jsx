@@ -15,7 +15,7 @@ const UpdateDetail = () => {
     const fetchProjectDetails = async () => {
       const token = localStorage.getItem('authToken'); // 토큰 불러오기
       try {
-        const response = await axios.get(`https://back.sku-sku.com/admin/project/${id}`, {
+        const response = await axios.get(`/admin/project/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`, // 토큰 포함
           },
@@ -59,7 +59,7 @@ const UpdateDetail = () => {
     const token = localStorage.getItem('authToken'); // 토큰 불러오기
 
     try {
-      const response = await axios.put('https://back.sku-sku.com/project/update', formData, {
+      const response = await axios.put('/project/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`, // 토큰 포함

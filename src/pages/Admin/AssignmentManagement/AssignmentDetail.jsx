@@ -18,7 +18,7 @@ const AssignmentDetail = ({ assignment, trackType }) => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('https://back.sku-sku.com/admin/submit/status', {
+        const response = await axios.get('/admin/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

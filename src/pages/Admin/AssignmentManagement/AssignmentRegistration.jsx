@@ -57,7 +57,7 @@ const AssignmentRegistration = () => {
           token = token.slice(1, -1);
         }
 
-        const response = await axios.get('https://back.sku-sku.com/assignment', {
+        const response = await axios.get('/assignment', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -34,7 +34,7 @@ const LectureManagement = () => {
         token = token.slice(1, -1);
       }
       setLoading(true);
-      const response = await axios.get('https://back.sku-sku.com/lecture/all', {
+      const response = await axios.get('/lecture/all', {
         params: { track: formattedTrack }, 
         headers: {
           Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ const LectureManagement = () => {
         token = token.slice(1, -1);
       }
       setLoading(true);
-      const response = await axios.get(`https://back.sku-sku.com/lecture`, {
+      const response = await axios.get(`/lecture`, {
         params: { id: lecture.id },
         headers: {
           Authorization: `Bearer ${token}`,

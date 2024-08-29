@@ -19,7 +19,7 @@ export default function ProgressingAssignment() {
       }
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/submit/status', {
+        const response = await axios.get('/submit/status', {
           params: {
             writer: localStorage.getItem('name') || 'Unknown',
             track: track.replace('-', ''),

@@ -16,7 +16,7 @@ export default function DeleteProject() {
         return;
       }
       try {
-        const response = await axios.get('https://back.sku-sku.com/project/all');
+        const response = await axios.get('/project/all');
         setProjects(response.data);
         setFilteredProjects(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ export default function DeleteProject() {
       return;
     }
     try {
-      await axios.delete('https://back.sku-sku.com/admin/project', {
+      await axios.delete('/admin/project', {
         params: {
           id: projectId, // 쿼리 파라미터로 ID 전달
         },

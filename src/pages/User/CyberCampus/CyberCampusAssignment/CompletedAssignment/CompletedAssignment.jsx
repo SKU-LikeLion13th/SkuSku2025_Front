@@ -19,7 +19,7 @@ export default function CompletedAssignment() {
       }
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/submit/status', {
+        const response = await axios.get('/submit/status', {
           params: {
             track: track.replace('-', ''), // track 값을 적절히 변환
             writer: localStorage.getItem('name') || 'Unknown',

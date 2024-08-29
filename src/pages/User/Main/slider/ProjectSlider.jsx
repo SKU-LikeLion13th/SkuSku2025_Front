@@ -27,7 +27,7 @@ const ProjectSlider = () => {
 
   useEffect(() => {
     axios
-      .get('https://back.sku-sku.com/project/all')
+      .get('/project/all')
       .then(response => {
         setProjects(response.data);
       })

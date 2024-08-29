@@ -23,7 +23,7 @@ export default function ProgressingDetails() {
       const normalizedTrack = track.replace('-', '');
 
       try {
-        const response = await axios.get('https://back.sku-sku.com/submit/status', {
+        const response = await axios.get('/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -75,7 +75,7 @@ export default function ProgressingDetails() {
     formData.append('files', file);
 
     try {
-      await axios.post('https://back.sku-sku.com/submit/add', formData, {
+      await axios.post('/submit/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ export default function ProgressingDetails() {
       });
 
       // 제출 성공 후 상태 업데이트
-      const updatedResponse = await axios.get('https://back.sku-sku.com/submit/status', {
+      const updatedResponse = await axios.get('/submit/status', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

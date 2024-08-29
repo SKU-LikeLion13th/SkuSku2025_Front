@@ -35,7 +35,7 @@ const LectureContent = ({ lecture, onBack, onEdit, isAdmin, refreshLectures }) =
     const confirmDelete = window.confirm("해당 강의를 삭제하시겠습니까?");
     if (!confirmDelete) return;
     try {
-      const url = `https://back.sku-sku.com/admin/lecture/delete?lectureId=${lecture.id}`;
+      const url = `/admin/lecture/delete?lectureId=${lecture.id}`;
       
       const response = await axios.delete(url, {
         headers: {
