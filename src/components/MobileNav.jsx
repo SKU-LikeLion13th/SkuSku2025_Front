@@ -64,7 +64,7 @@ const ShowNav = () => {
     )
 }
 
-const MobileNav = () => {
+const MobileNav = ({isAdminOrCyberCampusPage}) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const { isOpen, setIsOpen } = useNavbar();
     const [scrolling, setScrolling] = useState(false)
@@ -85,8 +85,8 @@ const MobileNav = () => {
                   <img className={`w-20 ${isOpen ? 'opacity-0' : 'opacity-100'}`} src={images.likelion_logo} alt="likelion_logo" />
                 </div>
               </Link>
-
-              <div className={`off-screen-menu ${isOpen ? 'open slideInDown fixed' : 'hidden'} flex justify-center tracking-[1px] bg-black`}>
+        
+              <div className={`off-screen-menu ${isOpen ? 'open slideInDown fixed' : 'hidden'} ${isAdminOrCyberCampusPage ? 'bg-white text-black' : 'bg-black text-white'} flex justify-center tracking-[1px] `}>
                   {isOpen && (
                       <ShowNav />
                   )}
@@ -94,9 +94,9 @@ const MobileNav = () => {
 
               <div className="flex items-center space-x-2">
                 <div className={`mr-1 hamburger-menu ${isOpen ? 'active' : ''} cursor-pointer z-20`} onClick={() => setIsOpen(!isOpen)}>
-                    <div className="ham-bar bar-top bg-white" />
-                    <div className="ham-bar bar-mid bg-white" />
-                    <div className="ham-bar bar-bottom bg-white" />
+                    <div className={`ham-bar bar-top ${isAdminOrCyberCampusPage ? 'bg-black' : 'bg-white'} `} />
+                    <div className={`ham-bar bar-mid ${isAdminOrCyberCampusPage ? 'bg-black' : 'bg-white'}`} />
+                    <div className={`ham-bar bar-bottom ${isAdminOrCyberCampusPage ? 'bg-black' : 'bg-white'}`} />
                 </div>
               </div>
           </div>
