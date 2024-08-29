@@ -21,7 +21,7 @@ function App() {
     <LoginProvider>
       <NavbarProvider>
         <div
-          className={`${isAdminOrCyberCampusPage ? 'bg-white text-black' : 'bg-black text-white'} ${
+          className={`min-h-screen ${isAdminOrCyberCampusPage ? 'bg-white text-black' : 'bg-black text-white'} ${
             isMainPage ? 'relative w-full min-h-screen' : ''
           }`}>
           <MobileNav />

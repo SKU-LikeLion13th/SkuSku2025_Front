@@ -1,8 +1,8 @@
 .partFront {
   background-image: url('/public/assets/images/track/frontend_background.png');
-  background-size: contain;
+  background-size: 35%;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: center right;
 }
 .partBack {
   background-image: url('/public/assets/images/track/backend_background.png');
@@ -23,7 +23,17 @@
     background-position: center;
   }
 
-  .PartContent {
+  .partFront {
+    background-size: 50%;
+    text-align: center;
+  }
+
+  .partBack {
+    background-size: 80%;
+    text-align: center;
+  }
+
+  .partContent {
     width: 100%;
     text-align: center;
   }

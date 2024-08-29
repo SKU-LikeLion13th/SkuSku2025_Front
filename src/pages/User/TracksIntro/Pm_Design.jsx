@@ -6,7 +6,7 @@ const Pm_Design = () => {
   return (
     <>
       <div className="@container part partPm container flex items-center justify-center mx-auto pt-28 w-10/12">
-        <div className="w-1/2 partContent">
+        <div className="partContent">
           <div className="pt-10">
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
             <br />
@@ -23,7 +23,7 @@ const Pm_Design = () => {
             <img src={images.track_pm_curri} alt="track_pm_curri" className="w-[512px] curriImg" />
           </div>
 
-          <div className="text-lg leading-8 fontEL">
+          <div className="text-lg leading-8 fontEL  whitespace-nowrap">
             <span className="text-2xl fontBold">UX/UI 디자이너</span>는<br />
             제품 또는 서비스의 사용자 경험을 개선하기 위해
             <br />
@@ -35,11 +35,15 @@ const Pm_Design = () => {
             <br />
             <br />
             <span className="text-2xl fontBold">서비스 기획자</span>는<br />
-            서비스 기획자는 사용자 요구사항을 분석하고 제품 또는 서비스의 기획과 전략을 개발하여
+            서비스 기획자는 사용자 요구사항을 분석하고
+            <br />
+            제품 또는 서비스의 기획과 전략을 개발하여
             <br />
             사용자들의 만족도를 높이고 비즈니스 목표를 달성합니다.
             <br />
-            주로 데이터베이스와 서버 사이의 통신을 담당하여 클라이언트에게 필요한 데이터를 제공합니다.
+            주로 데이터베이스와 서버 사이의 통신을 담당하여
+            <br />
+            클라이언트에게 필요한 데이터를 제공합니다.
           </div>
         </div>
         <div className="w-1/2 rightBox"></div>

@@ -6,7 +6,7 @@ const BackEnd = () => {
   return (
     <>
       <div className="container flex items-center justify-center w-10/12 mx-auto part partBack pt-28">
-        <div className="w-1/2 PartContent">
+        <div className="partContent">
           <div className="pt-10">
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">BACK-END</span>
             <br />
@@ -45,7 +45,7 @@ const BackEnd = () => {
             </div>
           </div>
 
-          <div className="text-lg leading-8 fontEL">
+          <div className="text-lg leading-8 fontEL whitespace-nowrap">
             <span className="text-2xl fontBold">백엔드</span>는<br />
             백엔드(Backend)는 웹 또는 모바일 애플리케이션의 서버 측 부분으로,
             <br />
