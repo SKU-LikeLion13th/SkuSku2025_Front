@@ -130,27 +130,27 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
     if (!confirmDelete) return;
   
     try {
-      for (const lecture of lectures) {
+      const deletePromises = lectures.map(lecture => {
         const url = `/admin/lecture/delete?lectureId=${lecture.id}`;
-  
-        const response = await API.delete(url, {
+        return API.delete(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+      });
   
-        if (response.status !== 200) {
-          throw new Error('삭제에 실패했습니다.');
-        }
-      }
-      alert('전체 강의 삭제가 완료되었습니다.');
+      // 모든 요청이 완료될 때까지 기다림
+      await Promise.all(deletePromises);
       
+      alert('전체 강의 삭제가 완료되었습니다.');
       setFilteredData([]);  // 모든 데이터를 삭제 후 빈 배열로 업데이트
+      setSelectedIds([]);  // 선택된 아이템 초기화
     } catch (error) {
-      console.error('Error deleting all lectures:', error);
+      console.error('전체 강의 삭제 중 오류가 발생했습니다:', error);
       alert('전체 강의 삭제 중 오류가 발생했습니다.');
     }
   };
+  
 
   return (
     <div className="flex flex-col justify-center items-center w-full min-h-screen">
@@ -206,6 +206,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
                     <input
                       type='checkbox'
                       className='ml-3'
+                      checked={selectedIds.includes(item.id)}
                       onChange={() => handleCheckboxChange(item.id)}
                     />
                   )}
