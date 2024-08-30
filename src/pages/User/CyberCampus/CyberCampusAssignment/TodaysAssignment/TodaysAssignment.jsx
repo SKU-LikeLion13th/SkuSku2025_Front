@@ -18,13 +18,14 @@ export default function TodaysAssignment() {
         return;
       }
 
-      const normalizedTrack = track.replace('-', '');
-
       try {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        const writerName = userInfo?.name || 'Unknown';
+
         const response = await API.get('/submit/status', {
           params: {
-            writer: localStorage.getItem('name') || 'Unknown', // 로컬 스토리지에서 이름을 가져옴
-            track: normalizedTrack,
+            writer: writerName,
+            track: track.replace('-', ''), // track 값을 적절히 변환
           },
           headers: {
             Authorization: `Bearer ${token}`,

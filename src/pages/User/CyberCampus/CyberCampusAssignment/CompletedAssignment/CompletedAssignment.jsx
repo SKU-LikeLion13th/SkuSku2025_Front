@@ -19,10 +19,13 @@ export default function CompletedAssignment() {
       }
 
       try {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        const writerName = userInfo?.name || 'Unknown';
+
         const response = await API.get('/submit/status', {
           params: {
             track: track.replace('-', ''), // track 값을 적절히 변환
-            writer: localStorage.getItem('name') || 'Unknown',
+            writer: writerName,
           },
           headers: {
             Authorization: `Bearer ${token}`,

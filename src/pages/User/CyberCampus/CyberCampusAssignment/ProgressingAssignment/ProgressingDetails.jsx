@@ -75,6 +75,9 @@ export default function ProgressingDetails() {
     formData.append('files', file);
 
     try {
+      const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      const writerName = userInfo?.name || 'Unknown';
+
       await API.post('/submit/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -88,7 +91,7 @@ export default function ProgressingDetails() {
           Authorization: `Bearer ${token}`,
         },
         params: {
-          writer: localStorage.getItem('name') || 'Unknown',
+          writer: writerName,
           track: track.replace('-', ''),
         },
       });

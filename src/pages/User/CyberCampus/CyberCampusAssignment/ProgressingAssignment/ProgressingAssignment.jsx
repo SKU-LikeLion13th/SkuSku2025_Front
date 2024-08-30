@@ -19,9 +19,12 @@ export default function ProgressingAssignment() {
       }
 
       try {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        const writerName = userInfo?.name || 'Unknown';
+
         const response = await API.get('/submit/status', {
           params: {
-            writer: localStorage.getItem('name') || 'Unknown',
+            writer: writerName,
             track: track.replace('-', ''),
           },
           headers: {

@@ -14,16 +14,18 @@ export default function CompletedDetails() {
         console.error('토큰이 없습니다. 로그인 후 다시 시도해주세요.');
         return;
       }
-      const normalizedTrack = track.replace('-', '');
 
       try {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        const writerName = userInfo?.name || 'Unknown';
+
         const response = await API.get('/submit/status', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
           params: {
-            writer: localStorage.getItem('name') || 'Unknown',
-            track: normalizedTrack,
+            writer: writerName,
+            track: track.replace('-', ''),
           },
         });
 
