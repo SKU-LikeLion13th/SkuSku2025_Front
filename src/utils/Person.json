@@ -32,7 +32,7 @@
     "logo": "assets/logo/likeLionLogo.png",
     "name": "고창준",
     "major": "컴퓨터공학과 19",
-    "role": "운영진",
+    "role": "FE 파트장",
     "position": "프론트엔드"
   },
   {
@@ -41,7 +41,7 @@
     "logo": "assets/logo/likeLionLogo.png",
     "name": "남민지",
     "major": "컴퓨터공학과 21",
-    "role": "운영진",
+    "role": "BE 파트장",
     "position": "백엔드"
   },
   {
@@ -95,7 +95,7 @@
     "logo": "assets/logo/likeLionLogo.png",
     "name": "이원경",
     "major": "국어국문학과 22",
-    "role": "운영진",
+    "role": "기획/디자인 파트장",
     "position": "기획"
   },
   {
@@ -142,5 +142,23 @@
     "major": "컴퓨터공학과 19",
     "role": "운영진",
     "position": "백엔드"
+  },
+  {
+    "id": 17,
+    "image": "assets/images/person/남민지.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "남민지",
+    "major": "컴퓨터공학과 21",
+    "role": "운영진",
+    "position": "백엔드"
+  },
+  {
+    "id": 18,
+    "image": "assets/images/person/이원경.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "이원경",
+    "major": "국어국문학과 22",
+    "role": "운영진",
+    "position": "기획"
   }
 ]

@@ -10,8 +10,8 @@ const TeamIntro = () => {
     setActiveTab(tab);
   };
 
-  const id12gi = [2, 6, 4, 3, 1, 5, 7, 8, 11, 9, 10]; // 12기
-  const id11gi = [12, 13, 14, 16, 5, 15, 11]; // 11기
+  const id12gi = [2, 6, 4, 5, 11, 7, 3, 8, 1, 9, 10]; // 12기
+  const id11gi = [12, 13, 14, 16, 17, 15, 18]; // 11기
 
   const tabClass = tab =>
     `cursor-pointer text-xl fontBold relative ${
