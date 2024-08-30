@@ -93,11 +93,11 @@ export default function TodaysDetail() {
         <div className="mb-6 text-sm">{description}</div>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="mr-3 text-xl fontBold">제출 여부</div>
+            <div className="mr-3 text-xl fontBold whitespace-nowrap">제출 여부</div>
             <div className="border-[1px] bg-inherit rounded-md px-3 py-1">{submitStatus || '제출 안 함'}</div>
           </div>
           <div className="flex items-center w-1/2">
-            <label className="mr-3 text-xl fontBold w-[120px]" htmlFor="file">
+            <label className="mr-3 text-xl fontBold whitespace-nowrap" htmlFor="file">
               과제 업로드
             </label>
             <input

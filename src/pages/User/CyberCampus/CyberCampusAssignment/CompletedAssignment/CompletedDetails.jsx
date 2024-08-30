@@ -79,11 +79,11 @@ export default function CompletedDetails() {
         </div>
         <div className="flex items-center">
           <div className="flex items-center mr-8">
-            <div className="mr-3 text-xl fontBold">제출 여부</div>
+            <div className="mr-3 text-xl fontBold whitespace-nowrap">제출 여부</div>
             <div className="border-[1px] bg-inherit rounded-md px-3 py-1">제출 완료</div>
           </div>
           <div className="flex items-center">
-            <div className="mr-3 text-xl fontBold">통과 여부</div>
+            <div className="mr-3 text-xl fontBold whitespace-nowrap">통과 여부</div>
             <div className="border-[1px] bg-inherit rounded-md px-6 py-1" style={passStatusStyle}>
               {passStatus}
             </div>

@@ -149,20 +149,20 @@ export default function ProgressingDetails() {
         <div className="mb-6 text-sm">{assignmentDetails.description}</div>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="mr-3 text-xl fontBold w-[80px]">제출 여부</div>
+            <div className="mr-3 text-xl fontBold whitespace-nowrap">제출 여부</div>
             <div className="border-[1px] bg-inherit rounded-md px-3 py-1" style={submitStatusStyle}>
               {submitStatus}
             </div>
           </div>
           <div className="flex items-center">
-            <div className="mr-3 text-xl fontBold w-[80px]">통과 여부</div>
+            <div className="mr-3 text-xl fontBold whitespace-nowrap">통과 여부</div>
             <div className="border-[1px] bg-inherit rounded-md px-3 py-1" style={passStatusStyle}>
               {passStatus}
             </div>
           </div>
 
           <div className="flex items-center w-1/2">
-            <label className="mr-3 text-xl fontBold w-[120px]" htmlFor="file">
+            <label className="mr-3 text-xl fontBold whitespace-nowrap" htmlFor="file">
               과제 업로드
             </label>
             <input
@@ -173,14 +173,14 @@ export default function ProgressingDetails() {
             />
           </div>
         </div>
-        <div className="flex items-center mt-8">
-          <div className="mr-4 text-xl fontBold w-[75px]">피드백</div>
+        <div className="flex mt-8">
+          <div className="mr-4 text-xl fontBold whitespace-nowrap">피드백</div>
           <div className="text-xs">{feedback}</div>
         </div>
         <div className="flex justify-end mt-16">
           <input
             type="submit"
-            value="과제 제출"
+            value="과제 수정"
             className="px-6 py-2 text-white bg-[#FF7816] rounded-lg cursor-pointer"
             onClick={handleSubmit}
           />
