@@ -8,11 +8,11 @@ const ProjectItem = ({ title, subtitle, image, url }) => (
   <a href={url} className="flex justify-center items-center w-full" target="_blank" rel="noopener noreferrer">
     <div className="relative w-3/5 xl:w-full h-[14rem] mx-8">
       <div
-        className="absolute inset-0 bg-center bg-cover rounded-md"
+        className="absolute inset-0 bg-center bg-cover rounded-[6px]"
         style={{
           backgroundImage: `url(data:image/png;base64,${image})`,
         }}>
-        <div className="absolute inset-0 bg-black rounded-md opacity-50"></div>
+        <div className="absolute inset-0 bg-black rounded-[6px] opacity-50"></div>
       </div>
       <div className="relative z-10 flex flex-col justify-end h-full pb-6 pl-6 text-start">
         <div className="text-3xl font-bold text-white">{title}</div>
