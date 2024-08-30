@@ -183,24 +183,24 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
       </div>
 
       <div className="w-2/3 min-h-screen">
-        <div className="grid grid-cols-11 fontBold justify-center items-center text-center bg-[#F7F7F7] w-full h-12 border-t-[2.5px] border-b-[0.1px] border-black">
+        <div className="grid grid-cols-12 fontBold justify-center items-center text-center bg-[#F7F7F7] w-full h-12 border-t-[2.5px] border-b-[0.1px] border-black">
           <p>번호</p>
           <p className="col-span-7">제목</p>
           <p>작성자</p>
-          <p>작성일</p>
+          <p className='col-span-2'>작성일</p>
           <p>조회수</p>
         </div>
         {currentData.length > 0 ? (
           currentData.map((item, index) => (
             <div className='fontLight' key={index}>
-              <div className="grid grid-cols-11 items-center text-center w-full h-12 cursor-pointer">
+              <div className="grid grid-cols-12 items-center text-center w-full h-12 cursor-pointer">
                 <p>{(currentPage - 1) * itemsPerPage + index + 1}</p>
                 <p className="flex items-center col-span-7 text-start" onClick={() => onSelectLecture(item)}>
                   {item.title}
                   {item.joinLectureFiles ? <img src={images.download} className='pl-4 h-4' alt="download icon"></img> : <div> </div>}
                 </p>
                 <p>{item.writer}</p>
-                <p>{item.createDate}</p>
+                <p className='col-span-2'>{item.createDate}</p>
                 <p>{item.views}
                   {isManaging && (
                     <input

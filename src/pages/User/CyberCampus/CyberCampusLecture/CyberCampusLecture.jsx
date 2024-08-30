@@ -94,7 +94,7 @@ const CyberCampusLecture = () => {
       <div className='w-full h-full flex flex-col items-center'>
         <div className="flex flex-col items-center justify-center pt-40 fontEB">
           <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
-          <div className="mr-1 text-6xl">과제제출</div>
+          <div className="mr-1 text-6xl">강의자료</div>
         </div>
         <CyberCampusLocation />
         {selectedLecture ? (
