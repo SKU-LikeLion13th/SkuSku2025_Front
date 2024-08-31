@@ -18,6 +18,12 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
     setCurrentPage(pageNumber);
   };
 
+  // 날짜 포맷 변환 함수
+  const formatDueDate = duedate => {
+    const date = new Date(duedate);
+    return `마감일 : ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+  };
+
   return (
     <div className="mt-20 w-full px-8">
       <div className="text-2xl fontBold mb-8">오늘의 과제 관리</div>
@@ -29,6 +35,7 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
               {assignment.title} {assignment.subTitle && `[${assignment.subTitle}]`}
             </div>
             <p className="text-sm">{assignment.description}</p>
+            <p className="text-sm mt-2">{formatDueDate(assignment.dueDate)}</p> {/* 마감일 추가 */}
           </div>
         ))}
       </div>
