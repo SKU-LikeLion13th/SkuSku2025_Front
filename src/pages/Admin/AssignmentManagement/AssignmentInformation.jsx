@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../../css/scrollbar.css'; // Custom CSS 파일을 임포트
 
 const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
