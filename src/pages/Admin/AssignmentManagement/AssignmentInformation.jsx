@@ -30,12 +30,12 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
       <div className="grid grid-cols-2 gap-12">
         {/* 서버에서 받은 데이터를 렌더링 */}
         {currentItems.map(assignment => (
-          <div key={assignment.id} className="p-6 bg-blue-500 text-white rounded-lg shadow-lg h-32">
-            <div className="fontEB text-lg mb-2">
+          <div key={assignment.id} className="p-7 bg-blue-500 text-white rounded-lg shadow-lg h-36">
+            <div className="fontEB text-lg mb-3">
               {assignment.title} {assignment.subTitle && `[${assignment.subTitle}]`}
             </div>
             <p className="text-sm">{assignment.description}</p>
-            <p className="text-sm mt-2">{formatDueDate(assignment.dueDate)}</p> {/* 마감일 추가 */}
+            <p className="text-sm mt-4">{formatDueDate(assignment.dueDate)}</p> {/* 마감일 추가 */}
           </div>
         ))}
       </div>
