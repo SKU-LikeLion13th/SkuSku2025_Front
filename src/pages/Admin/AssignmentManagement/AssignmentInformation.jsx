@@ -10,7 +10,7 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
         {assignments.map(assignment => (
           <div key={assignment.id} className="p-6 bg-blue-500 text-white rounded-lg shadow-lg h-32">
             <div className="fontEB text-lg mb-2">
-              {assignment.title} {assignment.subTitle}
+              {assignment.title} {assignment.subTitle && `[${assignment.subTitle}]`}
             </div>
             <p className="text-sm">{assignment.description}</p>
           </div>
