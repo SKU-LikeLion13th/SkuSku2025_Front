@@ -75,7 +75,7 @@ export default function TodaysAssignment() {
         <div className="text-sm">
           지난 과제는 <span className="text-blue-500 fontBold">과제 제출 &gt; 진행중인 과제</span>에서 확인 가능합니다.
         </div>
-        <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-12 mx-auto mt-16">
+        <div className="grid items-center justify-center w-1/2 grid-cols-1 gap-12 mx-auto mt-16 lg:grid-cols2">
           {currentAssignments.map(assignment => (
             <button
               key={assignment.assignmentId}

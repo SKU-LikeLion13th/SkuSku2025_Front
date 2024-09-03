@@ -28,20 +28,20 @@ export default function CyberCampusAssignment() {
   ];
 
   return (
-    <div className="relative min-h-screen text-black">
+    <div className="relative text-black lg:min-h-screen">
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
         <div className="mr-1 text-6xl">과제제출</div>
       </div>
-      <div className="flex justify-center w-10/12 mx-auto text-[28px] mt-28 fontBold">
+      <div className="flex flex-col justify-center w-10/12 gap-16 mx-auto mt-28 fontBold lg:flex-row lg:gap-8">
         {buttons.map((button, index) => (
           <button
             key={index}
-            className="mx-8 w-[300px] shadow-lg py-14 px-8 rounded-xl hover:textShadow duration-500 hover:translate-y-[-5px] text-start"
+            className="mx-auto w-[500px] py-16 px-12 shadow-lg rounded-xl duration-500 hover:translate-y-[-5px] text-start lg:py-14 lg:px-8 lg:w-[350px]"
             style={{ backgroundColor: button.color }}
             onClick={() => navigate(button.route)}>
-            <div className="mb-4">{button.title}</div>
-            <div className="text-xs whitespace-pre-line fontRegular">{button.subTitle}</div>
+            <div className="text-4xl lg:text-[28px] mb-4">{button.title}</div>
+            <div className="text-lg whitespace-pre-line fontRegular max-xl:whitespace-normal">{button.subTitle}</div>
           </button>
         ))}
       </div>

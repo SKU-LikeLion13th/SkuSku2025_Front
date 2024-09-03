@@ -13,7 +13,7 @@ const UpdateDetail = () => {
 
   useEffect(() => {
     const fetchProjectDetails = async () => {
-      const token = localStorage.getItem('authToken'); // 토큰 불러오기
+      const token = JSON.parse(localStorage.getItem('token')); // 로컬 스토리지에서 토큰 가져오기
       try {
         const response = await API.get(`/admin/project/${id}`, {
           headers: {
@@ -29,7 +29,7 @@ const UpdateDetail = () => {
           setImagePreview(`data:image/jpeg;base64,${project.image}`);
         }
       } catch (error) {
-        console.error('Error fetching project details:', error);
+        console.error('프로젝트 불러오기 실패', error);
       }
     };
 
@@ -56,19 +56,19 @@ const UpdateDetail = () => {
       formData.append('image', image);
     }
 
-    const token = localStorage.getItem('authToken'); // 토큰 불러오기
+    const token = JSON.parse(localStorage.getItem('token')); // 로컬 스토리지에서 토큰 가져오기
 
     try {
-      const response = await API.put('/project/update', formData, {
+      const response = await API.put('/admin/project/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`, // 토큰 포함
         },
       });
       alert('프로젝트 수정에 성공하였습니다!');
-      window.location.href = '/admin/projectManagement/updateProject';
+      window.location.href = '/admin/main/projectManagement/updateProject';
     } catch (error) {
-      console.error('Error updating project:', error.response ? error.response.data : error.message);
+      console.error('프로젝트 수정 실패 :', error.response ? error.response.data : error.message);
       alert('프로젝트 수정에 실패하였습니다!');
     }
   };

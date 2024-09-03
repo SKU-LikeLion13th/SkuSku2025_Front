@@ -41,7 +41,7 @@ export default function UpdateProject() {
   };
 
   const handleEditClick = projectId => {
-    navigate(`/admin/projectManagement/updateProject/${projectId}`);
+    navigate(`/admin/main/projectManagement/updateProject/${projectId}`);
   };
 
   return (

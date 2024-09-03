@@ -5,9 +5,9 @@ import { useLocation } from 'react-router-dom';
 const Contact = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black">
-      <div className="container mx-auto pt-24 px-5 xl:px-20">
+      <div className="container px-5 pt-24 mx-auto xl:px-20">
         <div className="flex flex-col items-center justify-between w-full xl:flex-row">
-          <div className="w-full xl:w-[610px] mb-10 xl:mb-0 xl:mr-20 text-center xl:text-left">
+          <div className="w-full ml-20 pb-20 leading-10 xl:w-[610px] mb-10 xl:mb-0 xl:mr-20 text-center xl:text-left">
             <span className="text-4xl leading-tight text-blue-500 xl:text-6xl fontEB sm:text-5xl md:text-6xl md:leading-tight">
               반가워요!
               <br />
@@ -50,7 +50,7 @@ const ContactTabs = () => {
             [기타 의뢰]
           </button>
           <span
-            className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block cursor-pointer"
+            className="absolute bottom-0 left-0 flex items-center hidden h-1 mt-2 cursor-pointer w-36 xl:block"
             onClick={() => setSelectedTab('etc')}>
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
@@ -76,7 +76,7 @@ const ContactTabs = () => {
             [협업 문의]
           </button>
           <span
-            className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block cursor-pointer"
+            className="absolute bottom-0 left-0 flex items-center hidden h-1 mt-2 cursor-pointer w-36 xl:block"
             onClick={() => setSelectedTab('Collaboration')}>
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>
@@ -101,7 +101,7 @@ const ContactTabs = () => {
             [문의 사항]
           </button>
           <span
-            className="absolute bottom-0 left-0 flex items-center hidden w-36 h-1 mt-2 xl:block cursor-pointer"
+            className="absolute bottom-0 left-0 flex items-center hidden h-1 mt-2 cursor-pointer w-36 xl:block"
             onClick={() => setSelectedTab('inquiry')}>
             <img src={images.arrow} alt="arrow" className="w-full mt-4" />
           </span>

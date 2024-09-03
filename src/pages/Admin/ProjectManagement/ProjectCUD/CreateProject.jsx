@@ -44,7 +44,7 @@ const CreateProject = () => {
         },
       });
       alert('프로젝트가 추가되었습니다!');
-      window.location.href = '/admin/projectManagement';
+      window.location.href = '/admin/main/projectManagement';
     } catch (error) {
       console.error('프로젝트 추가 중 오류 발생:', error);
       alert('프로젝트 추가에 실패했습니다.');

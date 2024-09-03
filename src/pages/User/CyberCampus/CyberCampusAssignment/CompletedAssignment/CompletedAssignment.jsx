@@ -71,7 +71,7 @@ export default function CompletedAssignment() {
           완성된 과제 <span className="text-[#00B94A]">총 {assignments.length}건</span>이 있습니다.
         </div>
         <div className="text-sm">성장을 위해 노력하는 아기사자를 운영진 모두가 응원합니다.</div>
-        <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-12 mx-auto mt-16">
+        <div className="grid items-center justify-center w-1/2 grid-cols-1 gap-12 mx-auto mt-16 lg:grid-cols2">
           {currentAssignments.map(assignment => (
             <button
               key={assignment.assignmentId}

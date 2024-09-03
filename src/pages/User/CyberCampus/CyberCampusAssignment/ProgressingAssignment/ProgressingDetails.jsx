@@ -15,12 +15,11 @@ export default function ProgressingDetails() {
   useEffect(() => {
     const fetchAssignmentDetails = async () => {
       const token = JSON.parse(localStorage.getItem('token'));
-      const writer = localStorage.getItem('name') || 'Unknown';
+      const writer = JSON.parse(localStorage.getItem('userInfo'))?.name || 'Unknown';
       if (!token) {
         console.error('토큰이 없습니다. 로그인 후 다시 시도해주세요.');
         return;
       }
-      const normalizedTrack = track.replace('-', '');
 
       try {
         const response = await API.get('/submit/status', {
@@ -29,7 +28,7 @@ export default function ProgressingDetails() {
           },
           params: {
             writer: writer,
-            track: normalizedTrack,
+            track: track.replace('-', ''),
           },
         });
 
@@ -71,14 +70,11 @@ export default function ProgressingDetails() {
     }
 
     const formData = new FormData();
-    formData.append('assignmentId', assignmentId);
+    formData.append('submitAssignmentId', assignmentId);
     formData.append('files', file);
 
     try {
-      const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-      const writerName = userInfo?.name || 'Unknown';
-
-      await API.post('/submit/add', formData, {
+      await API.put('/submit/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -91,7 +87,7 @@ export default function ProgressingDetails() {
           Authorization: `Bearer ${token}`,
         },
         params: {
-          writer: writerName,
+          writer: JSON.parse(localStorage.getItem('userInfo'))?.name || 'Unknown',
           track: track.replace('-', ''),
         },
       });
@@ -104,7 +100,6 @@ export default function ProgressingDetails() {
         if (submitDetails) {
           setPassStatus(submitDetails.passNonePass === 'PASS' ? '통과' : '통과 안됨');
           if (submitDetails.submitStatus === 'SUBMITTED' && submitDetails.passNonePass === 'PASS') {
-            // 과제가 완료된 것으로 간주하고 이동
             navigate(`/cyberCampus/intro/${track}/assignment/completedAssignment`);
             return;
           }
@@ -129,7 +124,6 @@ export default function ProgressingDetails() {
     return `${year}.${month}.${day}`;
   };
 
-  // 통과 여부에 따라 멘트와 색상 조절
   const submitStatusStyle = submitStatus === '제출 완료' ? { color: 'green' } : { color: 'red' };
   const passStatusStyle = passStatus === '통과' ? { color: 'green' } : { color: 'red' };
 
@@ -150,7 +144,7 @@ export default function ProgressingDetails() {
           </div>
         </div>
         <div className="mb-6 text-sm">{assignmentDetails.description}</div>
-        <div className="flex items-center justify-between">
+        <div className="grid grid-cols-2 gap-4 lg:flex lg:justify-between">
           <div className="flex items-center">
             <div className="mr-3 text-xl fontBold whitespace-nowrap">제출 여부</div>
             <div className="border-[1px] bg-inherit rounded-md px-3 py-1" style={submitStatusStyle}>
@@ -163,22 +157,21 @@ export default function ProgressingDetails() {
               {passStatus}
             </div>
           </div>
-
           <div className="flex items-center w-1/2">
             <label className="mr-3 text-xl fontBold whitespace-nowrap" htmlFor="file">
               과제 업로드
             </label>
             <input
               type="file"
-              className="cursor-pointer bg-inherit border-[1px] border-[#7D7D7D] py-2 px-3 rounded-lg text-xs text-[#7D7D7D] fontRegular w-full"
+              className="cursor-pointer bg-inherit border-[1px] border-[#7D7D7D] py-2 px-3 rounded-lg text-xs text-[#7D7D7D] fontRegular w-fit lg:w-full"
               id="file"
               onChange={handleFileChange}
             />
           </div>
         </div>
-        <div className="flex mt-8">
+        <div className="flex items-center mt-6">
           <div className="mr-4 text-xl fontBold whitespace-nowrap">피드백</div>
-          <div className="text-xs">{feedback}</div>
+          <div className="my-auto text-xs">{feedback}</div>
         </div>
         <div className="flex justify-end mt-16">
           <input
