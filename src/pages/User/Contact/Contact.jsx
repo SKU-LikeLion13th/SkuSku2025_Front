@@ -7,7 +7,7 @@ const Contact = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-black">
       <div className="container px-5 pt-24 mx-auto xl:px-20">
         <div className="flex flex-col items-center justify-between w-full xl:flex-row">
-          <div className="w-full ml-20 pb-20 leading-10 xl:w-[610px] mb-10 xl:mb-0 xl:mr-20 text-center xl:text-left">
+          <div className="w-full xl:ml-20 xl:pb-20 xl:leading-10 xl:w-[610px] mb-10 xl:mb-0 xl:mr-20 text-center xl:text-left">
             <span className="text-4xl leading-tight text-blue-500 xl:text-6xl fontEB sm:text-5xl md:text-6xl md:leading-tight">
               반가워요!
               <br />
@@ -118,9 +118,9 @@ const ContactTabs = () => {
           )}
         </div>
       </div>
-      <div className="relative flex items-center justify-center flex-grow h-full xl:h-auto">
+      <div className="relative flex items-center justify-center flex-grow h-full xl:h-auto ml-24">
         {selectedTab === 'etc' && (
-          <div className="hidden xl:block absolute top-0 transform -translate-y-40 bg-[#1C58DA] text-white p-4 rounded-lg w-60 xl:w-72 h-36 xl:h-44 flex fontLight text-base xl:text-xl">
+          <div className="hidden xl:block absolute top-0 transform -translate-y-40 bg-[#1C58DA] text-white p-4 rounded-lg w-60 xl:w-72 h-36 xl:h-44 flex fontLight text-base xl:text-xl ">
             <div>
               <span className="text-lg fontSB xl:text-xl">기타 의뢰</span>는 카카오톡 채널 <br />
               "멋쟁이사자처럼 at 성결대"
