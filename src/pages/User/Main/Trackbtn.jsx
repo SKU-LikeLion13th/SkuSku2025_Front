@@ -9,7 +9,7 @@ const TrackItem = ({ title, subtitle, bgColor, hoverBgColor, hoverContent, navig
     <div className="p-4">
       <button
         onClick={() => navigate(navigateTo)}
-        className={`relative group flex flex-col justify-between mx-auto w-4/5 xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}>
+        className={`relative group flex flex-col justify-between mx-auto w-[85%] xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}>
         <div className="flex justify-between w-full h-full">
           <div className="pb-5 pl-8 text-start">
             <div className="group-hover:hidden">
@@ -21,8 +21,8 @@ const TrackItem = ({ title, subtitle, bgColor, hoverBgColor, hoverContent, navig
             </div>
           </div>
           <div className="flex items-end justify-end h-full">
-            <img src={images.arrowM} alt="화살표" className="h-[14%] mb-6 mr-5 z-10 group-hover:hidden" />
-            <img src={images.arrowB} alt="화살표" className="h-[14%] mb-6 mr-5 z-10 hidden group-hover:block" />
+            <img src={images.arrowM} alt="화살표" className="h-[14%] mb-6 mr-5 z-[1] group-hover:hidden" />
+            <img src={images.arrowB} alt="화살표" className="h-[14%] mb-6 mr-5 z-[1] hidden group-hover:block" />
           </div>
         </div>
       </button>
@@ -100,7 +100,7 @@ const Trackbtn = () => {
 
   return (
     <div className="container mx-auto xl:w-full xl:px-0">
-      <div className="grid w-full grid-cols-1 gap-8 xl:grid-cols-3 mt-7">
+      <div className="grid w-[90%] grid-cols-1 gap-8 xl:grid-cols-3 mt-7 mx-auto">
         {trackData.map((track, index) => (
           <TrackItem
             key={index}

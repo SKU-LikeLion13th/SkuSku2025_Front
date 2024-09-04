@@ -6,13 +6,14 @@ import API from '../../../../utils/axios';
 
 const ProjectItem = ({ title, subtitle, image, url }) => (
   <a href={url} className="flex justify-center items-center w-full" target="_blank" rel="noopener noreferrer">
-    <div className="relative w-3/5 xl:w-full h-[14rem] mx-8">
+    <div className="relative w-3/5 xl:w-full h-[14rem] mx-8 rounded-[15px] overflow-hidden">
       <div
-        className="absolute inset-0 bg-center bg-cover rounded-[6px]"
+        className="absolute inset-0 bg-center bg-cover rounded-[15px]"
         style={{
           backgroundImage: `url(data:image/png;base64,${image})`,
-        }}>
-        <div className="absolute inset-0 bg-black rounded-[6px] opacity-50"></div>
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-50 rounded-[15px]"></div>
       </div>
       <div className="relative z-10 flex flex-col justify-end h-full pb-6 pl-6 text-start">
         <div className="text-3xl font-bold text-white">{title}</div>
@@ -21,6 +22,7 @@ const ProjectItem = ({ title, subtitle, image, url }) => (
     </div>
   </a>
 );
+
 
 const ProjectSlider = () => {
   const [projects, setProjects] = useState([]);
@@ -58,7 +60,7 @@ const ProjectSlider = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="w-[90%] mx-auto">
+      <div className="w-[85%] mx-auto">
         <Slider {...settings}>
           {projects.map(project => (
             <ProjectItem

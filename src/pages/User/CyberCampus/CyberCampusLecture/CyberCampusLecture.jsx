@@ -13,7 +13,6 @@ const CyberCampusLecture = () => {
   const [error, setError] = useState(null);
   const isAdmin = false;
 
-  // Format track name based on specific cases
   const formatTrackName = (track) => {
     if (track === 'PM&DESIGN') {
       return 'PM_DESIGN';
@@ -23,7 +22,6 @@ const CyberCampusLecture = () => {
 
   const formattedTrack = formatTrackName(track);
 
-  // Function to handle selecting a lecture
   const handleLectureSelect = async (lecture) => {
     try {
       let token = localStorage.getItem('token');

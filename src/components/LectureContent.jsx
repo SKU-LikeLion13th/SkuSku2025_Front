@@ -68,7 +68,7 @@ const LectureContent = ({ lecture, onBack, onEdit, isAdmin, refreshLectures }) =
           </div>
         )}
         <div className="h-[1.5px] w-full bg-black" />
-        <div className="flex flex-col justify-evenly items-center text-center w-1/2 min-h-80 mx-auto bg-[#F7F7F7] rounded-lg mt-24 py-5">
+        <div className="flex flex-col justify-evenly items-center text-center w-[90%] xl:w-1/2 min-h-80 mx-auto bg-[#F7F7F7] rounded-lg mt-24 py-5">
           <div className="text-4xl fontBold">{lecture.title}</div>
           <div className="text-center text-sm text-[#808080]">
             <span className="fontSB">작성자 :</span> {lecture.writer}
@@ -78,11 +78,11 @@ const LectureContent = ({ lecture, onBack, onEdit, isAdmin, refreshLectures }) =
           <div className="h-[1.5px] w-2/3 bg-black mx-auto" />
           {firstFile && (
             <button
-              className="flex items-center justify-center w-1/2 h-10 border-2 rounded-lg text-[#3B79FF] fontSB"
+              className="flex items-center justify-center min-w-1/2 min-h-10 border-2 rounded-lg text-[#3B79FF] fontSB"
               onClick={() => handleDownload(firstFile)}
             >
-              <img src={images.attach} className="w-5 mr-3" alt="첨부파일 아이콘" />
-              첨부파일 - {firstFile.fileName}
+              <img src={images.attach} className="w-5 xl:mr-3" alt="첨부파일 아이콘" />
+              <div className="px-3 py-1">첨부파일 - {firstFile.fileName}</div>
             </button>
           )}
         </div>
