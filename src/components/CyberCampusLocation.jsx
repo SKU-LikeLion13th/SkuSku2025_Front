@@ -50,7 +50,7 @@ const CyberCampusLocation = () => {
   const isActive = route => isActivePath(route, location.pathname);
 
   return (
-    <div className="flex flex-wrap items-center w-8/12 gap-2 mx-auto mt-16">
+    <div className="flex flex-wrap items-center w-[90%] xl:w-8/12 gap-2 mx-auto mt-16">
       {filteredButtons.map((button, index) => (
         <React.Fragment key={index}>
           <button
