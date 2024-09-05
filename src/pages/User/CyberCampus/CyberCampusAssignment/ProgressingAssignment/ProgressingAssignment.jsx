@@ -59,8 +59,8 @@ export default function ProgressingAssignment() {
   };
 
   return (
-    <div className="relative min-h-screen mx-auto text-black">
-      <div className="flex flex-col items-center justify-center pt-24 text-6xl fontEB">
+    <div className="relative min-h-screen mx-auto -mb-32 text-black lg:mb-20">
+      <div className="flex flex-col items-center justify-center pt-40 text-6xl fontEB lg:pt-24">
         <div className="text-[#3B79FF] my-2 mx-2 text-7xl">{track}</div>
         <div>과제제출</div>
       </div>
@@ -76,15 +76,15 @@ export default function ProgressingAssignment() {
           </span>
           에서 확인 가능합니다.
         </div>
-        <div className="grid items-center justify-center w-1/2 grid-cols-1 gap-12 mx-auto mt-16 lg:grid-cols2">
+        <div className="grid items-center justify-center w-1/2 grid-cols-1 gap-12 mx-auto mt-16 lg:grid-cols-2">
           {currentAssignments.map(assignment => (
             <button
               key={assignment.assignmentId}
-              className="w-full px-10 py-8 text-white bg-[#FF7816] rounded-xl text-start"
+              className="w-[350px] lg:w-full px-10 py-8 text-white bg-[#FF7816] rounded-xl text-start mx-auto"
               onClick={() => goDetail(assignment.assignmentId)}>
-              <div className="text-lg fontBold">{assignment.title}</div>
-              <div className="text-lg fontBold">[{assignment.subTitle}]</div>
-              <div className="mt-4 text-sm">{assignment.description}</div>
+              <div className="text-lg truncate fontBold">{assignment.title}</div>
+              <div className="text-lg truncate fontBold">[{assignment.subTitle}]</div>
+              <div className="h-5 mt-4 text-sm truncate">{assignment.description}</div>
             </button>
           ))}
         </div>

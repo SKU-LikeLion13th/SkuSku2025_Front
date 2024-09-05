@@ -20,32 +20,29 @@ const TeamIntro = () => {
         : 'text-gray-500'
     }`;
 
-  useEffect(() => {
-    const tab = location.search.replace('?', '');
-    setActiveTab(tab);
-  }, [location]);
-
   return (
     <>
-      <div className="text-center pt-28">
-        <div className="text-[#3A78FF] text-6xl fontEB">
-          LIKELION SKU
-          <br />
+      <div className="mb-12 lg:min-h-screen lg:mb-24">
+        <div className="text-center pt-28">
+          <div className="text-[#3A78FF] text-6xl fontEB">
+            LIKELION SKU
+            <br />
+          </div>
+          <div className="text-[#FFFFFF] text-6xl fontEB mt-4">운영진</div>
         </div>
-        <div className="text-[#FFFFFF] text-6xl fontEB mt-4">운영진</div>
-      </div>
 
-      <div className="flex justify-center p-10 mt-10 space-x-20">
-        <div className={tabClass('tab12')} onClick={() => handleTabClick('tab12')}>
-          12기
+        <div className="flex justify-center p-10 mt-10 space-x-20">
+          <div className={tabClass('tab12')} onClick={() => handleTabClick('tab12')}>
+            12기
+          </div>
+          <div className={tabClass('tab11')} onClick={() => handleTabClick('tab11')}>
+            11기
+          </div>
         </div>
-        <div className={tabClass('tab11')} onClick={() => handleTabClick('tab11')}>
-          11기
-        </div>
-      </div>
 
-      {activeTab === 'tab12' && <Person idList={id12gi} gapX="gap-x-8 sm:gap-x-12" />}
-      {activeTab === 'tab11' && <Person idList={id11gi} gapX="gap-x-8 sm:gap-x-12" />}
+        {activeTab === 'tab12' && <Person idList={id12gi} gapX="gap-x-8 sm:gap-x-12" />}
+        {activeTab === 'tab11' && <Person idList={id11gi} gapX="gap-x-8 sm:gap-x-12" />}
+      </div>
     </>
   );
 };

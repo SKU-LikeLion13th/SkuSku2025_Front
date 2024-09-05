@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 const Contact = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+    <div className="flex flex-col items-center justify-center bg-black mobileContainer lg:min-h-screen">
       <div className="container px-5 pt-24 mx-auto xl:px-20">
         <div className="flex flex-col items-center justify-between w-full xl:flex-row">
           <div className="w-full xl:ml-20 xl:pb-20 xl:leading-10 xl:w-[610px] mb-10 xl:mb-0 xl:mr-20 text-center xl:text-left">
@@ -118,7 +118,7 @@ const ContactTabs = () => {
           )}
         </div>
       </div>
-      <div className="relative flex items-center justify-center flex-grow h-full xl:h-auto ml-24">
+      <div className="relative flex items-center justify-center flex-grow h-full ml-24 xl:h-auto">
         {selectedTab === 'etc' && (
           <div className="hidden xl:block absolute top-0 transform -translate-y-40 bg-[#1C58DA] text-white p-4 rounded-lg w-60 xl:w-72 h-36 xl:h-44 flex fontLight text-base xl:text-xl ">
             <div>

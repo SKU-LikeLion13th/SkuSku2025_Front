@@ -11,18 +11,18 @@ const IntroTrack = () => {
       title: '강의자료 📚',
       subtitle: 'FRONT-END',
       bgColor: '#3B79FF',
-      navigateTo: `/cyberCampus/intro/${track}/lecture`
+      navigateTo: `/cyberCampus/intro/${track}/lecture`,
     },
     {
       title: '과제제출 🏷️',
       subtitle: 'BACK-END',
       bgColor: '#FF7816',
-      navigateTo: `/cyberCampus/intro/${track}/assignment`
-    }
+      navigateTo: `/cyberCampus/intro/${track}/assignment`,
+    },
   ];
 
   return (
-    <div className='flex flex-col mx-auto container text-center'>
+    <div className="container flex flex-col mx-auto text-center mobileContainer lg:min-h-screen lg:mb-32">
       {/* title */}
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">LIKELION SKU</div>
@@ -30,18 +30,22 @@ const IntroTrack = () => {
       </div>
 
       {/* subTitle */}
-      <div className='my-16'>성결대학교 아기사자들을 위한 학습 공간입니다.</div>
+      <div className="my-16">성결대학교 아기사자들을 위한 학습 공간입니다.</div>
 
       <div className="flex justify-center w-10/12 mx-auto text-[28px] fontBold flex-wrap">
         {trackData.map((track, index) => (
           <button
             key={index}
             style={{ backgroundColor: track.bgColor }}
-            className={`mb-24 text-white mb-10 mx-8 w-[300px] shadow-lg h-[180px] px-8 rounded-xl hover:textShadow duration-500 hover:translate-y-[-5px] text-start`}
-            onClick={() => {navigate(track.navigateTo); console.log(track.navigateTo, index)}}>
-            <div className='flex flex-col justify-between h-full py-10'>
-              <div className="mb-2">{track.title}</div>
-              <div className='text-end'><img src={images.doubleArrow} alt="arrow" className='inline'/></div>
+            className={`mb-24 text-white mx-8 w-[400px] shadow-lg pt-12 px-12 rounded-xl hover:textShadow duration-500 hover:translate-y-[-5px] text-start lg:py-8 lg:px-9 lg:w-[300px]`}
+            onClick={() => {
+              navigate(track.navigateTo);
+            }}>
+            <div className="flex flex-col justify-between h-full">
+              <div className="mb-2 text-4xl lg:text-[28px]">{track.title}</div>
+              <div className="py-8 text-end lg:pt-8 lg:py-0">
+                <img src={images.doubleArrow} alt="arrow" className="inline w-8 lg:w-6" />
+              </div>
             </div>
           </button>
         ))}
@@ -49,6 +53,5 @@ const IntroTrack = () => {
     </div>
   );
 };
-
 
 export default IntroTrack;

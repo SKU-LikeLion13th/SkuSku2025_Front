@@ -11,21 +11,25 @@ import MenuItem from '@mui/joy/MenuItem';
 
 const NewNav = () => {
   const location = useLocation();
-  const { handleLogout, isLoggedIn, contextUserInfo} = useLogin();
+  const { handleLogout, isLoggedIn, contextUserInfo } = useLogin();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
-  const [ info, setInfo ] = useState({
-    name : contextUserInfo.name,
-    track : contextUserInfo.track,
-    color : contextUserInfo.color
-  })
+  const [info, setInfo] = useState({
+    name: contextUserInfo.name,
+    track: contextUserInfo.track,
+    color: contextUserInfo.color,
+  });
 
-  useEffect(()=>{
-    if (location.pathname.startsWith('/frontend') || location.pathname.startsWith('/backend') || location.pathname.startsWith('/pm_design')) {
+  useEffect(() => {
+    if (
+      location.pathname.startsWith('/frontend') ||
+      location.pathname.startsWith('/backend') ||
+      location.pathname.startsWith('/pm_design')
+    ) {
       setActiveIndex(0);
     } else if (location.pathname.startsWith('/project')) {
       setActiveIndex(1);
-    } else if(location.pathname.startsWith('/teamIntro')) {
+    } else if (location.pathname.startsWith('/teamIntro')) {
       setActiveIndex(2);
     } else if (location.pathname.startsWith('/contact')) {
       setActiveIndex(3);
@@ -34,10 +38,9 @@ const NewNav = () => {
     } else {
       setActiveIndex(null);
     }
-  }, [location])
+  }, [location]);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     const userInfo = localStorage.getItem('userInfo');
 
     if (userInfo) {
@@ -56,9 +59,9 @@ const NewNav = () => {
     };
   }, [location.pathname]);
 
-  const getNavItemStyle = (index) => {
+  const getNavItemStyle = index => {
     const activeStyle = {
-      fontFamily: 'Pretendard-ExtraBold'
+      fontFamily: 'Pretendard-ExtraBold',
     };
 
     return {
@@ -66,15 +69,20 @@ const NewNav = () => {
       padding: '0.2rem 1rem',
       textAlign: 'center',
       transition: 'all 0.3s ease',
-      ...(index === activeIndex && activeStyle)
+      ...(index === activeIndex && activeStyle),
     };
   };
 
   return (
-    <div className={`pcNav fixed z-10 top-0 w-full mx-auto transition-all duration-300 ${isScrolled ? 'backdrop-blur-md' : ''}`}>
-      <div className="px-5 container flex items-center justify-between mx-auto py-3">
+    <div
+      className={`pcNav fixed z-10 top-0 w-full mx-auto transition-all duration-300 ${
+        isScrolled ? 'backdrop-blur-md' : ''
+      }`}>
+      <div className="container flex items-center justify-between px-5 py-3 mx-auto">
         {/* likelion logo */}
-        <Link to="/" onClick={() => {
+        <Link
+          to="/"
+          onClick={() => {
             setActiveIndex(null);
             window.scrollTo({
               top: 0,
@@ -86,25 +94,27 @@ const NewNav = () => {
             <span className="text-[#3B79FF] fontBlack text-2xl ml-2">LIKELION SKU</span>
           </div>
         </Link>
-        
+
         {/* Menu */}
-        <ul className="flex relative items-center">
+        <ul className="relative flex items-center">
           <Dropdown>
-            <MenuButton variant="nautral" className='ignoreBtn'  onClick={() => setActiveIndex(0)}>
-              <Link to='#' key='TRACK'>
-                <li style={getNavItemStyle(0)} className="menuStyle">TRACK</li>
+            <MenuButton variant="nautral" className="ignoreBtn" onClick={() => setActiveIndex(0)}>
+              <Link to="#" key="TRACK">
+                <li style={getNavItemStyle(0)} className="menuStyle">
+                  TRACK
+                </li>
               </Link>
             </MenuButton>
 
-            <Menu className='menu'>
-              <MenuItem className='menuItem'>
-                <Link to='/frontend'>FRONT-END</Link>
+            <Menu className="menu">
+              <MenuItem className="menuItem">
+                <Link to="/frontend">FRONT-END</Link>
               </MenuItem>
-              <MenuItem className='menuItem'>
-                <Link to='/backend'>BACK-END</Link>
+              <MenuItem className="menuItem">
+                <Link to="/backend">BACK-END</Link>
               </MenuItem>
-              <MenuItem className='menuItem'>
-                <Link to='/pm_design'>PM/DESIGN</Link>
+              <MenuItem className="menuItem">
+                <Link to="/pm_design">PM/DESIGN</Link>
               </MenuItem>
             </Menu>
           </Dropdown>
@@ -114,46 +124,50 @@ const NewNav = () => {
               style={getNavItemStyle(0)}
               className="menuStyle">TRACK</li>
           </Link> */}
-          <Link to='/project' key='PROJECT' onClick={() => setActiveIndex(1)}>
-            <li 
-              style={getNavItemStyle(1)}
-              className="menuStyle">PROJECT</li>
+          <Link to="/project" key="PROJECT" onClick={() => setActiveIndex(1)}>
+            <li style={getNavItemStyle(1)} className="menuStyle">
+              PROJECT
+            </li>
           </Link>
-          <Link to='/teamIntro?tab12' key='TEAM' onClick={() => setActiveIndex(2)}>
-            <li 
-              style={getNavItemStyle(2)}
-              className="menuStyle">TEAM</li>
+          <Link to="/teamIntro" key="TEAM" onClick={() => setActiveIndex(2)}>
+            <li style={getNavItemStyle(2)} className="menuStyle">
+              TEAM
+            </li>
           </Link>
-          <Link to='/contact' key='CONTACT' onClick={() => setActiveIndex(3)}>
-            <li 
-              style={getNavItemStyle(3)}
-              className="menuStyle">CONTACT</li>
+          <Link to="/contact" key="CONTACT" onClick={() => setActiveIndex(3)}>
+            <li style={getNavItemStyle(3)} className="menuStyle">
+              CONTACT
+            </li>
           </Link>
-          <Link to='/cyberCampus/Intro' key='CYBERCAMPUS' onClick={() => setActiveIndex(4)}>
-            <li  
-              style={getNavItemStyle(4)}
-              className="menuStyle">CYBERCAMPUS</li>
+          <Link to="/cyberCampus/Intro" key="CYBERCAMPUS" onClick={() => setActiveIndex(4)}>
+            <li style={getNavItemStyle(4)} className="menuStyle">
+              CYBERCAMPUS
+            </li>
           </Link>
         </ul>
 
         {/* 로그인 버튼 */}
-        <div className='flex justify-end'>
-          {isLoggedIn ?
-          <div className='flex items-center justify-center'>
-            <div className='flex items-center'>
-              <div 
-                style={{ backgroundColor: info.color }}
-                className={`flex items-center justify-center w-[30px] h-[30px] rounded-[50%]`}>🦁</div>
-              <span className='text-xs px-2'>{info.track}</span>
-              <span className='font-bold'>{info.name}님</span>
+        <div className="flex justify-end">
+          {isLoggedIn ? (
+            <div className="flex items-center justify-center">
+              <div className="flex items-center">
+                <div
+                  style={{ backgroundColor: info.color }}
+                  className={`flex items-center justify-center w-[30px] h-[30px] rounded-[50%]`}>
+                  🦁
+                </div>
+                <span className="px-2 text-xs">{info.track}</span>
+                <span className="font-bold">{info.name}님</span>
+              </div>
+              <div className="px-2 text-[gray]">|</div>
+              <button onClick={handleLogout} className="text-xs">
+                LOGOUT
+              </button>
             </div>
-            <div className='px-2 text-[gray]'>|</div>
-            <button onClick={handleLogout} className='text-xs'>LOGOUT</button> 
-          </div>  
-          :
-          // <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
-          <GoogleLoginBtn size={'large'} width={'50'} type={'standard'} shape={'rectangular'} />
-          }
+          ) : (
+            // <GoogleLoginBtn width={'100px'} type={'icon'} shape={'circle'}/>
+            <GoogleLoginBtn size={'large'} width={'50'} type={'standard'} shape={'rectangular'} />
+          )}
         </div>
       </div>
     </div>

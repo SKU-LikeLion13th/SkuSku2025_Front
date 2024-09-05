@@ -15,11 +15,13 @@ function App() {
   const location = useLocation();
   const isMainPage = location.pathname === '/';
   const isAdminOrCyberCampusPage =
-    location.pathname.startsWith('/admin') || location.pathname.startsWith('/cyberCampus') || location.pathname.startsWith('/cybercampus');
+    location.pathname.startsWith('/admin') ||
+    location.pathname.startsWith('/cyberCampus') ||
+    location.pathname.startsWith('/cybercampus');
 
   return (
     <LoginProvider>
-      <NavbarProvider> 
+      <NavbarProvider>
         <div
           className={`min-h-screen ${isAdminOrCyberCampusPage ? 'bg-white text-black' : 'bg-black text-white'} ${
             isMainPage ? 'relative w-full min-h-screen' : ''

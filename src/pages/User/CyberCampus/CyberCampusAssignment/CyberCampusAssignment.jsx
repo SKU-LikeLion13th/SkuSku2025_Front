@@ -28,20 +28,20 @@ export default function CyberCampusAssignment() {
   ];
 
   return (
-    <div className="relative text-black lg:min-h-screen">
+    <div className="relative text-black mobileContainer lg:min-h-screen lg:mb-32">
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
         <div className="mr-1 text-6xl">과제제출</div>
       </div>
-      <div className="flex flex-col justify-center w-10/12 gap-16 mx-auto mt-28 fontBold lg:flex-row lg:gap-8">
+      <div className="flex flex-col justify-center w-10/12 gap-16 mx-auto mt-28 fontBold lg:flex-row lg:gap-8 lg:w-9/12">
         {buttons.map((button, index) => (
           <button
             key={index}
-            className="mx-auto w-[500px] py-16 px-12 shadow-lg rounded-xl duration-500 hover:translate-y-[-5px] text-start lg:py-14 lg:px-8 lg:w-[350px]"
+            className="mx-auto w-[400px] py-16 px-12 shadow-lg rounded-xl duration-500 hover:translate-y-[-5px] text-start lg:py-14 lg:px-8 lg:w-[300px]"
             style={{ backgroundColor: button.color }}
             onClick={() => navigate(button.route)}>
             <div className="text-4xl lg:text-[28px] mb-4">{button.title}</div>
-            <div className="text-lg whitespace-pre-line fontRegular max-xl:whitespace-normal">{button.subTitle}</div>
+            <div className="text-base whitespace-pre-line fontRegular lg:whitespace-wrap">{button.subTitle}</div>
           </button>
         ))}
       </div>

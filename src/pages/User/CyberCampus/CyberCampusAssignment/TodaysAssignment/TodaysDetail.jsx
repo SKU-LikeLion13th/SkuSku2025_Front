@@ -26,7 +26,10 @@ export default function TodaysDetail() {
         const response = await API.get('/submit/status', {
           params: {
             writer: writerName,
-            track: track,
+            track: track
+              .replace('PM&DESIGN', 'PM_DESIGN')
+              .replace('BACK-END', 'BACKEND')
+              .replace('FRONT-END', 'FRONTEND'),
           },
           headers: {
             Authorization: `Bearer ${token}`,

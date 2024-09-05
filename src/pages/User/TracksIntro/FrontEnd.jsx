@@ -5,7 +5,7 @@ import '../../../css/track.css';
 const FrontEnd = () => {
   return (
     <>
-      <div className="container flex items-center justify-center w-10/12 mx-auto part partFront pt-28">
+      <div className="container flex items-center justify-center w-10/12 mx-auto lg:mb-36 part partFront pt-28 mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#FF7816] fontEB text-6xl">FRONT-END</span>
@@ -42,8 +42,6 @@ const FrontEnd = () => {
 
         <div className="flex justify-center w-1/2 rightBox"></div>
       </div>
-
-
     </>
   );
 };

@@ -88,7 +88,10 @@ export default function ProgressingDetails() {
         },
         params: {
           writer: JSON.parse(localStorage.getItem('userInfo'))?.name || 'Unknown',
-          track: track.replace('-', ''),
+          track: track
+            .replace('PM&DESIGN', 'PM_DESIGN')
+            .replace('BACK-END', 'BACKEND')
+            .replace('FRONT-END', 'FRONTEND'),
         },
       });
 

@@ -34,7 +34,7 @@ const Project = () => {
   };
 
   return (
-    <div className="min-h-screen mx-auto md:container md:px-5">
+    <div className="min-h-screen mx-auto lg:container lg:px-5 lg:mb-24">
       <div className="w-10/12 mx-auto pt-28">
         <div className="pb-4 mx-auto text-6xl text-center fontEB md:w-fit md:pb-12 md:pr-20 md:border-b-2 md:text-start md:mx-0">
           <div className="text-[#3B79FF]">SKU LIKELION</div>

@@ -13,7 +13,7 @@ const CyberCampusLecture = () => {
   const [error, setError] = useState(null);
   const isAdmin = false;
 
-  const formatTrackName = (track) => {
+  const formatTrackName = track => {
     if (track === 'PM&DESIGN') {
       return 'PM_DESIGN';
     }
@@ -22,7 +22,7 @@ const CyberCampusLecture = () => {
 
   const formattedTrack = formatTrackName(track);
 
-  const handleLectureSelect = async (lecture) => {
+  const handleLectureSelect = async lecture => {
     try {
       let token = localStorage.getItem('token');
       if (token.startsWith('"') && token.endsWith('"')) {
@@ -80,16 +80,16 @@ const CyberCampusLecture = () => {
   }, []); // 빈 배열로 두어 컴포넌트 마운트 시 한 번만 실행되도록 설정
 
   if (loading) {
-    return <div className="text-center mt-32">Loading...</div>;
+    return <div className="mt-32 text-center">Loading...</div>;
   }
 
   if (error) {
-    return <div className="text-center mt-32 text-red-500">Error: {error}</div>;
+    return <div className="mt-32 text-center text-red-500">Error: {error}</div>;
   }
 
   return (
-    <div className="container mx-auto w-full">
-      <div className='w-full h-full flex flex-col items-center'>
+    <div className="container w-full mx-auto ">
+      <div className="flex flex-col items-center w-full h-full">
         <div className="flex flex-col items-center justify-center pt-40 fontEB">
           <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
           <div className="mr-1 text-6xl">강의자료</div>
@@ -98,11 +98,7 @@ const CyberCampusLecture = () => {
         {selectedLecture ? (
           <LectureContent lecture={selectedLecture} onBack={handleBackToBoard} refreshLectures={fetchLectures} />
         ) : (
-          <LectureBoard
-            lectures={lectures}
-            onSelectLecture={handleLectureSelect}
-            isAdmin={isAdmin}
-          />
+          <LectureBoard lectures={lectures} onSelectLecture={handleLectureSelect} isAdmin={isAdmin} />
         )}
       </div>
     </div>

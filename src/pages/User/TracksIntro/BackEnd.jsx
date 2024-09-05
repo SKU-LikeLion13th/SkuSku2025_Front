@@ -5,7 +5,7 @@ import '../../../css/track.css';
 const BackEnd = () => {
   return (
     <>
-      <div className="container flex items-center justify-center w-10/12 mx-auto part partBack pt-28">
+      <div className="container flex items-center justify-center w-10/12 mx-auto lg:mb-36 part partBack pt-28 mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">BACK-END</span>

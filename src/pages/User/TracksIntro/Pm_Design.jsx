@@ -5,7 +5,7 @@ import '../../../css/track.css';
 const Pm_Design = () => {
   return (
     <>
-      <div className="@container part partPm container flex items-center justify-center mx-auto pt-28 w-10/12">
+      <div className="container flex items-center justify-center w-10/12 mx-auto part partPm pt-28 lg:mb-36 mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
@@ -23,7 +23,7 @@ const Pm_Design = () => {
             <img src={images.track_pm_curri} alt="track_pm_curri" className="w-[512px] curriImg" />
           </div>
 
-          <div className="text-lg leading-8 fontEL  whitespace-nowrap">
+          <div className="text-lg leading-8 fontEL whitespace-nowrap">
             <span className="text-2xl fontBold">UX/UI 디자이너</span>는<br />
             제품 또는 서비스의 사용자 경험을 개선하기 위해
             <br />

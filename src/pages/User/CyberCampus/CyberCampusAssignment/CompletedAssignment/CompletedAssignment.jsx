@@ -24,15 +24,13 @@ export default function CompletedAssignment() {
 
         const response = await API.get('/submit/status', {
           params: {
-            track: track.replace('-', ''), // track 값을 적절히 변환
+            track: track.replace('-', ''),
             writer: writerName,
           },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
-        console.log('서버 응답:', response.data); // 디버깅: 서버 응답 데이터 확인
 
         // 서버 응답에서 적절한 데이터 추출
         setAssignments(response.data.done || []);
@@ -60,8 +58,8 @@ export default function CompletedAssignment() {
   };
 
   return (
-    <div className="relative min-h-screen mx-auto text-black">
-      <div className="flex flex-col items-center justify-center pt-24 text-6xl fontEB">
+    <div className="relative min-h-screen mx-auto -mb-32 text-black lg:mb-20">
+      <div className="flex flex-col items-center justify-center pt-40 text-6xl fontEB lg:pt-24">
         <div className="text-[#3B79FF] my-2 mx-2 text-7xl">{track}</div>
         <div>과제 제출</div>
       </div>
@@ -71,15 +69,15 @@ export default function CompletedAssignment() {
           완성된 과제 <span className="text-[#00B94A]">총 {assignments.length}건</span>이 있습니다.
         </div>
         <div className="text-sm">성장을 위해 노력하는 아기사자를 운영진 모두가 응원합니다.</div>
-        <div className="grid items-center justify-center w-1/2 grid-cols-1 gap-12 mx-auto mt-16 lg:grid-cols2">
+        <div className="grid items-center justify-center w-1/2 grid-cols-1 gap-12 mx-auto mt-16 lg:grid-cols-2">
           {currentAssignments.map(assignment => (
             <button
               key={assignment.assignmentId}
-              className="w-full px-10 py-8 text-white bg-[#00B94A] rounded-xl text-start"
+              className="w-[350px] lg:w-full px-10 py-8 text-white bg-[#00B94A] rounded-xl text-start mx-auto"
               onClick={() => goDetail(assignment.assignmentId)}>
-              <div className="text-lg fontBold">{assignment.title}</div>
-              <div className="text-lg fontBold">[{assignment.subTitle}]</div>
-              <div className="mt-4 text-sm">{assignment.description}</div>
+              <div className="text-lg truncate fontBold">{assignment.title}</div>
+              <div className="text-lg truncate fontBold">[{assignment.subTitle}]</div>
+              <div className="h-5 mt-4 text-sm truncate">{assignment.description}</div>
             </button>
           ))}
         </div>
