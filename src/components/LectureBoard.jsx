@@ -152,8 +152,8 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
   };
 
   return (
-    <div className="flex flex-col max-[1280px]:justify-center items-center w-full mb-20 lg:mb-32 max-[1280px]:min-h-[50vh]">
-      <div className="w-[90%] xl:w-2/3 my-5 fontSB flex justify-between items-center">
+    <div className="flex flex-col max-[1280px]:justify-center items-center w-full mb-20 lg:mb-32 max-[1280px]:min-h-[50vh] ">
+      <div className="w-[90%] xl:w-2/3 max-[760px]:w-full my-5 fontSB flex justify-between items-center">
         <select className="px-1 py-2 rounded-md" value={sortOrder} onChange={handleSelectChange}>
           <option value="title">최신순</option>
           <option value="author">오래된 순</option>
@@ -181,7 +181,7 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
           ))}
       </div>
 
-      <div className="w-[90%] xl:w-2/3 max-[1280px]:min-h-[50vh]">
+      <div className="w-[90%] xl:w-2/3 max-[1280px]:min-h-[50vh] max-[760px]:w-full">
         <div className="grid grid-cols-12 fontBold justify-center items-center text-center bg-[#F7F7F7] w-full h-12 border-t-[2.5px] border-b-[0.1px] border-black">
           <p>번호</p>
           <p className="col-span-6 xl:col-span-7">제목</p>
@@ -226,25 +226,27 @@ const LectureBoard = ({ lectures, onSelectLecture, isAdmin, onAddLecture, onBack
         )}
       </div>
 
-      <div className="grid grid-cols-3 w-[90%] xl:w-2/3 mx-auto justify-between mt-20 items-center">
-        <div className="block fontLight xl:flex">
+      <div className="grid grid-cols-3 w-[90%] max-[760px]:w-full xl:w-2/3 mx-auto justify-between mt-20 items-center">
+        <div className="block fontLight min-[1530px]:flex">
           <div>
-            전체 게시물수: <span className="text-[#3b79ff] ml-1 mr-3 whitespace-nowrap">{filteredData.length}</span>
+            전체 게시물수: <span className="text-[#3b79ff] pr-2 whitespace-nowrap">{filteredData.length}</span>
           </div>
-          <div className="flex">
+          <div className="flex max-[760px]:block">
             <div>
-              전체 페이지: <span className="ml-1 text-[#ff7816] whitespace-nowrap">{totalPages}</span>
+              전체 페이지: <span className="text-[#ff7816] whitespace-nowrap">{totalPages}</span>
             </div>
-            <input
-              type="text"
-              value={inputPage}
-              onChange={handleInputChange}
-              onKeyDown={e => e.key === 'Enter' && handlePageChange()}
-              className="w-12 px-2 ml-4 mr-3 text-right border-2 rounded-sm"
-            />
-            <button onClick={handlePageChange} className="px-2 border-2 rounded-sm whitespace-nowrap">
-              보기
-            </button>
+            <div className="flex">
+              <input
+                type="text"
+                value={inputPage}
+                onChange={handleInputChange}
+                onKeyDown={e => e.key === 'Enter' && handlePageChange()}
+                className="w-12 px-2 ml-3 mr-3 max-[760px]:ml-0 max-[760px]:mt-1 text-right border-2 rounded-sm"
+              />
+              <button onClick={handlePageChange} className="px-2 border-2 rounded-sm whitespace-nowrap">
+                보기
+              </button>
+            </div>
           </div>
         </div>
         <div className="text-center fontLight">- {currentPage} -</div>
