@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import LectureBoard from '../../../../components/LectureBoard';
 import LectureContent from '../../../../components/LectureContent';
 import CyberCampusLocation from './../../../../components/CyberCampusLocation';
 import API from '../../../../utils/axios';
 
 const CyberCampusLecture = () => {
-  const { track } = useParams();
-  const [selectedLecture, setSelectedLecture] = useState(null);
-  const [lectures, setLectures] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { track, lectureId } = useParams(); // URL의 track과 lectureId 가져오기
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [selectedLecture, setSelectedLecture] = useState(null); // 선택된 강의
+  const [lectures, setLectures] = useState([]); // 강의 목록
+  const [loading, setLoading] = useState(true); // 로딩 상태
+  const [error, setError] = useState(null); // 에러 상태
   const isAdmin = false;
 
   const formatTrackName = track => {
@@ -22,6 +25,7 @@ const CyberCampusLecture = () => {
 
   const formattedTrack = formatTrackName(track);
 
+  // 강의 선택 시 실행되는 함수
   const handleLectureSelect = async lecture => {
     try {
       let token = localStorage.getItem('token');
@@ -37,6 +41,7 @@ const CyberCampusLecture = () => {
         },
       });
       setSelectedLecture(response.data);
+      navigate(`/cyberCampus/intro/${track}/lecture/${lecture.id}`); // URL 업데이트
     } catch (err) {
       setError(err.message);
     } finally {
@@ -44,11 +49,7 @@ const CyberCampusLecture = () => {
     }
   };
 
-  const handleBackToBoard = () => {
-    setSelectedLecture(null);
-    fetchLectures();
-  };
-
+  // 강의 목록을 불러오는 함수
   const fetchLectures = async () => {
     try {
       let token = localStorage.getItem('token');
@@ -75,11 +76,42 @@ const CyberCampusLecture = () => {
     }
   };
 
+  // lectureId로 강의를 불러오는 함수 (새로고침 대응)
+  const fetchLectureById = async (id) => {
+    try {
+      let token = localStorage.getItem('token');
+      if (token.startsWith('"') && token.endsWith('"')) {
+        token = token.slice(1, -1);
+      }
+      setLoading(true);
+      const response = await API.get(`/lecture`, {
+        params: { id: id },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      setSelectedLecture(response.data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 컴포넌트가 마운트될 때 강의 목록을 가져옴
   useEffect(() => {
     fetchLectures();
-  }, []); // 빈 배열로 두어 컴포넌트 마운트 시 한 번만 실행되도록 설정
+  }, []);
 
-  if (loading) {
+  // URL에 lectureId가 있는 경우에만 해당 강의를 불러옴
+  useEffect(() => {
+    if (lectureId && !selectedLecture) {
+      fetchLectureById(lectureId);
+    }
+  }, [lectureId, selectedLecture]);
+
+  if (loading || (lectureId && !selectedLecture)) {
     return <div className="mt-32 text-center">Loading...</div>;
   }
 
@@ -95,10 +127,22 @@ const CyberCampusLecture = () => {
           <div className="mr-1 text-6xl">강의자료</div>
         </div>
         <CyberCampusLocation />
-        {selectedLecture ? (
-          <LectureContent lecture={selectedLecture} onBack={handleBackToBoard} refreshLectures={fetchLectures} />
+        {/* lectureId가 있으면 LectureContent, 없으면 LectureBoard 표시 */}
+        {lectureId && selectedLecture ? (
+          <LectureContent
+            lecture={selectedLecture}
+            onBack={() => {
+              setSelectedLecture(null);
+              navigate(`/cyberCampus/intro/${track}/lecture`);
+            }}
+            refreshLectures={fetchLectures}
+          />
         ) : (
-          <LectureBoard lectures={lectures} onSelectLecture={handleLectureSelect} isAdmin={isAdmin} />
+          <LectureBoard
+            lectures={lectures}
+            onSelectLecture={handleLectureSelect}
+            isAdmin={isAdmin}
+          />
         )}
       </div>
     </div>
