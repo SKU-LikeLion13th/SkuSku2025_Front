@@ -42,5 +42,5 @@ export const images = {
 
   //cybercampus lecture
   download: PATH + '/assets/images/download.png',
-  attach: PATH + '/assets/images/attach.png',
+  attach: PATH + '/assets/images/Attach.png',
 };
