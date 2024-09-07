@@ -5,13 +5,16 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
   const [selectedAssignment, setSelectedAssignment] = useState(null); // 선택된 과제를 저장할 상태
   const itemsPerPage = 4;
 
+  // 마감일 기준으로 오름차순 정렬된 과제 목록 생성
+  const sortedAssignments = assignments.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
   // 현재 페이지에 해당하는 과제들만 추출
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = assignments.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = sortedAssignments.slice(indexOfFirstItem, indexOfLastItem);
 
   // 총 페이지 수 계산
-  const totalPages = Math.ceil(assignments.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedAssignments.length / itemsPerPage);
 
   // 페이지 변경 핸들러
   const handleClick = pageNumber => {
