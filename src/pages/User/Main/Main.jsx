@@ -11,8 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
   useEffect(() => {
-    // 페이지 렌더링되면 스크롤 맨위로
-    window.scrollTo(0, 0);
+    // 페이지 새로고침 시 스크롤을 맨 위로 설정
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0); // 짧은 지연 후 스크롤을 맨 위로 이동
 
     // GSAP 애니메이션과 ScrollTrigger 설정
     gsap.utils.toArray('.section').forEach(section => {
@@ -27,16 +29,11 @@ const Main = () => {
             trigger: section,
             start: 'top 80%', // 섹션이 뷰포트 80% 지점에 도달할 때 시작
             toggleActions: 'play none none reverse', // 애니메이션 제어
-            markers: false, // 디버그용 마커 (false로 설정)
+            markers: false, //
           },
         },
       );
     });
-
-    // 페이지 새로고침 시 스크롤 위치 복원기능 없애기
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
   }, []);
 
   return (
