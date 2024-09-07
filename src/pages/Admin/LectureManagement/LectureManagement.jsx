@@ -17,8 +17,8 @@ const LectureManagement = () => {
   const [editingLecture, setEditingLecture] = useState(null);
   const isAdmin = true;
 
-  const formatTrackName = (track) => {
-    console.log(track)
+  const formatTrackName = track => {
+    console.log(track);
     if (track === 'PM&DESIGN') {
       return 'PM_DESIGN';
     }
@@ -35,7 +35,7 @@ const LectureManagement = () => {
       }
       setLoading(true);
       const response = await API.get('/lecture/all', {
-        params: { track: formattedTrack }, 
+        params: { track: formattedTrack },
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -55,9 +55,9 @@ const LectureManagement = () => {
 
   useEffect(() => {
     fetchLectures();
-  }, [formattedTrack]); 
-  
-  const handleLectureSelect = async (lecture) => {
+  }, [formattedTrack]);
+
+  const handleLectureSelect = async lecture => {
     try {
       let token = localStorage.getItem('token');
       if (token.startsWith('"') && token.endsWith('"')) {
@@ -91,13 +91,13 @@ const LectureManagement = () => {
     setEditingLecture(null);
   };
 
-  const handleEditLecture = (lecture) => {
+  const handleEditLecture = lecture => {
     setEditingLecture(lecture);
     setSelectedLecture(null);
     setAddingLecture(false);
   };
 
-  const handleBackToLectureContent = (lecture) => {
+  const handleBackToLectureContent = lecture => {
     setEditingLecture(null);
     setAddingLecture(false);
     setSelectedLecture(lecture);
@@ -113,7 +113,7 @@ const LectureManagement = () => {
 
   return (
     <div className="container mx-auto w-full">
-      <div className='w-full h-full flex flex-col items-center'>
+      <div className="w-full h-full flex flex-col items-center">
         <div className="flex flex-col items-center justify-center pt-40 fontEB">
           <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
           <div className="mr-1 text-6xl">강의자료</div>
@@ -129,7 +129,7 @@ const LectureManagement = () => {
             onBack={handleBackToBoard}
             onEdit={handleEditLecture}
             isAdmin={isAdmin}
-            refreshLectures={fetchLectures} 
+            refreshLectures={fetchLectures}
           />
         ) : (
           <LectureBoard
