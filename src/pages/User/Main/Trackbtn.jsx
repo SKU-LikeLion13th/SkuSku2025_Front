@@ -9,9 +9,9 @@ const TrackItem = ({ title, subtitle, bgColor, hoverBgColor, hoverContent, navig
     <div className="p-4">
       <button
         onClick={() => navigate(navigateTo)}
-        className={`relative group flex flex-col justify-between mx-auto w-[85%] xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}>
+        className={`relative group flex flex-col justify-between mx-auto w-[85%] min-[1030px]:w-1/2 xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}>
         <div className="flex justify-between w-full h-full">
-          <div className="pb-5 pl-8 text-start">
+          <div className="pb-5 pl-8 text-start mr-5">
             <div className="group-hover:hidden">
               <p className="pt-16 text-4xl fontBold">{title}</p>
               <p className="text-4xl fontBold">{subtitle}</p>
@@ -20,7 +20,7 @@ const TrackItem = ({ title, subtitle, bgColor, hoverBgColor, hoverContent, navig
               {hoverContent}
             </div>
           </div>
-          <div className="flex items-end justify-end h-full">
+          <div className="flex items-end justify-end h-full ml-5">
             <img src={images.arrowM} alt="화살표" className="h-[14%] mb-6 mr-5 z-[1] group-hover:hidden" />
             <img src={images.arrowB} alt="화살표" className="h-[14%] mb-6 mr-5 z-[1] hidden group-hover:block" />
           </div>
@@ -67,7 +67,8 @@ const Trackbtn = () => {
           </div>
           <div className="leading-tight">
             <p className="text-lg fontRegular">웹사이트의 두뇌</p>
-            <p className="text-lg fontRegular">서버 및 데이터 처리 영역을 담당합니다.</p>
+            <p className="text-lg fontRegular">서버 및 데이터 처리 영역을 
+              <br/>담당합니다.</p>
           </div>
         </div>
       ),
@@ -100,7 +101,7 @@ const Trackbtn = () => {
 
   return (
     <div className="container mx-auto xl:w-full xl:px-0">
-      <div className="grid w-[90%] grid-cols-1 gap-8 xl:grid-cols-3 mt-7 mx-auto">
+      <div className="grid w-[90%] max-[1535px]:w-full grid-cols-1 gap-8 xl:grid-cols-3 mt-7 mx-auto">
         {trackData.map((track, index) => (
           <TrackItem
             key={index}
