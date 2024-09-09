@@ -27,14 +27,14 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
     API.post("/api/auth/google", data)
       .then((response) => {
         localStorage.setItem("token", JSON.stringify(response.data.token));
-        // localStorage.setItem(
-        //   "expire",
-        //   JSON.stringify(Date.now() + 24 * 60 * 60 * 1000)
-        // ); // 24시간 뒤 세션 만료
         localStorage.setItem(
           "expire",
-          JSON.stringify(Date.now() + 1 * 60 * 1000)
-        ); // 1분 후 만료 (test code)
+          JSON.stringify(Date.now() + 24 * 60 * 60 * 1000)
+        ); // 24시간 뒤 세션 만료
+        // localStorage.setItem(
+        //   "expire",
+        //   JSON.stringify(Date.now() + 1 * 60 * 1000)
+        // ); // 1분 후 만료 (test code)
 
         // payload 추출 후 디코딩
         const token = response.data.token;
