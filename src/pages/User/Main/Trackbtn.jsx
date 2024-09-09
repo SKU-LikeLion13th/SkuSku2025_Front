@@ -9,7 +9,7 @@ const TrackItem = ({ title, subtitle, bgColor, hoverBgColor, hoverContent, navig
     <div className="p-4">
       <button
         onClick={() => navigate(navigateTo)}
-        className={`relative group flex flex-col justify-between mx-auto w-[85%] min-[1030px]:w-1/2 xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}>
+        className={`relative group flex flex-col justify-between mx-auto w-[85%] min-[1021px]:w-1/2 xl:w-full h-[14rem] text-white rounded-md ${bgColor} transition-colors duration-300`}>
         <div className="flex justify-between w-full h-full">
           <div className="pb-5 pl-8 text-start mr-5">
             <div className="group-hover:hidden">
@@ -39,13 +39,13 @@ const Trackbtn = () => {
       hoverBgColor: 'bg-[#EE7117]',
       hoverContent: (
         <div className="text-[#232323]">
-          <div className="pb-2">
+          <div className="pb-3">
             <p className="text-3xl fontBold">프론트엔드</p>
             <p className="text-3xl fontBold">FRONT-END</p>
           </div>
-          <div className="leading-tight">
-            <p className="text-lg fontRegular">웹사이트의 얼굴</p>
-            <p className="text-lg fontRegular">
+          <div className="">
+            <p className="text-[16px] fontRegular">웹사이트의 얼굴</p>
+            <p className="text-[16px] fontRegular">
               사용자가 시각적으로
               <br />볼 수 있는 영역을 담당합니다.
             </p>
@@ -61,14 +61,13 @@ const Trackbtn = () => {
       hoverBgColor: 'bg-[#40ACBB]',
       hoverContent: (
         <div className="text-[#232323]">
-          <div className="pb-3">
+          <div className="pb-5">
             <p className="text-3xl fontBold">백엔드</p>
             <p className="text-3xl fontBold">BACK-END</p>
           </div>
-          <div className="leading-tight">
-            <p className="text-lg fontRegular">웹사이트의 두뇌</p>
-            <p className="text-lg fontRegular">서버 및 데이터 처리 영역을 
-              <br/>담당합니다.</p>
+          <div className="">
+            <p className="text-[16px] fontRegular">웹사이트의 두뇌</p>
+            <p className="text-text-[16px] fontRegular">서버 및 데이터 처리 영역을 담당합니다.</p>
           </div>
         </div>
       ),
@@ -81,13 +80,13 @@ const Trackbtn = () => {
       hoverBgColor: 'bg-[#FF6F91]',
       hoverContent: (
         <div className="text-[#232323]">
-          <div className="pb-2">
+          <div className="pb-3">
             <p className="text-3xl fontBold">기획/디자인</p>
             <p className="text-3xl fontBold">PM/DESIGN</p>
           </div>
-          <div className="leading-tight">
-            <p className="text-lg fontRegular">웹사이트의 첫 걸음, 프로젝트 총괄</p>
-            <p className="text-lg fontRegular">
+          <div className="">
+            <p className="text-[16px] fontRegular">웹사이트의 첫 걸음, 프로젝트 총괄</p>
+            <p className="text-[16px] fontRegular">
               및 웹/앱 서비스 화면 디자인 영역을
               <br />
               담당합니다.

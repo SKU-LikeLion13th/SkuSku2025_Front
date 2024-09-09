@@ -39,7 +39,7 @@ const Main3 = () => {
       <div className="absolute flex items-start justify-center w-full">
         <img src={images.likelion} alt="likelion" className="w-1/4 py-24 z-0 xl:w-1/6" />
       </div>
-      <div className="flex flex-col items-center justify-center h-full py-20 text-xl text-center fontRegular">
+      <div className="flex flex-col items-center justify-center h-full py-20 text-[22px] text-center fontRegular">
         <div className="flex flex-col justify-around mb-32 h-1/5">
           <div className="pb-28">
             <p className="text-[#3B79FF] fontSB pb-2">Q.</p>

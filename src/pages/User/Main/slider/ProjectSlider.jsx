@@ -16,7 +16,7 @@ const ProjectItem = ({ title, subtitle, image, url }) => (
         <div className="absolute inset-0 bg-black opacity-50 rounded-[15px]"></div>
       </div>
       <div className="relative z-10 flex flex-col justify-end h-full pb-6 pl-6 text-start">
-        <div className="text-3xl font-bold text-white">{title}</div>
+        <div className="text-3xl fontEB text-white">{title}</div>
         <p className="pt-2 text-xl text-white fontRegular">{subtitle}</p>
       </div>
     </div>
