@@ -8,7 +8,7 @@ const Main2 = () => {
       className="relative w-full min-h-screen pt-0 mt-0 bg-center bg-cover main2 snap-section"
       style={{ backgroundImage: `url(${images.mainP2})` }}>
       <div className="flex flex-col items-center w-full min-h-screen text-xl text-center justify-evenly fontThin">
-        <p className="pt-5">
+        <p className="pt-5 text-[22px]">
           <span className="fontMedium">성결대학교 멋쟁이사자처럼</span>은
           <br />
           자신이 원하는 IT 서비스를 구현하고 싶은
@@ -16,7 +16,7 @@ const Main2 = () => {
           성결대학교 학생들이 모인 동아리입니다.
         </p>
         <div>
-          <p>
+          <p className="text-[22px]">
             성결대학교 멋쟁이사자처럼만의
             <br />
             <span className="fontMedium">3가지 방향성</span>
@@ -51,7 +51,7 @@ const Main2 = () => {
             </div>
           </div>
         </div>
-        <p>
+        <p className="text-[22px]">
           <span className="fontSB">"내 아이디어를 내 손으로 실현한다."</span> 라는 모토를 가지고,
           <br />
           실제 서비스를 구현하며 개발자의 꿈을 이루는데
