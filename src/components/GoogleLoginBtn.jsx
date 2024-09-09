@@ -29,7 +29,7 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
         localStorage.setItem("token", JSON.stringify(response.data.token));
         localStorage.setItem(
           "expire",
-          JSON.stringify(Date.now() + 24 * 60 * 60 * 1000)
+          JSON.stringify(Date.now() + 30 * 60 * 1000)
         ); // 24시간 뒤 세션 만료
         // localStorage.setItem(
         //   "expire",
