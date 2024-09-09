@@ -14,7 +14,7 @@ const Pm_Design = () => {
           </div>
 
           <div className="py-10 @lg:py-32 @container">
-            <ul className="flex justify-between w-[400px] @lg:w-[512px] mb-2 curriUl">
+            <ul className="flex justify-between @lg:w-[512px] mb-2 curriUl">
               <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">PM의 정의</li>
               <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">프로젝트 협업</li>
               <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">UI UX 디자인</li>
