@@ -1,13 +1,21 @@
-import { Route, Routes } from 'react-router-dom';
-import Main from '../pages/User/Main/Main.jsx';
-import Project from '../pages/User/Project/Project.jsx';
-import TeamIntro from '../pages/User/TeamIntro/TeamIntro.jsx';
-import Contact from '../pages/User/Contact/Contact.jsx';
-import BackEnd from '../pages/User/TracksIntro/BackEnd';
-import FrontEnd from '../pages/User/TracksIntro/FrontEnd';
-import Pm_Design from '../pages/User/TracksIntro/Pm_Design';
+import { Route, Routes } from "react-router-dom";
+import Main from "../pages/User/Main/Main.jsx";
+import Project from "../pages/User/Project/Project.jsx";
+import TeamIntro from "../pages/User/TeamIntro/TeamIntro.jsx";
+import Contact from "../pages/User/Contact/Contact.jsx";
+import BackEnd from "../pages/User/TracksIntro/BackEnd";
+import FrontEnd from "../pages/User/TracksIntro/FrontEnd";
+import Pm_Design from "../pages/User/TracksIntro/Pm_Design";
+import { useLogin } from "../utils/LoginContext.jsx";
+import { useEffect } from "react";
 
 const User = () => {
+  const { checkLoginExpiration } = useLogin();
+
+  useEffect(() => {
+    checkLoginExpiration();
+  }, []);
+
   return (
     <>
       <Routes>

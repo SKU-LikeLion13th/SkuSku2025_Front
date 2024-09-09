@@ -1,37 +1,56 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { createContext, useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const navigate = useNavigate();
+
+  // 0: 성결 메일, 1: 세션 만료
+  const [showSnack, setShowSnack] = useState({
+    state: "email",
+    open: false,
+  });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [ contextUserInfo, setContextUserInfo ] = useState({
-    name : '',
-    track : '',
-    color : '',
-  })
+  const [contextUserInfo, setContextUserInfo] = useState({
+    name: "",
+    track: "",
+    color: "",
+  });
+
+  // 토큰 만료처리
+  const checkLoginExpiration = () => {
+    const expireTime = JSON.parse(localStorage.getItem("expire"));
+
+    if (expireTime && Date.now() > expireTime) {
+      localStorage.removeItem("expire");
+      setShowSnack({
+        state: "session",
+        open: true,
+      });
+      handleLogout();
+    }
+  };
 
   // 토큰 얻기
   const getInfo = () => {
-    const token = JSON.parse(localStorage.getItem('token'));
-    const expire = JSON.parse(localStorage.getItem('expire'));
-  
-    if (!token)
-      return null;
-    if (expire <= Date.now()){
-      localStorage.removeItem('token')
+    const token = JSON.parse(localStorage.getItem("token"));
+    const expire = JSON.parse(localStorage.getItem("expire"));
+
+    if (!token) return null;
+    if (expire <= Date.now()) {
+      localStorage.removeItem("token");
       return null;
     }
-    return token
-  }
+    return token;
+  };
 
   // 로그아웃
   const handleLogout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
-    navigate('/')
-  }
+    navigate("/");
+  };
 
   useEffect(() => {
     const token = getInfo();
@@ -39,9 +58,18 @@ export const LoginProvider = ({ children }) => {
   }, []);
 
   return (
-    <LoginContext.Provider value={{ 
-      handleLogout, isLoggedIn, setIsLoggedIn, contextUserInfo, setContextUserInfo
-      }}>
+    <LoginContext.Provider
+      value={{
+        handleLogout,
+        isLoggedIn,
+        setIsLoggedIn,
+        contextUserInfo,
+        setContextUserInfo,
+        checkLoginExpiration,
+        showSnack,
+        setShowSnack,
+      }}
+    >
       {children}
     </LoginContext.Provider>
   );
