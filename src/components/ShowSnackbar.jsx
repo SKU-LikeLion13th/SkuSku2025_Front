@@ -7,7 +7,10 @@ const ShowSnackbar = () => {
   const { showSnack, setShowSnack } = useLogin();
 
   const handleClose = () => {
-    setShowSnack(false);
+    setShowSnack({
+      state: null,
+      open: false,
+    });
   };
 
   return (

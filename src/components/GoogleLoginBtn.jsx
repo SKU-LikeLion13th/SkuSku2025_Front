@@ -1,13 +1,12 @@
 import { GoogleLogin } from "@react-oauth/google";
-import React, { useState } from "react";
+import React from "react";
 import { useLogin } from "../utils/LoginContext";
 import * as base64js from "base64-js";
 import ShowSnackbar from "./ShowSnackbar";
 import API from "../utils/axios";
 
 export const GoogleLoginBtn = ({ size, type, width, shape }) => {
-  const { setIsLoggedIn, setContextUserInfo, showSnack, setShowSnack } =
-    useLogin();
+  const { setIsLoggedIn, setContextUserInfo, setShowSnack } = useLogin();
 
   // Base64 디코딩 함수 사용하여 UTF-8 문자열로 변환(한글깨짐방지)
   function Base64Decode(str, encoding = "utf-8") {
@@ -28,14 +27,14 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
     API.post("/api/auth/google", data)
       .then((response) => {
         localStorage.setItem("token", JSON.stringify(response.data.token));
-        localStorage.setItem(
-          "expire",
-          JSON.stringify(Date.now() + 24 * 60 * 60 * 1000)
-        ); // 24시간 뒤 세션 만료
         // localStorage.setItem(
         //   "expire",
-        //   JSON.stringify(Date.now() + 1 * 60 * 1000)
-        // ); // 1분 후 만료 (test code)
+        //   JSON.stringify(Date.now() + 24 * 60 * 60 * 1000)
+        // ); // 24시간 뒤 세션 만료
+        localStorage.setItem(
+          "expire",
+          JSON.stringify(Date.now() + 1 * 60 * 1000)
+        ); // 1분 후 만료 (test code)
 
         // payload 추출 후 디코딩
         const token = response.data.token;
@@ -118,7 +117,6 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
         shape={shape} //버튼 shape 지정
         useOneTap="true" //팝업 창을 띄우지 않고 현재 탭에서 로그인
       />
-
       <ShowSnackbar />
     </>
   );

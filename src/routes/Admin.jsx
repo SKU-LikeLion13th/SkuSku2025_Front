@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, Outlet } from "react-router-dom";
 import AssignmentManagement from "./../pages/Admin/AssignmentManagement/AssignmentRegistration.jsx";
 import ProjectManagement from "./../pages/Admin/ProjectManagement/ProjectManagement";
@@ -13,33 +13,41 @@ import LectureManagementMain from "../pages/Admin/LectureManagement/LectureManag
 import { useLogin } from "../utils/LoginContext.jsx";
 
 const Admin = () => {
-  const { checkLoginExpiration } = useLogin();
+  const { checkLoginExpiration, handleAdmin } = useLogin();
 
   useEffect(() => {
     checkLoginExpiration();
+    handleAdmin();
   }, []);
 
   return (
-    <Routes>
-      <Route path="main" element={<Outlet />}>
-        <Route index element={<AdminMain />} />
-        <Route path="assignmentIntro" element={<AssignmentIntro />} />
-        <Route path="assignmentManagement" element={<AssignmentManagement />} />
-        <Route path="lectureManagementMain" element={<Outlet />}>
-          <Route index element={<LectureManagementMain />} />
-          <Route path=":track" element={<LectureManagement />} />
+    <>
+      <Routes>
+        <Route path="main" element={<Outlet />}>
+          <>
+            <Route index element={<AdminMain />} />
+            <Route path="assignmentIntro" element={<AssignmentIntro />} />
+            <Route
+              path="assignmentManagement"
+              element={<AssignmentManagement />}
+            />
+            <Route path="lectureManagementMain" element={<Outlet />}>
+              <Route index element={<LectureManagementMain />} />
+              <Route path=":track" element={<LectureManagement />} />
+            </Route>
+            <Route path="projectManagement" element={<Outlet />}>
+              <Route index element={<ProjectManagement />} />
+              <Route path="createProject" element={<CreateProject />} />
+              <Route path="deleteProject" element={<DeleteProject />} />
+              <Route path="updateProject" element={<Outlet />}>
+                <Route index element={<UpdateProject />} />
+                <Route path=":id" element={<UpdateDetail />} />
+              </Route>
+            </Route>
+          </>
         </Route>
-        <Route path="projectManagement" element={<Outlet />}>
-          <Route index element={<ProjectManagement />} />
-          <Route path="createProject" element={<CreateProject />} />
-          <Route path="deleteProject" element={<DeleteProject />} />
-          <Route path="updateProject" element={<Outlet />}>
-            <Route index element={<UpdateProject />} />
-            <Route path=":id" element={<UpdateDetail />} />
-          </Route>
-        </Route>
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 };
 

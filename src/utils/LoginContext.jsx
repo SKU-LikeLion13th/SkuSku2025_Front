@@ -5,10 +5,8 @@ const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const navigate = useNavigate();
-
-  // 0: 성결 메일, 1: 세션 만료
   const [showSnack, setShowSnack] = useState({
-    state: "email",
+    state: null,
     open: false,
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,8 +15,9 @@ export const LoginProvider = ({ children }) => {
     track: "",
     color: "",
   });
+  const [role, setRole] = useState();
 
-  // 토큰 만료처리
+  // 토큰 만료
   const checkLoginExpiration = () => {
     const expireTime = JSON.parse(localStorage.getItem("expire"));
 
@@ -52,6 +51,19 @@ export const LoginProvider = ({ children }) => {
     navigate("/");
   };
 
+  // 관리자 접근 권한
+  const handleAdmin = () => {
+    const userInfo = localStorage.getItem("userInfo");
+    const parsedInfo = userInfo ? JSON.parse(userInfo) : null;
+
+    if (parsedInfo && parsedInfo.role === "ADMIN_LION") {
+      setRole(true);
+    } else {
+      setRole(false);
+      navigate("/");
+    }
+  };
+
   useEffect(() => {
     const token = getInfo();
     setIsLoggedIn(token); // 토큰이 있으면 true, 없으면 false
@@ -68,6 +80,9 @@ export const LoginProvider = ({ children }) => {
         checkLoginExpiration,
         showSnack,
         setShowSnack,
+        handleAdmin,
+        role,
+        setRole,
       }}
     >
       {children}
