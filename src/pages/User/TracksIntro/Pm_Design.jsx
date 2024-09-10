@@ -15,10 +15,10 @@ const Pm_Design = () => {
 
           <div className="py-10 @lg:py-32 @container">
             <ul className="flex justify-between @lg:w-[512px] mb-2 curriUl">
-              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">PM의 정의</li>
-              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">프로젝트 협업</li>
-              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">UI UX 디자인</li>
-              <li className="w-[90px] text-center fontThin text-sm @lg:text-lg whitespace-nowrap">피그마 교육</li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">PM의 정의</li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">프로젝트 협업</li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">UI UX 디자인</li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">피그마 교육</li>
             </ul>
             <img src={images.track_pm_curri} alt="track_pm_curri" className="w-[512px] curriImg" />
           </div>
