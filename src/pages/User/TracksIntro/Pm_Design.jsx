@@ -1,11 +1,11 @@
-import React from 'react';
-import { images } from '../../../utils/images';
-import '../../../css/track.css';
+import React from "react";
+import { images } from "../../../utils/images";
+import "../../../css/track.css";
 
 const Pm_Design = () => {
   return (
     <>
-      <div className="container flex items-center justify-center w-10/12 mx-auto part partPm pt-28 lg:mb-36 mobileContainer lg:min-h-screen">
+      <div className="container flex justify-center w-10/12 mx-auto part partPm pt-28 lg:mb-[15rem] mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
@@ -13,14 +13,26 @@ const Pm_Design = () => {
             <span className="text-[#FFBFD6] fontSB text-6xl">CURRICULUM</span>
           </div>
 
-          <div className="py-10 @lg:py-32 @container">
+          <div className="py-28 @lg:py-32 @container">
             <ul className="flex justify-between @lg:w-[512px] mb-2 curriUl">
-              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">PM의 정의</li>
-              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">프로젝트 협업</li>
-              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">UI UX 디자인</li>
-              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">피그마 교육</li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
+                PM의 정의
+              </li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
+                프로젝트 협업
+              </li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
+                UI UX 디자인
+              </li>
+              <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
+                피그마 교육
+              </li>
             </ul>
-            <img src={images.track_pm_curri} alt="track_pm_curri" className="w-[512px] curriImg" />
+            <img
+              src={images.track_pm_curri}
+              alt="track_pm_curri"
+              className="w-[512px] curriImg"
+            />
           </div>
 
           <div className="text-lg leading-8 fontEL whitespace-nowrap">

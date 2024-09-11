@@ -1,16 +1,20 @@
-import React from 'react';
-import { images } from '../../../utils/images';
-import '../../../css/track.css';
+import React from "react";
+import { images } from "../../../utils/images";
+import "../../../css/track.css";
 
 const BackEnd = () => {
   return (
     <>
-      <div className="container flex items-center justify-center w-10/12 mx-auto lg:mb-36 part partBack pt-28 mobileContainer lg:min-h-screen">
+      <div className="container flex justify-center w-10/12 mx-auto lg:mb-36 part partBack pt-28 mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
-            <span className="text-[#47EAEA] font-bold text-6xl fontEB">BACK-END</span>
+            <span className="text-[#47EAEA] font-bold text-6xl fontEB">
+              BACK-END
+            </span>
             <br />
-            <span className="text-[#BDFFFF] font-bold text-6xl fontSB">CURRICULUM</span>
+            <span className="text-[#BDFFFF] font-bold text-6xl fontSB">
+              CURRICULUM
+            </span>
           </div>
 
           <div className="flex flex-col py-28">
@@ -26,7 +30,11 @@ const BackEnd = () => {
                   <br />& Thymeleaf
                 </li>
               </ul>
-              <img src={images.track_backend_curri} alt="track_backend_curri" className="w-[320px] curriImg" />
+              <img
+                src={images.track_backend_curri}
+                alt="track_backend_curri"
+                className="w-[320px] curriImg"
+              />
             </div>
 
             <div className="ml-36 bottomcurri">
@@ -41,7 +49,11 @@ const BackEnd = () => {
                   <br />& JPA (MYSQL)
                 </li>
               </ul>
-              <img src={images.track_backend_curri} alt="track_backend_curri" className="w-[320px] curriImg" />
+              <img
+                src={images.track_backend_curri}
+                alt="track_backend_curri"
+                className="w-[320px] curriImg"
+              />
             </div>
           </div>
 
