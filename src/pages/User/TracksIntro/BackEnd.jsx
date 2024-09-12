@@ -5,7 +5,7 @@ import "../../../css/track.css";
 const BackEnd = () => {
   return (
     <>
-      <div className="container flex justify-center w-10/12 mx-auto lg:mb-36 part partBack pt-28 mobileContainer lg:min-h-screen">
+      <div className="container flex justify-center w-10/12 mx-auto lg:mb-36 part partBack pt-20 mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">
@@ -17,7 +17,7 @@ const BackEnd = () => {
             </span>
           </div>
 
-          <div className="flex flex-col py-28">
+          <div className="flex flex-col py-24">
             <div className="mb-10">
               <ul className="flex justify-between w-[320px] mb-2 curriUl">
                 <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">

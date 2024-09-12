@@ -5,7 +5,7 @@ import "../../../css/track.css";
 const Pm_Design = () => {
   return (
     <>
-      <div className="container flex justify-center w-10/12 mx-auto part partPm pt-28 lg:mb-[15rem] mobileContainer lg:min-h-screen">
+      <div className="container flex justify-center w-10/12 mx-auto part partPm pt-20 lg:mb-[15rem] mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
@@ -13,7 +13,7 @@ const Pm_Design = () => {
             <span className="text-[#FFBFD6] fontSB text-6xl">CURRICULUM</span>
           </div>
 
-          <div className="py-28 @lg:py-32 @container">
+          <div className="py-24 @lg:py-32 @container">
             <ul className="flex justify-between @lg:w-[512px] mb-2 curriUl">
               <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
                 PM의 정의
