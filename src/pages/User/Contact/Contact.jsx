@@ -8,11 +8,11 @@ const Contact = () => {
       <div className="container px-5 pt-24 mx-auto xl:px-20">
         <div className="flex flex-col items-center justify-between w-full xl:flex-row">
           <div className="w-full xl:ml-20 xl:pb-20 xl:leading-10 xl:w-[610px] mb-10 xl:mb-0 xl:mr-20 text-center xl:text-left">
-            <span className="text-4xl leading-tight text-blue-500 xl:text-6xl fontEB sm:text-5xl md:text-6xl md:leading-tight">
+            <span className="text-4xl leading-tight sm:leading-tight text-blue-500 xl:text-6xl fontEB sm:text-5xl md:text-6xl md:leading-tight">
               반가워요!
               <br />
             </span>
-            <span className="text-4xl leading-tight text-white xl:text-6xl fontEB whitespace-nowrap sm:text-5xl md:text-6xl md:leading-tight">
+            <span className="text-4xl leading-tight sm:leading-tight text-white xl:text-6xl fontEB whitespace-nowrap sm:text-5xl md:text-6xl md:leading-tight">
               어떤 것을
               <br />
               도와드릴까요?
