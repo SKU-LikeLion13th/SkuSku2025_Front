@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import API from '../../../utils/axios';
 
 const EditLecture = ({ lecture, onBack }) => {
+  const { track } = useParams();
   const [title, setTitle] = useState(lecture?.title || '');
   const [file, setFile] = useState(null);
-  const [trackType, setTrackType] = useState(lecture?.trackType || 'FRONTEND');
+
+  const formatTrackName = track => {
+    if (track === 'PM&DESIGN') {
+      return 'PM_DESIGN';
+    }
+    return track.toUpperCase().replace('-', '');
+  };
+
+  const formattedTrack = formatTrackName(track);
+
 
   useEffect(() => {
     if (lecture) {
       setTitle(lecture.title);
-      setTrackType(lecture.trackType);
     }
   }, [lecture]);
 
@@ -24,7 +34,7 @@ const EditLecture = ({ lecture, onBack }) => {
   const handleSubmit = async () => {
     const formData = new FormData();
     formData.append('title', title);
-    formData.append('trackType', trackType);
+    formData.append('trackType', formattedTrack);
     if (file) {
       formData.append('file', file);
     }

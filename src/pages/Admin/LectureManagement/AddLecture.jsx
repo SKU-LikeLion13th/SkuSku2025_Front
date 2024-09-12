@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import API from '../../../utils/axios';
 
 const AddLecture = ({ onBack }) => {
+  const { track } = useParams();
   const [title, setTitle] = useState('');
   const [file, setFile] = useState(null);
-  const [trackType, setTrackType] = useState('FRONTEND');
+
+  const formatTrackName = track => {
+    if (track === 'PM&DESIGN') {
+      return 'PM_DESIGN';
+    }
+    return track.toUpperCase().replace('-', '');
+    
+  };
+
+  const formattedTrack = formatTrackName(track);
 
   const handleBackClick = () => {
     onBack();
@@ -29,7 +40,7 @@ const AddLecture = ({ onBack }) => {
       }
   
       const formData = new FormData();
-      formData.append('trackType', trackType);
+      formData.append('trackType', formattedTrack);
       formData.append('title', title);
       formData.append('files', file);
   
