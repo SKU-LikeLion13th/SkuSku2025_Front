@@ -160,5 +160,95 @@
     "major": "국어국문학과 22",
     "role": "운영진",
     "position": "기획"
+  },
+  {
+    "id": 19,
+    "image": "assets/images/person/한민규.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "한민규",
+    "major": "컴퓨터공학과 21",
+    "role": "대표",
+    "position": "백엔드"
+  },
+  {
+    "id": 20,
+    "image": "assets/images/person/신민서.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "신민서",
+    "major": "미디어소프트웨어학과 22",
+    "role": "부대표",
+    "position": "프론트엔드"
+  },
+  {
+    "id": 21,
+    "image": "assets/images/person/최유정.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "최유정",
+    "major": "미디어소프트웨어학과 21",
+    "role": "FE 파트장",
+    "position": "프론트엔드"
+  },
+  {
+    "id": 22,
+    "image": "assets/images/person/박준범.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "박준범",
+    "major": "컴퓨터공학과 20",
+    "role": "BE 파트장",
+    "position": "프론트엔드"
+  },
+  {
+    "id": 23,
+    "image": "assets/images/person/서민주.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "서민주",
+    "major": "관광학과 22",
+    "role": "디자인 파트장",
+    "position": "디자인"
+  },
+  {
+    "id": 24,
+    "image": "assets/images/person/권오현.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "권오현",
+    "major": "컴퓨터공학과 23",
+    "role": "운영진",
+    "position": "백엔드"
+  },
+  {
+    "id": 25,
+    "image": "assets/images/person/이호연.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "이호연",
+    "major": "미디어소프트웨어학과 21",
+    "role": "운영진",
+    "position": "프론트엔드"
+  },
+  {
+    "id": 26,
+    "image": "assets/images/person/노주희.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "노주희",
+    "major": "미디어소프트웨어학과 22",
+    "role": "운영진",
+    "position": "백엔드"
+  },
+  {
+    "id": 27,
+    "image": "assets/images/person/구혜원.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "구혜원",
+    "major": "미디어소프트웨어학과 22",
+    "role": "운영진",
+    "position": "프론트엔드"
+  },
+  {
+    "id": 28,
+    "image": "assets/images/person/오한솔.png",
+    "logo": "assets/logo/likeLionLogo.png",
+    "name": "오한솔",
+    "major": "관광학과 22",
+    "role": "운영진",
+    "position": "디자인"
   }
 ]
