@@ -30,11 +30,11 @@ const Footer = () => {
             </Link>
           </div>
           <div className="fontSB">
-            @2024_LIKEL
+            @2025_LIKEL
             <Link to="/admin/main" className="cursor-auto">
               IO
             </Link>
-            NSKU 12th
+            NSKU 13th
           </div>
         </div>
       </div>

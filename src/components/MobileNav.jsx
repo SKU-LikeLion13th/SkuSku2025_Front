@@ -49,7 +49,7 @@ const ShowNav = () => {
             </li>
             <li className="fontThin px-7 w-full text-start text-md whitespace-nowrap">
               <Link to="/pm_design" onClick={closeNav}>
-                PM & DESIGN
+                DESIGN
               </Link>
             </li>
           </ul>

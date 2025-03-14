@@ -8,7 +8,7 @@ const Pm_Design = () => {
       <div className="container flex justify-center w-10/12 mx-auto part partPm pt-20 lg:mb-[15rem] mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
-            <span className="text-[#FF669D] fontEB  text-6xl">PM/DESIGN</span>
+            <span className="text-[#FF669D] fontEB  text-6xl">DESIGN</span>
             <br />
             <span className="text-[#FFBFD6] fontSB text-6xl">CURRICULUM</span>
           </div>
@@ -43,19 +43,6 @@ const Pm_Design = () => {
             <br />
             직관적이고 효과적인 사용자 인터페이스(UI)를 설계하고 구현합니다.
             <br />
-            <br />
-            <br />
-            <br />
-            <span className="text-2xl fontBold">서비스 기획자</span>는<br />
-            서비스 기획자는 사용자 요구사항을 분석하고
-            <br />
-            제품 또는 서비스의 기획과 전략을 개발하여
-            <br />
-            사용자들의 만족도를 높이고 비즈니스 목표를 달성합니다.
-            <br />
-            주로 데이터베이스와 서버 사이의 통신을 담당하여
-            <br />
-            클라이언트에게 필요한 데이터를 제공합니다.
           </div>
         </div>
         <div className="w-1/2 rightBox"></div>
