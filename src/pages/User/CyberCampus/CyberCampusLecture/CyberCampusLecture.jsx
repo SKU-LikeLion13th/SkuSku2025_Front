@@ -17,7 +17,7 @@ const CyberCampusLecture = () => {
   const isAdmin = false;
 
   const formatTrackName = track => {
-    if (track === 'PM&DESIGN') {
+    if (track === 'DESIGN') {
       return 'PM_DESIGN';
     }
     return track.toUpperCase().replace('-', '');

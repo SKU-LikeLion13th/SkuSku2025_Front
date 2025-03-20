@@ -29,12 +29,12 @@ export default function CyberCampusAssignment() {
   ];
 
   return (
-    <div className="relative text-black mobileContainer lg:min-h-screen mb-28 lg:mb-32">
+    <div className="relative min-h-screen text-black lg:min-h-screen mb-28 lg:mb-32 sm:min-h-[calc(100vh-370px)]">
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">{track}</div>
         <div className="mr-1 text-6xl">과제제출</div>
       </div>
-      <div className="flex flex-col justify-center w-10/12 gap-16 mx-auto mt-16 fontBold lg:flex-row lg:gap-8 lg:w-9/12">
+      <div className="flex flex-col justify-center w-10/12 gap-16 mx-auto mt-20 fontBold lg:flex-row lg:gap-8 lg:w-9/12">
         {buttons.map((button, index) => (
           <button
             key={index}

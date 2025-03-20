@@ -22,7 +22,7 @@ const IntroTrack = () => {
   ];
 
   return (
-    <div className="container flex flex-col mx-auto text-center mobileContainer lg:min-h-screen lg:mb-32">
+    <div className="container flex flex-col mx-auto text-center lg:min-h-screen lg:mb-32 sm:min-h-[calc(100vh-260px)]">
       {/* title */}
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">LIKELION SKU</div>
@@ -30,14 +30,14 @@ const IntroTrack = () => {
       </div>
 
       {/* subTitle */}
-      <div className="my-16">성결대학교 아기사자들을 위한 학습 공간입니다.</div>
+      <div className="my-20">성결대학교 아기사자들을 위한 학습 공간입니다.</div>
 
       <div className="flex justify-center w-10/12 mx-auto text-[28px] fontBold flex-wrap">
         {trackData.map((track, index) => (
           <button
             key={index}
             style={{ backgroundColor: track.bgColor }}
-            className={`mb-24 text-white mx-8 w-[400px] shadow-lg pt-12 px-12 rounded-xl hover:textShadow duration-500 hover:translate-y-[-5px] text-start lg:py-8 lg:px-9 lg:w-[300px]`}
+            className={`mb-20 text-white mx-8 w-[400px] shadow-lg pt-12 px-12 rounded-xl hover:textShadow duration-500 hover:translate-y-[-5px] text-start lg:py-8 lg:px-9 lg:w-[300px]`}
             onClick={() => {
               navigate(track.navigateTo);
             }}>

@@ -28,7 +28,7 @@ const CyberCampusLocation = () => {
     { title: '사이버캠퍼스', route: '/cyberCampus/intro' },
     { title: '프론트엔드', route: getPath('FRONT-END') },
     { title: '백엔드', route: getPath('BACK-END') },
-    { title: '기획&디자인', route: getPath('PM&DESIGN') },
+    { title: '디자인', route: getPath('DESIGN') },
     { title: '강의자료', route: getPath(track, '/lecture') },
     { title: '과제제출', route: getAssignmentPath(track, '') },
     { title: '완성된과제', route: getAssignmentPath(track, '/completedAssignment') },

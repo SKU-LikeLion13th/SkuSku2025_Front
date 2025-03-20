@@ -6,7 +6,7 @@ import { IoIosMail } from "react-icons/io";
 const Footer = () => {
   return (
     <>
-      <div className="leading-7 container w-11/12 mx-auto border-t-[1px] border-[#626262] py-12 px-12 h-64">
+      <div className="leading-7 container w-11/12 mx-auto border-t-[1px] border-[#626262] py-12 px-12">
         <div className="flex flex-col mb-10">
           <span className="text-2xl fontBlack text-[#3B79FF]">
             LIKELION SKU

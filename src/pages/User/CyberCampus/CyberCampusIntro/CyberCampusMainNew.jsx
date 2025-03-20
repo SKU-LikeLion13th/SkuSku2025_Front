@@ -18,10 +18,10 @@ const CyberCampusMainNew = () => {
       navigateTo: "/cyberCampus/intro/BACK-END",
     },
     {
-      title: "기획/디자인",
-      subtitle: "PM&DESIGN",
+      title: "디자인",
+      subtitle: "DESIGN",
       bgColor: "bg-gradient-to-r from-[#FFD1E2] to-[#FF87B1]",
-      navigateTo: "/cyberCampus/intro/PM&DESIGN",
+      navigateTo: "/cyberCampus/intro/DESIGN",
     },
   ];
 

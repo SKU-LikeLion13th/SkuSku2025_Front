@@ -28,48 +28,48 @@ const ShowNav = () => {
   }, [isLoggedIn]);
 
   return (
-    <div className="Navbar flex min-h-screen overflow-y-auto">
+    <div className="flex min-h-screen overflow-y-auto Navbar">
       <div className="flex flex-col items-center justify-center">
-        <ul className="NanumSquareEB flex flex-col items-center justify-center gap-y-6 text-2xl">
-          <li className="px-7 w-full text-start text-4xl">
+        <ul className="flex flex-col items-center justify-center text-2xl NanumSquareEB gap-y-6">
+          <li className="w-full text-4xl px-7 text-start">
             <Link to="/frontend" onClick={closeNav}>
               TRACK
             </Link>
           </li>
           <ul className="flex items-center">
-            <li className="fontThin px-7 w-full text-start text-md">
+            <li className="w-full fontThin px-7 text-start text-md">
               <Link to="/frontend" onClick={closeNav}>
                 FRONTEND
               </Link>
             </li>
-            <li className="fontThin px-7 w-full text-start text-md">
+            <li className="w-full fontThin px-7 text-start text-md">
               <Link to="/backend" onClick={closeNav}>
                 BACKEND
               </Link>
             </li>
-            <li className="fontThin px-7 w-full text-start text-md whitespace-nowrap">
+            <li className="w-full fontThin px-7 text-start text-md whitespace-nowrap">
               <Link to="/pm_design" onClick={closeNav}>
                 DESIGN
               </Link>
             </li>
           </ul>
-          <li className="px-7 py-3 w-full text-start text-4xl">
+          <li className="w-full py-3 text-4xl px-7 text-start">
             <Link to="/project" onClick={closeNav}>
               PROJECT
             </Link>
           </li>
-          <li className="px-7 py-3 w-full text-start text-4xl">
+          <li className="w-full py-3 text-4xl px-7 text-start">
             <Link to="/teamIntro?tab12" onClick={closeNav}>
               TEAM
             </Link>
           </li>
-          <li className="px-7 py-3 w-full text-start text-4xl">
+          <li className="w-full py-3 text-4xl px-7 text-start">
             <Link to="/contact" onClick={closeNav}>
               CONTACT
             </Link>
           </li>
-          <li className="px-7 py-3 w-full text-start text-4xl">
-            <Link to="/cybercampus/intro" onClick={closeNav}>
+          <li className="w-full py-3 text-4xl px-7 text-start">
+            <Link to="/cyberCampus/intro" onClick={closeNav}>
               CYBERCAMPUS
             </Link>
           </li>
@@ -84,7 +84,7 @@ const ShowNav = () => {
                   >
                     🦁
                   </div>
-                  <span className="text-xs px-2">{info.track}</span>
+                  <span className="px-2 text-xs">{info.track}</span>
                   <span className="font-bold">{info.name}님</span>
                 </div>
                 <div className="px-2 text-[gray]">|</div>

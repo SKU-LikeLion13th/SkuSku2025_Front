@@ -33,7 +33,7 @@ function App() {
           <NewNav />
 
           {/* Route */}
-          <div className="App">
+          <div className="min-h-screen App">
             <Routes>
               <Route path="/*" element={<User />} />
               <Route path="/admin/*" element={<Admin />} />
