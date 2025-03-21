@@ -93,10 +93,13 @@ export default function TodaysDetail() {
       </div>
       <CyberCampusLocation />
       <div className="w-3/5 mx-auto">
-        <div className="pb-6 mt-12 mb-6 text-2xl border-b-2 border-black fontBold">
-          {title}[{subTitle}]
+        <div className="mt-12 mb-6 text-2xl fontBold">
+          {title}
         </div>
-        <div className="mb-6 text-sm">{description}</div>
+        <div className="pb-6 mb-6 text-xl border-b-2 border-black fontBold">
+          [{subTitle}]
+        </div>
+        <div className="mb-6 text-sm whitespace-pre-line">{description}</div>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="mr-3 text-xl fontBold whitespace-nowrap">제출 여부</div>

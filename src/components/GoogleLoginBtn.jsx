@@ -74,14 +74,14 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
             'userInfo',
             JSON.stringify({
               name: dec.name,
-              track: 'PM/DESIGN',
+              track: 'DESIGN',
               color: '#FF669D',
               role: dec.role,
             }),
           );
           setContextUserInfo({
             name: dec.name,
-            track: 'PM/DESIGN',
+            track: 'DESIGN',
             color: '#FF669D',
           });
         }

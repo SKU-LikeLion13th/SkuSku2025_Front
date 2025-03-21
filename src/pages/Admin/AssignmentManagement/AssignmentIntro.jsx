@@ -19,14 +19,14 @@ const AssignmentIntro = () => {
     },
     {
       title: '기획/디자인',
-      subtitle: 'PM&DESIGN',
+      subtitle: 'DESIGN',
       bgColor: 'bg-gradient-to-r from-[#FFD1E2] to-[#FF87B1]',
       navigateTo: `/admin/main/AssignmentManagement?track=PM_DESIGN`,
     },
   ];
 
   return (
-    <div className="flex flex-col mx-auto container text-center">
+    <div className="container flex flex-col mx-auto text-center">
       {/* title */}
       <div className="flex flex-col items-center justify-center pt-40 fontEB">
         <div className="text-[#3B79FF] my-2 ml-1 text-7xl">LIKELION SKU</div>

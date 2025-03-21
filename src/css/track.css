@@ -56,3 +56,10 @@
     display: block;
   }
 }
+
+@media (min-width: 768px) {
+  .BECurr {
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+}

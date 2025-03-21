@@ -16,16 +16,16 @@ const Pm_Design = () => {
           <div className="py-24 @lg:py-32 @container">
             <ul className="flex justify-between @lg:w-[512px] mb-2 curriUl">
               <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
-                PM의 정의
+                UX/UI 교육
               </li>
               <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
-                프로젝트 협업
+                Figma 교육
               </li>
               <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
-                UI UX 디자인
+                웹/앱 디자인
               </li>
               <li className="w-[90px] text-center fontThin text-base @lg:text-lg whitespace-nowrap">
-                피그마 교육
+                포트폴리오 제작
               </li>
             </ul>
             <img

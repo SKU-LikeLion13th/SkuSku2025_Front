@@ -33,21 +33,24 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
   };
 
   return (
-    <div className="mt-20 w-full px-8">
-      <div className="text-2xl fontBold mb-8">오늘의 과제 관리</div>
+    <div className="w-full px-8 mt-20">
+      <div className="mb-8 text-2xl fontBold">오늘의 과제 관리</div>
       <div className="grid grid-cols-2 gap-12">
         {/* 서버에서 받은 데이터를 렌더링 */}
         {currentItems.map(assignment => (
           <div
             key={assignment.id}
-            className="p-7 bg-blue-500 text-white rounded-lg shadow-lg h-36 truncate cursor-pointer"
+            className="text-white truncate bg-blue-500 rounded-lg shadow-lg cursor-pointer p-7 h-36"
             onClick={() => setSelectedAssignment(assignment)} // 클릭 시 전체 내용을 볼 수 있게 설정
           >
-            <div className="fontEB text-lg mb-3">
-              {assignment.title} {assignment.subTitle && `[${assignment.subTitle}]`}
+            <div className="mb-3 text-lg fontEB">
+              {assignment.title}
             </div>
-            <p className="text-sm truncate overflow-hidden text-ellipsis">{assignment.description}</p>
-            <p className="text-sm mt-4">{formatDueDate(assignment.dueDate)}</p>
+            <div className="mb-3 text-md fontEB">
+              [{assignment.subTitle}]
+            </div>
+            <p className="overflow-hidden text-sm truncate text-ellipsis">{assignment.description}</p>
+            <p className="mt-4 text-sm">{formatDueDate(assignment.dueDate)}</p>
           </div>
         ))}
       </div>
@@ -79,18 +82,21 @@ const AssignmentInformation = ({ assignments, onAddClick, onDeleteClick }) => {
 
       {/* 모달 */}
       {selectedAssignment && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div className="p-7 bg-blue-500 text-white rounded-lg shadow-lg w-96">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="text-white bg-blue-500 rounded-lg shadow-lg p-7 w-96">
             {' '}
             {/* 모달 스타일을 동일하게 설정 */}
-            <div className="fontEB text-lg mb-3">
-              {selectedAssignment.title} {selectedAssignment.subTitle && `[${selectedAssignment.subTitle}]`}
+            <div className="mb-3 text-lg fontEB">
+              {selectedAssignment.title}
             </div>
-            <p className="text-sm">{selectedAssignment.description}</p>
-            <p className="text-sm mt-4">{formatDueDate(selectedAssignment.dueDate)}</p>
+            <div className="mb-3 text-md fontEB">
+              [{selectedAssignment.subTitle}]
+            </div>
+            <p className="text-sm whitespace-pre-line">{selectedAssignment.description}</p>
+            <p className="mt-4 text-sm">{formatDueDate(selectedAssignment.dueDate)}</p>
             <div className="flex justify-end">
               <button
-                className="px-4 py-2 bg-gray-200 fontRegular text-black text-xs rounded-lg hover:bg-gray-300"
+                className="px-4 py-2 text-xs text-black bg-gray-200 rounded-lg fontRegular hover:bg-gray-300"
                 onClick={handleCloseModal}>
                 닫기
               </button>

@@ -114,7 +114,7 @@ const NewNav = () => {
                 <Link to="/backend">BACK-END</Link>
               </MenuItem>
               <MenuItem className="menuItem">
-                <Link to="/pm_design">PM/DESIGN</Link>
+                <Link to="/pm_design">DESIGN</Link>
               </MenuItem>
             </Menu>
           </Dropdown>
