@@ -5,7 +5,7 @@ import "../../../css/track.css";
 const FrontEnd = () => {
   return (
     <>
-      <div className="container flex justify-center w-10/12 mx-auto lg:mb-36 part partFront pt-20 mobileContainer lg:min-h-screen">
+      <div className="container flex justify-center w-10/12 pt-20 mx-auto lg:mb-36 part partFront mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#FF7816] fontEB text-6xl">FRONT-END</span>
@@ -16,13 +16,13 @@ const FrontEnd = () => {
           <div className="py-24">
             <ul className="flex justify-between w-[426px] mb-2 curriUl">
               <li className="w-[95.6px] text-center fontThin text-xl whitespace-nowrap">
-                Javascript
+                JavaScript
               </li>
               <li className="w-[95.6px] text-center fontThin text-xl whitespace-nowrap">
                 React
               </li>
               <li className="w-[95.6px] text-center fontThin text-xl whitespace-nowrap">
-                Clone Coding
+                TypeScript
               </li>
             </ul>
             <img

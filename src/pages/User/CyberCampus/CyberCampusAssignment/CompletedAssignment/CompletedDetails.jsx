@@ -74,13 +74,16 @@ export default function CompletedDetails() {
       </div>
       <CyberCampusLocation />
       <div className="w-3/5 mx-auto">
-        <div className="flex justify-between pb-6 mt-12 mb-6 border-b-2 border-black fontBold">
-          <div className="text-2xl">
-            {assignmentDetails.title}[{assignmentDetails.subTitle}]
+        <div className="flex justify-between pb-6 mt-12 fontBold">
+          <div className="flex text-2xl fontBold">
+            {assignmentDetails.title}
           </div>
           <div className="flex items-center">
             <div>{formatDueDate(assignmentDetails.dueDate)} 마감</div>
           </div>
+        </div>  
+        <div className="pb-4 mb-6 text-xl border-b-2 border-black fontBold">
+          [{assignmentDetails.subTitle}]
         </div>
         <div className="flex items-center">
           <div className="flex items-center mr-8">

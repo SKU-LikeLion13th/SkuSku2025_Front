@@ -5,7 +5,7 @@ import "../../../css/track.css";
 const BackEnd = () => {
   return (
     <>
-      <div className="container flex justify-center w-10/12 mx-auto lg:mb-36 part partBack pt-20 mobileContainer lg:min-h-screen">
+      <div className="container flex justify-center w-10/12 pt-20 mx-auto lg:mb-36 part partBack mobileContainer lg:min-h-screen">
         <div className="partContent">
           <div className="pt-10">
             <span className="text-[#47EAEA] font-bold text-6xl fontEB">
@@ -20,14 +20,13 @@ const BackEnd = () => {
           <div className="flex flex-col py-24">
             <div className="mb-10">
               <ul className="flex justify-between w-[320px] mb-2 curriUl">
-                <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">
+                <li className="flex w-[120px] items-center justify-center text-center fontThin text-xl whitespace-nowrap">
                   Java를 활용한
                   <br />
                   객체지향 개념
                 </li>
-                <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">
-                  Spring setting
-                  <br />& Thymeleaf
+                <li className="flex w-[120px] items-center justify-center text-center fontThin text-xl whitespace-nowrap">
+                  Spring Boot
                 </li>
               </ul>
               <img
@@ -38,15 +37,12 @@ const BackEnd = () => {
             </div>
 
             <div className="ml-36 bottomcurri">
-              <ul className="flex justify-between w-[320px] mb-2 curriUl">
-                <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">
-                  Spring
-                  <br />
-                  API 통신
+              <ul className="flex justify-between w-[320px] mb-4 curriUl BECurr">
+                <li className="flex w-[120px] items-center justify-center text-center fontThin text-xl whitespace-nowrap">
+                  JPA
                 </li>
-                <li className="w-[120px] text-center fontThin text-xl whitespace-nowrap">
-                  DB Connection
-                  <br />& JPA (MYSQL)
+                <li className="flex w-[120px] items-center justify-center text-center fontThin text-xl whitespace-nowrap">
+                  Spring Security
                 </li>
               </ul>
               <img

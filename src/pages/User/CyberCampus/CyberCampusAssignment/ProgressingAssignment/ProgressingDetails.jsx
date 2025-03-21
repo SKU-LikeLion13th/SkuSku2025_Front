@@ -137,16 +137,19 @@ export default function ProgressingDetails() {
         <div>과제 제출</div>
       </div>
       <CyberCampusLocation />
-      <div className="w-3/5 mx-auto">
-        <div className="flex justify-between pb-6 mt-12 mb-6 border-b-2 border-black fontBold">
-          <div className="text-2xl">
-            {assignmentDetails.title}[{assignmentDetails.subTitle}]
+      <div className="w-3/5 min-h-screen mx-auto">
+        <div className="flex justify-between pb-6 mt-12 fontBold">
+          <div className="flex text-2xl fontBold">
+            {assignmentDetails.title}
           </div>
           <div className="flex items-center">
             <div>{formatDueDate(assignmentDetails.dueDate)} 마감</div>
           </div>
+        </div>  
+        <div className="pb-4 mb-6 text-xl border-b-2 border-black fontBold">
+          [{assignmentDetails.subTitle}]
         </div>
-        <div className="mb-6 text-sm">{assignmentDetails.description}</div>
+        <div className="mb-6 text-sm whitespace-pre-line">{assignmentDetails.description}</div>
         <div className="grid grid-cols-2 gap-4 lg:flex lg:justify-between">
           <div className="flex items-center">
             <div className="mr-3 text-xl fontBold whitespace-nowrap">제출 여부</div>
