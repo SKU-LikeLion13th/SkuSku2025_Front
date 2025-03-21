@@ -31,7 +31,6 @@ export default function ProgressingAssignment() {
             Authorization: `Bearer ${token}`,
           },
         });
-
         setAssignments(response.data.ing || []);
       } catch (error) {
         console.error('과제를 불러오는데 실패했습니다.', error);
@@ -46,7 +45,7 @@ export default function ProgressingAssignment() {
   const currentAssignments = assignments.slice(indexOfFirstAssignment, indexOfLastAssignment);
   const totalPages = Math.ceil(assignments.length / assignmentsPerPage);
 
-  const goDetail = assignmentId => {
+  const goDetail = (assignmentId) => {
     navigate(`/cyberCampus/intro/${track}/assignment/progressingAssignment/progressingDetail/${assignmentId}`);
   };
 

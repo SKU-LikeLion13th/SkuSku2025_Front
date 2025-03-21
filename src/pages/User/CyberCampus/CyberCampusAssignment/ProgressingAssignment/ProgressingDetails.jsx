@@ -7,6 +7,7 @@ export default function ProgressingDetails() {
   const { track, assignmentId } = useParams();
   const [assignmentDetails, setAssignmentDetails] = useState({});
   const [file, setFile] = useState(null);
+  const [submitAssignmentId, setSubmitAssignmentId] = useState('');
   const [submitStatus, setSubmitStatus] = useState('');
   const [passStatus, setPassStatus] = useState('통과 안됨');
   const [feedback, setFeedback] = useState('피드백이 없습니다.');
@@ -35,10 +36,12 @@ export default function ProgressingDetails() {
         const assignments = response.data.ing || [];
         const assignment = assignments.find(item => item.assignmentId === parseInt(assignmentId, 10));
 
+        console.log(assignment)
         if (assignment) {
           setAssignmentDetails(assignment);
           const submitDetails = assignment.submitAssignmentWithoutDTO;
           if (submitDetails) {
+            setSubmitAssignmentId(submitDetails.submitAssignmentId)
             setSubmitStatus(submitDetails.submitStatus === 'SUBMITTED' ? '제출 완료' : '제출 안 함');
             setPassStatus(submitDetails.passNonePass === 'PASS' ? '통과' : '통과 안됨');
             setFeedback(submitDetails.responseFeedback ? submitDetails.responseFeedback.content : '피드백이 없습니다.');
@@ -70,7 +73,7 @@ export default function ProgressingDetails() {
     }
 
     const formData = new FormData();
-    formData.append('submitAssignmentId', assignmentId);
+    formData.append('submitAssignmentId', submitAssignmentId);
     formData.append('files', file);
 
     try {
