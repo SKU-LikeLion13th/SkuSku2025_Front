@@ -73,7 +73,7 @@ export default function CompletedDetails() {
         <div>과제 제출</div>
       </div>
       <CyberCampusLocation />
-      <div className="w-3/5 mx-auto">
+      <div className="w-3/5 min-h-screen mx-auto">
         <div className="flex justify-between pb-6 mt-12 fontBold">
           <div className="flex text-2xl fontBold">
             {assignmentDetails.title}

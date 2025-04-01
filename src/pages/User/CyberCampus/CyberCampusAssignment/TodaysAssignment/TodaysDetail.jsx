@@ -92,7 +92,7 @@ export default function TodaysDetail() {
         <div>과제 제출</div>
       </div>
       <CyberCampusLocation />
-      <div className="w-3/5 mx-auto">
+      <div className="w-3/5 min-h-screen mx-auto">
         <div className="mt-12 mb-6 text-2xl fontBold">
           {title}
         </div>
