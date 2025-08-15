@@ -28,9 +28,8 @@ const ProjectSlider = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    API
-      .get('/project/all')
-      .then(response => {
+    API.get("/project/all")
+      .then((response) => {
         setProjects(response.data);
       })
       .catch(error => console.error('Error fetching data:', error));

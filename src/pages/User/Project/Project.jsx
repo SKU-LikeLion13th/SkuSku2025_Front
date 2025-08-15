@@ -13,7 +13,7 @@ const Project = () => {
   /* 프로젝트 불러오기 코드 */
   const fetchProjects = async () => {
     try {
-      const response = await API.get('/project/all');
+      const response = await API.get("/project/all");
       setProjects(response.data);
       setFilteredProjects(response.data);
     } catch (error) {
