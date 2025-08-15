@@ -1,12 +1,12 @@
-import { GoogleLogin } from '@react-oauth/google';
-import React from 'react';
-import { useLogin } from '../utils/LoginContext';
-import * as base64js from 'base64-js';
-import ShowSnackbar from './ShowSnackbar';
-import API from '../utils/axios';
+import { GoogleLogin } from "@react-oauth/google";
+import React from "react";
+import { useLogin } from "../utils/LoginContext";
+import * as base64js from "base64-js";
+import ShowSnackbar from "./ShowSnackbar";
+import API from "../utils/axios";
 
 export const GoogleLoginBtn = ({ size, type, width, shape }) => {
-  const { setIsLoggedIn, setContextUserInfo, setShowSnack } = useLogin();
+  /*const { setIsLoggedIn, setContextUserInfo, setShowSnack } = useLogin();
 
   // Base64 디코딩 함수 사용하여 UTF-8 문자열로 변환(한글깨짐방지)
   function Base64Decode(str, encoding = 'utf-8') {
@@ -97,22 +97,50 @@ export const GoogleLoginBtn = ({ size, type, width, shape }) => {
           });
         }
       });
+  };*/
+
+  const handleClick = () => {
+    alert("새로운 스쿠스쿠를 사용해주세요! https://sku-sku.com/");
   };
 
   return (
-    <>
-      <GoogleLogin
-        onSuccess={loginHandle}
-        onError={() => console.log('Login Failed')}
-        type={type}
-        width={width} //버튼 크기 지정
-        size="large"
-        text="continue_with" //로그인 버튼 텍스트 지정 (구글에서 제공하는 문구만 사용)
-        shape={shape} //버튼 shape 지정
-        useOneTap="true" //팝업 창을 띄우지 않고 현재 탭에서 로그인
+    <div
+      style={{
+        position: "relative",
+        display: "inline-block",
+        width: width || "auto",
+      }}
+    >
+      {/* 시각적으로는 그대로 보여주되, 아래 컴포넌트는 클릭 못 하게 */}
+      <div style={{ pointerEvents: "none" }}>
+        <GoogleLogin
+          onSuccess={() => {}}
+          onError={() => {}}
+          type={type}
+          width={width}
+          size={size}
+          text="continue_with"
+          shape={shape}
+          useOneTap={false} // One Tap 확실히 끔
+        />
+      </div>
+
+      {/* 클릭을 가로채는 투명 오버레이 */}
+      <button
+        type="button"
+        onClick={handleClick}
+        aria-label="구글 로그인(안내)"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+        }}
       />
-      <ShowSnackbar />
-    </>
+
+      {/* <ShowSnackbar /> */}
+    </div>
   );
 };
 

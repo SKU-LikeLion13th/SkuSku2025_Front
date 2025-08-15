@@ -27,6 +27,10 @@ const ShowNav = () => {
     }
   }, [isLoggedIn]);
 
+  const handleClick = () => {
+    alert("새로운 스쿠스쿠를 사용해주세요! https://sku-sku.com/");
+  };
+
   return (
     <div className="flex min-h-screen overflow-y-auto Navbar">
       <div className="flex flex-col items-center justify-center">
@@ -69,9 +73,9 @@ const ShowNav = () => {
             </Link>
           </li>
           <li className="w-full py-3 text-4xl px-7 text-start">
-            <Link to="/cyberCampus/intro" onClick={closeNav}>
+            <button onClick={handleClick}>
               CYBERCAMPUS
-            </Link>
+            </button>
           </li>
 
           <div className="mt-10">
